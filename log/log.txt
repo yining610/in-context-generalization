@@ -1,3 +1,1 @@
-WARNING:/home/ylu130/.conda/envs/got/lib/python3.9/site-packages/tensor_parallel/pretrained_model.py:Using automatic config: tensor parallel config not provided and no custom config registered for the model
-WARNING:/home/ylu130/.conda/envs/got/lib/python3.9/site-packages/tensor_parallel/pretrained_model.py:Using automatic config: tensor parallel config not provided and no custom config registered for the model
-WARNING:/home/ylu130/.conda/envs/got/lib/python3.9/site-packages/tensor_parallel/pretrained_model.py:Using automatic config: tensor parallel config not provided and no custom config registered for the model
+19:17:45,780 root INFO Running Urban Planning

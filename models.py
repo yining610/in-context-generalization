@@ -5,6 +5,7 @@ from tensor_parallel import TensorParallelPreTrainedModel
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from typing import List
 from typeguard import typechecked
+from abc import abstractclassmethod
 
 MODEL_CACHE_DIR="/scratch/ylu130/models"
 completion_tokens = prompt_tokens = 0
@@ -53,27 +54,38 @@ def gpt_usage(model="gpt-4"):
         cost = completion_tokens / 1000 * 0.02 + prompt_tokens / 1000 * 0.02
     return {"completion_tokens": completion_tokens, "prompt_tokens": prompt_tokens, "cost": cost}
 
-def llama(prompts, temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
-    MODEL_CACHE_DIR="/scratch/ylu130/models"
-    model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR)
-    model = TensorParallelPreTrainedModel(model, ["cuda:8", "cuda:9"])
-    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR)
-    tokenizer.pad_token = tokenizer.eos_token
-    
-    # support batch inference
-    inputs = tokenizer(prompts, return_tensors="pt", padding=True)
-    PROMPT_LENGTH = len(inputs['input_ids'][0])
-    outputs_ids = model.generate(inputs["input_ids"].cuda(8), attention_mask=inputs["attention_mask"].cuda(8), temperature=temperature, max_length=max_tokens, num_return_sequences=n, do_sample=True)
-    outputs_ids = outputs_ids[:, PROMPT_LENGTH:]
-    return tokenizer.batch_decode(outputs_ids, skip_special_tokens=True)
-
-
 def lm(prompt, model, temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
     if "davinci" in model:
         return completiongpt(prompt, model, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop)
-    elif "llama" in model:
-        return llama(prompt, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop)
+    # elif "llama" in model:
+    #     return llama(prompt, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop)
     else:
         messages = [{"role": "user", "content": prompt}]
         return chatgpt(messages, model, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop)
-        
+
+
+class llama():
+    def __init__(self, temperature=0.7, max_tokens=1000, n=1) -> None:
+        MODEL_CACHE_DIR="/scratch/ylu130/models"
+        self.model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR)
+        self.model = TensorParallelPreTrainedModel(self.model, ["cuda:8", "cuda:9"])
+        self.tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR)
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        self.n = n
+        self.eos_token_id = self.tokenizer("\n")["input_ids"][0]
+
+    def __call__(self, prompts) -> list:
+        # support batch inference
+        inputs = self.tokenizer(prompts, return_tensors="pt", padding=True)
+        PROMPT_LENGTH = len(inputs['input_ids'][0])
+        outputs_ids = self.model.generate(inputs["input_ids"].cuda(8), 
+                                          attention_mask=inputs["attention_mask"].cuda(8), 
+                                          temperature=self.temperature, 
+                                          max_length=self.max_tokens, 
+                                          num_return_sequences=self.n, 
+                                          do_sample=True,
+                                          eos_token_id=self.eos_token_id)
+        outputs_ids = outputs_ids[:, PROMPT_LENGTH:]
+        return self.tokenizer.batch_decode(outputs_ids, skip_special_tokens=True)

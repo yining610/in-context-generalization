@@ -1,7 +1,6 @@
 # from read_data import read_tellmewhy
 from datasets import load_dataset
-from models import lm, gpt_usage
-from functools import partial
+from models import llama
 import argparse
 import logging
 import random
@@ -37,10 +36,8 @@ def parse_args() -> argparse.Namespace:
     return args
 
 def main(args):
-    global lm
     data = load_dataset('StonyBrookNLP/tellmewhy', cache_dir=DATA_DIR)
-
-    lm = partial(lm, model=args.model, temperature=args.temperature, max_tokens=args.max_tokens, n=args.n, stop=args.stop)
+    model = llama(temperature=args.temperature, max_tokens=args.max_tokens, n=args.n)
 
     # use validation data
     if args.sample > 0 and args.sample < len(data['validation']):
@@ -55,7 +52,7 @@ def main(args):
         is_answerables = data['is_ques_answerable'][i:i+args.batch] 
 
         prompts = ['Context: ' + narratives[j] + '\nQuestion: ' + questions[j] for j in range(len(narratives))]
-        outputs = lm(prompts)
+        outputs = model(prompts)
         
         for k in range(len(outputs)):
             logging.info(f"prompt: {prompts[k]}")
@@ -63,13 +60,16 @@ def main(args):
             logging.info(f"gold answer: {answers[k]}")
             logging.info(f"is_answerable: {is_answerables[k]}")
             logging.info(f'-' * 50)
-        
-    logging.info(f"usage: {gpt_usage(args.model)}")
 
 if __name__ == "__main__":
     args = parse_args()
     logging.basicConfig(
                         filename='./log/log.txt',
-                        # level=args.logging_level
+                        filemode='a',
+                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=args.logging_level
                         )
+
+    logging.info("Running Urban Planning")
     main(args)
