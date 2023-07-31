@@ -3,9 +3,8 @@ import openai
 import backoff 
 from tensor_parallel import TensorParallelPreTrainedModel
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from typing import List
-from typeguard import typechecked
-from abc import abstractclassmethod
+from transformers import StoppingCriteria, StoppingCriteriaList
+import torch
 
 MODEL_CACHE_DIR="/scratch/ylu130/models"
 completion_tokens = prompt_tokens = 0
@@ -63,6 +62,15 @@ def lm(prompt, model, temperature=0.7, max_tokens=1000, n=1, stop=None) -> list:
         messages = [{"role": "user", "content": prompt}]
         return chatgpt(messages, model, temperature=temperature, max_tokens=max_tokens, n=n, stop=stop)
 
+class KeywordsStoppingCriteria(StoppingCriteria):
+    def __init__(self, keywords_ids:list):
+        self.keywords = keywords_ids
+
+    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
+        if input_ids[0][-1] in self.keywords:
+            return True
+        return False
+
 
 class llama():
     def __init__(self, temperature=0.7, max_tokens=1000, n=1) -> None:
@@ -74,10 +82,13 @@ class llama():
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.n = n
-        self.eos_token_id = self.tokenizer("\n")["input_ids"][0]
 
     def __call__(self, prompts) -> list:
         # support batch inference
+    
+        stop_words = ['\n', '.\n']
+        stop_ids = [self.tokenizer.encode(w)[0] for w in stop_words]
+        stop_criteria = KeywordsStoppingCriteria(stop_ids)
         inputs = self.tokenizer(prompts, return_tensors="pt", padding=True)
         PROMPT_LENGTH = len(inputs['input_ids'][0])
         outputs_ids = self.model.generate(inputs["input_ids"].cuda(8), 
@@ -86,6 +97,6 @@ class llama():
                                           max_length=self.max_tokens, 
                                           num_return_sequences=self.n, 
                                           do_sample=True,
-                                          eos_token_id=self.eos_token_id)
+                                          stopping_criteria=StoppingCriteriaList([stop_criteria]))
         outputs_ids = outputs_ids[:, PROMPT_LENGTH:]
         return self.tokenizer.batch_decode(outputs_ids, skip_special_tokens=True)

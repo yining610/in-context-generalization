@@ -51,7 +51,7 @@ def main(args):
         answers = data['answer'][i:i+args.batch]
         is_answerables = data['is_ques_answerable'][i:i+args.batch] 
 
-        prompts = ['Context: ' + narratives[j] + '\nQuestion: ' + questions[j] for j in range(len(narratives))]
+        prompts = ['Context: ' + narratives[j] + '\nQuestion: ' + questions[j] + "\nLet's think step by step: " for j in range(len(narratives))]
         outputs = model(prompts)
         
         for k in range(len(outputs)):
