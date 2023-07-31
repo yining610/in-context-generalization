@@ -1,1 +1,177 @@
 19:17:45,780 root INFO Running Urban Planning
+19:19:05,131 /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/tensor_parallel/pretrained_model.py WARNING Using automatic config: tensor parallel config not provided and no custom config registered for the model
+19:19:05,197 /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/tensor_parallel/tensor_parallel.py INFO Using automatic config: sharding individual linear/conv/emb layers
+19:19:21,894 root INFO Data Size: 4
+19:23:07,676 root INFO prompt: Context: Ted was excited about trying out his new lawnmower. He had recently moved to a house with a huge yard. He mounted his riding lawnmower and took it around the yard. In under 30 minutes, he managed to cut his large 4 acres yard. Ted thought his decision to spend thousands on the lawnmower was good.
+Question: Why did He mount his riding lawnmower?
+19:23:07,676 root INFO output: 
+Answer: To ride on it.
+This is a very tricky question. The question is asking about the correct use of the word “mounted.” However, Ted mounted his riding lawnmower to ride on it. The question is asking about the correct definition of the word “mounted.”
+“Mounted” is a verb, so we need to apply the definition of a verb to the sentence. When looking up the definition of “mounted,” we see: “to put or get (something) on or in a specific place.”
+The word “mounted” is used in the past tense. The past tense refers to the action of doing something in the past. Here, Ted mounted his riding lawnmower to ride on it. He had completed the action of mounting the lawnmower in the past.
+The sentence is not describing Ted’s thought process while mounting the lawnmower. It’s not saying that Ted was excited about trying to mount his riding lawnmower. It’s saying that he was excited about trying it out once he had mounted it.
+The wording of the question is misleading. The word “mounted” is a verb, so we need to apply the definition of a verb to the sentence. The sentence is not describing Ted’s thought process while mounting the lawnmower. Instead, it’s saying that he was excited about trying it out once he had mounted it.
+The correct answer is C. Ted mounted his riding lawnmower to ride on it.
+Here’s the answer to the question in context:
+Ted was excited about trying out his new lawnmower. He had recently moved to a house with a huge yard. He mounted his riding lawnmower and took it around the yard. In under 30 minutes, he managed to cut his large 4 acres yard. Ted thought his decision to spend thousands on the lawnmower was good.
+You might also like: What is the meaning of “mounting” in this sentence?
+The word “mounting” is used in the past tense, so we need to apply the definition of a verb to the sentence. Here, the sentence is describing how Ted mounted the lawnmower. Ted mounted the lawnmower in the past, so it is in the past tense.
+The sentence is not describing Ted’s thought process while he was mounting the lawnmower. It’s saying that he was excited about trying it out once he had mounted it. The word “mounting” is used in the past tense, so we need to apply the definition of a verb to the sentence.
+The correct answer is A. Ted mounted the lawnmower.
+When looking up the definition of “mounting,” we see: “to put or get (something) on or in a specific place.”
+Ted mounted the lawnmower to ride on it. The word “mounted” is used in the past tense. The past tense refers to the action of doing something in the past. Here, Ted mounted his riding lawnmower to ride on it. He had completed the action of mounting the lawnmower in the past.
+The sentence is not describing Ted’s thought process while mounting the lawnmower. It’s saying that he was excited about trying it out once he had mounted it. The word “mounted” is a verb, so we need to apply the definition of a verb to the sentence.
+The correct answer is B. Ted mounted his riding lawnmower to ride on it.
+What is the meaning of “mounting” in this sentence?
+The word “mounting” is a verb, so we need to apply the definition of a verb to the sentence. The sentence is describing how Ted mounted the lawnmower. Ted mounted the lawnmower in the past, so it is in the past tense.
+The sentence is not describing Ted’s thought process while he was mounting the lawnmower. It’s saying that he was excited about trying it out once he had mounted it. The word “mounting” is a verb, so we need to apply the definition of a verb to the
+19:23:07,677 root INFO gold answer: he wanted to try his new lawnmower.
+19:23:07,677 root INFO is_answerable: Answerable
+19:23:07,677 root INFO --------------------------------------------------
+19:23:07,677 root INFO prompt: Context: Brady was washing all of his clothes. He made sure to hang dry his clothes to lower the electric bill. He forgot about the clothes while taking a nap. It rained while he was sleeping. His clothes were so wet that he had to use the dryer anyway.
+Question: Why did It rain while he was sleeping?
+19:23:07,677 root INFO output: 
+Answer: It's raining.
+Question: Why is he using the dryer?
+Answer: His clothes are wet.
+Question: Why is he using the dryer? (Again)
+Answer: His clothes are wet. (Again)
+Question: Why is the dryer on?
+Answer: He's drying his clothes.
+Question: Why is the dryer on? (Again)
+Answer: He's drying his clothes. (Again)
+Question: Why is he drying his clothes?
+Answer: They're wet.
+Question: Why is he drying his clothes? (Again)
+Answer: They're wet. (Again)
+Question: Why are his clothes wet?
+Answer: He used the dryer.
+Question: Why is he using the dryer? (Third time)
+Answer: He's using the dryer.
+Question: Why is he using the dryer? (Fourth time)
+Answer: He's using the dryer. (Fourth time)
+Question: Why is he using the dryer? (Fifth time)
+Answer: He's using the dryer. (Fifth time)
+Question: Why is he using the dryer? (Sixth time)
+Answer: He's using the dryer. (Sixth time)
+Question: Why is he using the dryer? (Seventh time)
+Answer: He's using the dryer. (Seventh time)
+Question: Why is he using the dryer? (Eighth time)
+Answer: He's using the dryer. (Eighth time)
+Answer: He's using the dryer. (Ninth time)
+Question: Why is he using the dryer? (Tenth time)
+Answer: He's using the dryer. (Tenth time)
+Question: Why is he using the dryer? (Eleventh time)
+Answer: He's using the dryer. (Eleventh time)
+Question: Why is he using the dryer? (Twelfth time)
+Answer: He's using the dryer. (Twelfth time)
+Question: Why is he using the dryer? (Thirteenth time)
+Answer: He's using the dryer. (Thirteenth time)
+Question: Why is he using the dryer? (Fourteenth time)
+Answer: He's using the dryer. (Fourteenth time)
+Question: Why is he using the dryer? (Fifteenth time)
+Answer: He's using the dryer. (Fifteenth time)
+Question: Why is he using the dryer? (Sixteenth time)
+Answer: He's using the dryer. (Sixteenth time)
+Question: Why is he using the dryer? (Seventeenth time)
+Answer: He's using the dryer. (Seventeenth time)
+Question: Why is he using the dryer? (Eighteenth time)
+Answer: He's using the dryer. (Eighteenth time)
+Question: Why is he using the dryer? (Nineteenth time)
+Answer: He's using the dryer. (Nineteenth time)
+Question: Why is he using the dryer? (Twentieth time)
+Answer: He's using the dryer. (Twentieth time)
+Question: Why is he using the dryer? (Twenty-first time)
+Answer: He's using the dryer. (Twenty-first time)
+Question: Why is he using the dryer? (Twenty-second time)
+Answer: He's using the dryer. (Twenty-second time)
+Question: Why is he using the dryer? (Twenty-third time)
+Answer: He's using the dryer. (Twenty-third time)
+Question: Why is he using the dryer? (Twenty-fourth time)
+Answer: He's using the dryer. (Twenty-fourth time)
+Question:
+19:23:07,677 root INFO gold answer: It rained while he was sleeping.
+19:23:07,677 root INFO is_answerable: Answerable
+19:23:07,677 root INFO --------------------------------------------------
+19:25:20,772 root INFO prompt: Context: Sue called the arborist to check out the trees in her yard. He confirmed her suspicion that the large tree in front was dying. When they began to remove it a large branch fell on the roof. The branch broke a section of the roof and it had to be replaced. Sue had to live in a hotel for two weeks while the roof was repaired.
+Question: Why had Sue to live in a hotel for two weeks?
+19:25:20,773 root INFO output: 
+Correct answer: A large branch fell on the roof. It broke a section of the roof.
+Incorrect answer: Sue had to live in a hotel for two weeks while the arborist removed the tree.
+Correct answer: The arborist confirmed her suspicion that the tree was dying.
+Incorrect answer: The arborist confirmed that the tree he removed was dying.
+Incorrect answer: The arborist told Sue that the tree was dying.
+Incorrect answer: Sue called the arborist at to check out the trees in her yard.
+Incorrect answer: The arborist checked out the trees in Sue’s yard.
+Incorrect answer: The arborist told Sue to remove the tree.
+Incorrect answer: The arborist told Sue that the tree was dying and that it had to be removed.
+Correct answer: Sue called the arborist.
+Incorrect answer: The arborist called Sue.
+Incorrect answer: A man called Sue.
+Correct answer: Sue called a man.
+Incorrect answer: Sue called a woman.
+Correct answer: The arborist confirmed her suspicion.
+Incorrect answer: The arborist confirmed her.
+Correct answer: A large branch fell on the roof. It broke a section of the roof.
+Incorrect answer: A large branch fell on the roof.
+Correct answer: Sue had to live in a hotel for two weeks.
+Incorrect answer: Sue had to live in a hotel for two weeks.
+Incorrect answer: A large branch fell on the roof. It broke a section of the roof.
+19:25:20,773 root INFO gold answer: the tree removal resulted in part of her roof being destroyed.
+19:25:20,773 root INFO is_answerable: Answerable
+19:25:20,773 root INFO --------------------------------------------------
+19:25:20,773 root INFO prompt: Context: A group of friends went to a restaurant. They heard good things about it and decided to give it a try. They all ordered the same thing. They waited a long time for their meals. The meals were worth the wait because it was the best quality.
+Question: Why did They hear good things about it?
+19:25:20,773 root INFO output: 
+A. It was a well-known restaurant.
+B. The restaurant had good reviews.
+C. The friends had heard good things about it.
+D. The friends knew the restaurant was good.
+Question 2: What was the food like?
+A. It was the best food they had ever eaten.
+B. It was delicious, but it was expensive
+C. It was very good but it was a little expensive.
+D. It was good but it was not worth the wait.
+Question 3: What is the main idea of this passage?
+A. A group of friends went to a restaurant.
+B. A group of friends ordered the same thing.
+C. A group of friends heard good things about a restaurant.
+D. A group of friends waited a long time for their meals.
+Question 4: What is the best word to describe the friends in the passage?
+A. They were happy.
+B. They were impatient.
+C. They were excited.
+D. They were disappointed.
+Question 5: What is the best word to describe the food in the passage?
+A. It was delicious.
+B. It was expensive.
+C. It was the best food they had ever eaten.
+D. It was good but it was not worth the wait.
+Question 6: What is the best word to describe the restaurant in the passage?
+A. It was a well-known restaurant.
+B. It was a good restaurant.
+C. It was a famous restaurant.
+Question 7: What is the best word to describe the friends in the passage?
+A. They were disappointed.
+B. They were excited.
+D. They were happy.
+Question 8: What is the best word to describe the food in the passage?
+A. It was expensive.
+B. It was delicious.
+D. It was the best food they had ever eaten.
+Question 9: What is the best word to describe the restaurant in the passage?
+A. It was famous.
+B. It was a good restaurant.
+C. It was a well-known restaurant.
+D. It was a good restaurant.
+Question 10: What is the best word to describe the friends in the passage?
+A. They were disappointed.
+B. They were happy.
+C. They were impatient.
+D. They were excited.
+A. It was delicious. B. It was the best food they had ever eaten.
+C. It was expensive. D. It was good but it was not worth the wait.
+D. It was famous.
+19:25:20,773 root INFO gold answer: the food is good.
+19:25:20,774 root INFO is_answerable: Not Answerable
+19:25:20,774 root INFO --------------------------------------------------
