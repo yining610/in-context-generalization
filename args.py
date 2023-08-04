@@ -10,6 +10,8 @@ def add_model_args(parser: argparse.ArgumentParser):
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
+    group.add_argument("--model-parallel", action="store_true")
+    group.add_argument("--model-parallel-size", type=int, default=None)
     return parser
 
 def add_data_args(parser: argparse.ArgumentParser):

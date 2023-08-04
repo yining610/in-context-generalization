@@ -3,7 +3,6 @@ import openai
 import backoff 
 from tensor_parallel import TensorParallelPreTrainedModel
 from transformers import AutoTokenizer, AutoModelForCausalLM
-import torch
 
 MODEL_CACHE_DIR="/scratch/ylu130/models"
 completion_tokens = prompt_tokens = 0
@@ -66,25 +65,21 @@ class llama():
         MODEL_CACHE_DIR="/scratch/ylu130/models"
         self.model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR)
         self.model = TensorParallelPreTrainedModel(self.model, ["cuda:8", "cuda:9"])
-        self.tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR, padding_side="right")
+        self.tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir=MODEL_CACHE_DIR)
         self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
-
-        self.tokenizer.pad_token = self.tokenizer.eos_token
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.n = n
 
     def __call__(self, prompts) -> list:
         # support batch inference
-        inputs = self.tokenizer.encode_batch(prompts, add_special_tokens=True, return_tensors="pt", padding=True)
+        inputs = self.tokenizer(prompts, return_tensors="pt", padding=True)
         PROMPT_LENGTH = len(inputs['input_ids'][0])
         outputs_ids = self.model.generate(inputs["input_ids"].cuda(8), 
                                           attention_mask=inputs["attention_mask"].cuda(8), 
                                           temperature=self.temperature, 
                                           max_length=self.max_tokens, 
                                           num_return_sequences=self.n, 
-                                          do_sample=True,
-                                          eos_token_id=self.tokenizer.eos_token_id,
-                                          )
+                                          do_sample=True)
         outputs_ids = outputs_ids[:, PROMPT_LENGTH:]
         return self.tokenizer.batch_decode(outputs_ids, skip_special_tokens=True)
