@@ -25,7 +25,7 @@ def add_data_args(parser: argparse.ArgumentParser):
     group.add_argument("--bin-data", action="store_true")
     group.add_argument("--txt-data", action="store_true")
     group.add_argument("--num-eval", type=int)
-    group.add_argument("--num-indomain-demonstrations", type=int)
+    group.add_argument("--num-in-domain", type=int)
     group.add_argument("--provide-rationals", action="store_true")
     return parser
 
@@ -33,8 +33,6 @@ def add_generation_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('generation', 'generation configurations')
     group.add_argument('--temperature', type=float, default=0.7)
     group.add_argument('--max-tokens', type=int, default=1000)
-    group.add_argument('--n', type=int, default=1)
-    group.add_argument('--sample', type=int, default=0)
     group.add_argument('--save', type=str, default=None,
                        help='Output directory to save generated results.')
     return parser
@@ -47,6 +45,7 @@ def add_hp_args(parser: argparse.ArgumentParser):
     group.add_argument('--clip-grad', type=float, default=1.0,
                        help='gradient clipping')
     group.add_argument("--gradient-accumulation-steps", type=int, default=1)
+    group.add_argument("--seed", type=int, default=42)
     
     return parser
 
