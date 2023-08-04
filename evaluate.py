@@ -40,7 +40,7 @@ torch.set_num_threads(4)
 
 
 def get_tokenizer(args):
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path, cache_dir=args.cache_model_dir)
     if args.model_type in ["gpt2", "opt", "llama", "gptj"]:
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
@@ -115,14 +115,10 @@ def main():
         ds_config["zero_optimization"]["stage"] = 0
     
     # get the tokenizer
-    tokenizer = get_tokenizer(args)
-    if args.type == "eval_main":
-        dataset = prepare_dataset_main(
-            args,
-            tokenizer,
-        )
-    else:
-        raise NotImplementedError
+    if args.is_opensource:
+        tokenizer = get_tokenizer(args)
+
+    dataset = prepare_dataset_main(args, tokenizer)
     model = setup_model_and_optimizer(args, ds_config, device, set_optim=args.do_train)
     
     if args.type == "eval_main":

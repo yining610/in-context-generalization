@@ -37,7 +37,7 @@ torch.set_num_threads(4)
 
 def prepare_dataset_main(args, tokenizer):
     data = {}
-    data["test"] = PromptDataset(args, tokenizer, "valid", args.data_dir, args.dev_num)
+    data["test"] = PromptDataset(args, tokenizer, "valid", args.data_dir, args.num_eval)
 
     return data
 
