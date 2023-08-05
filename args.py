@@ -21,9 +21,6 @@ def add_data_args(parser: argparse.ArgumentParser):
     group.add_argument("--data-dir", type=str)
     group.add_argument("--cache-data-dir", type=str, default="/scratch/ylu130/data")
     group.add_argument("--processed-data-dir", type=str)
-    group.add_argument("--json-data", action="store_true")
-    group.add_argument("--bin-data", action="store_true")
-    group.add_argument("--txt-data", action="store_true")
     group.add_argument("--num-eval", type=int)
     group.add_argument("--num-in-domain", type=int)
     return parser
@@ -31,7 +28,8 @@ def add_data_args(parser: argparse.ArgumentParser):
 def add_generation_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('generation', 'generation configurations')
     group.add_argument('--temperature', type=float, default=0.7)
-    group.add_argument('--max-tokens', type=int, default=1000)
+    group.add_argument('--max-prompt-length', type=int, default=2048)
+    group.add_argument('--max-length', type=int, default=1000)
     group.add_argument('--save', type=str, default=None,
                        help='Output directory to save generated results.')
     group.add_argument("--provide-rationals", action="store_true")

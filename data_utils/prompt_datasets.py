@@ -14,34 +14,24 @@ class PromptDataset(Dataset):
     def __init__(self, args, tokenizer, split, data_path=None, num=-1):
         super().__init__()
         self.tokenizer = tokenizer
-
         self.args = args
-        self.tokenizer = tokenizer
         self.split = split
         self.pad_id = self.tokenizer.eos_token_id
-        self.max_length = args.max_length
         self.max_prompt_length = args.max_prompt_length
 
-        if args.bin_data:
-            self.data = DistributedMMapIndexedDataset(data_path, f"{split}", get_rank(), get_world_size())
-        elif args.json_data:
-            self.data, self.origin_data = self.load_data_json(data_path)
-        else:
-            # txt data
-            self.data = self.load_data_txt(data_path)
+        self.data, self.origin_data = self.load_data_json(data_path)
         
-        if os.path.exists(os.path.join(data_path, f"{self.split}_{self.args.model_type}.jsonl")):
-            with open(os.path.join(data_path, f"{self.split}_{self.args.model_type}.jsonl")) as f:
-                self.raw = [json.loads(line) for line in f.readlines()]
-                self.answers = [x["output"] if isinstance(x["output"], list) else [x["output"]] for x in self.raw]
-        elif os.path.exists(os.path.join(data_path, f"{split}.jsonl")):
-            with open(os.path.join(data_path, f"{split}.jsonl")) as f:
+        if os.path.exists(os.path.join(data_path, f"{self.data_name}.jsonl")):
+            with open(os.path.join(data_path, f"{self.data_name}.jsonl")) as f:
                 self.raw = [json.loads(line) for line in f.readlines()]
                 self.answers = [x["output"] if isinstance(x["output"], list) else [x["output"]] for x in self.raw]
         else:
             print_rank("WARNING: No answers exist")
             
         self.label_map = {tokenizer.encode(x[0], add_special_tokens=False)[0]: x[0] for x in self.answers}
+
+        if num > 0:
+            self.data = self.data[:num]
             
         self.num = min(num, len(self.data)) if num > 0 else len(self.data)
         print_rank(f"Num instances: {len(self.data)}")
@@ -50,19 +40,18 @@ class PromptDataset(Dataset):
         return self.num
 
     def load_data_json(self, data_path):
-        if os.path.exists(os.path.join(data_path, f"{self.split}_{self.args.model_type}.jsonl")):
-            data_path = os.path.join(data_path, f"{self.split}_{self.args.model_type}.jsonl")
+        if os.path.exists(os.path.join(data_path, f"{self.data_name}.jsonl")):
+            data_path = os.path.join(data_path, f"{self.data_name}.jsonl")
         else:
-            data_path = os.path.join(data_path, f"{self.split}.jsonl")
-        
+            print_rank(f"WARNING: {os.path.join(data_path, f'{self.data_name}.jsonl')} does not exist")
+
         with open(data_path) as f:
             lines = f.readlines()
         data_origin = [json.loads(line) for line in lines]
         data = []
         print_rank("Loading Data")
         for d in tqdm(data_origin, disable=(get_rank() != 0)):
-            prompt = d["prompt"].replace("<n>", "\n")
-            prompt_ids = self.tokenizer.encode(prompt)
+            prompt_ids = self.tokenizer.encode(d["prompt"])
             output_ids = None
             if "output" in d:
                 if isinstance(d["output"], list):
@@ -71,42 +60,27 @@ class PromptDataset(Dataset):
                     output_ids = self.tokenizer.encode(d["output"])
             data.append({
                 "prompt_ids": prompt_ids,
-                "output_ids": output_ids[:self.max_length - self.max_prompt_length]
+                "output_ids": output_ids
             })
         print_rank("Load End")
         return data, data_origin
 
-    def load_data_txt(self, data_path):
-        with open(os.path.join(data_path, f"{self.split}.txt")) as f:
-            lines = f.readlines()
-        data = []
-        print_rank("Loading Data")
-        for line in lines:
-            line = line.strip()
-            line = line.replace("<n>", "\n")
-            prompt = self.tokenizer.encode(line)
-            data.append(prompt)
-        print_rank("Load End")
-        return data
 
     def verbalizer(self):
         return self.label_map
 
     def __getitem__(self, index: int):
         data = self.data[index]
-        if self.args.bin_data:
-            data = data.astype(int)
-        elif self.args.json_data:
-            output_ids = data["output_ids"]
-            data = data["prompt_ids"]
+
+        output_ids = data["output_ids"]
+        data = data["prompt_ids"]
         
         prompt_length = self.max_prompt_length
 
         prompt = data[:prompt_length]
         rest = data[prompt_length:]  
-        if self.args.json_data:
-            if output_ids is not None:
-                rest = output_ids  
+        if output_ids is not None:
+            rest = output_ids  
     
         return index, prompt, rest
     

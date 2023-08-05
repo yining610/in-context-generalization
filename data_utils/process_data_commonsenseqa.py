@@ -18,7 +18,7 @@ def generate_rationals(args, questions):
         res = completions_with_backoff(model="gpt-4", 
                                        messages=messages,
                                        temperature=args.temperature,
-                                       max_tokens=args.max_tokens,
+                                       max_tokens=args.max_length,
                                        )
         rationals.append(res["choices"][0]["message"]["content"])
     return rationals
@@ -47,46 +47,43 @@ def main():
 
     template = (
         "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
-        "### Instruction:{instruction}\n\n### Demonstration:\n{demonstration}\n\n### Input:{input}\n\n### Response:"
-    )
-    template_without_demonstration = (
-        "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
-        "### Instruction:{instruction}\n\n### Input:{input}\n\n### Response:"
+        "### Instruction:{instruction}\n\n### Demonstration:{demonstration}\n\n### Input:{input}\n\n### Response:"
     )
 
     instruction = "Answer the following multiple choice question."
     
     json_file = open(os.path.join(args.processed_data_dir, f"{args.data_name}.jsonl"), "w")
 
-    random.seed(args.seed)
-    indomain_examples = random.sample(data, args.num_in_domain)
+    if args.num_in_domain > 0:
+        random.seed(args.seed)
+        indomain_examples = random.sample(data, args.num_in_domain)
+        # exclude indomain_examples from data
+        data = [d for d in data if d not in indomain_examples]
 
-    # exclude indomain_examples from data
-    data = [d for d in data if d not in indomain_examples]
-
-    indomain_questions_answer_pair = []
-    indomain_questions = []
-    indomain_answers = []
-    for line in indomain_examples:
-        question, gold_answer, question_with_answer = parse_commonsenseqa(line)
-        indomain_questions_answer_pair.append(question_with_answer)
-        indomain_questions.append(question)
-        indomain_answers.append(gold_answer)
-  
-    if args.provide_rationals:    
-        indomain_rationals = generate_rationals(args, indomain_questions_answer_pair)
-        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationals, indomain_answers)])
+        indomain_questions_answer_pair = []
+        indomain_questions = []
+        indomain_answers = []
+        for line in indomain_examples:
+            question, gold_answer, question_with_answer = parse_commonsenseqa(line)
+            indomain_questions_answer_pair.append(question_with_answer)
+            indomain_questions.append(question)
+            indomain_answers.append(gold_answer)
+    
+        if args.provide_rationals:    
+            indomain_rationals = generate_rationals(args, indomain_questions_answer_pair)
+            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationals, indomain_answers)])
+        else:
+            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
+    
     else:
-        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
+        indomain_demonstrations = None
 
     for line in data:
         question, gold_answer, _ = parse_commonsenseqa(line)
         json_file.write(json.dumps({
-            "input_with_demonstration": template.format(instruction=instruction, 
-                                                        demonstration=indomain_demonstrations,
-                                                        input=question),
-            "input_without_demonstration": template_without_demonstration.format(instruction=instruction,
-                                                                                 input=question),
+            "prompt": template.format(instruction=instruction, 
+                                      demonstration=indomain_demonstrations,
+                                      input=question),
             "output": gold_answer,
         }) + "\n")
     

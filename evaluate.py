@@ -40,10 +40,9 @@ torch.set_num_threads(4)
 
 
 def get_tokenizer(args):
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path, cache_dir=args.cache_model_dir)
-    if args.model_type in ["gpt2", "opt", "llama", "gptj"]:
-        tokenizer.pad_token = tokenizer.eos_token
-        tokenizer.pad_token_id = tokenizer.eos_token_id
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name, cache_dir=args.cache_model_dir)
+    tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.pad_token_id = tokenizer.eos_token_id
     return tokenizer
 
 
@@ -70,7 +69,6 @@ def get_model(args, device):
 def setup_model_and_optimizer(args, ds_config, device, set_optim=True):
     # get the model
     model = get_model(args, device)
-    # get the optimizer and lr_scheduler
 
     optimizer, lr_scheduler = None, None
         
@@ -102,7 +100,7 @@ def main():
     device = torch.cuda.current_device()
     cur_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     save_rank("\n\n" + "="*30 + f" EXP at {cur_time} " + "="*30, os.path.join(args.save, "log.txt"))
-    print("OK")
+
     with open(args.deepspeed_config, "r") as f:
         ds_config = json.load(f)
 
@@ -110,15 +108,15 @@ def main():
     ds_config["train_micro_batch_size_per_gpu"] = args.batch_size
     ds_config["gradient_clipping"] = args.clip_grad
     ds_config["steps_per_print"] = args.gradient_accumulation_steps
-    
-    if not args.do_train:
-        ds_config["zero_optimization"]["stage"] = 0
+    ds_config["zero_optimization"]["stage"] = 0
     
     # get the tokenizer
     if args.is_opensource:
         tokenizer = get_tokenizer(args)
+        dataset = prepare_dataset_main(args, tokenizer)
+    else:
+        dataset = prepare_dataset_main(args, None)
 
-    dataset = prepare_dataset_main(args, tokenizer)
     model = setup_model_and_optimizer(args, ds_config, device, set_optim=args.do_train)
     
     if args.type == "eval_main":
