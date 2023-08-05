@@ -47,7 +47,7 @@ def main():
 
     template = (
         "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
-        "### Instruction:{instruction}\n\n### Demonstration:{demonstration}\n\n### Input:{input}\n\n### Response:"
+        "### Instruction:{instruction}\n\n### Demonstration:\n{demonstration}\n\n### Input:{input}\n\n### Response:"
     )
     template_without_demonstration = (
         "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
@@ -75,9 +75,9 @@ def main():
   
     if args.provide_rationals:    
         indomain_rationals = generate_rationals(args, indomain_questions_answer_pair)
-        indomain_demonstrations = "\n".join([f"Question: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationals, indomain_answers)])
+        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationals, indomain_answers)])
     else:
-        indomain_demonstrations = "\n".join([f"Question: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
+        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
 
     for line in data:
         question, gold_answer, _ = parse_commonsenseqa(line)

@@ -6,8 +6,11 @@ with open("/scratch/ylu130/processed_data/commonsenseqa/n3-seed42-rationalsTrue/
     for line in f.readlines():
         line = json.loads(line)
         print(line["input_with_demonstration"])
+        print("-"*100)
         print(line["input_without_demonstration"])
+        print("-"*100)
         print(line["output"])
+        print("-"*100)
         n+=1
 
         if n == 10:
