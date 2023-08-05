@@ -6,7 +6,7 @@ def add_model_args(parser: argparse.ArgumentParser):
     """Model arguments"""
 
     group = parser.add_argument_group('model', 'model configuration')
-    group.add_argument('--model-name', type=str)
+    group.add_argument('--model-name', type=str, default=None)
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
@@ -19,14 +19,13 @@ def add_data_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('data', 'data configurations')
     group.add_argument("--data-name", type=str)
     group.add_argument("--data-dir", type=str)
-    group.add_argument("--cache-data-dir", type=str, default="/scratch/ylu130/datasets")
-    group.add_argument("processed_data_dir", type=str, default="/scratch/ylu130/data/processed_data")
+    group.add_argument("--cache-data-dir", type=str, default="/scratch/ylu130/data")
+    group.add_argument("--processed-data-dir", type=str)
     group.add_argument("--json-data", action="store_true")
     group.add_argument("--bin-data", action="store_true")
     group.add_argument("--txt-data", action="store_true")
     group.add_argument("--num-eval", type=int)
     group.add_argument("--num-in-domain", type=int)
-    group.add_argument("--provide-rationals", action="store_true")
     return parser
 
 def add_generation_args(parser: argparse.ArgumentParser):
@@ -35,6 +34,7 @@ def add_generation_args(parser: argparse.ArgumentParser):
     group.add_argument('--max-tokens', type=int, default=1000)
     group.add_argument('--save', type=str, default=None,
                        help='Output directory to save generated results.')
+    group.add_argument("--provide-rationals", action="store_true")
     return parser
 
 def add_hp_args(parser: argparse.ArgumentParser):
@@ -44,7 +44,6 @@ def add_hp_args(parser: argparse.ArgumentParser):
                        help='Data Loader batch size')
     group.add_argument('--clip-grad', type=float, default=1.0,
                        help='gradient clipping')
-    group.add_argument("--gradient-accumulation-steps", type=int, default=1)
     group.add_argument("--seed", type=int, default=42)
     
     return parser
@@ -65,13 +64,14 @@ def get_args():
         
     args.n_gpu = args.n_gpu * args.n_nodes
     
-    save_path = os.path.join(
-        args.save,
-        (f"{args.model_name}"),
-        (f"{args.data_name}"),
-        (f"t{args.temperature}-n{args.n}-m{args.max_tokens}-i{args.num_indomain_demonstrations}"),
-    )
-    args.save = save_path
+    if args.model_name is not None:
+        save_path = os.path.join(
+            args.save,
+            (f"{args.model_name}"),
+            (f"{args.data_name}"),
+            (f"t{args.temperature}-m{args.max_tokens}-i{args.num_in_domain}-r{args.provide_rationals}"),
+        )
+        args.save = save_path
 
     return args
 
