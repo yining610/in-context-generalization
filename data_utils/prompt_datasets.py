@@ -2,24 +2,22 @@ import random
 import torch
 import os
 from torch.utils.data import Dataset
-from .distributed_indexed import DistributedMMapIndexedDataset
 
-from torch.distributed import get_rank, get_world_size
+from torch.distributed import get_rank
 from utils import print_rank
 from tqdm import tqdm
 import json
 
 
 class PromptDataset(Dataset):
-    def __init__(self, args, tokenizer, split, data_path=None, num=-1):
+    def __init__(self, args, tokenizer, data_path, num=-1):
         super().__init__()
         self.tokenizer = tokenizer
         self.args = args
-        self.split = split
         self.pad_id = self.tokenizer.eos_token_id
         self.max_prompt_length = args.max_prompt_length
 
-        self.data, self.origin_data = self.load_data_json(data_path)
+        self.data, _ = self.load_data_json(data_path)
         
         if os.path.exists(os.path.join(data_path, f"{self.data_name}.jsonl")):
             with open(os.path.join(data_path, f"{self.data_name}.jsonl")) as f:
@@ -27,11 +25,12 @@ class PromptDataset(Dataset):
                 self.answers = [x["output"] if isinstance(x["output"], list) else [x["output"]] for x in self.raw]
         else:
             print_rank("WARNING: No answers exist")
-            
-        self.label_map = {tokenizer.encode(x[0], add_special_tokens=False)[0]: x[0] for x in self.answers}
-
+        
         if num > 0:
             self.data = self.data[:num]
+            self.answers = self.answers[:num]
+            
+        self.label_map = {tokenizer.encode(x[0], add_special_tokens=False)[0]: x[0] for x in self.answers}
             
         self.num = min(num, len(self.data)) if num > 0 else len(self.data)
         print_rank(f"Num instances: {len(self.data)}")
