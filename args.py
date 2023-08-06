@@ -7,6 +7,7 @@ def add_model_args(parser: argparse.ArgumentParser):
 
     group = parser.add_argument_group('model', 'model configuration')
     group.add_argument('--model-name', type=str)
+    group.add_argument("--model-type", type=str)
     group.add_argument("--model-path", type=str)
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
@@ -27,12 +28,18 @@ def add_data_args(parser: argparse.ArgumentParser):
 
 def add_generation_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('generation', 'generation configurations')
-    group.add_argument('--temperature', type=float, default=0.7)
     group.add_argument('--max-prompt-length', type=int, default=2048)
     group.add_argument('--max-length', type=int, default=1000)
     group.add_argument('--save', type=str, default=None,
                        help='Output directory to save generated results.')
-    group.add_argument("--provide-rationals", action="store_true")
+    group.add_argument("--rationales", action="store_true")
+    group.add_argument("--top-k", type=int, default=0)
+    group.add_argument("--top-p", type=float, default=1.0)
+    group.add_argument("--do-sample", action="store_true")
+    group.add_argument("--no-repeat-ngram-size", type=int, default=6)
+    group.add_argument("--repetition-penalty", type=float, default=None)
+    group.add_argument("--num-beams", type=int, default=1)
+    group.add_argument("--temperature", type=float, default=1)
     return parser
 
 def add_hp_args(parser: argparse.ArgumentParser):
@@ -67,7 +74,7 @@ def get_args():
             args.save,
             (f"{args.model_name}"),
             (f"{args.data_name}"),
-            (f"t{args.temperature}-m{args.max_length}-i{args.num_in_domain}-r{args.provide_rationals}"),
+            (f"t{args.temperature}-m{args.max_length}-i{args.num_in_domain}-r{args.rationales}"),
         )
         args.save = save_path
 

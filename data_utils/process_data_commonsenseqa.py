@@ -38,7 +38,7 @@ def main():
     print_args(args)
 
     args.processed_data_dir = os.path.join(args.processed_data_dir,
-                                           (f"n{args.num_in_domain}-seed{args.seed}-rationales{args.provide_rationals}"))
+                                           (f"n{args.num_in_domain}-seed{args.seed}-rationales{args.rationales}"))
     os.makedirs(args.processed_data_dir, exist_ok=True)
 
     # load commonsensenqa data
@@ -69,7 +69,7 @@ def main():
             indomain_questions.append(question)
             indomain_answers.append(gold_answer)
     
-        if args.provide_rationals:    
+        if args.rationales:    
             indomain_rationals = generate_rationals(args, indomain_questions_answer_pair)
             indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationals, indomain_answers)])
         else:

@@ -14,6 +14,7 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 # model
 BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
 MODEL_NAME="llama2-13b"
+MODEL_TYPE="llama"
 MODEL_PATH="/scratch/ylu130/model/llama-2-13b"
 # data
 DATA_NAMES="commonsenseqa"
@@ -31,6 +32,7 @@ RATIONAL="True"
 OPTS=""
 # model
 OPTS+=" --model-name ${MODEL_NAME}"
+OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
@@ -42,7 +44,11 @@ OPTS+=" --num-in-domain ${NUM_INDOMAIN}"
 OPTS+=" --num-workers ${NUM_WORKERS}"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
-OPTS+=" --seed 10"
+OPTS+=" --do-sample"
+OPTS+=" --top-k 0"
+OPTS+=" --top-p 1.0"
+OPTS+=" --temperature 1.0"
+OPTS+=" --rationales"
 # deepspeed
 OPTS+=" --deepspeed"
 OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"

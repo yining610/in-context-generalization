@@ -10,7 +10,7 @@ do
         --data-name "commonsenseqa" \
         --num-in-domain ${num} \
         --seed 42 \
-        --provide-rationals
+        --rationales
     
     echo "Processing commonsenseqa with ${num} in-domain examples without rationales"
     PYTHONPATH=${BASE_PATH} python3 ${BASE_PATH}/data_utils/process_data_commonsenseqa.py \

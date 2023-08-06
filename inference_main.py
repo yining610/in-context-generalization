@@ -78,7 +78,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     )
 
     with torch.no_grad():
-        for it, (model_batch, no_model_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_names} ", disable=(dist.get_rank() != 0))):
+        for it, (model_batch, no_model_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))):
             if it == 0:
                 print_rank("############### Example ###############")
                 print_rank(tokenizer.decode(model_batch["input_ids"][0], skip_special_tokens=True))
@@ -129,22 +129,6 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         all_response_ids)
 
 
-def get_reward_model(args, device):
-    if args.model_parallel:
-        config = AutoConfig.from_pretrained(args.teacher_model_path)
-        model = parallel_model_map[args.model_type](config)
-        load_parallel(model, args.teacher_model_path)
-        model = model.to(device)
-        model.eval()
-    else:
-        model = AutoModelForCausalLM.from_pretrained(args.teacher_model_path).to(device)
-
-    if args.teacher_model_fp16:
-        model = model.half()
-
-    return model
-
-
 def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
         
     lm_loss, query_ids, response_ids = run_model(args, tokenizer, model, dataset, device)
@@ -177,6 +161,6 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 
-    log_str = f"name: {args.data_names} | {gen_res} | lm_loss {round(lm_loss, 4)} | avg. gen lenth: {mean_gen_length}"
+    log_str = f"name: {args.data_name} | {gen_res} | lm_loss {round(lm_loss, 4)} | avg. gen lenth: {mean_gen_length}"
     print_rank(log_str)
     save_rank(log_str, os.path.join(args.save, "log.txt"))
