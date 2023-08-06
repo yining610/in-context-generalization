@@ -69,7 +69,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         temperature=args.temperature,
         no_repeat_ngram_size=args.no_repeat_ngram_size,
         repetition_penalty=args.repetition_penalty,
-        max_length=args.max_length,
+        max_new_tokens=args.max_length,
         min_length=None,
         eos_token_id=tokenizer.eos_token_id,
         pad_token_id=tokenizer.pad_token_id,
@@ -109,11 +109,9 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             all_lm_losses.append(lm_loss)
 
             query_ids = model_batch["input_ids"]
-            max_new_tokens = args.max_length - query_ids.size(1)
             gen_out = model.generate(
                 **model_batch,
-                generation_config=generation_config,
-                max_new_tokens=max_new_tokens
+                generation_config=generation_config
             )
             full_ids = gen_out.sequences
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
@@ -142,7 +140,7 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
     all_preds = [[]]
     for q, r in zip(query_strs, response_strs):
         all_preds[0].append((q, q + r))
-    torch.save(all_preds, os.path.join(args.save, "preds.pt"))
+    # torch.save(all_preds, os.path.join(args.save, "preds.pt"))
 
     all_responses = []
     with open(os.path.join(args.save, "answers.jsonl"), "w") as f:    

@@ -3,7 +3,7 @@ MASTER_ADDR=localhost
 MASTER_PORT=${2-2113}
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=${3-3}
+GPUS_PER_NODE=${3-4}
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -19,7 +19,7 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-13b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=5
+NUM_EVL=32
 NUM_INDOMAIN=1
 NUM_WORKERS=0
 # generation
@@ -36,6 +36,8 @@ OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
+OPTS+=" --model-parallel"
+OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
 # data
 OPTS+=" --data-dir ${DATA_DIR}/n${NUM_INDOMAIN}-seed${SEED}-rationales${RATIONAL}"
 OPTS+=" --data-name ${DATA_NAMES}"
@@ -60,6 +62,7 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
+export CUDA_VISIBLE_DEVICES=4,5,6,7
 CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS} $@"
 
 echo ${CMD}

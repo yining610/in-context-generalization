@@ -30,7 +30,7 @@ from args import get_args
 from utils import initialize, print_args
 from utils import print_rank
 from utils import save_rank
-from utils import load_parallel
+from utils import load_parallel, save_parallel
 
 
 from inference_main import evaluate_main, prepare_dataset_main
@@ -51,6 +51,7 @@ def get_model(args, device):
         config = AutoConfig.from_pretrained(args.model_path)
         config.is_model_parallel = True
         model = parallel_model_map[args.model_type](config).half()
+        # save_parallel(model, args.model_path)
         load_parallel(model, args.model_path)
         model.eval()
 

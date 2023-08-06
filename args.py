@@ -29,7 +29,7 @@ def add_data_args(parser: argparse.ArgumentParser):
 def add_generation_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('generation', 'generation configurations')
     group.add_argument('--max-prompt-length', type=int, default=2048)
-    group.add_argument('--max-length', type=int, default=1000)
+    group.add_argument('--max-length', type=int, default=512)
     group.add_argument('--save', type=str, default=None,
                        help='Output directory to save generated results.')
     group.add_argument("--rationales", action="store_true")

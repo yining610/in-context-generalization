@@ -50,7 +50,8 @@ class PromptDataset(Dataset):
         data = []
         print_rank("Loading Data")
         for d in tqdm(data_origin, disable=(get_rank() != 0)):
-            prompt_ids = self.tokenizer.encode(d["prompt"])
+            prompt = d["prompt"].replace("<n>", "\n")
+            prompt_ids = self.tokenizer.encode(prompt)
             output_ids = None
             if "output" in d:
                 if isinstance(d["output"], list):
@@ -80,6 +81,7 @@ class PromptDataset(Dataset):
         rest = data[prompt_length:]  
         if output_ids is not None:
             rest = output_ids  
+
     
         return index, prompt, rest
     
@@ -108,6 +110,7 @@ class PromptDataset(Dataset):
             no_model_batch["idx"][i] = idx
             no_model_batch["rest_ids"][i][:len(rest)] = torch.tensor(rest, dtype=torch.long)
         
+
         return model_batch, no_model_batch
 
     def move_to_device(self, model_batch, no_model_batch, device):

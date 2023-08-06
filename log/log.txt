@@ -1,1 +1,0 @@
-16:58:43,467 /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/tensor_parallel/pretrained_model.py WARNING Using automatic config: tensor parallel config not provided and no custom config registered for the model
