@@ -40,7 +40,7 @@ torch.set_num_threads(4)
 
 
 def get_tokenizer(args):
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name, cache_dir=args.cache_model_dir)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.pad_token_id = tokenizer.eos_token_id
     return tokenizer
@@ -115,15 +115,12 @@ def main():
         tokenizer = get_tokenizer(args)
         dataset = prepare_dataset_main(args, tokenizer)
     else:
-        dataset = prepare_dataset_main(args, None)
+        # TODO: prepare dataset for OpenAI Models
+        pass
 
     model = setup_model_and_optimizer(args, ds_config, device, set_optim=args.do_train)
     
-    if args.type == "eval_main":
-        evaluate_main(args, tokenizer, model, dataset["test"], "test", 0, device)
-    else:
-        raise NotImplementedError
-    
-    
+    evaluate_main(args, tokenizer, model, dataset["test"], device)
+
 if __name__ == "__main__":
     main()

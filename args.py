@@ -6,20 +6,19 @@ def add_model_args(parser: argparse.ArgumentParser):
     """Model arguments"""
 
     group = parser.add_argument_group('model', 'model configuration')
-    group.add_argument('--model-name', type=str, default=None)
+    group.add_argument('--model-name', type=str)
+    group.add_argument("--model-path", type=str)
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
     group.add_argument("--model-parallel", action="store_true")
     group.add_argument("--model-parallel-size", type=int, default=None)
-    group.add_argument("--cache-model-dir", type=str, default="/scratch/ylu130/models")
     return parser
 
 def add_data_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('data', 'data configurations')
     group.add_argument("--data-name", type=str)
     group.add_argument("--data-dir", type=str)
-    group.add_argument("--cache-data-dir", type=str, default="/scratch/ylu130/data")
     group.add_argument("--processed-data-dir", type=str)
     group.add_argument("--num-eval", type=int)
     group.add_argument("--num-in-domain", type=int)

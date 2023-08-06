@@ -19,7 +19,9 @@ class PromptDataset(Dataset):
 
         self.data, _ = self.load_data_json(data_path)
         
-        if os.path.exists(os.path.join(data_path, f"{self.data_name}.jsonl")):
+        if os.path.exists(os.path.join(data_path,
+                                       (f"n{args.num_in_domain}-seed{args.seed}-rationals{args.provide_rationals}"), 
+                                       f"{self.data_name}.jsonl")):
             with open(os.path.join(data_path, f"{self.data_name}.jsonl")) as f:
                 self.raw = [json.loads(line) for line in f.readlines()]
                 self.answers = [x["output"] if isinstance(x["output"], list) else [x["output"]] for x in self.raw]

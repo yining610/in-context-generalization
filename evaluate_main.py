@@ -42,7 +42,7 @@ def prepare_dataset_main(args, tokenizer):
     return data
 
 
-def run_model(args, tokenizer, model, dataset: PromptDataset, epoch, device):
+def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     
     collate_fn = dataset.collate
     
@@ -145,9 +145,9 @@ def get_reward_model(args, device):
     return model
 
 
-def evaluate_main(args, tokenizer, model, dataset: PromptDataset, split, epoch, device):
+def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
         
-    lm_loss, query_ids, response_ids = run_model(args, tokenizer, model, dataset, epoch, device)
+    lm_loss, query_ids, response_ids = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
     
@@ -177,6 +177,6 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, split, epoch, 
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 
-    log_str = f"{split} | name: {args.data_names} | {gen_res} | lm_loss {round(lm_loss, 4)} | avg. gen lenth: {mean_gen_length}"
+    log_str = f"name: {args.data_names} | {gen_res} | lm_loss {round(lm_loss, 4)} | avg. gen lenth: {mean_gen_length}"
     print_rank(log_str)
     save_rank(log_str, os.path.join(args.save, "log.txt"))

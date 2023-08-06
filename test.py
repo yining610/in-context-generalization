@@ -1,15 +1,7 @@
-import json
+# Load model directly
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-# read commonsenseqa.jsonl
-n = 0
-with open("/scratch/ylu130/processed_data/commonsenseqa/n1-seed42-rationalsTrue/commonsenseqa.jsonl", "r") as f:
-    for line in f.readlines():
-        line = json.loads(line)
-        print(line["prompt"])
-        print("-"*100)
-        print(line["output"])
-        print("-"*100)
-        n+=1
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir="/scratch/ylu130/model-hf")
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Llama-2-13b-hf", cache_dir="/scratch/ylu130/model-hf")
 
-        if n == 10:
-            break
+model.save_pretrained("/scratch/ylu130/model/llama-2-13b")
