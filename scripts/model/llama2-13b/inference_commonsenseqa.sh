@@ -34,7 +34,7 @@ OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
 # data
 OPTS+=" --data-dir ${DATA_DIR}"
-OPTS+=" --data-names ${DATA_NAMES}"
+OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
 OPTS+=" --num-in-domain ${NUM_INDOMAIN}"
 # generation
