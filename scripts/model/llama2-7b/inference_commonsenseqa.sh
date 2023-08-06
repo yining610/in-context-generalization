@@ -13,9 +13,9 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
-MODEL_NAME="llama2-13b"
+MODEL_NAME="llama2-7b"
 MODEL_TYPE="llama"
-MODEL_PATH="/scratch/ylu130/model/llama-2-13b"
+MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"

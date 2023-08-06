@@ -36,8 +36,6 @@ def add_generation_args(parser: argparse.ArgumentParser):
     group.add_argument("--top-k", type=int, default=0)
     group.add_argument("--top-p", type=float, default=1.0)
     group.add_argument("--do-sample", action="store_true")
-    group.add_argument("--no-repeat-ngram-size", type=int, default=6)
-    group.add_argument("--repetition-penalty", type=float, default=None)
     group.add_argument("--num-beams", type=int, default=1)
     group.add_argument("--temperature", type=float, default=1)
     return parser

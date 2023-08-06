@@ -67,8 +67,6 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         top_p=args.top_p,
         top_k=args.top_k,
         temperature=args.temperature,
-        no_repeat_ngram_size=args.no_repeat_ngram_size,
-        repetition_penalty=args.repetition_penalty,
         max_new_tokens=args.max_length,
         min_length=None,
         eos_token_id=tokenizer.eos_token_id,
