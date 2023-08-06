@@ -38,7 +38,7 @@ def main():
     print_args(args)
 
     args.processed_data_dir = os.path.join(args.processed_data_dir,
-                                           (f"n{args.num_in_domain}-seed{args.seed}-rationals{args.provide_rationals}"))
+                                           (f"n{args.num_in_domain}-seed{args.seed}-rationales{args.provide_rationals}"))
     os.makedirs(args.processed_data_dir, exist_ok=True)
 
     # load commonsensenqa data

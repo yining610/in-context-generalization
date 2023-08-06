@@ -22,6 +22,7 @@ def add_data_args(parser: argparse.ArgumentParser):
     group.add_argument("--processed-data-dir", type=str)
     group.add_argument("--num-eval", type=int)
     group.add_argument("--num-in-domain", type=int)
+    group.add_argument("--num-workers", type=int, default=1)
     return parser
 
 def add_generation_args(parser: argparse.ArgumentParser):

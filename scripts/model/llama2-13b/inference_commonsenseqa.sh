@@ -20,11 +20,13 @@ DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
 NUM_EVL=5
 NUM_INDOMAIN=1
+NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 # hp
 BATCH_SIZE=16
 SEED=42
+RATIONAL="True"
 
 OPTS=""
 # model
@@ -33,10 +35,11 @@ OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
 # data
-OPTS+=" --data-dir ${DATA_DIR}"
+OPTS+=" --data-dir ${DATA_DIR}/n${NUM_INDOMAIN}-seed${SEED}-rationales${RATIONAL}"
 OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
 OPTS+=" --num-in-domain ${NUM_INDOMAIN}"
+OPTS+=" --num-workers ${NUM_WORKERS}"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
 OPTS+=" --seed 10"
@@ -51,7 +54,7 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/evaluate.py ${OPTS} $@"
+CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS} $@"
 
 echo ${CMD}
 echo "PYTHONPATH=${PYTHONPATH}"

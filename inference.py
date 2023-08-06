@@ -33,7 +33,7 @@ from utils import save_rank
 from utils import load_parallel
 
 
-from evaluate_main import evaluate_main, prepare_dataset_main
+from inference_main import evaluate_main, prepare_dataset_main
 
 
 torch.set_num_threads(4)
@@ -60,13 +60,11 @@ def get_model(args, device):
                 sum([p.nelement() for p in model.parameters()])), flush=True)
     else:
         model = AutoModelForCausalLM.from_pretrained(args.model_path)
-    
-    if args.gradient_checkpointing:
-        model.gradient_checkpointing_enable()
+
     return model
 
 
-def setup_model_and_optimizer(args, ds_config, device, set_optim=True):
+def setup_model_and_optimizer(args, ds_config, device):
     # get the model
     model = get_model(args, device)
 
@@ -118,7 +116,7 @@ def main():
         # TODO: prepare dataset for OpenAI Models
         pass
 
-    model = setup_model_and_optimizer(args, ds_config, device, set_optim=args.do_train)
+    model = setup_model_and_optimizer(args, ds_config, device)
     
     evaluate_main(args, tokenizer, model, dataset["test"], device)
 

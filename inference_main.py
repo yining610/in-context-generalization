@@ -55,7 +55,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     
     sampler = DistributedSampler(dataset, shuffle=False, drop_last=False, rank=dp_rank, num_replicas=dp_world_size)
     dataloader = DataLoader(
-        dataset, sampler=sampler, batch_size=args.eval_batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
+        dataset, sampler=sampler, batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
     model.eval()
     
     all_query_ids = []
