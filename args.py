@@ -73,7 +73,7 @@ def get_args():
             args.save,
             (f"{args.model_name}"),
             (f"{args.data_name}"),
-            (f"t{args.temperature}-m{args.max_length}-i{args.num_in_domain}-r{args.rationales}"),
+            (f"t{int(args.temperature)}-m{args.max_length}-i{args.num_in_domain}-r{args.rationales}"),
         )
         args.save = save_path
 

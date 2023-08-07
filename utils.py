@@ -87,6 +87,12 @@ def initialize(args):
     if args.save != None:
         os.makedirs(args.save, exist_ok=True)
 
+    # remove previous results
+    if os.path.exists(os.path.join(args.save, "preds.txt")):
+        os.remove(os.path.join(args.save, "preds.txt"))
+    if os.path.exists(os.path.join(args.save, "answers.jsonl")):
+        os.remove(os.path.join(args.save, "answers.jsonl"))
+
 
 def get_optimizer_params(args, model: nn.Module):
     # taken from https://github.com/facebookresearch/SpanBERT/blob/0670d8b6a38f6714b85ea7a033f16bd8cc162676/code/run_tacred.py

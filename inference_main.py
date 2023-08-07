@@ -132,12 +132,10 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
     lm_loss, query_ids, response_ids = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
-    
-    if os.path.exists(os.path.join(args.save, "preds.txt")) and dist.get_rank() == 0:
-        os.remove(os.path.join(args.save, "preds.txt"))
+
     with open(os.path.join(args.save, "preds.txt"), "a") as f:
-        for i, (q, r) in enumerate(zip(query_strs, response_strs)):
-            f.write(f"{i}" + "\t\t" + q.replace("\n", "<n>") + "\t\t" + r.replace("\n", "<n>") + "\n")
+        for q, r in zip(query_strs, response_strs):
+            f.write(q.replace("\n", "<n>") + "\t\t" + r.replace("\n", "<n>") + "\n")
 
     all_preds = [[]]
     for q, r in zip(query_strs, response_strs):
@@ -146,9 +144,6 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
 
     all_responses = []
 
-
-    if os.path.exists(os.path.join(args.save, "answers.jsonl")) and dist.get_rank() == 0:
-        os.remove(os.path.join(args.save, "answers.jsonl"))
     with open(os.path.join(args.save, "answers.jsonl"), "a") as f:    
         for p in all_preds[0]:
             q, r = p
