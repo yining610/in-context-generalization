@@ -19,14 +19,14 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=800
+NUM_EVL=1000
 NUM_INDOMAIN=1
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
-BATCH_SIZE=8
+BATCH_SIZE=5
 SEED=42
 RATIONAL="True"
 
@@ -66,13 +66,17 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 
 echo "PYTHONPATH=${PYTHONPATH}"
 
-for RATIONAL in "True" "False"
+for RATIONALE in "True" "False"
 do
     for NUM_INDOMAIN in 0 1 2 3 4
     do  
+        if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
+        then
+            continue
+        fi
         OPTS_BACKUP=${OPTS}
-        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/i${NUM_INDOMAIN}-o0-s${SEED}-r${RATIONAL}"
-        if [ ${RATIONAL} == "True" ]
+        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/in-domain/i${NUM_INDOMAIN}-s${SEED}-r${RATIONALE}"
+        if [ ${RATIONALE} == "True" ]
         then
             OPTS_BACKUP+=" --rationales"
         fi

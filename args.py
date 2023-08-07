@@ -72,12 +72,31 @@ def get_args():
     args.n_gpu = args.n_gpu * args.n_nodes
     
     if args.model_name is not None:
-        save_path = os.path.join(
-            args.save,
-            (f"{args.model_name}"),
-            (f"{args.data_name}"),
-            (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"),
-        )
+        if args.num_in_domain == 0:
+            save_path = os.path.join(
+                args.save,
+                (f"{args.model_name}"),
+                (f"{args.data_name}"),
+                "out-domain",
+                (f"o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"),
+            )
+        elif args.num_out_domain == 0:
+            save_path = os.path.join(
+                args.save,
+                (f"{args.model_name}"),
+                (f"{args.data_name}"),
+                "in-domain",
+                (f"i{args.num_in_domain}-s{args.seed}-r{args.rationales}"),
+            )
+        else:
+            save_path = os.path.join(
+                args.save,
+                (f"{args.model_name}"),
+                (f"{args.data_name}"),
+                "mixed-domain",
+                (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"),
+            )
+    
         args.save = save_path
 
     return args

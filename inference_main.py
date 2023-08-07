@@ -84,7 +84,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
                 print_rank("############### Example ###############")
                 print_rank(tokenizer.decode(model_batch["input_ids"][0], skip_special_tokens=True))
                 print_rank("############### End ###############")
-                print(f"Experiment Save Path: {args.save}")
+                print_rank(f"Experiment Save Path: {args.save}")
             
             dataset.move_to_device(model_batch, no_model_batch, device)
 
