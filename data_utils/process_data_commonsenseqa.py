@@ -5,15 +5,18 @@ from args import get_args
 from utils import print_args
 import openai
 import backoff 
+from parse_dataset import parse
 
 @backoff.on_exception(backoff.expo, openai.error.OpenAIError)
 def completions_with_backoff(**kwargs):
     return openai.ChatCompletion.create(**kwargs)
 
-def generate_rationals(args, questions):
+def generate_rationales(args, questions):
+    if len(questions) == 0:
+        return None
     rationals = []
     for question in questions:
-        prompt = "Below is a question provided with the answer. Write rationales step by step to explain how you get the answer.\n" + question
+        prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer.\n" + question
         messages = [{"role": "user", "content": prompt}]
         res = completions_with_backoff(model="gpt-4", 
                                        messages=messages,
@@ -23,66 +26,87 @@ def generate_rationals(args, questions):
         rationals.append(res["choices"][0]["message"]["content"])
     return rationals
         
-    
-def parse_commonsenseqa(line):
-    question = line["question"]["stem"] + " Choices: "
-    for choice in line["question"]["choices"]:
-        question = question + " " + choice['label'] + ": " + choice["text"]
-    gold_answer = line["answerKey"] + ": " + line["question"]["choices"][ord(line["answerKey"]) - ord("A")]["text"]
-    question_with_answer = question + " The answer is " + gold_answer
-
-    return question, gold_answer, question_with_answer
-
 def main():
     args = get_args()
     print_args(args)
 
-    args.processed_data_dir = os.path.join(args.processed_data_dir,
-                                           (f"n{args.num_in_domain}-seed{args.seed}-rationales{args.rationales}"))
+    if args.num_out_domain == 0:
+        args.processed_data_dir = os.path.join(args.processed_data_dir,
+                                               "in-domain",
+                                                (f"i{args.num_in_domain}-s{args.seed}-r{args.rationales}"))
+    elif args.num_in_domain == 0:
+        args.processed_data_dir = os.path.join(args.processed_data_dir,
+                                                "out-domain",
+                                                (f"o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"))
+    else:
+        args.processed_data_dir = os.path.join(args.processed_data_dir,
+                                               "mixed-domain",
+                                               (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"))
+
     os.makedirs(args.processed_data_dir, exist_ok=True)
 
     # load commonsensenqa data
-    with open(os.path.join(args.data_dir, "train_rand_split.jsonl"), "r") as f:
+    with open(os.path.join(args.data_dir, "train.jsonl"), "r") as f:
         data = [json.loads(line) for line in f.readlines()]
+    
+    with open(os.path.join(args.out_domain_data_dir, "train.jsonl"), "r") as f:
+        out_domain_data = [json.loads(line) for line in f.readlines()]
 
     template = (
         "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
-        "### Instruction:{instruction}\n\n### Demonstration:{demonstration}\n\n### Input:{input}\n\n### Response:"
+        "### Instruction:{instruction}\n\n### Demonstration:\n{demonstration}\n\n### Input:{input}\n\n### Response:"
     )
 
     instruction = "Answer the following multiple choice question."
     
     json_file = open(os.path.join(args.processed_data_dir, f"{args.data_name}.jsonl"), "w")
 
-    if args.num_in_domain > 0:
-        random.seed(args.seed)
-        indomain_examples = random.sample(data, args.num_in_domain)
-        # exclude indomain_examples from data
-        data = [d for d in data if d not in indomain_examples]
+    random.seed(args.seed)
+    indomain_examples = random.sample(data, args.num_in_domain)
+    random.seed(args.seed)
+    outdomain_examples = random.sample(out_domain_data, args.num_out_domain)
+    # exclude indomain_examples from data
+    data = [d for d in data if d not in indomain_examples] if args.num_in_domain > 0 else data
 
-        indomain_questions_answer_pair = []
-        indomain_questions = []
-        indomain_answers = []
-        for line in indomain_examples:
-            question, gold_answer, question_with_answer = parse_commonsenseqa(line)
-            indomain_questions_answer_pair.append(question_with_answer)
-            indomain_questions.append(question)
-            indomain_answers.append(gold_answer)
+    indomain_questions_answer_pair, indomain_questions, indomain_answers = [], [], []
+    outdomain_questions_answer_pair, outdomain_questions, outdomain_answers = [], [], []
+
+    for line in indomain_examples:
+        question, gold_answer, question_with_answer = parse(args.data_name, line)
+        indomain_questions_answer_pair.append(question_with_answer)
+        indomain_questions.append(question)
+        indomain_answers.append(gold_answer)
+    for line in outdomain_examples:
+        question, gold_answer, question_with_answer = parse(args.out_domain_data_name, line)
+        outdomain_questions_answer_pair.append(question_with_answer)
+        outdomain_questions.append(question)
+        outdomain_answers.append(gold_answer)
     
-        if args.rationales:    
-            indomain_rationals = generate_rationals(args, indomain_questions_answer_pair)
-            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationals, indomain_answers)])
-        else:
-            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
-    
+
+    indomain_demonstrations, outdomain_demonstrations = "", ""
+    if args.rationales:
+        indomain_rationales = generate_rationales(args, indomain_questions_answer_pair)
+        outdomain_rationales = generate_rationales(args, outdomain_questions_answer_pair)
+        if indomain_rationales:
+            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationales, indomain_answers)])
+        if outdomain_rationales:
+            outdomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(outdomain_questions, outdomain_rationales, outdomain_answers)])
     else:
-        indomain_demonstrations = None
+        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
+        outdomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(outdomain_questions, outdomain_answers)])
+
+    if indomain_demonstrations == "":
+        demonstration = outdomain_demonstrations
+    elif outdomain_demonstrations == "":
+        demonstration = indomain_demonstrations
+    else:
+        demonstration = indomain_demonstrations + "\n\n" + outdomain_demonstrations
 
     for line in data:
-        question, gold_answer, _ = parse_commonsenseqa(line)
+        question, gold_answer, _ = parse(args.data_name, line)
         json_file.write(json.dumps({
             "prompt": template.format(instruction=instruction, 
-                                      demonstration=indomain_demonstrations,
+                                      demonstration=demonstration,
                                       input=question),
             "output": gold_answer,
         }) + "\n")

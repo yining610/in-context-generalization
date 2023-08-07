@@ -24,7 +24,8 @@ def add_data_args(parser: argparse.ArgumentParser):
     group.add_argument("--num-eval", type=int)
     group.add_argument("--num-in-domain", type=int)
     group.add_argument("--num-out-domain", type=int)
-    group.add_argument("--out-domain", type=str)
+    group.add_argument("--out-domain-data-name", type=str, default=None)
+    group.add_argument("--out-domain-data-dir", type=str, default=None)
     group.add_argument("--num-workers", type=int, default=1)
     return parser
 
@@ -75,7 +76,7 @@ def get_args():
             args.save,
             (f"{args.model_name}"),
             (f"{args.data_name}"),
-            (f"t{int(args.temperature)}-m{args.max_length}-i{args.num_in_domain}-r{args.rationales}"),
+            (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"),
         )
         args.save = save_path
 

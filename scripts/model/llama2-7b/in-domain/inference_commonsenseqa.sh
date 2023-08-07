@@ -26,7 +26,7 @@ NUM_WORKERS=0
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
-BATCH_SIZE=16
+BATCH_SIZE=8
 SEED=42
 RATIONAL="True"
 
@@ -43,6 +43,7 @@ OPTS+=" --is-opensource"
 OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
 OPTS+=" --num-workers ${NUM_WORKERS}"
+OPTS+=" --num-out-domain 0"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
 OPTS+=" --do-sample"
@@ -70,7 +71,7 @@ do
     for NUM_INDOMAIN in 0 1 2 3 4
     do  
         OPTS_BACKUP=${OPTS}
-        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/n${NUM_INDOMAIN}-seed${SEED}-rationales${RATIONAL}"
+        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/i${NUM_INDOMAIN}-o0-s${SEED}-r${RATIONAL}"
         if [ ${RATIONAL} == "True" ]
         then
             OPTS_BACKUP+=" --rationales"
