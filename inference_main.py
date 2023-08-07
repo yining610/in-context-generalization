@@ -55,11 +55,12 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     
     sampler = DistributedSampler(dataset, shuffle=False, drop_last=False, rank=dp_rank, num_replicas=dp_world_size)
     dataloader = DataLoader(
-        dataset, sampler=sampler, batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
+        dataset, shuffle=False, sampler=sampler, batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
     model.eval()
     
     all_query_ids = []
     all_response_ids = []
+    all_rest_ids = []
     all_lm_losses = []
     
     generation_config = GenerationConfig (
@@ -109,6 +110,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             all_lm_losses.append(lm_loss)
 
             query_ids = model_batch["input_ids"]
+            rest_ids = no_model_batch["rest_ids"]
             gen_out = model.generate(
                 **model_batch,
                 generation_config=generation_config
@@ -117,6 +119,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
             all_query_ids.extend(query_ids)
             all_response_ids.extend(response_ids)
+            all_rest_ids.extend(rest_ids)
 
     all_lm_losses = torch.cat(all_lm_losses)
     mean_lm_loss = all_lm_losses.mean().item()
@@ -124,14 +127,16 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     return (
         mean_lm_loss,
         all_query_ids,
-        all_response_ids)
+        all_response_ids,
+        all_rest_ids)
 
 
 def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
         
-    lm_loss, query_ids, response_ids = run_model(args, tokenizer, model, dataset, device)
+    lm_loss, query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
+    answer_strs = tokenizer.batch_decode(rest_ids, skip_special_tokens=True)
 
     with open(os.path.join(args.save, "preds.txt"), "a") as f:
         for q, r in zip(query_strs, response_strs):
@@ -145,14 +150,15 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
     all_responses = []
 
     with open(os.path.join(args.save, "answers.jsonl"), "a") as f:    
-        for p in all_preds[0]:
+        for p, a in zip(all_preds[0], answer_strs):
             q, r = p
             r = r[len(q):]
             idx = r.find("<|endoftext|>")
             if idx >= 0:
                 r = r[:idx]
             f.write(json.dumps({
-                "text": r.replace("<n>", "\n").strip()
+                "text": r.replace("<n>", "\n").strip(),
+                "answer": a
             }) + "\n")
             all_responses.append(r.replace("<n>", "\n").strip())
     

@@ -19,7 +19,7 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=32
+NUM_EVL=800
 NUM_INDOMAIN=1
 NUM_WORKERS=0
 # generation
@@ -40,10 +40,8 @@ OPTS+=" --is-opensource"
 # OPTS+=" --model-parallel"
 # OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
 # data
-OPTS+=" --data-dir ${DATA_DIR}/n${NUM_INDOMAIN}-seed${SEED}-rationales${RATIONAL}"
 OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
-OPTS+=" --num-in-domain ${NUM_INDOMAIN}"
 OPTS+=" --num-workers ${NUM_WORKERS}"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
@@ -51,7 +49,6 @@ OPTS+=" --do-sample"
 OPTS+=" --top-k 50"
 OPTS+=" --top-p 1"
 OPTS+=" --temperature 1"
-OPTS+=" --rationales"
 # deepspeed
 OPTS+=" --deepspeed"
 OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
@@ -63,9 +60,24 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS} $@"
+export CUDA_VISIBLE_DEVICES=0,1,2,3
 
-echo ${CMD}
+
 echo "PYTHONPATH=${PYTHONPATH}"
-${CMD}
+
+for RATIONAL in "True" "False"
+do
+    for NUM_INDOMAIN in 0 1 2 3 4
+    do  
+        OPTS_BACKUP=${OPTS}
+        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/n${NUM_INDOMAIN}-seed${SEED}-rationales${RATIONAL}"
+        if [ ${RATIONAL} == "True" ]
+        then
+            OPTS_BACKUP+=" --rationales"
+        fi
+        OPTS_BACKUP+=" --num-in-domain ${NUM_INDOMAIN}"
+        CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+        echo ${CMD}
+        ${CMD}
+    done
+done

@@ -1,4 +1,3 @@
-import random
 import torch
 import os
 from torch.utils.data import Dataset
@@ -78,11 +77,8 @@ class PromptDataset(Dataset):
         prompt_length = self.max_prompt_length
 
         prompt = data[:prompt_length]
-        rest = data[prompt_length:]  
-        if output_ids is not None:
-            rest = output_ids  
+        rest = output_ids  
 
-    
         return index, prompt, rest
     
     def collate(self, samples):

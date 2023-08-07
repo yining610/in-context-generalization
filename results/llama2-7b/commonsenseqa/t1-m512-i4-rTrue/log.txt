@@ -1,0 +1,20 @@
+
+
+============================== EXP at 2023-08-07 13:24:45 ==============================
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 0.5957} | lm_loss 7.6315 | avg. gen lenth: 322.3333333333333
+
+
+============================== EXP at 2023-08-07 13:34:58 ==============================
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 0.7289} | lm_loss 7.2382 | avg. gen lenth: 221.0
+
+
+============================== EXP at 2023-08-07 13:45:22 ==============================
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 0.641} | lm_loss 8.3537 | avg. gen lenth: 227.0
+
+
+============================== EXP at 2023-08-07 14:00:41 ==============================
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 0.641} | lm_loss 8.3537 | avg. gen lenth: 227.0
+
+
+============================== EXP at 2023-08-07 14:16:56 ==============================
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 0.641} | lm_loss 8.3537 | avg. gen lenth: 227.0
