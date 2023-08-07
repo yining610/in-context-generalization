@@ -67,6 +67,8 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         top_p=args.top_p,
         top_k=args.top_k,
         temperature=args.temperature,
+        no_repeat_ngram_size=args.no_repeat_ngram_size,
+        repetition_penalty=args.repetition_penalty,
         max_new_tokens=args.max_length,
         min_length=None,
         eos_token_id=tokenizer.eos_token_id,
@@ -131,9 +133,11 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
     
-    with open(os.path.join(args.save, "preds.txt"), "w") as f:
-        for q, r in zip(query_strs, response_strs):
-            f.write(q.replace("\n", "<n>") + "\t\t" + r.replace("\n", "<n>") + "\n")
+    if os.path.exists(os.path.join(args.save, "preds.txt")) and dist.get_rank() == 0:
+        os.remove(os.path.join(args.save, "preds.txt"))
+    with open(os.path.join(args.save, "preds.txt"), "a") as f:
+        for i, (q, r) in enumerate(zip(query_strs, response_strs)):
+            f.write(f"{i}" + "\t\t" + q.replace("\n", "<n>") + "\t\t" + r.replace("\n", "<n>") + "\n")
 
     all_preds = [[]]
     for q, r in zip(query_strs, response_strs):
@@ -141,7 +145,11 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
     # torch.save(all_preds, os.path.join(args.save, "preds.pt"))
 
     all_responses = []
-    with open(os.path.join(args.save, "answers.jsonl"), "w") as f:    
+
+
+    if os.path.exists(os.path.join(args.save, "answers.jsonl")) and dist.get_rank() == 0:
+        os.remove(os.path.join(args.save, "answers.jsonl"))
+    with open(os.path.join(args.save, "answers.jsonl"), "a") as f:    
         for p in all_preds[0]:
             q, r = p
             r = r[len(q):]

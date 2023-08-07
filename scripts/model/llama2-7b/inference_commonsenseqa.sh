@@ -36,8 +36,8 @@ OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
-OPTS+=" --model-parallel"
-OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
+# OPTS+=" --model-parallel"
+# OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
 # data
 OPTS+=" --data-dir ${DATA_DIR}/n${NUM_INDOMAIN}-seed${SEED}-rationales${RATIONAL}"
 OPTS+=" --data-name ${DATA_NAMES}"
@@ -62,7 +62,7 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-export CUDA_VISIBLE_DEVICES=4,5,6,7
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS} $@"
 
 echo ${CMD}
