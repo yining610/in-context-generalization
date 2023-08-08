@@ -28,7 +28,6 @@ TEMPERATURE=1
 # hp
 BATCH_SIZE=5
 SEED=42
-RATIONAL="True"
 
 OPTS=""
 # model

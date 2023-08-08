@@ -1,6 +1,6 @@
 #! /bin/bash
 MASTER_ADDR=localhost
-MASTER_PORT=${2-2113}
+MASTER_PORT=${2-29501}
 NNODES=1
 NODE_RANK=0
 GPUS_PER_NODE=${3-4}
@@ -28,7 +28,7 @@ TEMPERATURE=1
 # hp
 BATCH_SIZE=5
 SEED=42
-RATIONAL="True"
+OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
 # model
@@ -43,7 +43,8 @@ OPTS+=" --is-opensource"
 OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
 OPTS+=" --num-workers ${NUM_WORKERS}"
-OPTS+=" --num-out-domain 0"
+OPTS+=" --num-in-domain 0"
+OPTS+=" --out-domain-data-name ${OUT_DOMAIN_TASK_NAME}"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
 OPTS+=" --do-sample"
@@ -61,26 +62,20 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-
+export CUDA_VISIBLE_DEVICES=4,5,6,7
 
 echo "PYTHONPATH=${PYTHONPATH}"
-
 for RATIONALE in "True" "False"
 do
-    for NUM_INDOMAIN in 0 1 2 3 4
+    for NUM_OUTDOMAIN in 1 2 3 4
     do  
-        if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
-        then
-            continue
-        fi
         OPTS_BACKUP=${OPTS}
-        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/in-domain/i${NUM_INDOMAIN}-s${SEED}-r${RATIONALE}"
+        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
         if [ ${RATIONALE} == "True" ]
         then
             OPTS_BACKUP+=" --rationales"
         fi
-        OPTS_BACKUP+=" --num-in-domain ${NUM_INDOMAIN}"
+        OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
         CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
         echo ${CMD}
         ${CMD}
