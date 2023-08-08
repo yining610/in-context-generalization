@@ -48,6 +48,7 @@ class PromptDataset(Dataset):
         data_origin = [json.loads(line) for line in lines]
         data = []
         print_rank("Loading Data")
+        # TODO: count the token number
         for d in tqdm(data_origin, disable=(get_rank() != 0)):
             prompt = d["prompt"].replace("<n>", "\n")
             prompt_ids = self.tokenizer.encode(prompt)
