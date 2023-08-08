@@ -30,7 +30,7 @@ import numpy as np
 import json
 from utils import print_rank, save_rank, load_parallel
 
-from rouge_metric import compute_metrics
+from metric import compute_metrics
 
 torch.set_num_threads(4)
 
@@ -162,8 +162,9 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
                 "answer": a
             }) + "\n")
             all_responses.append(r.replace("<n>", "\n").strip())
-    
-    gen_res = compute_metrics(all_responses, dataset.answers)
+
+    all_answers = [x if isinstance(x, list) else [x] for x in answer_strs]
+    gen_res = compute_metrics(all_responses, all_answers)
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 

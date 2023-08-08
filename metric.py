@@ -83,56 +83,55 @@ def compute_grouped_metrics(predictions, references, groups, xlingual=False):
             results[f"{metric}_for_{group}"] = value
     return results
 
+def match_multiplechoice_answer(answer, text):
+    if text is None:
+        return False
+    answer_label = answer.split(":")[0].strip().lower()
+    if answer_label == "choice1":
+        answer_label = "a"
+    elif answer_label == "choice2":
+        answer_label = "b"
+    elif answer_label == "choice3":
+        answer_label = "c"
+    elif answer_label == "choice4":
+        answer_label = "d"
+    elif answer_label == "choice5":
+        answer_label = "e"
+    answer_text = answer.split(":")[1].strip().lower().replace(" ", "")
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--prediction_file", required=True,
-        help="Jsonl file with each line corresponding to a prediction. " 
-             "Each json object should have an `id` and a `prediction` key.")
-    parser.add_argument(
-        "--reference_file", required=True,
-        help="Jsonl file with each line corresponding to a reference. " 
-             "Each json object should have an `id` and a `references` key. "
-             "`task_id`, `task_category` and `task_track` are optional, which will be used to "
-             "compute the per-task performance, per-category performance and the performance for default (english) / xlingual Tracks.")
-    parser.add_argument(
-        "--output_file",
-        help="Jsonl file to write the results to.")
-    parser.add_argument(
-        "--model_name",
-    )
-    return parser.parse_args()
+    texts = text.split(":")
+    text_label = texts[0].strip().lower().split(" ")[-1].strip().lower()
+    if text_label == "choice1":
+        text_label = "a"
+    elif text_label == "choice2":
+        text_label = "b"
+    elif text_label == "choice3":
+        text_label = "c"
+    elif text_label == "choice4":
+        text_label = "d"
+    elif text_label == "choice5":
+        text_label = "e"
+    elif text_label == "1":
+        text_label = "a"
+    elif text_label == "2":
+        text_label = "b"
+    elif text_label == "3":
+        text_label = "c"
+    elif text_label == "4":
+        text_label = "d"
+    elif text_label == "5":
+        text_label = "e"
+    
+    if answer_label == text_label:
+        return True
+    
+    if answer_text in text.strip().lower().replace(" ", ""):
+        return True
 
+    return False
 
-if __name__ == "__main__":
-    args = parse_args()
-
-    references = []
-    with open(args.reference_file) as fin:
-        for line in fin:
-            instance = json.loads(line)
-            if isinstance(instance["output"], list):
-                references.append(instance["output"])
-            else:
-                references.append([instance["output"]])
-
-    predictions = []
-    with open(args.prediction_file) as fin:
-        for line in fin:
-            prediction = json.loads(line)
-            predictions.append(prediction["text"])
-
-    predictions = predictions[:1000]
-
-    references = references[:len(predictions)]
-
-    results = compute_metrics(predictions, references, xlingual=False)
-
-    print(results)
-
-    if args.output_file:
-        os.makedirs(args.output_file, exist_ok=True)
-        with open(os.path.join(args.output_file, f"{args.model_name}.json"), "w") as fout:
-            json.dump(results, fout, indent=2)
-            
+def compute_mc_acc(path):
+    with open(os.path.join(path, "answers.jsonl"), "r") as f:
+        lines = f.readlines()
+    results = [match_multiplechoice_answer(json.loads(line)["answer"], json.loads(line)["text"]) for line in lines]
+    return sum(results) / len(results)
