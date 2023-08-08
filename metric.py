@@ -4,7 +4,7 @@ import os
 import argparse
 from rouge_score import rouge_scorer
 from transformers import AutoTokenizer
-
+import numpy as np
 
 default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
 
@@ -135,3 +135,10 @@ def compute_mc_acc(path):
         lines = f.readlines()
     results = [match_multiplechoice_answer(json.loads(line)["answer"], json.loads(line)["text"]) for line in lines]
     return sum(results) / len(results)
+
+def compute_rouge(path):
+    with open(os.path.join(path, "answers.jsonl"), "r") as f:
+        answers = f.readlines()
+    preds = [json.loads(x)["text"] for x in answers]
+    answers = [json.loads(x)["answer"] for x in answers]
+    return np.mean([rouge(pred, answer) for pred, answer in zip(preds, answers)])
