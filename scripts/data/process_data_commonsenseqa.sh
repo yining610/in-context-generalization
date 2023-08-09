@@ -2,9 +2,9 @@ BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
 DATA_PATH=${2-"/scratch/ylu130"}
 OUT_DOMAIN_NAME=${3-"gsm8k"}
 
-for indomain in 5 6 7 8
+for indomain in 0
 do  
-    for outdomain in 0
+    for outdomain in 5 6
     do  
         echo "Processing commonsenseqa with ${indomain} in-domain examples and ${outdomain} GSM8K out-domain examples with rationales"
         PYTHONPATH=${BASE_PATH} python3 ${BASE_PATH}/data_utils/process_data_commonsenseqa.py \

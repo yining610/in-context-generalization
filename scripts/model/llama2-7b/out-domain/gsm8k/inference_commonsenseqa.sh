@@ -26,7 +26,7 @@ NUM_WORKERS=0
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
-BATCH_SIZE=4
+BATCH_SIZE=5
 SEED=42
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
@@ -67,7 +67,7 @@ export CUDA_VISIBLE_DEVICES=6,7,8,9
 echo "PYTHONPATH=${PYTHONPATH}"
 for RATIONALE in "True"
 do
-    for NUM_OUTDOMAIN in 5 6
+    for NUM_OUTDOMAIN in 5
     do  
         OPTS_BACKUP=${OPTS}
         OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
