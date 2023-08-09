@@ -20,7 +20,6 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
 NUM_EVL=1000
-NUM_INDOMAIN=1
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"

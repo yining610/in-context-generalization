@@ -20,7 +20,6 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
 NUM_EVL=1000
-NUM_INDOMAIN=1
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
@@ -67,7 +66,7 @@ export CUDA_VISIBLE_DEVICES=6,7,8,9
 echo "PYTHONPATH=${PYTHONPATH}"
 for RATIONALE in "True"
 do
-    for NUM_OUTDOMAIN in 5
+    for NUM_OUTDOMAIN in 6
     do  
         OPTS_BACKUP=${OPTS}
         OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
