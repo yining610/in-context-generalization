@@ -74,7 +74,7 @@
 
 import json
 
-with open("/scratch/ylu130/processed_data/gsm8k/out-domain/o1-tcommonsenseqa-s1-rTrue/gsm8k.jsonl", "r") as f:
+with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s30-rFalse/commonsenseqa.jsonl", "r") as f:
     data = [json.loads(line) for line in f.readlines()]
 
 print(data[0]["prompt"])
