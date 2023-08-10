@@ -46,7 +46,7 @@ OPTS+=" --num-in-domain 0"
 OPTS+=" --out-domain-data-name ${OUT_DOMAIN_TASK_NAME}"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
-# OPTS+=" --do-sample"
+OPTS+=" --do-sample"
 OPTS+=" --top-k 50"
 OPTS+=" --top-p 1"
 OPTS+=" --temperature 1"
