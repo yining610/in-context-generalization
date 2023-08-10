@@ -52,7 +52,6 @@ OPTS+=" --deepspeed"
 OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
 # hp
 OPTS+=" --batch-size ${BATCH_SIZE}"
-OPTS+=" --seed ${SEED}"
 
 export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
@@ -68,12 +67,13 @@ do
     do
         for NUM_INDOMAIN in 0 1 2 3 4
         do  
-            if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
+            if { [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]; } || { [ ${NUM_INDOMAIN} == 0 ] && [ ${SEED} != 1 ]; };
             then
                 continue
             fi
             OPTS_BACKUP=${OPTS}
             OPTS_BACKUP+=" --data-dir ${DATA_DIR}/in-domain/i${NUM_INDOMAIN}-s${SEED}-r${RATIONALE}"
+            OPTS_BACKUP+=" --seed ${SEED}"
             if [ ${RATIONALE} == "True" ]
             then
                 OPTS_BACKUP+=" --rationales"
