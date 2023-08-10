@@ -75,7 +75,8 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         eos_token_id=tokenizer.eos_token_id,
         pad_token_id=tokenizer.pad_token_id,
         return_dict_in_generate=True,
-        output_scores=True
+        output_scores=True,
+        num_beams=args.num_beams,
     )
 
     with torch.no_grad():
@@ -113,9 +114,9 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             query_ids = model_batch["input_ids"]
             rest_ids = no_model_batch["rest_ids"]
             gen_out = model.generate(
-                **model_batch,
-                generation_config=generation_config
-            )
+                    **model_batch,
+                    generation_config=generation_config
+                )
             full_ids = gen_out.sequences
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
             all_query_ids.extend(query_ids)

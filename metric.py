@@ -131,14 +131,20 @@ def match_multiplechoice_answer(answer, text):
     return False
 
 def compute_mc_acc(path):
-    with open(os.path.join(path, "answers.jsonl"), "r") as f:
-        lines = f.readlines()
-    results = [match_multiplechoice_answer(json.loads(line)["answer"], json.loads(line)["text"]) for line in lines]
-    return sum(results) / len(results)
+    if os.path.exists(os.path.join(path, "answers.jsonl")):
+        with open(os.path.join(path, "answers.jsonl"), "r") as f:
+            lines = f.readlines()
+        results = [match_multiplechoice_answer(json.loads(line)["answer"], json.loads(line)["text"]) for line in lines]
+        return sum(results) / len(results)
+    else:
+        return 0
 
 def compute_rouge(path):
-    with open(os.path.join(path, "answers.jsonl"), "r") as f:
-        answers = f.readlines()
-    preds = [json.loads(x)["text"] for x in answers]
-    answers = [json.loads(x)["answer"] for x in answers]
-    return np.mean([rouge(pred, answer) for pred, answer in zip(preds, answers)])
+    if os.path.exists(os.path.join(path, "answers.jsonl")):
+        with open(os.path.join(path, "answers.jsonl"), "r") as f:
+            answers = f.readlines()
+        preds = [json.loads(x)["text"] for x in answers]
+        answers = [json.loads(x)["answer"] for x in answers]
+        return np.mean([rouge(pred, answer) for pred, answer in zip(preds, answers)])
+    else:
+        return 0

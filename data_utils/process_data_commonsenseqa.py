@@ -16,7 +16,7 @@ def generate_rationales(args, questions):
         return None
     rationals = []
     for question in questions:
-        prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer.\n" + question
+        prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer. Split each step by new line.\n" + question
         messages = [{"role": "user", "content": prompt}]
         res = completions_with_backoff(model="gpt-4", 
                                        messages=messages,
