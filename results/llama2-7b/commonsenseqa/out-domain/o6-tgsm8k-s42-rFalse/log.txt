@@ -1,8 +1,0 @@
-
-
-============================== EXP at 2023-08-08 22:03:35 ==============================
-name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 3.3646} | lm_loss 7.6935 | avg. gen lenth: 208.968
-
-
-============================== EXP at 2023-08-10 14:45:21 ==============================
-name: commonsenseqa | {'exact_match': 0.4, 'rougeL': 3.5699} | lm_loss 7.6936 | avg. gen lenth: 225.06

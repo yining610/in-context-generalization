@@ -66,7 +66,7 @@ for SEED in 1 10 20 30 40 50 60
 do 
     for RATIONALE in "True" "False"
     do
-        for NUM_INDOMAIN in 0 1 2 3 4 6 7 8 9
+        for NUM_INDOMAIN in 0 1 2 3 4
         do  
             if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
             then
