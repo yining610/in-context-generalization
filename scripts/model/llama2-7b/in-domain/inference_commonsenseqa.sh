@@ -3,7 +3,7 @@ MASTER_ADDR=localhost
 MASTER_PORT=${2-2113}
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=${3-5}
+GPUS_PER_NODE=${3-4}
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -25,8 +25,7 @@ NUM_WORKERS=0
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
-BATCH_SIZE=4
-SEED=42
+BATCH_SIZE=5
 
 OPTS=""
 # model
@@ -59,28 +58,30 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-export CUDA_VISIBLE_DEVICES=5,6,7,8,9
-
+export CUDA_VISIBLE_DEVICES=2,3,4,5
 
 echo "PYTHONPATH=${PYTHONPATH}"
 
-for RATIONALE in "True" "False"
-do
-    for NUM_INDOMAIN in 0 1 2 3 4
-    do  
-        if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
-        then
-            continue
-        fi
-        OPTS_BACKUP=${OPTS}
-        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/in-domain/i${NUM_INDOMAIN}-s${SEED}-r${RATIONALE}"
-        if [ ${RATIONALE} == "True" ]
-        then
-            OPTS_BACKUP+=" --rationales"
-        fi
-        OPTS_BACKUP+=" --num-in-domain ${NUM_INDOMAIN}"
-        CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
-        echo ${CMD}
-        ${CMD}
+for SEED in 1 10 20 30 40 50 60
+do 
+    for RATIONALE in "True" "False"
+    do
+        for NUM_INDOMAIN in 0 1 2 3 4 6 7 8 9
+        do  
+            if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
+            then
+                continue
+            fi
+            OPTS_BACKUP=${OPTS}
+            OPTS_BACKUP+=" --data-dir ${DATA_DIR}/in-domain/i${NUM_INDOMAIN}-s${SEED}-r${RATIONALE}"
+            if [ ${RATIONALE} == "True" ]
+            then
+                OPTS_BACKUP+=" --rationales"
+            fi
+            OPTS_BACKUP+=" --num-in-domain ${NUM_INDOMAIN}"
+            CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+            echo ${CMD}
+            ${CMD}
+        done
     done
 done

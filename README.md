@@ -1,4 +1,9 @@
 # in-context-generalization
 
+## Requirements
+```
+bash install.sh
+```
+
 ## Experiment Log
-- [x] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: 42 /out-domain test: 1-8 demonstrations```
+- [x] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: [1 10 20 30 40 50 60] / test: [9,-9]```

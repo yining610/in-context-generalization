@@ -1,6 +1,6 @@
 #! /bin/bash
 MASTER_ADDR=localhost
-MASTER_PORT=${2-2113}
+MASTER_PORT=${2-29501}
 NNODES=1
 NODE_RANK=0
 GPUS_PER_NODE=${3-4}
@@ -26,7 +26,6 @@ SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
 BATCH_SIZE=5
-SEED=42
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
@@ -55,7 +54,6 @@ OPTS+=" --deepspeed"
 OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
 # hp
 OPTS+=" --batch-size ${BATCH_SIZE}"
-OPTS+=" --seed ${SEED}"
 
 export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
@@ -65,19 +63,23 @@ export CUDA_VISIBLE_DEVICES=6,7,8,9
 
 echo "PYTHONPATH=${PYTHONPATH}"
 
-for RATIONALE in "True" "False"
-do
-    for NUM_OUTDOMAIN in 1 2 3 4 5
-    do  
-        OPTS_BACKUP=${OPTS}
-        OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
-        if [ ${RATIONALE} == "True" ]
-        then
-            OPTS_BACKUP+=" --rationales"
-        fi
-        OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
-        CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
-        echo ${CMD}
-        ${CMD}
+for SEED in 1 10 20 30 40 50 60
+do 
+    for RATIONALE in "True" "False"
+    do
+        for NUM_OUTDOMAIN in 1 2 3 4 5 6 7 8 9
+        do  
+            OPTS_BACKUP=${OPTS}
+            OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
+            OPTS_BACKUP+=" --seed ${SEED}"
+            if [ ${RATIONALE} == "True" ]
+            then
+                OPTS_BACKUP+=" --rationales"
+            fi
+            OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
+            CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+            echo ${CMD}
+            ${CMD}
+        done
     done
 done

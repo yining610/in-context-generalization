@@ -3073,4 +3073,167 @@ Answer: 30
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o8-tgsm8k-s42-rFalse
 Loading extension module utils...
 Time to load utils op: 0.5045576095581055 seconds
-Evaluating commonsenseqa :   2%|█▉                                                                                            | 1/50 [00:49<40:31, 49.61s/it]Evaluating commonsenseqa :   4%|███▊                                                                                          | 2/50 [01:38<39:08, 48.93s/it]Evaluating commonsenseqa :   6%|█████▋                                                                                        | 3/50 [02:27<38:37, 49.30s/it]Evaluating commonsenseqa :   8%|███████▌                                                                                      | 4/50 [03:16<37:35, 49.04s/it]Evaluating commonsenseqa :  10%|█████████▍                                                                                    | 5/50 [04:05<36:40, 48.90s/it]Evaluating commonsenseqa :  12%|███████████▎                                                                                  | 6/50 [04:53<35:45, 48.75s/it]Evaluating commonsenseqa :  14%|█████████████▏                                                                                | 7/50 [05:29<31:54, 44.53s/it]Evaluating commonsenseqa :  16%|███████████████                                                                               | 8/50 [06:01<28:27, 40.65s/it]Evaluating commonsenseqa :  18%|████████████████▉                                                                             | 9/50 [06:51<29:42, 43.46s/it]Evaluating commonsenseqa :  20%|██████████████████▌                                                                          | 10/50 [07:40<30:04, 45.10s/it]Evaluating commonsenseqa :  22%|████████████████████▍                                                                        | 11/50 [08:28<29:58, 46.12s/it]Evaluating commonsenseqa :  24%|██████████████████████▎                                                                      | 12/50 [09:17<29:41, 46.89s/it]Evaluating commonsenseqa :  26%|████████████████████████▏                                                                    | 13/50 [09:43<25:02, 40.62s/it]Evaluating commonsenseqa :  28%|██████████████████████████                                                                   | 14/50 [10:32<25:53, 43.15s/it]Evaluating commonsenseqa :  30%|███████████████████████████▉                                                                 | 15/50 [11:20<26:00, 44.58s/it]Evaluating commonsenseqa :  32%|█████████████████████████████▊                                                               | 16/50 [12:09<26:02, 45.96s/it]Evaluating commonsenseqa :  34%|███████████████████████████████▌                                                             | 17/50 [12:54<25:04, 45.60s/it]Evaluating commonsenseqa :  36%|█████████████████████████████████▍                                                           | 18/50 [13:42<24:44, 46.40s/it]Evaluating commonsenseqa :  38%|███████████████████████████████████▎                                                         | 19/50 [14:31<24:21, 47.16s/it]Evaluating commonsenseqa :  40%|█████████████████████████████████████▏                                                       | 20/50 [15:20<23:51, 47.72s/it]Evaluating commonsenseqa :  42%|███████████████████████████████████████                                                      | 21/50 [16:09<23:11, 48.00s/it]Evaluating commonsenseqa :  44%|████████████████████████████████████████▉                                                    | 22/50 [16:47<21:04, 45.14s/it]Evaluating commonsenseqa :  46%|██████████████████████████████████████████▊                                                  | 23/50 [17:36<20:49, 46.28s/it]Evaluating commonsenseqa :  48%|████████████████████████████████████████████▋                                                | 24/50 [18:24<20:12, 46.65s/it]Evaluating commonsenseqa :  50%|██████████████████████████████████████████████▌                                              | 25/50 [19:12<19:37, 47.09s/it]Evaluating commonsenseqa :  52%|████████████████████████████████████████████████▎                                            | 26/50 [20:00<19:01, 47.56s/it]Evaluating commonsenseqa :  54%|██████████████████████████████████████████████████▏                                          | 27/50 [20:49<18:19, 47.79s/it]
+Evaluating commonsenseqa :   2%|█▉                                                                                            | 1/50 [00:49<40:31, 49.61s/it]Evaluating commonsenseqa :   4%|███▊                                                                                          | 2/50 [01:38<39:08, 48.93s/it]Evaluating commonsenseqa :   6%|█████▋                                                                                        | 3/50 [02:27<38:37, 49.30s/it]Evaluating commonsenseqa :   8%|███████▌                                                                                      | 4/50 [03:16<37:35, 49.04s/it]Evaluating commonsenseqa :  10%|█████████▍                                                                                    | 5/50 [04:05<36:40, 48.90s/it]Evaluating commonsenseqa :  12%|███████████▎                                                                                  | 6/50 [04:53<35:45, 48.75s/it]Evaluating commonsenseqa :  14%|█████████████▏                                                                                | 7/50 [05:29<31:54, 44.53s/it]Evaluating commonsenseqa :  16%|███████████████                                                                               | 8/50 [06:01<28:27, 40.65s/it]Evaluating commonsenseqa :  18%|████████████████▉                                                                             | 9/50 [06:51<29:42, 43.46s/it]Evaluating commonsenseqa :  20%|██████████████████▌                                                                          | 10/50 [07:40<30:04, 45.10s/it]Evaluating commonsenseqa :  22%|████████████████████▍                                                                        | 11/50 [08:28<29:58, 46.12s/it]Evaluating commonsenseqa :  24%|██████████████████████▎                                                                      | 12/50 [09:17<29:41, 46.89s/it]Evaluating commonsenseqa :  26%|████████████████████████▏                                                                    | 13/50 [09:43<25:02, 40.62s/it]Evaluating commonsenseqa :  28%|██████████████████████████                                                                   | 14/50 [10:32<25:53, 43.15s/it]Evaluating commonsenseqa :  30%|███████████████████████████▉                                                                 | 15/50 [11:20<26:00, 44.58s/it]Evaluating commonsenseqa :  32%|█████████████████████████████▊                                                               | 16/50 [12:09<26:02, 45.96s/it]Evaluating commonsenseqa :  34%|███████████████████████████████▌                                                             | 17/50 [12:54<25:04, 45.60s/it]Evaluating commonsenseqa :  36%|█████████████████████████████████▍                                                           | 18/50 [13:42<24:44, 46.40s/it]Evaluating commonsenseqa :  38%|███████████████████████████████████▎                                                         | 19/50 [14:31<24:21, 47.16s/it]Evaluating commonsenseqa :  40%|█████████████████████████████████████▏                                                       | 20/50 [15:20<23:51, 47.72s/it]Evaluating commonsenseqa :  42%|███████████████████████████████████████                                                      | 21/50 [16:09<23:11, 48.00s/it]Evaluating commonsenseqa :  44%|████████████████████████████████████████▉                                                    | 22/50 [16:47<21:04, 45.14s/it]Evaluating commonsenseqa :  46%|██████████████████████████████████████████▊                                                  | 23/50 [17:36<20:49, 46.28s/it]Evaluating commonsenseqa :  48%|████████████████████████████████████████████▋                                                | 24/50 [18:24<20:12, 46.65s/it]Evaluating commonsenseqa :  50%|██████████████████████████████████████████████▌                                              | 25/50 [19:12<19:37, 47.09s/it]Evaluating commonsenseqa :  52%|████████████████████████████████████████████████▎                                            | 26/50 [20:00<19:01, 47.56s/it]Evaluating commonsenseqa :  54%|██████████████████████████████████████████████████▏                                          | 27/50 [20:49<18:19, 47.79s/it]Evaluating commonsenseqa :  56%|████████████████████████████████████████████████████                                         | 28/50 [21:37<17:36, 48.04s/it]Evaluating commonsenseqa :  58%|█████████████████████████████████████████████████████▉                                       | 29/50 [22:26<16:54, 48.33s/it]Evaluating commonsenseqa :  60%|███████████████████████████████████████████████████████▊                                     | 30/50 [23:15<16:09, 48.50s/it]Evaluating commonsenseqa :  62%|█████████████████████████████████████████████████████████▋                                   | 31/50 [23:49<13:56, 44.04s/it]Evaluating commonsenseqa :  64%|███████████████████████████████████████████████████████████▌                                 | 32/50 [24:37<13:36, 45.37s/it]Evaluating commonsenseqa :  66%|█████████████████████████████████████████████████████████████▍                               | 33/50 [25:19<12:31, 44.22s/it]Evaluating commonsenseqa :  68%|███████████████████████████████████████████████████████████████▏                             | 34/50 [26:09<12:13, 45.87s/it]Evaluating commonsenseqa :  70%|█████████████████████████████████████████████████████████████████                            | 35/50 [26:57<11:41, 46.76s/it]Evaluating commonsenseqa :  72%|██████████████████████████████████████████████████████████████████▉                          | 36/50 [27:38<10:26, 44.78s/it]Evaluating commonsenseqa :  74%|████████████████████████████████████████████████████████████████████▊                        | 37/50 [28:26<09:57, 45.99s/it]Evaluating commonsenseqa :  76%|██████████████████████████████████████████████████████████████████████▋                      | 38/50 [29:15<09:22, 46.86s/it]Evaluating commonsenseqa :  78%|████████████████████████████████████████████████████████████████████████▌                    | 39/50 [30:04<08:42, 47.50s/it]Evaluating commonsenseqa :  80%|██████████████████████████████████████████████████████████████████████████▍                  | 40/50 [30:53<07:58, 47.86s/it]Evaluating commonsenseqa :  82%|████████████████████████████████████████████████████████████████████████████▎                | 41/50 [31:24<06:24, 42.70s/it]Evaluating commonsenseqa :  84%|██████████████████████████████████████████████████████████████████████████████               | 42/50 [32:12<05:56, 44.53s/it]Evaluating commonsenseqa :  86%|███████████████████████████████████████████████████████████████████████████████▉             | 43/50 [33:01<05:21, 45.87s/it]Evaluating commonsenseqa :  88%|█████████████████████████████████████████████████████████████████████████████████▊           | 44/50 [33:50<04:39, 46.61s/it]Evaluating commonsenseqa :  90%|███████████████████████████████████████████████████████████████████████████████████▋         | 45/50 [34:39<03:56, 47.28s/it]Evaluating commonsenseqa :  92%|█████████████████████████████████████████████████████████████████████████████████████▌       | 46/50 [35:28<03:11, 47.90s/it]Evaluating commonsenseqa :  94%|███████████████████████████████████████████████████████████████████████████████████████▍     | 47/50 [36:17<02:24, 48.18s/it]^CTraceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 125, in <module>
+Evaluating commonsenseqa :  94%|███████████████████████████████████████████████████████████████████████████████████████▍     | 47/50 [36:51<02:21, 47.06s/it]
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 122, in main
+    evaluate_main(args, tokenizer, model, dataset["test"], device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 139, in evaluate_main
+Traceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 125, in <module>
+    lm_loss, query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 116, in run_model
+    gen_out = model.generate(
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 1454, in generate
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 122, in main
+    evaluate_main(args, tokenizer, model, dataset["test"], device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 139, in evaluate_main
+    lm_loss, query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 116, in run_model
+    gen_out = model.generate(
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 1454, in generate
+    return self.sample(
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 2509, in sample
+    return self.sample(
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 2509, in sample
+WARNING:torch.distributed.elastic.agent.server.api:Received 2 death signal, shutting down workers
+    next_token_scores = logits_processor(input_ids, next_token_logits)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 92, in __call__
+    scores = processor(input_ids, scores)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 487, in __call__
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2511138 closing signal SIGINT
+    banned_batch_tokens = _calc_banned_ngram_tokens(self.ngram_size, input_ids, num_batch_hypotheses, cur_len)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 460, in _calc_banned_ngram_tokens
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 92, in __call__
+    scores = processor(input_ids, scores)
+      File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 487, in __call__
+generated_ngrams = _get_ngrams(ngram_size, prev_input_ids, num_hypos)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 441, in _get_ngrams
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2511139 closing signal SIGINT
+    generated_ngram[prev_ngram_tuple] = generated_ngram.get(prev_ngram_tuple, []) + [ngram[-1]]
+    banned_batch_tokens = _calc_banned_ngram_tokens(self.ngram_size, input_ids, num_batch_hypotheses, cur_len)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 460, in _calc_banned_ngram_tokens
+KeyboardInterrupt
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2511141 closing signal SIGINT
+    generated_ngrams = _get_ngrams(ngram_size, prev_input_ids, num_hypos)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 441, in _get_ngrams
+Exception ignored in: <module 'threading' from '/home/ylu130/.conda/envs/distllm/lib/python3.9/threading.py'>
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/threading.py", line 1450, in _shutdown
+    generated_ngram[prev_ngram_tuple] = generated_ngram.get(prev_ngram_tuple, []) + [ngram[-1]]
+KeyboardInterrupt
+    if _main_thread.ident == get_ident():
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/threading.py", line 1119, in ident
+    return self._ident
+KeyboardInterrupt: 
+Traceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 125, in <module>
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 122, in main
+    evaluate_main(args, tokenizer, model, dataset["test"], device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 139, in evaluate_main
+    lm_loss, query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 116, in run_model
+    gen_out = model.generate(
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 1454, in generate
+    return self.sample(
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 2509, in sample
+    next_token_scores = logits_processor(input_ids, next_token_logits)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 92, in __call__
+    scores = processor(input_ids, scores)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 487, in __call__
+    banned_batch_tokens = _calc_banned_ngram_tokens(self.ngram_size, input_ids, num_batch_hypotheses, cur_len)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 460, in _calc_banned_ngram_tokens
+    generated_ngrams = _get_ngrams(ngram_size, prev_input_ids, num_hypos)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 437, in _get_ngrams
+    gen_tokens = prev_input_ids[idx].tolist()
+KeyboardInterrupt
+^CWARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2511138 closing signal SIGTERM
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2511139 closing signal SIGTERM
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 2511141 closing signal SIGTERM
+^C^CTraceback (most recent call last):
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 709, in run
+    result = self._invoke_run(role)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 850, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 60, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2511066 got signal: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 716, in run
+    self._shutdown(e.sigval)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/local_elastic_agent.py", line 193, in _shutdown
+    self._pcontext.close(death_sig)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 330, in close
+    self._close(death_sig=death_sig, timeout=timeout)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 707, in _close
+    handler.proc.wait(time_to_wait)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/subprocess.py", line 1189, in wait
+    return self._wait(timeout=timeout)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/subprocess.py", line 1927, in _wait
+    time.sleep(delay)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 60, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2511066 got signal: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 236, in launch_agent
+    result = agent.run()
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 125, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 721, in run
+    self._shutdown()
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/local_elastic_agent.py", line 193, in _shutdown
+    self._pcontext.close(death_sig)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 330, in close
+    self._close(death_sig=death_sig, timeout=timeout)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 707, in _close
+    handler.proc.wait(time_to_wait)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/subprocess.py", line 1189, in wait
+    return self._wait(timeout=timeout)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/subprocess.py", line 1927, in _wait
+    time.sleep(delay)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 60, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2511066 got signal: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/distllm/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 345, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/run.py", line 761, in main
+    run(args)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/run.py", line 752, in run
+    elastic_launch(
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 131, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 258, in launch_agent
+    events.record(agent.get_event_failed())
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 726, in get_event_failed
+    return self._construct_event(
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 784, in _construct_event
+    "hostname": _get_fq_hostname(),
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 385, in _get_fq_hostname
+    return socket.getfqdn(socket.gethostname())
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/socket.py", line 792, in getfqdn
+    hostname, aliases, ipaddrs = gethostbyaddr(name)
+  File "/home/ylu130/.conda/envs/distllm/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 60, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2511066 got signal: 2
+^C
