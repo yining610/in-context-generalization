@@ -14,20 +14,21 @@ def completions_with_backoff(**kwargs):
 def generate_rationales(args, questions, rationales):
     if len(questions) == 0:
         return None
-    if rationales[0] is None: # no rationales provided
-        rationales = []
-        for question in questions:
-            prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer. Split each step by new line.\n" + question
-            messages = [{"role": "user", "content": prompt}]
-            res = completions_with_backoff(model="gpt-4", 
-                                           messages=messages,
-                                           temperature=args.temperature,
-                                           max_tokens=args.max_length,
-                                           )
-            rationales.append(res["choices"][0]["message"]["content"])
-        return rationales
     else:
-        return rationales
+        if rationales[0] is None: # no rationales provided
+            rationales = []
+            for question in questions:
+                prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer. Split each step by new line.\n" + question
+                messages = [{"role": "user", "content": prompt}]
+                res = completions_with_backoff(model="gpt-4", 
+                                               messages=messages,
+                                               temperature=args.temperature,
+                                               max_tokens=args.max_length,
+                                               )
+                rationales.append(res["choices"][0]["message"]["content"])
+            return rationales
+        else:
+            return rationales
         
 def main():
     args = get_args()
