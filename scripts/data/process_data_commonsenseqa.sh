@@ -4,7 +4,7 @@ OUT_DOMAIN_NAME=${3-"gsm8k"}
 
 for indomain in 0
 do  
-    for outdomain in 6
+    for outdomain in 7 8
     do  
         echo "Processing commonsenseqa with ${indomain} in-domain examples and ${outdomain} GSM8K out-domain examples with rationales"
         PYTHONPATH=${BASE_PATH} python3 ${BASE_PATH}/data_utils/process_data_commonsenseqa.py \

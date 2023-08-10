@@ -67,3 +67,5 @@ plot(num_demonstrations, with_rationales_acc, without_rationales_acc, "Out-domai
 
 num_demonstrations, with_rationales_rougeL, without_rationales_rougeL = compute_metric(path, compute_rouge)
 plot(num_demonstrations, with_rationales_rougeL, without_rationales_rougeL, "Out-domain CommonsenseQA ROUGE", y_label="ROUGE")
+
+# Note: RuntimeError: probability tensor contains either `inf`, `nan` or element < 0 -> Probability distribution has been messed up

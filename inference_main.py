@@ -109,16 +109,17 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
                 loss_func = nn.CrossEntropyLoss(reduction="none")
                 lm_loss = loss_func(logits.view(-1, logits.size(-1)), label_ids.view(-1)).view(label_ids.size())
                 lm_loss = torch.sum(lm_loss * loss_mask, -1) / torch.sum(loss_mask, -1)
-            all_lm_losses.append(lm_loss)
+            
 
             query_ids = model_batch["input_ids"]
             rest_ids = no_model_batch["rest_ids"]
             gen_out = model.generate(
                     **model_batch,
                     generation_config=generation_config
-                )
+                )           
             full_ids = gen_out.sequences
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
+            all_lm_losses.append(lm_loss)
             all_query_ids.extend(query_ids)
             all_response_ids.extend(response_ids)
             all_rest_ids.extend(rest_ids)

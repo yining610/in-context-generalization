@@ -74,7 +74,7 @@ print(tokenizer.decode(outputs[0]))
 
 # import json
 
-# with open("/scratch/ylu130/processed_data/commonsenseqa/mixed-domain/i4-o4-tgsm8k-s42-rFalse/commonsenseqa.jsonl", "r") as f:
+# with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o6-tgsm8k-s42-rTrue/commonsenseqa.jsonl", "r") as f:
 #     data = [json.loads(line) for line in f.readlines()]
 
 # print(data[0]["prompt"])
