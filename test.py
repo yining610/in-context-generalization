@@ -74,10 +74,11 @@
 
 import json
 
-with open("/scratch/ylu130/processed_data/gsm8k/out-domain/o8-tcommonsenseqa-s42-rTrue/gsm8k.jsonl", "r") as f:
+with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o8-tgsm8k-s1-rTrue/commonsenseqa.jsonl", "r") as f:
     data = [json.loads(line) for line in f.readlines()]
 
 print(data[0]["prompt"])
+
 
 # # count tokens
 # from transformers import AutoTokenizer

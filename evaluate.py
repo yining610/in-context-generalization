@@ -60,7 +60,7 @@ def compute_metric(path, metric_fn):
 
     return num_demonstrations, with_rationales, without_rationales
 
-path = "./results/llama2-7b/commonsenseqa/out-domain"
+path = "./results/llama2-7b/commonsenseqa/in-domain"
 num_demonstrations, with_rationales_acc, without_rationales_acc = compute_metric(path, compute_mc_acc)
 plot(num_demonstrations, with_rationales_acc, without_rationales_acc, "Out-domain CommonsenseQA Accuracy")
 

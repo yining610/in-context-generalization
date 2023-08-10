@@ -17,8 +17,8 @@ MODEL_NAME="llama2-7b"
 MODEL_TYPE="llama"
 MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 # data
-DATA_NAMES="commonsenseqa"
-DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
+DATA_NAMES="gsm8k"
+DATA_DIR="/scratch/ylu130/processed_data/gsm8k"
 NUM_EVL=1000
 NUM_WORKERS=0
 # generation
@@ -27,7 +27,7 @@ TEMPERATURE=1
 # hp
 BATCH_SIZE=5
 SEED=42
-OUT_DOMAIN_TASK_NAME="gsm8k"
+OUT_DOMAIN_TASK_NAME="commonsenseqa"
 
 OPTS=""
 # model
@@ -67,7 +67,7 @@ echo "PYTHONPATH=${PYTHONPATH}"
 
 for RATIONALE in "True" "False"
 do
-    for NUM_OUTDOMAIN in 1 2 3 4 5
+    for NUM_OUTDOMAIN in 1 2 3 4 5 6 7 8
     do  
         OPTS_BACKUP=${OPTS}
         OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
