@@ -11,20 +11,23 @@ from parse_dataset import parse
 def completions_with_backoff(**kwargs):
     return openai.ChatCompletion.create(**kwargs)
 
-def generate_rationales(args, questions):
+def generate_rationales(args, questions, rationales):
     if len(questions) == 0:
         return None
-    rationals = []
-    for question in questions:
-        prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer. Split each step by new line.\n" + question
-        messages = [{"role": "user", "content": prompt}]
-        res = completions_with_backoff(model="gpt-4", 
-                                       messages=messages,
-                                       temperature=args.temperature,
-                                       max_tokens=args.max_length,
-                                       )
-        rationals.append(res["choices"][0]["message"]["content"])
-    return rationals
+    if rationales[0] is None: # no rationales provided
+        rationales = []
+        for question in questions:
+            prompt = "Below is a question provided with the answer. Write intermediate reasoning steps to explain how you get the answer. Split each step by new line.\n" + question
+            messages = [{"role": "user", "content": prompt}]
+            res = completions_with_backoff(model="gpt-4", 
+                                           messages=messages,
+                                           temperature=args.temperature,
+                                           max_tokens=args.max_length,
+                                           )
+            rationales.append(res["choices"][0]["message"]["content"])
+        return rationales
+    else:
+        return rationales
         
 def main():
     args = get_args()
@@ -68,25 +71,27 @@ def main():
     # exclude indomain_examples from data
     data = [d for d in data if d not in indomain_examples] if args.num_in_domain > 0 else data
 
-    indomain_questions_answer_pair, indomain_questions, indomain_answers = [], [], []
-    outdomain_questions_answer_pair, outdomain_questions, outdomain_answers = [], [], []
+    indomain_questions_answer_pair, indomain_questions, indomain_answers, indomain_rationales = [], [], [], []
+    outdomain_questions_answer_pair, outdomain_questions, outdomain_answers, outdomain_rationales = [], [], [], []
 
     for line in indomain_examples:
-        question, gold_answer, question_with_answer = parse(args.data_name, line)
+        question, gold_answer, question_with_answer, rationales = parse(args.data_name, line)
         indomain_questions_answer_pair.append(question_with_answer)
         indomain_questions.append(question)
         indomain_answers.append(gold_answer)
+        indomain_rationales.append(rationales)
     for line in outdomain_examples:
-        question, gold_answer, question_with_answer = parse(args.out_domain_data_name, line)
+        question, gold_answer, question_with_answer, rationales = parse(args.out_domain_data_name, line)
         outdomain_questions_answer_pair.append(question_with_answer)
         outdomain_questions.append(question)
         outdomain_answers.append(gold_answer)
+        outdomain_rationales.append(rationales)
     
 
     indomain_demonstrations, outdomain_demonstrations = "", ""
     if args.rationales:
-        indomain_rationales = generate_rationales(args, indomain_questions_answer_pair)
-        outdomain_rationales = generate_rationales(args, outdomain_questions_answer_pair)
+        indomain_rationales = generate_rationales(args, indomain_questions_answer_pair, indomain_rationales)
+        outdomain_rationales = generate_rationales(args, outdomain_questions_answer_pair, outdomain_rationales)
         if indomain_rationales:
             indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationales, indomain_answers)])
         if outdomain_rationales:
@@ -103,7 +108,7 @@ def main():
         demonstration = indomain_demonstrations + "\n\n" + outdomain_demonstrations
 
     for line in data:
-        question, gold_answer, _ = parse(args.data_name, line)
+        question, gold_answer, _, _ = parse(args.data_name, line)
         json_file.write(json.dumps({
             "prompt": template.format(instruction=instruction, 
                                       demonstration=demonstration,

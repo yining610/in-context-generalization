@@ -64,9 +64,10 @@ export PYTHONPATH=${BASE_PATH}
 export CUDA_VISIBLE_DEVICES=6,7,8,9
 
 echo "PYTHONPATH=${PYTHONPATH}"
-for RATIONALE in "True"
+
+for RATIONALE in "True" "False"
 do
-    for NUM_OUTDOMAIN in 6
+    for NUM_OUTDOMAIN in 6 7 8
     do  
         OPTS_BACKUP=${OPTS}
         OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
