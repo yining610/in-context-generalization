@@ -13,55 +13,43 @@ def get_folders(path):
             folders.append(folder)
     return folders
 
-def plot(x, y1, y2, title, y_label="Accuracy"):
-    # Set Seaborn style and color palette
-    sns.set(style="whitegrid", palette="deep")
-
-    # Create a line plot with markers
-    plt.figure(figsize=(8, 6))
-    sns.lineplot(x=x, y=y1, marker="o", label="with rationales")
-    sns.lineplot(x=x, y=y2, marker="s", label="without rationales")
-
-    # Set plot labels and title
-    plt.xlabel("Number of Demonstrations")
-    plt.ylabel(y_label)
-    plt.title(title)
-
-    # Show legend
-    plt.legend()
-
-    # Show blue grid background
-    sns.despine(left=True)
-    plt.grid(True, color='0.8', linestyle='--', linewidth=1)
-
-    # Show the plot
+def plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
+    # using seaborn to draw the lineplot, where the x axis is the number of demonstrations and the y axis is the accuracy
+    # draw in an professional style used for academic paper
+    sns.set(style="darkgrid", font_scale=1.5)
+    plt.figure(figsize=(10, 6))
+    ax = sns.lineplot(x="num_demonstrations", y="acc", 
+                      hue="rationales", style="rationales",
+                      data=results, markers=True, dashes=False,
+                      palette=sns.color_palette("Set1", n_colors=2, desat=.5)
+                      )
+    ax.set_title(title)
+    ax.set_ylabel(y_label)
     plt.show()
+
 
 def compute_metric(path, metric_fn):
     folders = get_folders(path)
 
-    with_rationales_acc = pd.DataFrame(columns=["num_demonstrations", "seed", "acc"])
-    without_rationales_acc = pd.DataFrame(columns=["num_demonstrations", "seed", "acc"])
+    results = {"num_demonstrations": [], "seed": [], "acc": [], "rationales": []}
 
     for folder in folders:
-        seed = folder.split("-")[-2][1]
-        num_demonstrations = folder.split("-")[0][1]
+        results["num_demonstrations"].append(int(folder.split("-")[0][1:]))
+        results["seed"].append(int(folder.split("-")[-2][1:]))
         if "True" in folder:
-            with_rationales_acc = with_rationales_acc.append({"num_demonstrations": num_demonstrations, "seed": seed, "acc": metric_fn(os.path.join(path, folder))}, ignore_index=True)
+            results["rationales"].append("With Rationales")
         else:
-            without_rationales_acc = without_rationales_acc.append({"num_demonstrations": num_demonstrations, "seed": seed, "acc": metric_fn(os.path.join(path, folder))}, ignore_index=True)
+            results["rationales"].append("Without Rationales")
+        results['acc'].append(metric_fn(os.path.join(path, folder)))
 
-    
+    df = pd.DataFrame(results)
+    df.sort_values(by=["num_demonstrations", "seed"], inplace=True, ignore_index=True)
 
-    if "in-domain" in path:
-        without_rationales_acc.
-    
-
-    return num_demonstrations, with_rationales, without_rationales
+    return df
 
 path = "./results/llama2-7b/commonsenseqa/out-domain"
-num_demonstrations, with_rationales_acc, without_rationales_acc = compute_metric(path, compute_mc_acc)
-plot(num_demonstrations, with_rationales_acc, without_rationales_acc, "Out-domain CommonsenseQA Accuracy")
+acc_results = compute_metric(path, compute_mc_acc)
+plot(acc_results, "Out-domain CommonsenseQA Accuracy")
 
 
 num_demonstrations, with_rationales_rougeL, without_rationales_rougeL = compute_metric(path, compute_rouge)
