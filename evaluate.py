@@ -40,27 +40,26 @@ def plot(x, y1, y2, title, y_label="Accuracy"):
 def compute_metric(path, metric_fn):
     folders = get_folders(path)
 
-    with_rationales, without_rationales = [], []
+    with_rationales_acc = pd.DataFrame(columns=["num_demonstrations", "seed", "acc"])
+    without_rationales_acc = pd.DataFrame(columns=["num_demonstrations", "seed", "acc"])
 
     for folder in folders:
+        seed = folder.split("-")[-2][1]
+        num_demonstrations = folder.split("-")[0][1]
         if "True" in folder:
-            with_rationales.append((int(folder.split("-")[0][1]),metric_fn(os.path.join(path, folder))))
+            with_rationales_acc = with_rationales_acc.append({"num_demonstrations": num_demonstrations, "seed": seed, "acc": metric_fn(os.path.join(path, folder))}, ignore_index=True)
         else:
-            without_rationales.append((int(folder.split("-")[0][1]),metric_fn(os.path.join(path, folder))))
+            without_rationales_acc = without_rationales_acc.append({"num_demonstrations": num_demonstrations, "seed": seed, "acc": metric_fn(os.path.join(path, folder))}, ignore_index=True)
 
-    with_rationales.sort(key=lambda x: x[0])
-    without_rationales.sort(key=lambda x: x[0])
-
-    num_demonstrations = [x[0] for x in with_rationales]
-    with_rationales = [x[1] for x in with_rationales]
-    without_rationales = [x[1] for x in without_rationales]
+    
 
     if "in-domain" in path:
-        without_rationales.insert(0, with_rationales[0])
+        without_rationales_acc.
+    
 
     return num_demonstrations, with_rationales, without_rationales
 
-path = "./results/llama2-7b/commonsenseqa/in-domain"
+path = "./results/llama2-7b/commonsenseqa/out-domain"
 num_demonstrations, with_rationales_acc, without_rationales_acc = compute_metric(path, compute_mc_acc)
 plot(num_demonstrations, with_rationales_acc, without_rationales_acc, "Out-domain CommonsenseQA Accuracy")
 
@@ -69,3 +68,7 @@ num_demonstrations, with_rationales_rougeL, without_rationales_rougeL = compute_
 plot(num_demonstrations, with_rationales_rougeL, without_rationales_rougeL, "Out-domain CommonsenseQA ROUGE", y_label="ROUGE")
 
 # Note: RuntimeError: probability tensor contains either `inf`, `nan` or element < 0 -> Probability distribution has been messed up
+
+
+x = "o1-gsm8k-s2-rTrue"
+x.split("-")[0][1]

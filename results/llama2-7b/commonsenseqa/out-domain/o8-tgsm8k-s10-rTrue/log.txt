@@ -1,0 +1,4 @@
+
+
+============================== EXP at 2023-08-11 08:12:17 ==============================
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 2.7424} | lm_loss nan | avg. gen lenth: 316.968

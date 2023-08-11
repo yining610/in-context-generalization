@@ -5,3 +5,4 @@ name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 6.0345} | lm_loss 8.3952 | 
 
 
 ============================== EXP at 2023-08-10 18:32:39 ==============================
+name: commonsenseqa | {'exact_match': 0.4, 'rougeL': 5.3955} | lm_loss 7.4626 | avg. gen lenth: 133.256
