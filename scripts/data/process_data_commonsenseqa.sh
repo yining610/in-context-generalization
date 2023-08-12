@@ -8,7 +8,7 @@ do
     do  
         for outdomain in 0
         do  
-            echo "Processing commonsenseqa with ${indomain} in-domain examples and ${outdomain} out-domain examples with rationales"
+            echo "Processing commonsenseqa with ${indomain} in-domain examples and ${outdomain} ${OUT_DOMAIN_NAME} out-domain examples with rationales"
             PYTHONPATH=${BASE_PATH} python3 ${BASE_PATH}/data_utils/process_data_commonsenseqa.py \
                 --data-dir ${DATA_PATH}/data/commonsenseqa/ \
                 --processed-data-dir ${DATA_PATH}/processed_data/commonsenseqa/ \
