@@ -20,8 +20,7 @@ def plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
     plt.figure(figsize=(10, 6))
     ax = sns.lineplot(x="num_demonstrations", y="acc", 
                       hue="rationales", style="rationales",
-                      data=results, markers=True, dashes=False,
-                      palette=sns.color_palette("Set1", n_colors=2, desat=.5)
+                      data=results, markers=True, dashes=False
                       )
     ax.set_title(title)
     ax.set_ylabel(y_label)
@@ -47,9 +46,9 @@ def compute_metric(path, metric_fn):
 
     return df
 
-path = "./results/llama2-7b/commonsenseqa/out-domain"
+path = "./results/llama2-7b/commonsenseqa/in-domain"
 acc_results = compute_metric(path, compute_mc_acc)
-plot(acc_results, "Out-domain CommonsenseQA Accuracy")
+plot(acc_results, "In-domain CommonsenseQA Accuracy")
 
 
 num_demonstrations, with_rationales_rougeL, without_rationales_rougeL = compute_metric(path, compute_rouge)
