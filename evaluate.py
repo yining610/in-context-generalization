@@ -44,12 +44,6 @@ def compute_metric(result_path: str, model_path: str, data_path: str, data_name:
 
     return df
 
-
-result_path = "./results/llama2-7b/commonsenseqa/out-domain"
-model_path = "/scratch/ylu130/model/llama-2-7b/"
-data_path = "/scratch/ylu130/processed_data/commonsenseqa/out-domain"
-acc_results = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
-
 def demo_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
     """Lineplot: x axis is the number of demonstrations and the y axis is the accuracy
        plot the graph in a professional way for academic paper
@@ -79,19 +73,26 @@ def demo_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
 
 def token_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
     """
-    Lineplot: x axis is the number of tokens in the demonstration and the y axis is the accuracy
+    draw smoothed line plot for each rationales: x axis is the number of tokens in the demonstration and the y axis is the accuracy
     """
     sns.set(style="darkgrid", font_scale=1.5)
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(12, 6))
     ax = sns.lineplot(x="tokens", y="acc", 
                       hue="rationales", style="rationales",
-                      data=results, markers=True, dashes=False
+                      data=results, markers=True, dashes=False, 
+                      markersize=10
                       )
     ax.set_title(title)
     ax.set_ylabel(y_label)
     plt.show()
 
+result_path = "./results/llama2-7b/commonsenseqa/out-domain"
+model_path = "/scratch/ylu130/model/llama-2-7b/"
+data_path = "/scratch/ylu130/processed_data/commonsenseqa/out-domain"
+acc_results = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+
 demo_plot(acc_results, "Out-domain CommonsenseQA Accuracy")
 token_plot(acc_results, "Out-domain CommonsenseQA Accuracy")
 
 # Note: RuntimeError: probability tensor contains either `inf`, `nan` or element < 0 -> Probability distribution has been messed
+
