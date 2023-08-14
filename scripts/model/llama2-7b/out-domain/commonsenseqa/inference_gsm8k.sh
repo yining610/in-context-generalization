@@ -65,9 +65,9 @@ echo "PYTHONPATH=${PYTHONPATH}"
 
 for SEED in 1 10 20 30 40 50 60
 do 
-    for RATIONALE in "False"
+    for RATIONALE in "True" "False"
     do
-        for NUM_OUTDOMAIN in 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+        for NUM_OUTDOMAIN in 1 2 3 4 5 6 7 8 9
         do  
             OPTS_BACKUP=${OPTS}
             OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
