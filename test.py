@@ -149,3 +149,5 @@ print(data[0]["prompt"])
 
 # tokenizer = AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
 # print(len(tokenizer(text)["input_ids"]))
+
+ 
