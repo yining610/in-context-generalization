@@ -92,8 +92,27 @@ model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/commonsenseqa/out-domain"
 acc_results = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
 
-demo_plot(acc_results, "Out-domain CommonsenseQA Accuracy", limits=9)
-token_plot(acc_results, "Out-domain CommonsenseQA Accuracy")
+demo_plot(acc_results, "Out-domain Commonsenseqa Accuracy", limits=9)
+token_plot(acc_results, "Out-domain Commonsenseqa Accuracy")
+
+
+result_path = "./results/llama2-7b/commonsenseqa/in-domain"
+model_path = "/scratch/ylu130/model/llama-2-7b/"
+data_path = "/scratch/ylu130/processed_data/commonsenseqa/in-domain"
+acc_results = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+
+demo_plot(acc_results, "In-domain Commonsenseqa Accuracy", limits=9)
+token_plot(acc_results, "In-domain Commonsenseqa Accuracy")
+
+
+result_path = "./results/llama2-7b/gsm8k/out-domain"
+model_path = "/scratch/ylu130/model/llama-2-7b/"
+data_path = "/scratch/ylu130/processed_data/gsm8k/out-domain"
+acc_results = compute_metric(result_path, model_path, data_path, "gsm8k", compute_mc_acc)
+
+demo_plot(acc_results, "Out-domain GSM8K Accuracy", limits=9)
+token_plot(acc_results, "Out-domain GSM8K Accuracy")
+
 
 # Note: RuntimeError: probability tensor contains either `inf`, `nan` or element < 0 -> Probability distribution has been messed
 
