@@ -97,6 +97,9 @@ def get_args():
                 "mixed-domain",
                 (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"),
             )
+        
+        if args.max_prompt_length != 2048:
+            save_path += f"-m{args.max_prompt_length}"
 
         args.save = save_path
 

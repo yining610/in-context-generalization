@@ -1,6 +1,6 @@
 #! /bin/bash
 MASTER_ADDR=localhost
-MASTER_PORT=${2-2113}
+MASTER_PORT=${2-29501}
 NNODES=1
 NODE_RANK=0
 GPUS_PER_NODE=${3-4}
@@ -57,15 +57,15 @@ export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-export CUDA_VISIBLE_DEVICES=2,3,4,5
+export CUDA_VISIBLE_DEVICES=6,7,8,9
 
 echo "PYTHONPATH=${PYTHONPATH}"
 
 for SEED in 1 10 20 30 40 50 60
 do 
-    for RATIONALE in "True" "False"
+    for RATIONALE in "True"
     do
-        for NUM_INDOMAIN in 0 1 2 3 4
+        for NUM_INDOMAIN in 5 6 7 8 9
         do  
             if { [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]; } || { [ ${NUM_INDOMAIN} == 0 ] && [ ${SEED} != 1 ]; };
             then
