@@ -48,7 +48,7 @@ def compute_metric(result_path: str, model_path: str, data_path: str, data_name:
 
     return df
 
-def demo_plot(results: pd.DataFrame, title: str, y_label="Accuracy", limits=None):
+def demo_plot(results: pd.DataFrame, title: str, y_label="Accuracy", limits=None, show_tokens=True):
     """Lineplot: x axis is the number of demonstrations and the y axis is the accuracy
        plot the graph in a professional way for academic paper
     """
@@ -71,15 +71,16 @@ def demo_plot(results: pd.DataFrame, title: str, y_label="Accuracy", limits=None
                           markersize=10
                          )
 
-    # label each point with the number of tokens
-    for i in range(len(results_tokens)):
-        ax.text(results_tokens.iloc[i]['num_demonstrations'], 
-                results_tokens.iloc[i]['acc'], 
-                results_tokens.iloc[i]['tokens'], 
-                horizontalalignment='left', 
-                size='medium', 
-                color='black', 
-                weight='semibold')
+    if show_tokens:
+        # label each point with the number of tokens
+        for i in range(len(results_tokens)):
+            ax.text(results_tokens.iloc[i]['num_demonstrations'], 
+                    results_tokens.iloc[i]['acc'], 
+                    results_tokens.iloc[i]['tokens'], 
+                    horizontalalignment='left', 
+                    size='medium', 
+                    color='black', 
+                    weight='semibold')
 
     ax.set_title(title)
     ax.set_ylabel(y_label)
@@ -110,31 +111,35 @@ def token_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
 result_path = "./results/llama2-7b/commonsenseqa/out-domain"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/commonsenseqa/out-domain"
-acc_results = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+acc_results1 = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
 
-demo_plot(acc_results, "Out-domain Commonsenseqa Accuracy", limits=9)
-token_plot(acc_results, "Out-domain Commonsenseqa Accuracy")
+demo_plot(acc_results1, "Out-domain Commonsenseqa Accuracy", limits=9)
+token_plot(acc_results1, "Out-domain Commonsenseqa Accuracy")
 
 
 result_path = "./results/llama2-7b/commonsenseqa/in-domain"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/commonsenseqa/in-domain"
-acc_results = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+acc_results2 = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
 
-demo_plot(acc_results, "In-domain Commonsenseqa Accuracy", limits=9)
-token_plot(acc_results, "In-domain Commonsenseqa Accuracy")
+demo_plot(acc_results2, "In-domain Commonsenseqa Accuracy", limits=9)
+token_plot(acc_results2, "In-domain Commonsenseqa Accuracy")
 
+# combine the results
+acc_results1['num_demonstrations'] = acc_results1['num_demonstrations'].apply(lambda x: -x)
+acc_results = pd.concat([acc_results1, acc_results2], ignore_index=True)
+demo_plot(acc_results, "Combined Commonsenseqa Accuracy", limits=9, show_tokens=False)
 
 result_path = "./results/llama2-7b/gsm8k/out-domain"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/gsm8k/out-domain"
-acc_results = compute_metric(result_path, model_path, data_path, "gsm8k", compute_mc_acc)
+acc_results3 = compute_metric(result_path, model_path, data_path, "gsm8k", compute_mc_acc)
 
-demo_plot(acc_results[acc_results['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy", limits=9)
-token_plot(acc_results[acc_results['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy")
+demo_plot(acc_results3[acc_results3['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy", limits=9)
+token_plot(acc_results3[acc_results3['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy")
 
-demo_plot(acc_results, "Out-domain GSM8K Accuracy", limits=9)
-token_plot(acc_results, "Out-domain GSM8K Accuracy")
+demo_plot(acc_results3, "Out-domain GSM8K Accuracy", limits=9)
+token_plot(acc_results3, "Out-domain GSM8K Accuracy")
 
 
 
