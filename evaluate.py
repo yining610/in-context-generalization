@@ -16,7 +16,7 @@ def get_folders(path):
     return folders
 
 
-def compute_metric(result_path: str, model_path: str, data_path: str, data_name: str, metric_fn: callable):
+def get_results(result_path: str, model_path: str, data_path: str, data_name: str, metric_fn: callable) -> pd.DataFrame:
     folders = get_folders(result_path)
 
     results = {"num_demonstrations": [], "seed": [], "rationales": [], "tokens":[], "acc": [], "max_prompt_len": []}
@@ -108,19 +108,19 @@ def token_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
     ax.set_ylabel(y_label)
     plt.show()
 
-result_path = "./results/llama2-7b/commonsenseqa/out-domain"
+result_path = "./results_old/llama2-7b/commonsenseqa/out-domain"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/commonsenseqa/out-domain"
-acc_results1 = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+acc_results1 = get_results(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
 
 demo_plot(acc_results1, "Out-domain Commonsenseqa Accuracy", limits=9)
 token_plot(acc_results1, "Out-domain Commonsenseqa Accuracy")
 
 
-result_path = "./results/llama2-7b/commonsenseqa/in-domain"
+result_path = "./results_old/llama2-7b/commonsenseqa/in-domain"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/commonsenseqa/in-domain"
-acc_results2 = compute_metric(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+acc_results2 = get_results(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
 
 demo_plot(acc_results2, "In-domain Commonsenseqa Accuracy", limits=9)
 token_plot(acc_results2, "In-domain Commonsenseqa Accuracy")
@@ -130,10 +130,10 @@ acc_results1['num_demonstrations'] = acc_results1['num_demonstrations'].apply(la
 acc_results = pd.concat([acc_results1, acc_results2], ignore_index=True)
 demo_plot(acc_results, "Combined Commonsenseqa Accuracy", limits=9, show_tokens=False)
 
-result_path = "./results/llama2-7b/gsm8k/out-domain"
+result_path = "./results_old/llama2-7b/gsm8k/out-domain"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
 data_path = "/scratch/ylu130/processed_data/gsm8k/out-domain"
-acc_results3 = compute_metric(result_path, model_path, data_path, "gsm8k", compute_mc_acc)
+acc_results3 = get_results(result_path, model_path, data_path, "gsm8k", compute_mc_acc)
 
 demo_plot(acc_results3[acc_results3['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy", limits=9)
 token_plot(acc_results3[acc_results3['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy")
