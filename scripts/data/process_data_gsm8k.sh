@@ -4,10 +4,14 @@ OUT_DOMAIN_NAME=${4-"commonsenseqa"}
 
 for seed in 1 10 20 30 40 50 60
 do
-    for indomain in 0
+    for indomain in 0 1 2 3 4 5 6 7 8 9 
     do  
-        for outdomain in 1 2 3 4 5 6 7 8 9
+        for outdomain in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
         do  
+            if [ ${indomain} -ne 0 ] && [ ${outdomain} -ne 0 ]
+            then
+                continue
+            fi
             echo "Processing gsm8k with ${indomain} in-domain examples and ${outdomain} ${OUT_DOMAIN_NAME} out-domain examples with rationales"
             PYTHONPATH=${BASE_PATH} python3 ${BASE_PATH}/data_utils/process_data_gsm8k.py \
                 --data-dir ${DATA_PATH}/data/gsm8k/ \

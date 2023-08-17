@@ -56,9 +56,12 @@ def main():
     with open(os.path.join(args.out_domain_data_dir, "train.jsonl"), "r") as f:
         out_domain_data = [json.loads(line) for line in f.readlines()]
 
+    # template = (
+    #     "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
+    #     "### Instruction:{instruction}\n\n### Demonstration:\n{demonstration}\n\n### Input:{input}\n\n### Response:"
+    # )
     template = (
-        "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
-        "### Instruction:{instruction}\n\n### Demonstration:\n{demonstration}\n\n### Input:{input}\n\n### Response:"
+        "### Instruction:{instruction}\n\n{demonstration}\n\nInput:{input}\nOutput:"
     )
 
     instruction = "Answer the following multiple choice question."
@@ -94,12 +97,12 @@ def main():
         indomain_rationales = generate_rationales(args, indomain_questions_answer_pair, indomain_rationales)
         outdomain_rationales = generate_rationales(args, outdomain_questions_answer_pair, outdomain_rationales)
         if indomain_rationales:
-            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationales, indomain_answers)])
+            indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nOutput: {r.strip()}\nSo the final answer is {a.strip()}" for q, r, a in zip(indomain_questions, indomain_rationales, indomain_answers)])
         if outdomain_rationales:
-            outdomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nRationales: {r.strip()}\nAnswer: {a.strip()}" for q, r, a in zip(outdomain_questions, outdomain_rationales, outdomain_answers)])
+            outdomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nOutput: {r.strip()}\nSo the final answer is {a.strip()}" for q, r, a in zip(outdomain_questions, outdomain_rationales, outdomain_answers)])
     else:
-        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
-        outdomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nAnswer: {a.strip()}" for q, a in zip(outdomain_questions, outdomain_answers)])
+        indomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nOutput: {a.strip()}" for q, a in zip(indomain_questions, indomain_answers)])
+        outdomain_demonstrations = "\n\n".join([f"Input: {q.strip()}\nOutput: {a.strip()}" for q, a in zip(outdomain_questions, outdomain_answers)])
 
     if indomain_demonstrations == "":
         demonstration = outdomain_demonstrations

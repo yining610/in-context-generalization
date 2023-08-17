@@ -10,6 +10,6 @@ def parse(data_name, line):
         question = line["question"]
         gold_answer = line["answer"].split("####")[1]
         question_with_answer = question + " The answer is " + gold_answer
-        rationales = line["answer"]
+        rationales = line["answer"].split("####")[0]
     
     return question, gold_answer, question_with_answer, rationales
