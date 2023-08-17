@@ -1,9 +1,9 @@
 #! /bin/bash
 MASTER_ADDR=localhost
-MASTER_PORT=${2-29501}
+MASTER_PORT=29501
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=${3-4}
+GPUS_PER_NODE=4
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -12,7 +12,7 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --master_port $MASTER_PORT"
 
 # model
-BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
+BASE_PATH="/home/ylu130/workspace/in-context-generalization"
 MODEL_NAME="llama2-7b"
 MODEL_TYPE="llama"
 MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
@@ -61,11 +61,15 @@ export CUDA_VISIBLE_DEVICES=6,7,8,9
 
 echo "PYTHONPATH=${PYTHONPATH}"
 
+NUM_INDOMAIN_LIST=${1-"0 1 2 3 4 5 6 7 8 9"}
+RATIONALE_LIST=${2-"True False"}
+MAX_PROMPT_LENGTH=${3-2048}
+
 for SEED in 1 10 20 30 40 50 60
 do 
-    for RATIONALE in "True"
+    for RATIONALE in $RATIONALE_LIST
     do
-        for NUM_INDOMAIN in 5 6 7 8 9
+        for NUM_INDOMAIN in $NUM_INDOMAIN_LIST
         do  
             if { [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]; } || { [ ${NUM_INDOMAIN} == 0 ] && [ ${SEED} != 1 ]; };
             then
@@ -74,6 +78,7 @@ do
             OPTS_BACKUP=${OPTS}
             OPTS_BACKUP+=" --data-dir ${DATA_DIR}/in-domain/i${NUM_INDOMAIN}-s${SEED}-r${RATIONALE}"
             OPTS_BACKUP+=" --seed ${SEED}"
+            OPTS_BACKUP+=" --max-prompt-length ${MAX_PROMPT_LENGTH}"
             if [ ${RATIONALE} == "True" ]
             then
                 OPTS_BACKUP+=" --rationales"
