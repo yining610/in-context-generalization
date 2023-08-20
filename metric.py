@@ -27,7 +27,6 @@ def normalize_answer(s):
 def exact_match(prediction, ground_truth, xlingual=False):
     return (normalize_answer(prediction) == normalize_answer(ground_truth))
 
-
 def rouge(prediction, ground_truth, xlingual=False):
     scorer = default_rouge_scorer
     scores = scorer.score(prediction=prediction, target=ground_truth)
@@ -43,7 +42,6 @@ def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual
 
 
 def compute_metrics(predictions, references, xlingual=False):
-    # assert len(predictions) == len(references), f"# of predictions {len(predictions)} doesn't match # of references {len(references)}."
     
     min_length = min(len((predictions)), len(references))
     predictions = predictions[:min_length]
@@ -63,7 +61,6 @@ def compute_metrics(predictions, references, xlingual=False):
     metrics = {"exact_match": em, "rougeL": rougeL}
     metrics = {k: round(v, 4) for k, v in metrics.items()}
     return metrics
-
 
 def match_multiplechoice_answer(answer, text):
     if text is None:

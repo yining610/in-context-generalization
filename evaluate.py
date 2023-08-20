@@ -1,4 +1,4 @@
-from metric import rouge, compute_mc_acc, compute_rouge
+from metric import rouge, compute_mc_acc, compute_math_acc
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
@@ -108,39 +108,46 @@ def token_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
     ax.set_ylabel(y_label)
     plt.show()
 
-result_path = "./results_old/llama2-7b/commonsenseqa/out-domain"
+base_path = "./results/llama2-7b"
+base_path_2 = "/scratch/ylu130/processed_data"
 model_path = "/scratch/ylu130/model/llama-2-7b/"
-data_path = "/scratch/ylu130/processed_data/commonsenseqa/out-domain"
-acc_results1 = get_results(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
+
+# CommonsenseQA out-domain results
+acc_results1 = get_results(result_path=os.path.join(base_path, "commonsenseqa/out-domain"), 
+                           model_path=model_path, 
+                           data_path=os.path.join(base_path_2, "commonsenseqa/out-domain"), 
+                           data_name="commonsenseqa", 
+                           metric_fn=compute_mc_acc)
 
 demo_plot(acc_results1, "Out-domain Commonsenseqa Accuracy", limits=9)
 token_plot(acc_results1, "Out-domain Commonsenseqa Accuracy")
 
-
-result_path = "./results_old/llama2-7b/commonsenseqa/in-domain"
-model_path = "/scratch/ylu130/model/llama-2-7b/"
-data_path = "/scratch/ylu130/processed_data/commonsenseqa/in-domain"
-acc_results2 = get_results(result_path, model_path, data_path, "commonsenseqa", compute_mc_acc)
-
+# CommonsenseQA in-domain results
+acc_results2 = get_results(result_path=os.path.join(base_path, "commonsenseqa/in-domain"), 
+                           model_path=model_path, 
+                           data_path=os.path.join(base_path_2, "commonsenseqa/in-domain"), 
+                           data_name="commonsenseqa", 
+                           metric_fn=compute_mc_acc)
 demo_plot(acc_results2, "In-domain Commonsenseqa Accuracy", limits=9)
 token_plot(acc_results2, "In-domain Commonsenseqa Accuracy")
 
-# combine the results
+# CommonsenseQA overall results
 acc_results1['num_demonstrations'] = acc_results1['num_demonstrations'].apply(lambda x: -x)
 acc_results = pd.concat([acc_results1, acc_results2], ignore_index=True)
-demo_plot(acc_results, "Combined Commonsenseqa Accuracy", limits=9, show_tokens=False)
+demo_plot(acc_results, "Commonsenseqa Overall Accuracy", limits=9, show_tokens=False)
 
-result_path = "./results_old/llama2-7b/gsm8k/out-domain"
-model_path = "/scratch/ylu130/model/llama-2-7b/"
-data_path = "/scratch/ylu130/processed_data/gsm8k/out-domain"
-acc_results3 = get_results(result_path, model_path, data_path, "gsm8k", compute_mc_acc)
+# GSM8K out-domain results
+acc_results3 = get_results(result_path=os.path.join(base_path, "gsm8k/out-domain"),
+                            model_path=model_path,
+                            data_path=os.path.join(base_path_2, "gsm8k/out-domain"),
+                            data_name="gsm8k",
+                            metric_fn=compute_math_acc)
 
 demo_plot(acc_results3[acc_results3['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy", limits=9)
 token_plot(acc_results3[acc_results3['max_prompt_len'] == 2048], "Out-domain GSM8K Accuracy")
 
 demo_plot(acc_results3, "Out-domain GSM8K Accuracy", limits=9)
 token_plot(acc_results3, "Out-domain GSM8K Accuracy")
-
 
 
 # Note: RuntimeError: probability tensor contains either `inf`, `nan` or element < 0 -> Probability distribution has been messed
