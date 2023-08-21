@@ -58,6 +58,7 @@ def demo_plot(results: pd.DataFrame, title: str, y_label="Accuracy", limits=None
     sns.set(style="darkgrid", font_scale=1.5)
     plt.figure(figsize=(14, 6))
 
+    # if the max prompt length is the same, then we can plot the graph with style as hue
     if len(results['max_prompt_len'].unique()) == 1:
         ax = sns.lineplot(x="num_demonstrations", y="acc", 
                           hue="rationales", style="rationales",
