@@ -61,7 +61,6 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     all_query_ids = []
     all_response_ids = []
     all_rest_ids = []
-    all_lm_losses = []
     
     generation_config = GenerationConfig (
         do_sample=args.do_sample,
@@ -89,28 +88,6 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             
             dataset.move_to_device(model_batch, no_model_batch, device)
 
-            all_ids = torch.cat([model_batch["input_ids"], no_model_batch["rest_ids"]], dim=-1)
-            input_ids = all_ids[:, :-1]
-            attention_mask = (input_ids != tokenizer.pad_token_id).long()
-            label_ids = all_ids[:, 1:]
-            label_ids = torch.masked_fill(label_ids, label_ids==tokenizer.pad_token_id, -100)
-            label_ids[:, :model_batch["input_ids"].size(1)-1] = -100  
-            if args.model_type in ["gpt2"]:
-                position_ids = (torch.cumsum(attention_mask, dim=-1) - 1) * attention_mask
-                out = model(input_ids=input_ids, position_ids=position_ids, attention_mask=attention_mask, return_dict=True)
-            else:
-                out = model(input_ids=input_ids, attention_mask=attention_mask, return_dict=True)
-            logits = out.logits
-            loss_mask = (label_ids != -100).float()
-            if args.model_parallel:
-                lm_loss = mpu.parallel_cross_entropy(logits, label_ids)
-                lm_loss = torch.sum(lm_loss * loss_mask, dim=-1) / torch.sum(loss_mask, dim=-1)
-            else:
-                loss_func = nn.CrossEntropyLoss(reduction="none")
-                lm_loss = loss_func(logits.view(-1, logits.size(-1)), label_ids.view(-1)).view(label_ids.size())
-                lm_loss = torch.sum(lm_loss * loss_mask, -1) / torch.sum(loss_mask, -1)
-            
-
             query_ids = model_batch["input_ids"]
             rest_ids = no_model_batch["rest_ids"]
             gen_out = model.generate(
@@ -119,16 +96,11 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
                 )           
             full_ids = gen_out.sequences
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
-            all_lm_losses.append(lm_loss)
             all_query_ids.extend(query_ids)
             all_response_ids.extend(response_ids)
             all_rest_ids.extend(rest_ids)
 
-    all_lm_losses = torch.cat(all_lm_losses)
-    mean_lm_loss = all_lm_losses.mean().item()
-        
     return (
-        mean_lm_loss,
         all_query_ids,
         all_response_ids,
         all_rest_ids)
@@ -136,7 +108,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
 
 def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
         
-    lm_loss, query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
+    query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
     answer_strs = tokenizer.batch_decode(rest_ids, skip_special_tokens=True)

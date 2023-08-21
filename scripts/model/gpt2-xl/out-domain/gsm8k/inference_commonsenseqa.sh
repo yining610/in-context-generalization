@@ -19,7 +19,7 @@ MODEL_PATH="/scratch/ylu130/model/gpt2-xl"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=1000
+NUM_EVL=20
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
@@ -65,7 +65,7 @@ echo "PYTHONPATH=${PYTHONPATH}"
 
 NUM_OUTDOMAIN_LIST=${1-"1 2 3 4 5 6 7 8 9"}
 RATIONALE_LIST=${2-"True False"}
-MAX_PROMPT_LENGTH=${3-2048}
+MAX_PROMPT_LENGTH=${3-1024}
 
 for SEED in 1 10 20 30 40 50 60
 do 
