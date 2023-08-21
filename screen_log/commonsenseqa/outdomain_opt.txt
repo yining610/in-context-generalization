@@ -1,0 +1,248 @@
+PYTHONPATH=/home/ylu130/workspace/in-context-generalization
+torchrun --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29500 /home/ylu130/workspace/in-context-generalization/inference.py --model-name opt-1.3b --model-type opt --model-path /scratch/ylu130/model/opt-1.3b --n-gpu 1 --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --batch-size 20 --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 2048 --rationales --num-out-domain 1
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+using world size: 1
+[2023-08-21 17:11:44,361] [INFO] [comm.py:657:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_name ................... opt-1.3b
+  model_type ................... opt
+  model_path ................... /scratch/ylu130/model/opt-1.3b
+  n_gpu ........................ 1
+  n_nodes ...................... 1
+  is_opensource ................ True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s1-rTrue
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 1
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 2048
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o1-tgsm8k-s1-rTrue
+  rationales ................... True
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  gradient_accumulation_steps .. 1
+  batch_size ................... 20
+  clip_grad .................... 1.0
+  seed ......................... 1
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 1
+Loading Data
+  0%|                                                                                                                                         | 0/9741 [00:00<?, ?it/s]  2%|██▍                                                                                                                          | 189/9741 [00:00<00:05, 1889.70it/s]  4%|████▉                                                                                                                        | 389/9741 [00:00<00:04, 1950.14it/s]  6%|███████▌                                                                                                                     | 590/9741 [00:00<00:04, 1975.68it/s]  8%|██████████▏                                                                                                                  | 793/9741 [00:00<00:04, 1994.10it/s] 10%|████████████▊                                                                                                                | 996/9741 [00:00<00:04, 2003.27it/s] 12%|███████████████▎                                                                                                            | 1201/9741 [00:00<00:04, 2018.27it/s] 14%|█████████████████▊                                                                                                          | 1404/9741 [00:00<00:04, 2018.89it/s] 16%|████████████████████▍                                                                                                       | 1607/9741 [00:00<00:04, 2019.99it/s] 19%|███████████████████████                                                                                                     | 1809/9741 [00:00<00:04, 1959.50it/s] 21%|█████████████████████████▌                                                                                                  | 2009/9741 [00:01<00:03, 1970.63it/s] 23%|████████████████████████████▏                                                                                               | 2212/9741 [00:01<00:03, 1986.46it/s] 25%|██████████████████████████████▊                                                                                             | 2416/9741 [00:01<00:03, 2001.66it/s] 27%|█████████████████████████████████▎                                                                                          | 2620/9741 [00:01<00:03, 2010.91it/s] 29%|███████████████████████████████████▉                                                                                        | 2822/9741 [00:01<00:03, 2010.55it/s] 31%|██████████████████████████████████████▌                                                                                     | 3026/9741 [00:01<00:03, 2019.04it/s] 33%|█████████████████████████████████████████                                                                                   | 3230/9741 [00:01<00:03, 2024.57it/s] 35%|███████████████████████████████████████████▋                                                                                | 3435/9741 [00:01<00:03, 2030.52it/s] 37%|██████████████████████████████████████████████▎                                                                             | 3639/9741 [00:01<00:03, 2030.51it/s] 40%|█████████████████████████████████████████████████▋                                                                          | 3906/9741 [00:01<00:02, 2221.79it/s] 43%|█████████████████████████████████████████████████████▋                                                                      | 4215/9741 [00:02<00:02, 2481.37it/s] 46%|█████████████████████████████████████████████████████████▍                                                                  | 4513/9741 [00:02<00:01, 2629.90it/s] 49%|████████████████████████████████████████████████████████████▊                                                               | 4777/9741 [00:02<00:02, 2142.75it/s] 52%|████████████████████████████████████████████████████████████████▊                                                           | 5087/9741 [00:02<00:01, 2388.58it/s] 55%|████████████████████████████████████████████████████████████████████▋                                                       | 5397/9741 [00:02<00:01, 2579.16it/s] 59%|████████████████████████████████████████████████████████████████████████▋                                                   | 5712/9741 [00:02<00:01, 2735.90it/s] 62%|████████████████████████████████████████████████████████████████████████████▋                                               | 6029/9741 [00:02<00:01, 2856.86it/s] 65%|████████████████████████████████████████████████████████████████████████████████▊                                           | 6345/9741 [00:02<00:01, 2942.43it/s] 68%|████████████████████████████████████████████████████████████████████████████████████▊                                       | 6661/9741 [00:02<00:01, 3004.42it/s] 72%|████████████████████████████████████████████████████████████████████████████████████████▊                                   | 6977/9741 [00:02<00:00, 3047.58it/s] 75%|████████████████████████████████████████████████████████████████████████████████████████████▊                               | 7295/9741 [00:03<00:00, 3085.66it/s] 78%|████████████████████████████████████████████████████████████████████████████████████████████████▊                           | 7606/9741 [00:03<00:00, 3036.71it/s] 81%|████████████████████████████████████████████████████████████████████████████████████████████████████▊                       | 7920/9741 [00:03<00:00, 3066.78it/s] 85%|████████████████████████████████████████████████████████████████████████████████████████████████████████▉                   | 8239/9741 [00:03<00:00, 3101.51it/s] 88%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▉               | 8555/9741 [00:03<00:00, 3116.15it/s] 91%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉           | 8869/9741 [00:03<00:00, 3122.66it/s] 94%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉       | 9187/9741 [00:03<00:00, 3138.31it/s] 98%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉   | 9502/9741 [00:03<00:00, 3140.82it/s]100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9741/9741 [00:03<00:00, 2512.88it/s]
+Load End
+Num instances: 1000
+[2023-08-21 17:11:59,343] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.8.0, git-hash=unknown, git-branch=unknown
+[2023-08-21 17:12:02,159] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-21 17:12:02,159] [INFO] [config.py:1008:print] DeepSpeedEngine configuration:
+[2023-08-21 17:12:02,159] [INFO] [config.py:1012:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-21 17:12:02,159] [INFO] [config.py:1012:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-21 17:12:02,159] [INFO] [config.py:1012:print]   amp_enabled .................. False
+[2023-08-21 17:12:02,159] [INFO] [config.py:1012:print]   amp_params ................... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   bfloat16_enabled ............. False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   checkpoint_tag_validation_enabled  True
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   checkpoint_tag_validation_fail  False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f8617a58a90>
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   communication_data_type ...... None
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   curriculum_enabled_legacy .... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   curriculum_params_legacy ..... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   data_efficiency_enabled ...... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   dataloader_drop_last ......... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   disable_allgather ............ False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   dump_state ................... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'min_scale': 1}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_enabled ........... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_layer_num ......... 0
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_max_iter .......... 100
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_stability ......... 1e-06
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_tol ............... 0.01
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   eigenvalue_verbose ........... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   elasticity_enabled ........... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   fp16_auto_cast ............... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   fp16_enabled ................. True
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   fp16_master_weights_and_gradients  False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   global_rank .................. 0
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   grad_accum_dtype ............. None
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   gradient_accumulation_steps .. 1
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   gradient_clipping ............ 1.0
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   gradient_predivide_factor .... 1.0
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   initial_dynamic_scale ........ 2048
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   load_universal_checkpoint .... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   loss_scale ................... 0
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   memory_breakdown ............. False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   monitor_config ............... <deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x7f8617a58970>
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   optimizer_legacy_fusion ...... False
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   optimizer_name ............... None
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   optimizer_params ............. None
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-21 17:12:02,160] [INFO] [config.py:1012:print]   pld_enabled .................. False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   pld_params ................... False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   prescale_gradients ........... False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   scheduler_name ............... None
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   scheduler_params ............. None
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   sparse_attention ............. None
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   sparse_gradients_enabled ..... False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   steps_per_print .............. 1
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   train_batch_size ............. 20
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   train_micro_batch_size_per_gpu  20
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   use_node_local_storage ....... False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   wall_clock_breakdown ......... False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   world_size ................... 1
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   zero_allow_untested_optimizer  True
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   zero_enabled ................. False
+[2023-08-21 17:12:02,161] [INFO] [config.py:1012:print]   zero_optimization_stage ...... 0
+[2023-08-21 17:12:02,161] [INFO] [config.py:997:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 20, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1
+}
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Emitting ninja build file /home/ylu130/.cache/torch_extensions/py39_cu113/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module utils...
+Time to load utils op: 0.44493556022644043 seconds
+Model mem
+ |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Active memory         |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |    2716 MB |    2716 MB |    2716 MB |       0 B  |
+|       from large pool |    2714 MB |    2714 MB |    2714 MB |       0 B  |
+|       from small pool |       2 MB |       2 MB |       2 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  211344 KB |  211384 KB |  605812 KB |  394468 KB |
+|       from large pool |  210552 KB |  210552 KB |  603768 KB |  393216 KB |
+|       from small pool |     792 KB |    2044 KB |    2044 KB |    1252 KB |
+|---------------------------------------------------------------------------|
+| Allocations           |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      99    |      99    |      99    |       0    |
+|       from large pool |      98    |      98    |      98    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      51    |      51    |      51    |       0    |
+|       from large pool |      50    |      50    |      50    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Evaluating commonsenseqa :   0%|                                                                                                                | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Mary had 89 stickers.  She used 3 large stickers on the front page of her journal and 7 stickers each to 6 other pages of her journal. How many stickers does Mary have remaining?
+Output: Mary added a total of 7 stickers/page * 6 pages= <<7*6=42>>42 stickers to the 6 other pages.
+In total, Mary added 3 large stickers + 42 stickers = <<3+42=45>>45 stickers to her journal.
+Since she started with 89 stickers, she now has 89 - 45 = <<89-45=44>>44 stickers left.
+So the final answer is 44
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o1-tgsm8k-s1-rTrue
+Evaluating commonsenseqa :   2%|██                                                                                                   | 1/50 [02:06<1:43:23, 126.61s/it]

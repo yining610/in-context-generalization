@@ -149,3 +149,12 @@
 
 # tokenizer = AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
 # print(len(tokenizer(text)["input_ids"]))
+
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b", cache_dir = "/scratch/ylu130/model-hf")
+model = AutoModelForCausalLM.from_pretrained("facebook/opt-1.3b", cache_dir = "/scratch/ylu130/model-hf")
+
+# save model
+model.save_pretrained("/scratch/ylu130/model/opt-1.3b")
+tokenizer.save_pretrained("/scratch/ylu130/model/opt-1.3b")
