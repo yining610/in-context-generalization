@@ -1,9 +1,7 @@
 from data_utils.prompt_datasets import PromptDataset
 from transformers import (
     GenerationConfig,
-    AutoModelForCausalLM,
     mpu,
-    AutoConfig,
     ParallelOPTForCausalLM,
     ParallelLlamaForCausalLM,
     ParallelGPTJForCausalLM,
@@ -85,9 +83,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
                 print_rank(tokenizer.decode(model_batch["input_ids"][0], skip_special_tokens=True))
                 print_rank("############### End ###############")
                 print_rank(f"Experiment Save Path: {args.save}")
-            
             dataset.move_to_device(model_batch, no_model_batch, device)
-
             query_ids = model_batch["input_ids"]
             rest_ids = no_model_batch["rest_ids"]
             gen_out = model.generate(
@@ -142,6 +138,6 @@ def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 
-    log_str = f"name: {args.data_name} | {gen_res} | lm_loss {round(lm_loss, 4)} | avg. gen lenth: {mean_gen_length}"
+    log_str = f"name: {args.data_name} | {gen_res} | avg. gen lenth: {mean_gen_length}"
     print_rank(log_str)
     save_rank(log_str, os.path.join(args.save, "log.txt"))

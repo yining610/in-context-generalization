@@ -91,7 +91,6 @@ class PromptDataset(Dataset):
         model_batch = {
             "input_ids": torch.ones(bs, max_prompt_length, dtype=torch.long) * self.pad_id,
             "attention_mask": torch.zeros(bs, max_prompt_length, dtype=torch.long),
-            # "position_ids": torch.zeros(bs, max_prompt_length, dtype=torch.long)
         }
         
         no_model_batch = {
@@ -103,7 +102,6 @@ class PromptDataset(Dataset):
             # left padding
             model_batch["input_ids"][i][-len(prompt):] = torch.tensor(prompt, dtype=torch.long)
             model_batch["attention_mask"][i][-len(prompt):] = 1
-            # model_batch["position_ids"][i][-len(prompt):] = torch.arange(len(prompt))
             no_model_batch["idx"][i] = idx
             no_model_batch["rest_ids"][i][:len(rest)] = torch.tensor(rest, dtype=torch.long)
         

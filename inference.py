@@ -41,8 +41,9 @@ torch.set_num_threads(4)
 
 def get_tokenizer(args):
     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
-    tokenizer.pad_token = tokenizer.eos_token
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+    if args.model_type in ["gpt2", "opt", "llama", "gptj"]:
+        tokenizer.pad_token = tokenizer.eos_token
+        tokenizer.pad_token_id = tokenizer.eos_token_id
     return tokenizer
 
 

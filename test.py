@@ -72,12 +72,12 @@
 # print(tokenizer.decode(outputs[0])) 
 
 
-import json
+# import json
 
-with open("/scratch/ylu130/processed_data/commonsenseqa/in-domain/i9-s1-rTrue/commonsenseqa.jsonl", "r") as f:
-    data = [json.loads(line) for line in f.readlines()]
+# with open("/scratch/ylu130/processed_data/commonsenseqa/in-domain/i9-s1-rTrue/commonsenseqa.jsonl", "r") as f:
+#     data = [json.loads(line) for line in f.readlines()]
 
-print(data[1]["prompt"])
+# print(data[1]["prompt"])
 
 
 # # count tokens
@@ -149,5 +149,3 @@ print(data[1]["prompt"])
 
 # tokenizer = AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
 # print(len(tokenizer(text)["input_ids"]))
-
- 
