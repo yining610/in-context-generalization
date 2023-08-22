@@ -7912,4 +7912,784 @@ Output:
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o1-tgsm8k-s10-rFalse
 Loading extension module utils...
 Time to load utils op: 0.40543508529663086 seconds
-Evaluating commonsenseqa :   2%|█▏                                                            | 1/50 [01:07<55:21, 67.79s/it]Evaluating commonsenseqa :   4%|██▍                                                           | 2/50 [02:15<54:18, 67.90s/it]Evaluating commonsenseqa :   6%|███▋                                                          | 3/50 [03:24<53:39, 68.50s/it]Evaluating commonsenseqa :   8%|████▉                                                         | 4/50 [04:30<51:39, 67.38s/it]Evaluating commonsenseqa :  10%|██████▏                                                       | 5/50 [05:36<50:14, 66.98s/it]Evaluating commonsenseqa :  12%|███████▍                                                      | 6/50 [06:43<49:05, 66.93s/it]Evaluating commonsenseqa :  14%|████████▋                                                     | 7/50 [07:50<48:01, 67.02s/it]Evaluating commonsenseqa :  16%|█████████▉                                                    | 8/50 [08:59<47:16, 67.54s/it]Evaluating commonsenseqa :  18%|███████████▏                                                  | 9/50 [10:07<46:11, 67.60s/it]Evaluating commonsenseqa :  20%|████████████▏                                                | 10/50 [11:14<44:53, 67.35s/it]Evaluating commonsenseqa :  22%|█████████████▍                                               | 11/50 [12:21<43:52, 67.51s/it]Evaluating commonsenseqa :  24%|██████████████▋                                              | 12/50 [13:27<42:22, 66.90s/it]Evaluating commonsenseqa :  26%|███████████████▊                                             | 13/50 [14:35<41:31, 67.33s/it]Evaluating commonsenseqa :  28%|█████████████████                                            | 14/50 [15:42<40:16, 67.12s/it]Evaluating commonsenseqa :  30%|██████████████████▎                                          | 15/50 [16:49<39:03, 66.95s/it]Evaluating commonsenseqa :  32%|███████████████████▌                                         | 16/50 [17:55<37:54, 66.90s/it]
+Evaluating commonsenseqa :   2%|█▏                                                            | 1/50 [01:07<55:21, 67.79s/it]Evaluating commonsenseqa :   4%|██▍                                                           | 2/50 [02:15<54:18, 67.90s/it]Evaluating commonsenseqa :   6%|███▋                                                          | 3/50 [03:24<53:39, 68.50s/it]Evaluating commonsenseqa :   8%|████▉                                                         | 4/50 [04:30<51:39, 67.38s/it]Evaluating commonsenseqa :  10%|██████▏                                                       | 5/50 [05:36<50:14, 66.98s/it]Evaluating commonsenseqa :  12%|███████▍                                                      | 6/50 [06:43<49:05, 66.93s/it]Evaluating commonsenseqa :  14%|████████▋                                                     | 7/50 [07:50<48:01, 67.02s/it]Evaluating commonsenseqa :  16%|█████████▉                                                    | 8/50 [08:59<47:16, 67.54s/it]Evaluating commonsenseqa :  18%|███████████▏                                                  | 9/50 [10:07<46:11, 67.60s/it]Evaluating commonsenseqa :  20%|████████████▏                                                | 10/50 [11:14<44:53, 67.35s/it]Evaluating commonsenseqa :  22%|█████████████▍                                               | 11/50 [12:21<43:52, 67.51s/it]Evaluating commonsenseqa :  24%|██████████████▋                                              | 12/50 [13:27<42:22, 66.90s/it]Evaluating commonsenseqa :  26%|███████████████▊                                             | 13/50 [14:35<41:31, 67.33s/it]Evaluating commonsenseqa :  28%|█████████████████                                            | 14/50 [15:42<40:16, 67.12s/it]Evaluating commonsenseqa :  30%|██████████████████▎                                          | 15/50 [16:49<39:03, 66.95s/it]Evaluating commonsenseqa :  32%|███████████████████▌                                         | 16/50 [17:55<37:54, 66.90s/it]Evaluating commonsenseqa :  34%|████████████████████▋                                        | 17/50 [19:03<36:53, 67.07s/it]Evaluating commonsenseqa :  36%|█████████████████████▉                                       | 18/50 [20:09<35:40, 66.89s/it]Evaluating commonsenseqa :  38%|███████████████████████▏                                     | 19/50 [21:17<34:40, 67.12s/it]Evaluating commonsenseqa :  40%|████████████████████████▍                                    | 20/50 [22:24<33:31, 67.05s/it]Evaluating commonsenseqa :  42%|█████████████████████████▌                                   | 21/50 [23:30<32:19, 66.87s/it]Evaluating commonsenseqa :  44%|██████████████████████████▊                                  | 22/50 [24:38<31:22, 67.22s/it]Evaluating commonsenseqa :  46%|████████████████████████████                                 | 23/50 [25:45<30:14, 67.19s/it]Evaluating commonsenseqa :  48%|█████████████████████████████▎                               | 24/50 [26:53<29:11, 67.35s/it]Evaluating commonsenseqa :  50%|██████████████████████████████▌                              | 25/50 [28:01<28:11, 67.65s/it]Evaluating commonsenseqa :  52%|███████████████████████████████▋                             | 26/50 [29:08<26:53, 67.24s/it]Evaluating commonsenseqa :  54%|████████████████████████████████▉                            | 27/50 [30:16<25:56, 67.68s/it]Evaluating commonsenseqa :  56%|██████████████████████████████████▏                          | 28/50 [31:22<24:35, 67.05s/it]Evaluating commonsenseqa :  58%|███████████████████████████████████▍                         | 29/50 [32:30<23:36, 67.47s/it]Evaluating commonsenseqa :  60%|████████████████████████████████████▌                        | 30/50 [33:35<22:12, 66.62s/it]Evaluating commonsenseqa :  62%|█████████████████████████████████████▊                       | 31/50 [34:42<21:04, 66.56s/it]Evaluating commonsenseqa :  64%|███████████████████████████████████████                      | 32/50 [35:50<20:09, 67.17s/it]Evaluating commonsenseqa :  66%|████████████████████████████████████████▎                    | 33/50 [36:59<19:12, 67.80s/it]Evaluating commonsenseqa :  68%|█████████████████████████████████████████▍                   | 34/50 [38:06<18:01, 67.58s/it]Evaluating commonsenseqa :  70%|██████████████████████████████████████████▋                  | 35/50 [39:12<16:46, 67.10s/it]Evaluating commonsenseqa :  72%|███████████████████████████████████████████▉                 | 36/50 [40:19<15:36, 66.87s/it]Evaluating commonsenseqa :  74%|█████████████████████████████████████████████▏               | 37/50 [41:26<14:31, 67.04s/it]Evaluating commonsenseqa :  76%|██████████████████████████████████████████████▎              | 38/50 [42:32<13:19, 66.66s/it]Evaluating commonsenseqa :  78%|███████████████████████████████████████████████▌             | 39/50 [43:41<12:20, 67.32s/it]Evaluating commonsenseqa :  80%|████████████████████████████████████████████████▊            | 40/50 [44:52<11:25, 68.53s/it]Evaluating commonsenseqa :  82%|██████████████████████████████████████████████████           | 41/50 [46:00<10:14, 68.26s/it]Evaluating commonsenseqa :  84%|███████████████████████████████████████████████████▏         | 42/50 [47:08<09:05, 68.24s/it]Evaluating commonsenseqa :  86%|████████████████████████████████████████████████████▍        | 43/50 [48:16<07:57, 68.22s/it]Evaluating commonsenseqa :  88%|█████████████████████████████████████████████████████▋       | 44/50 [49:24<06:47, 67.99s/it]Evaluating commonsenseqa :  90%|██████████████████████████████████████████████████████▉      | 45/50 [50:30<05:36, 67.38s/it]Evaluating commonsenseqa :  92%|████████████████████████████████████████████████████████     | 46/50 [51:38<04:31, 67.76s/it]Evaluating commonsenseqa :  94%|█████████████████████████████████████████████████████████▎   | 47/50 [52:46<03:23, 67.84s/it]Evaluating commonsenseqa :  96%|██████████████████████████████████████████████████████████▌  | 48/50 [53:53<02:14, 67.39s/it]Evaluating commonsenseqa :  98%|███████████████████████████████████████████████████████████▊ | 49/50 [54:58<01:06, 66.71s/it]Evaluating commonsenseqa : 100%|█████████████████████████████████████████████████████████████| 50/50 [56:03<00:00, 66.37s/it]Evaluating commonsenseqa : 100%|█████████████████████████████████████████████████████████████| 50/50 [56:03<00:00, 67.28s/it]
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 0.8626} | avg. gen lenth: 323.242
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29500 /home/ylu130/workspace/in-context-generalization/inference.py --model-name opt-1.3b --model-type opt --model-path /scratch/ylu130/model/opt-1.3b --n-gpu 2 --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --batch-size 10 --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 2048 --num-out-domain 2
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data]   Package punkt is already up-to-date![nltk_data]   Package punkt is already up-to-date!
+
+using world size: 2
+[2023-08-22 12:27:45,403] [INFO] [comm.py:657:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_name ................... opt-1.3b
+  model_type ................... opt
+  model_path ................... /scratch/ylu130/model/opt-1.3b
+  n_gpu ........................ 2
+  n_nodes ...................... 1
+  is_opensource ................ True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 2
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 2048
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o2-tgsm8k-s10-rFalse
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  gradient_accumulation_steps .. 1
+  batch_size ................... 10
+  clip_grad .................... 1.0
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+Loading Data
+  0%|                                                                                               | 0/9741 [00:00<?, ?it/s]  2%|█▋                                                                                 | 199/9741 [00:00<00:04, 1988.82it/s]  4%|███▌                                                                               | 411/9741 [00:00<00:04, 2064.42it/s]  6%|█████▎                                                                             | 625/9741 [00:00<00:04, 2094.77it/s]  9%|███████▏                                                                           | 842/9741 [00:00<00:04, 2121.65it/s] 11%|████████▉                                                                         | 1059/9741 [00:00<00:04, 2138.53it/s] 13%|██████████▋                                                                       | 1275/9741 [00:00<00:03, 2145.65it/s] 15%|████████████▌                                                                     | 1490/9741 [00:00<00:03, 2146.76it/s] 18%|██████████████▎                                                                   | 1707/9741 [00:00<00:03, 2153.06it/s] 20%|████████████████▏                                                                 | 1923/9741 [00:00<00:03, 2141.35it/s] 22%|█████████████████▉                                                                | 2138/9741 [00:01<00:03, 2092.45it/s] 24%|███████████████████▊                                                              | 2354/9741 [00:01<00:03, 2112.15it/s] 26%|█████████████████████▋                                                            | 2572/9741 [00:01<00:03, 2129.98it/s] 29%|███████████████████████▍                                                          | 2787/9741 [00:01<00:03, 2135.30it/s] 31%|█████████████████████████▎                                                        | 3006/9741 [00:01<00:03, 2150.77it/s] 34%|███████████████████████████▋                                                      | 3290/9741 [00:01<00:02, 2355.15it/s] 37%|██████████████████████████████▍                                                   | 3623/9741 [00:01<00:02, 2646.15it/s] 41%|█████████████████████████████████▎                                                | 3956/9741 [00:01<00:02, 2849.19it/s] 44%|████████████████████████████████████▏                                             | 4294/9741 [00:01<00:01, 3007.51it/s] 47%|██████████████████████████████████████▊                                           | 4617/9741 [00:01<00:01, 3072.26it/s] 51%|█████████████████████████████████████████▍                                        | 4925/9741 [00:02<00:01, 2411.84it/s] 54%|████████████████████████████████████████████▎                                     | 5261/9741 [00:02<00:01, 2650.11it/s] 57%|███████████████████████████████████████████████                                   | 5594/9741 [00:02<00:01, 2826.45it/s] 61%|█████████████████████████████████████████████████▉                                | 5929/9741 [00:02<00:01, 2968.18it/s] 64%|████████████████████████████████████████████████████▋                             | 6262/9741 [00:02<00:01, 3069.73it/s] 68%|███████████████████████████████████████████████████████▌                          | 6598/9741 [00:02<00:00, 3152.16it/s] 71%|██████████████████████████████████████████████████████████▍                       | 6935/9741 [00:02<00:00, 3215.20it/s] 75%|█████████████████████████████████████████████████████████████▏                    | 7274/9741 [00:02<00:00, 3266.40it/s] 78%|████████████████████████████████████████████████████████████████                  | 7605/9741 [00:02<00:00, 3265.39it/s] 82%|██████████████████████████████████████████████████████████████████▊               | 7939/9741 [00:03<00:00, 3286.76it/s] 85%|█████████████████████████████████████████████████████████████████████▋            | 8274/9741 [00:03<00:00, 3302.74it/s] 88%|████████████████████████████████████████████████████████████████████████▍         | 8609/9741 [00:03<00:00, 3315.20it/s] 92%|███████████████████████████████████████████████████████████████████████████▎      | 8942/9741 [00:03<00:00, 3277.81it/s] 95%|██████████████████████████████████████████████████████████████████████████████    | 9279/9741 [00:03<00:00, 3303.47it/s] 99%|████████████████████████████████████████████████████████████████████████████████▉ | 9611/9741 [00:03<00:00, 3306.23it/s]100%|██████████████████████████████████████████████████████████████████████████████████| 9741/9741 [00:03<00:00, 2741.35it/s]
+Load End
+Num instances: 1000
+[2023-08-22 12:27:59,958] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.8.0, git-hash=unknown, git-branch=unknown
+[2023-08-22 12:28:02,748] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-22 12:28:02,749] [INFO] [config.py:1008:print] DeepSpeedEngine configuration:
+[2023-08-22 12:28:02,749] [INFO] [config.py:1012:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-22 12:28:02,749] [INFO] [config.py:1012:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-22 12:28:02,749] [INFO] [config.py:1012:print]   amp_enabled .................. False
+[2023-08-22 12:28:02,749] [INFO] [config.py:1012:print]   amp_params ................... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   bfloat16_enabled ............. False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   checkpoint_tag_validation_enabled  True
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   checkpoint_tag_validation_fail  False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fdc7ef0fa60>
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   communication_data_type ...... None
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   curriculum_enabled_legacy .... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   curriculum_params_legacy ..... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   data_efficiency_enabled ...... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   dataloader_drop_last ......... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   disable_allgather ............ False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   dump_state ................... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'min_scale': 1}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_enabled ........... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_layer_num ......... 0
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_max_iter .......... 100
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_stability ......... 1e-06
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_tol ............... 0.01
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   eigenvalue_verbose ........... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   elasticity_enabled ........... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   fp16_auto_cast ............... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   fp16_enabled ................. True
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   fp16_master_weights_and_gradients  False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   global_rank .................. 0
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   grad_accum_dtype ............. None
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   gradient_accumulation_steps .. 1
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   gradient_clipping ............ 1.0
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   gradient_predivide_factor .... 1.0
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   initial_dynamic_scale ........ 2048
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   load_universal_checkpoint .... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   loss_scale ................... 0
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   memory_breakdown ............. False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   monitor_config ............... <deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x7fdc7ef0f940>
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   optimizer_legacy_fusion ...... False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   optimizer_name ............... None
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   optimizer_params ............. None
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   pld_enabled .................. False
+[2023-08-22 12:28:02,750] [INFO] [config.py:1012:print]   pld_params ................... False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   prescale_gradients ........... False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   scheduler_name ............... None
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   scheduler_params ............. None
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   sparse_attention ............. None
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   sparse_gradients_enabled ..... False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   steps_per_print .............. 1
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   train_batch_size ............. 20
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   train_micro_batch_size_per_gpu  10
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   use_node_local_storage ....... False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   wall_clock_breakdown ......... False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   world_size ................... 2
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   zero_allow_untested_optimizer  True
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   zero_enabled ................. False
+[2023-08-22 12:28:02,751] [INFO] [config.py:1012:print]   zero_optimization_stage ...... 0
+[2023-08-22 12:28:02,751] [INFO] [config.py:997:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 10, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1
+}
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Emitting ninja build file /home/ylu130/.cache/torch_extensions/py39_cu113/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module utils...
+Time to load utils op: 0.40239739418029785 seconds
+Loading extension module utils...
+Time to load utils op: 0.40424060821533203 seconds
+Model mem
+ |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Active memory         |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |    2716 MB |    2716 MB |    2716 MB |       0 B  |
+|       from large pool |    2714 MB |    2714 MB |    2714 MB |       0 B  |
+|       from small pool |       2 MB |       2 MB |       2 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  211344 KB |  211384 KB |  605812 KB |  394468 KB |
+|       from large pool |  210552 KB |  210552 KB |  603768 KB |  393216 KB |
+|       from small pool |     792 KB |    2044 KB |    2044 KB |    1252 KB |
+|---------------------------------------------------------------------------|
+| Allocations           |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      99    |      99    |      99    |       0    |
+|       from large pool |      98    |      98    |      98    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      51    |      51    |      51    |       0    |
+|       from large pool |      50    |      50    |      50    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Evaluating commonsenseqa :   0%|                                                                      | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o2-tgsm8k-s10-rFalse
+Evaluating commonsenseqa :   2%|█▏                                                            | 1/50 [01:06<54:01, 66.15s/it]Evaluating commonsenseqa :   4%|██▍                                                           | 2/50 [02:11<52:33, 65.71s/it]Evaluating commonsenseqa :   6%|███▋                                                          | 3/50 [03:17<51:29, 65.74s/it]Evaluating commonsenseqa :   8%|████▉                                                         | 4/50 [04:21<49:54, 65.10s/it]Evaluating commonsenseqa :  10%|██████▏                                                       | 5/50 [05:28<49:22, 65.84s/it]Evaluating commonsenseqa :  12%|███████▍                                                      | 6/50 [06:35<48:30, 66.15s/it]Evaluating commonsenseqa :  14%|████████▋                                                     | 7/50 [07:40<47:11, 65.86s/it]Evaluating commonsenseqa :  16%|█████████▉                                                    | 8/50 [08:44<45:36, 65.16s/it]Evaluating commonsenseqa :  18%|███████████▏                                                  | 9/50 [09:49<44:34, 65.22s/it]Evaluating commonsenseqa :  20%|████████████▏                                                | 10/50 [10:56<43:45, 65.63s/it]Evaluating commonsenseqa :  22%|█████████████▍                                               | 11/50 [12:01<42:38, 65.61s/it]Evaluating commonsenseqa :  24%|██████████████▋                                              | 12/50 [13:07<41:33, 65.62s/it]Evaluating commonsenseqa :  26%|███████████████▊                                             | 13/50 [14:15<40:51, 66.25s/it]Evaluating commonsenseqa :  28%|█████████████████                                            | 14/50 [15:20<39:39, 66.09s/it]Evaluating commonsenseqa :  30%|██████████████████▎                                          | 15/50 [16:25<38:23, 65.82s/it]Evaluating commonsenseqa :  32%|███████████████████▌                                         | 16/50 [17:30<37:09, 65.57s/it]Evaluating commonsenseqa :  34%|████████████████████▋                                        | 17/50 [18:35<35:54, 65.29s/it]Evaluating commonsenseqa :  36%|█████████████████████▉                                       | 18/50 [19:38<34:29, 64.66s/it]Evaluating commonsenseqa :  38%|███████████████████████▏                                     | 19/50 [20:43<33:22, 64.59s/it]Evaluating commonsenseqa :  40%|████████████████████████▍                                    | 20/50 [21:47<32:12, 64.42s/it]Evaluating commonsenseqa :  42%|█████████████████████████▌                                   | 21/50 [22:52<31:13, 64.61s/it]Evaluating commonsenseqa :  44%|██████████████████████████▊                                  | 22/50 [23:57<30:10, 64.67s/it]Evaluating commonsenseqa :  46%|████████████████████████████                                 | 23/50 [25:01<29:04, 64.61s/it]Evaluating commonsenseqa :  48%|█████████████████████████████▎                               | 24/50 [26:05<27:51, 64.29s/it]Evaluating commonsenseqa :  50%|██████████████████████████████▌                              | 25/50 [27:09<26:45, 64.23s/it]Evaluating commonsenseqa :  52%|███████████████████████████████▋                             | 26/50 [28:13<25:42, 64.27s/it]Evaluating commonsenseqa :  54%|████████████████████████████████▉                            | 27/50 [29:18<24:40, 64.38s/it]Evaluating commonsenseqa :  56%|██████████████████████████████████▏                          | 28/50 [30:24<23:46, 64.83s/it]Evaluating commonsenseqa :  58%|███████████████████████████████████▍                         | 29/50 [31:30<22:51, 65.30s/it]Evaluating commonsenseqa :  60%|████████████████████████████████████▌                        | 30/50 [32:36<21:47, 65.38s/it]Evaluating commonsenseqa :  62%|█████████████████████████████████████▊                       | 31/50 [33:42<20:48, 65.70s/it]Evaluating commonsenseqa :  64%|███████████████████████████████████████                      | 32/50 [34:48<19:42, 65.71s/it]Evaluating commonsenseqa :  66%|████████████████████████████████████████▎                    | 33/50 [35:53<18:34, 65.57s/it]Evaluating commonsenseqa :  68%|█████████████████████████████████████████▍                   | 34/50 [36:56<17:14, 64.67s/it]Evaluating commonsenseqa :  70%|██████████████████████████████████████████▋                  | 35/50 [38:01<16:11, 64.78s/it]Evaluating commonsenseqa :  72%|███████████████████████████████████████████▉                 | 36/50 [39:05<15:06, 64.75s/it]Evaluating commonsenseqa :  74%|█████████████████████████████████████████████▏               | 37/50 [40:11<14:06, 65.10s/it]Evaluating commonsenseqa :  76%|██████████████████████████████████████████████▎              | 38/50 [41:17<13:02, 65.18s/it]Evaluating commonsenseqa :  78%|███████████████████████████████████████████████▌             | 39/50 [42:20<11:51, 64.71s/it]Evaluating commonsenseqa :  80%|████████████████████████████████████████████████▊            | 40/50 [43:28<10:57, 65.71s/it]Evaluating commonsenseqa :  82%|██████████████████████████████████████████████████           | 41/50 [44:35<09:54, 66.04s/it]Evaluating commonsenseqa :  84%|███████████████████████████████████████████████████▏         | 42/50 [45:40<08:45, 65.64s/it]Evaluating commonsenseqa :  86%|████████████████████████████████████████████████████▍        | 43/50 [46:45<07:39, 65.63s/it]Evaluating commonsenseqa :  88%|█████████████████████████████████████████████████████▋       | 44/50 [47:51<06:33, 65.62s/it]Evaluating commonsenseqa :  90%|██████████████████████████████████████████████████████▉      | 45/50 [48:57<05:28, 65.72s/it]Evaluating commonsenseqa :  92%|████████████████████████████████████████████████████████     | 46/50 [50:00<04:20, 65.02s/it]Evaluating commonsenseqa :  94%|█████████████████████████████████████████████████████████▎   | 47/50 [51:07<03:16, 65.58s/it]Evaluating commonsenseqa :  96%|██████████████████████████████████████████████████████████▌  | 48/50 [52:12<02:10, 65.39s/it]Evaluating commonsenseqa :  98%|███████████████████████████████████████████████████████████▊ | 49/50 [53:16<01:04, 64.88s/it]Evaluating commonsenseqa : 100%|█████████████████████████████████████████████████████████████| 50/50 [54:21<00:00, 64.94s/it]Evaluating commonsenseqa : 100%|█████████████████████████████████████████████████████████████| 50/50 [54:21<00:00, 65.23s/it]
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 1.4464} | avg. gen lenth: 301.416
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29500 /home/ylu130/workspace/in-context-generalization/inference.py --model-name opt-1.3b --model-type opt --model-path /scratch/ylu130/model/opt-1.3b --n-gpu 2 --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --batch-size 10 --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 2048 --num-out-domain 3
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data]   Package punkt is already up-to-date!
+using world size: 2
+[2023-08-22 13:22:35,156] [INFO] [comm.py:657:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_name ................... opt-1.3b
+  model_type ................... opt
+  model_path ................... /scratch/ylu130/model/opt-1.3b
+  n_gpu ........................ 2
+  n_nodes ...................... 1
+  is_opensource ................ True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 3
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 2048
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o3-tgsm8k-s10-rFalse
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  gradient_accumulation_steps .. 1
+  batch_size ................... 10
+  clip_grad .................... 1.0
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+Loading Data
+  0%|                                                                                               | 0/9741 [00:00<?, ?it/s]  2%|█▍                                                                                 | 163/9741 [00:00<00:05, 1622.61it/s]  3%|██▊                                                                                | 333/9741 [00:00<00:05, 1662.28it/s]  5%|████▎                                                                              | 505/9741 [00:00<00:05, 1687.72it/s]  7%|█████▊                                                                             | 678/9741 [00:00<00:05, 1700.47it/s]  9%|███████▎                                                                           | 853/9741 [00:00<00:05, 1714.47it/s] 11%|████████▋                                                                         | 1029/9741 [00:00<00:05, 1727.31it/s] 12%|██████████▏                                                                       | 1204/9741 [00:00<00:04, 1733.76it/s] 14%|███████████▌                                                                      | 1378/9741 [00:00<00:04, 1734.63it/s] 16%|█████████████                                                                     | 1552/9741 [00:00<00:04, 1695.86it/s] 18%|██████████████▌                                                                   | 1725/9741 [00:01<00:04, 1703.18it/s] 19%|███████████████▉                                                                  | 1896/9741 [00:01<00:04, 1692.95it/s] 21%|█████████████████▍                                                                | 2070/9741 [00:01<00:04, 1705.08it/s] 23%|███████████████████                                                               | 2267/9741 [00:01<00:04, 1784.31it/s] 26%|█████████████████████▎                                                            | 2531/9741 [00:01<00:03, 2040.41it/s] 29%|███████████████████████▍                                                          | 2783/9741 [00:01<00:03, 2182.17it/s] 31%|█████████████████████████▌                                                        | 3043/9741 [00:01<00:02, 2305.77it/s] 34%|███████████████████████████▌                                                      | 3278/9741 [00:01<00:02, 2316.15it/s] 36%|█████████████████████████████▌                                                    | 3510/9741 [00:01<00:02, 2308.95it/s] 38%|███████████████████████████████▌                                                  | 3742/9741 [00:02<00:03, 1836.82it/s] 40%|█████████████████████████████████▏                                                | 3941/9741 [00:02<00:03, 1807.27it/s] 42%|██████████████████████████████████▊                                               | 4133/9741 [00:02<00:03, 1788.85it/s] 44%|████████████████████████████████████▎                                             | 4320/9741 [00:02<00:03, 1776.30it/s] 46%|█████████████████████████████████████▉                                            | 4503/9741 [00:02<00:03, 1745.95it/s] 48%|███████████████████████████████████████▍                                          | 4681/9741 [00:02<00:02, 1739.64it/s] 50%|████████████████████████████████████████▉                                         | 4858/9741 [00:02<00:03, 1310.06it/s] 52%|██████████████████████████████████████████▎                                       | 5032/9741 [00:02<00:03, 1408.47it/s] 53%|███████████████████████████████████████████▊                                      | 5207/9741 [00:02<00:03, 1491.82it/s] 55%|█████████████████████████████████████████████▎                                    | 5381/9741 [00:03<00:02, 1555.65it/s] 57%|██████████████████████████████████████████████▊                                   | 5557/9741 [00:03<00:02, 1610.05it/s] 59%|████████████████████████████████████████████████▎                                 | 5733/9741 [00:03<00:02, 1649.42it/s] 61%|█████████████████████████████████████████████████▋                                | 5909/9741 [00:03<00:02, 1678.66it/s] 62%|███████████████████████████████████████████████████▏                              | 6081/9741 [00:03<00:02, 1669.14it/s] 64%|████████████████████████████████████████████████████▋                             | 6256/9741 [00:03<00:02, 1689.94it/s] 66%|██████████████████████████████████████████████████████▏                           | 6432/9741 [00:03<00:01, 1708.37it/s] 68%|███████████████████████████████████████████████████████▌                          | 6606/9741 [00:03<00:01, 1717.35it/s] 70%|█████████████████████████████████████████████████████████                         | 6784/9741 [00:03<00:01, 1734.67it/s] 72%|███████████████████████████████████████████████████████████▍                      | 7055/9741 [00:03<00:01, 2023.43it/s] 75%|█████████████████████████████████████████████████████████████▋                    | 7324/9741 [00:04<00:01, 2219.60it/s] 78%|███████████████████████████████████████████████████████████████▊                  | 7579/9741 [00:04<00:00, 2317.09it/s] 80%|█████████████████████████████████████████████████████████████████▊                | 7812/9741 [00:04<00:00, 2318.51it/s] 83%|████████████████████████████████████████████████████████████████████              | 8084/9741 [00:04<00:00, 2435.97it/s] 86%|██████████████████████████████████████████████████████████████████████▎           | 8356/9741 [00:04<00:00, 2520.82it/s] 88%|████████████████████████████████████████████████████████████████████████▌         | 8615/9741 [00:04<00:00, 2540.94it/s] 91%|██████████████████████████████████████████████████████████████████████████▊       | 8882/9741 [00:04<00:00, 2577.07it/s] 94%|████████████████████████████████████████████████████████████████████████████▉     | 9144/9741 [00:04<00:00, 2588.84it/s] 97%|███████████████████████████████████████████████████████████████████████████████▏  | 9403/9741 [00:04<00:00, 2547.38it/s] 99%|█████████████████████████████████████████████████████████████████████████████████▎| 9658/9741 [00:04<00:00, 2465.99it/s]100%|██████████████████████████████████████████████████████████████████████████████████| 9741/9741 [00:05<00:00, 1938.23it/s]
+Load End
+Num instances: 1000
+[2023-08-22 13:22:51,300] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.8.0, git-hash=unknown, git-branch=unknown
+[2023-08-22 13:22:54,006] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-22 13:22:54,006] [INFO] [config.py:1008:print] DeepSpeedEngine configuration:
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   amp_enabled .................. False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   amp_params ................... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   bfloat16_enabled ............. False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   checkpoint_tag_validation_enabled  True
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   checkpoint_tag_validation_fail  False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f3442d56a60>
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   communication_data_type ...... None
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   curriculum_enabled_legacy .... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   curriculum_params_legacy ..... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   data_efficiency_enabled ...... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   dataloader_drop_last ......... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   disable_allgather ............ False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   dump_state ................... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'min_scale': 1}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_enabled ........... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_layer_num ......... 0
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_max_iter .......... 100
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_stability ......... 1e-06
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_tol ............... 0.01
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   eigenvalue_verbose ........... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   elasticity_enabled ........... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   fp16_auto_cast ............... False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   fp16_enabled ................. True
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   fp16_master_weights_and_gradients  False
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   global_rank .................. 0
+[2023-08-22 13:22:54,007] [INFO] [config.py:1012:print]   grad_accum_dtype ............. None
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   gradient_accumulation_steps .. 1
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   gradient_clipping ............ 1.0
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   gradient_predivide_factor .... 1.0
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   initial_dynamic_scale ........ 2048
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   load_universal_checkpoint .... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   loss_scale ................... 0
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   memory_breakdown ............. False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   monitor_config ............... <deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x7f3442d56940>
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   optimizer_legacy_fusion ...... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   optimizer_name ............... None
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   optimizer_params ............. None
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   pld_enabled .................. False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   pld_params ................... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   prescale_gradients ........... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   scheduler_name ............... None
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   scheduler_params ............. None
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   sparse_attention ............. None
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   sparse_gradients_enabled ..... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   steps_per_print .............. 1
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   train_batch_size ............. 20
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   train_micro_batch_size_per_gpu  10
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   use_node_local_storage ....... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   wall_clock_breakdown ......... False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   world_size ................... 2
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   zero_allow_untested_optimizer  True
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   zero_enabled ................. False
+[2023-08-22 13:22:54,008] [INFO] [config.py:1012:print]   zero_optimization_stage ...... 0
+[2023-08-22 13:22:54,008] [INFO] [config.py:997:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 10, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1
+}
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Emitting ninja build file /home/ylu130/.cache/torch_extensions/py39_cu113/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module utils...
+Time to load utils op: 0.39937400817871094 seconds
+Model mem
+ |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Active memory         |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |    2716 MB |    2716 MB |    2716 MB |       0 B  |
+|       from large pool |    2714 MB |    2714 MB |    2714 MB |       0 B  |
+|       from small pool |       2 MB |       2 MB |       2 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  211344 KB |  211384 KB |  605812 KB |  394468 KB |
+|       from large pool |  210552 KB |  210552 KB |  603768 KB |  393216 KB |
+|       from small pool |     792 KB |    2044 KB |    2044 KB |    1252 KB |
+|---------------------------------------------------------------------------|
+| Allocations           |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      99    |      99    |      99    |       0    |
+|       from large pool |      98    |      98    |      98    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      51    |      51    |      51    |       0    |
+|       from large pool |      50    |      50    |      50    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Evaluating commonsenseqa :   0%|                                                                      | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o3-tgsm8k-s10-rFalse
+Loading extension module utils...
+Time to load utils op: 0.3043084144592285 seconds
+Evaluating commonsenseqa :   2%|█▏                                                            | 1/50 [01:01<50:32, 61.90s/it]Evaluating commonsenseqa :   4%|██▍                                                           | 2/50 [02:05<50:15, 62.81s/it]Evaluating commonsenseqa :   6%|███▋                                                          | 3/50 [03:06<48:44, 62.22s/it]Evaluating commonsenseqa :   8%|████▉                                                         | 4/50 [04:07<47:14, 61.62s/it]Evaluating commonsenseqa :  10%|██████▏                                                       | 5/50 [05:11<46:46, 62.38s/it]Evaluating commonsenseqa :  12%|███████▍                                                      | 6/50 [06:13<45:38, 62.24s/it]Evaluating commonsenseqa :  14%|████████▋                                                     | 7/50 [07:14<44:26, 62.01s/it]Evaluating commonsenseqa :  16%|█████████▉                                                    | 8/50 [08:14<42:59, 61.41s/it]Evaluating commonsenseqa :  18%|███████████▏                                                  | 9/50 [09:17<42:13, 61.80s/it]Evaluating commonsenseqa :  20%|████████████▏                                                | 10/50 [10:18<41:02, 61.55s/it]Evaluating commonsenseqa :  22%|█████████████▍                                               | 11/50 [11:23<40:36, 62.47s/it]Evaluating commonsenseqa :  24%|██████████████▋                                              | 12/50 [12:24<39:19, 62.09s/it]Evaluating commonsenseqa :  26%|███████████████▊                                             | 13/50 [13:28<38:40, 62.71s/it]Evaluating commonsenseqa :  28%|█████████████████                                            | 14/50 [14:31<37:42, 62.86s/it]Evaluating commonsenseqa :  30%|██████████████████▎                                          | 15/50 [15:33<36:24, 62.42s/it]Evaluating commonsenseqa :  32%|███████████████████▌                                         | 16/50 [16:33<35:06, 61.96s/it]Evaluating commonsenseqa :  34%|████████████████████▋                                        | 17/50 [17:38<34:29, 62.71s/it]Evaluating commonsenseqa :  36%|█████████████████████▉                                       | 18/50 [18:39<33:13, 62.31s/it]Evaluating commonsenseqa :  38%|███████████████████████▏                                     | 19/50 [19:41<32:07, 62.18s/it]Evaluating commonsenseqa :  40%|████████████████████████▍                                    | 20/50 [20:44<31:12, 62.43s/it]Evaluating commonsenseqa :  42%|█████████████████████████▌                                   | 21/50 [21:44<29:50, 61.74s/it]Evaluating commonsenseqa :  44%|██████████████████████████▊                                  | 22/50 [22:47<28:53, 61.91s/it]Evaluating commonsenseqa :  46%|████████████████████████████                                 | 23/50 [23:48<27:48, 61.81s/it]Evaluating commonsenseqa :  48%|█████████████████████████████▎                               | 24/50 [24:49<26:39, 61.50s/it]Evaluating commonsenseqa :  50%|██████████████████████████████▌                              | 25/50 [25:51<25:44, 61.79s/it]Evaluating commonsenseqa :  52%|███████████████████████████████▋                             | 26/50 [26:55<24:58, 62.46s/it]Evaluating commonsenseqa :  54%|████████████████████████████████▉                            | 27/50 [27:59<24:03, 62.78s/it]Evaluating commonsenseqa :  56%|██████████████████████████████████▏                          | 28/50 [29:00<22:49, 62.24s/it]Evaluating commonsenseqa :  58%|███████████████████████████████████▍                         | 29/50 [30:03<21:53, 62.52s/it]Evaluating commonsenseqa :  60%|████████████████████████████████████▌                        | 30/50 [31:05<20:44, 62.23s/it]Evaluating commonsenseqa :  62%|█████████████████████████████████████▊                       | 31/50 [32:07<19:40, 62.14s/it]Evaluating commonsenseqa :  64%|███████████████████████████████████████                      | 32/50 [33:10<18:46, 62.61s/it]Evaluating commonsenseqa :  66%|████████████████████████████████████████▎                    | 33/50 [34:14<17:47, 62.81s/it]Evaluating commonsenseqa :  68%|█████████████████████████████████████████▍                   | 34/50 [35:14<16:35, 62.19s/it]Evaluating commonsenseqa :  70%|██████████████████████████████████████████▋                  | 35/50 [36:19<15:42, 62.82s/it]Evaluating commonsenseqa :  72%|███████████████████████████████████████████▉                 | 36/50 [37:22<14:40, 62.86s/it]Evaluating commonsenseqa :  74%|█████████████████████████████████████████████▏               | 37/50 [38:26<13:42, 63.23s/it]Evaluating commonsenseqa :  76%|██████████████████████████████████████████████▎              | 38/50 [39:27<12:33, 62.75s/it]Evaluating commonsenseqa :  78%|███████████████████████████████████████████████▌             | 39/50 [40:28<11:24, 62.24s/it]Evaluating commonsenseqa :  80%|████████████████████████████████████████████████▊            | 40/50 [41:34<10:31, 63.12s/it]Evaluating commonsenseqa :  82%|██████████████████████████████████████████████████           | 41/50 [42:35<09:24, 62.74s/it]Evaluating commonsenseqa :  84%|███████████████████████████████████████████████████▏         | 42/50 [43:38<08:20, 62.59s/it]Evaluating commonsenseqa :  86%|████████████████████████████████████████████████████▍        | 43/50 [44:39<07:15, 62.18s/it]Evaluating commonsenseqa :  88%|█████████████████████████████████████████████████████▋       | 44/50 [45:40<06:11, 61.98s/it]Evaluating commonsenseqa :  90%|██████████████████████████████████████████████████████▉      | 45/50 [46:43<05:10, 62.05s/it]Evaluating commonsenseqa :  92%|████████████████████████████████████████████████████████     | 46/50 [47:44<04:07, 61.94s/it]Evaluating commonsenseqa :  94%|█████████████████████████████████████████████████████████▎   | 47/50 [48:47<03:06, 62.21s/it]Evaluating commonsenseqa :  96%|██████████████████████████████████████████████████████████▌  | 48/50 [49:51<02:05, 62.67s/it]Evaluating commonsenseqa :  98%|███████████████████████████████████████████████████████████▊ | 49/50 [50:55<01:02, 62.98s/it]Evaluating commonsenseqa : 100%|█████████████████████████████████████████████████████████████| 50/50 [51:57<00:00, 62.83s/it]Evaluating commonsenseqa : 100%|█████████████████████████████████████████████████████████████| 50/50 [51:57<00:00, 62.35s/it]
+name: commonsenseqa | {'exact_match': 0.0, 'rougeL': 1.3134} | avg. gen lenth: 331.384
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29500 /home/ylu130/workspace/in-context-generalization/inference.py --model-name opt-1.3b --model-type opt --model-path /scratch/ylu130/model/opt-1.3b --n-gpu 2 --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --batch-size 10 --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 2048 --num-out-domain 4
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data] Downloading package punkt to /home/ylu130/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data]   Package punkt is already up-to-date!
+using world size: 2
+[2023-08-22 14:15:04,725] [INFO] [comm.py:657:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_name ................... opt-1.3b
+  model_type ................... opt
+  model_path ................... /scratch/ylu130/model/opt-1.3b
+  n_gpu ........................ 2
+  n_nodes ...................... 1
+  is_opensource ................ True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 4
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 2048
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o4-tgsm8k-s10-rFalse
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  gradient_accumulation_steps .. 1
+  batch_size ................... 10
+  clip_grad .................... 1.0
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+Loading Data
+  0%|                                                                                               | 0/9741 [00:00<?, ?it/s]  1%|█                                                                                  | 122/9741 [00:00<00:07, 1219.16it/s]  3%|██▏                                                                                | 250/9741 [00:00<00:07, 1249.87it/s]  4%|███▏                                                                               | 380/9741 [00:00<00:07, 1269.64it/s]  5%|████▎                                                                              | 510/9741 [00:00<00:07, 1278.38it/s]  7%|█████▍                                                                             | 641/9741 [00:00<00:07, 1286.97it/s]  8%|██████▌                                                                            | 773/9741 [00:00<00:06, 1296.20it/s]  9%|███████▋                                                                           | 904/9741 [00:00<00:06, 1300.29it/s] 11%|████████▋                                                                         | 1037/9741 [00:00<00:06, 1307.62it/s] 12%|█████████▊                                                                        | 1168/9741 [00:00<00:06, 1287.35it/s] 13%|██████████▉                                                                       | 1299/9741 [00:01<00:06, 1293.25it/s] 15%|████████████                                                                      | 1429/9741 [00:01<00:06, 1293.30it/s] 16%|█████████████▏                                                                    | 1560/9741 [00:01<00:06, 1297.58it/s] 17%|██████████████▏                                                                   | 1692/9741 [00:01<00:06, 1301.47it/s] 19%|███████████████▎                                                                  | 1823/9741 [00:01<00:06, 1283.02it/s] 20%|████████████████▍                                                                 | 1953/9741 [00:01<00:06, 1287.56it/s] 21%|█████████████████▌                                                                | 2084/9741 [00:01<00:05, 1291.88it/s] 23%|██████████████████▋                                                               | 2216/9741 [00:01<00:05, 1297.31it/s] 24%|███████████████████▊                                                              | 2348/9741 [00:01<00:05, 1302.63it/s] 26%|█████████████████████▍                                                            | 2547/9741 [00:01<00:04, 1506.11it/s] 28%|███████████████████████                                                           | 2746/9741 [00:02<00:04, 1649.19it/s] 30%|████████████████████████▊                                                         | 2946/9741 [00:02<00:03, 1752.81it/s] 32%|██████████████████████████▍                                                       | 3146/9741 [00:02<00:03, 1824.47it/s] 34%|████████████████████████████▏                                                     | 3347/9741 [00:02<00:03, 1878.93it/s] 36%|█████████████████████████████▊                                                    | 3546/9741 [00:02<00:03, 1911.36it/s] 38%|███████████████████████████████▌                                                  | 3746/9741 [00:02<00:03, 1935.85it/s] 41%|█████████████████████████████████▏                                                | 3946/9741 [00:02<00:02, 1952.36it/s] 43%|██████████████████████████████████▉                                               | 4145/9741 [00:02<00:02, 1962.87it/s] 45%|████████████████████████████████████▌                                             | 4345/9741 [00:02<00:02, 1971.97it/s] 47%|██████████████████████████████████████▏                                           | 4543/9741 [00:02<00:02, 1949.02it/s] 49%|███████████████████████████████████████▉                                          | 4738/9741 [00:03<00:02, 1681.23it/s] 51%|█████████████████████████████████████████▌                                        | 4932/9741 [00:03<00:02, 1742.68it/s] 53%|███████████████████████████████████████████▏                                      | 5129/9741 [00:03<00:02, 1802.67it/s] 55%|████████████████████████████████████████████▊                                     | 5329/9741 [00:03<00:02, 1856.70it/s] 57%|██████████████████████████████████████████████▌                                   | 5529/9741 [00:03<00:02, 1896.27it/s] 59%|████████████████████████████████████████████████▏                                 | 5728/9741 [00:03<00:02, 1921.36it/s] 61%|█████████████████████████████████████████████████▉                                | 5927/9741 [00:03<00:01, 1940.93it/s] 63%|███████████████████████████████████████████████████▌                              | 6126/9741 [00:03<00:01, 1954.88it/s] 65%|█████████████████████████████████████████████████████▏                            | 6324/9741 [00:03<00:01, 1961.32it/s] 67%|██████████████████████████████████████████████████████▉                           | 6524/9741 [00:03<00:01, 1970.02it/s] 69%|████████████████████████████████████████████████████████▌                         | 6724/9741 [00:04<00:01, 1976.74it/s] 71%|██████████████████████████████████████████████████████████▎                       | 6924/9741 [00:04<00:01, 1982.59it/s] 73%|███████████████████████████████████████████████████████████▉                      | 7124/9741 [00:04<00:01, 1986.61it/s] 75%|█████████████████████████████████████████████████████████████▋                    | 7323/9741 [00:04<00:01, 1985.10it/s] 77%|███████████████████████████████████████████████████████████████▎                  | 7522/9741 [00:04<00:01, 1952.87it/s] 79%|████████████████████████████████████████████████████████████████▉                 | 7718/9741 [00:04<00:01, 1945.99it/s] 81%|██████████████████████████████████████████████████████████████████▋               | 7918/9741 [00:04<00:00, 1961.22it/s] 83%|████████████████████████████████████████████████████████████████████▎             | 8116/9741 [00:04<00:00, 1965.06it/s] 85%|█████████████████████████████████████████████████████████████████████▉            | 8313/9741 [00:04<00:00, 1946.76it/s] 87%|███████████████████████████████████████████████████████████████████████▌          | 8508/9741 [00:04<00:00, 1946.72it/s] 89%|█████████████████████████████████████████████████████████████████████████▎        | 8704/9741 [00:05<00:00, 1948.88it/s] 91%|██████████████████████████████████████████████████████████████████████████▉       | 8900/9741 [00:05<00:00, 1950.79it/s] 93%|████████████████████████████████████████████████████████████████████████████▌     | 9097/9741 [00:05<00:00, 1955.63it/s] 95%|██████████████████████████████████████████████████████████████████████████████▏   | 9295/9741 [00:05<00:00, 1960.49it/s] 97%|███████████████████████████████████████████████████████████████████████████████▉  | 9492/9741 [00:05<00:00, 1962.82it/s] 99%|█████████████████████████████████████████████████████████████████████████████████▌| 9689/9741 [00:05<00:00, 1959.94it/s]100%|██████████████████████████████████████████████████████████████████████████████████| 9741/9741 [00:05<00:00, 1731.95it/s]
+Load End
+Num instances: 1000
+[2023-08-22 14:15:21,310] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed info: version=0.8.0, git-hash=unknown, git-branch=unknown
+[2023-08-22 14:15:24,123] [INFO] [logging.py:68:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-22 14:15:24,124] [INFO] [config.py:1008:print] DeepSpeedEngine configuration:
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   amp_enabled .................. False
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   amp_params ................... False
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   bfloat16_enabled ............. False
+[2023-08-22 14:15:24,124] [INFO] [config.py:1012:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   checkpoint_tag_validation_enabled  True
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   checkpoint_tag_validation_fail  False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fdf37ec0a60>
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   communication_data_type ...... None
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   curriculum_enabled_legacy .... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   curriculum_params_legacy ..... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   data_efficiency_enabled ...... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   dataloader_drop_last ......... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   disable_allgather ............ False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   dump_state ................... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'min_scale': 1}
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_enabled ........... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_layer_num ......... 0
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_max_iter .......... 100
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_stability ......... 1e-06
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_tol ............... 0.01
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   eigenvalue_verbose ........... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   elasticity_enabled ........... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   fp16_auto_cast ............... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   fp16_enabled ................. True
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   fp16_master_weights_and_gradients  False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   global_rank .................. 0
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   grad_accum_dtype ............. None
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   gradient_accumulation_steps .. 1
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   gradient_clipping ............ 1.0
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   gradient_predivide_factor .... 1.0
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   initial_dynamic_scale ........ 2048
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   load_universal_checkpoint .... False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   loss_scale ................... 0
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   memory_breakdown ............. False
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   monitor_config ............... <deepspeed.monitor.config.DeepSpeedMonitorConfig object at 0x7fdf37ec0940>
+[2023-08-22 14:15:24,125] [INFO] [config.py:1012:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   optimizer_legacy_fusion ...... False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   optimizer_name ............... None
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   optimizer_params ............. None
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   pld_enabled .................. False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   pld_params ................... False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   prescale_gradients ........... False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   scheduler_name ............... None
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   scheduler_params ............. None
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   sparse_attention ............. None
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   sparse_gradients_enabled ..... False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   steps_per_print .............. 1
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   train_batch_size ............. 20
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   train_micro_batch_size_per_gpu  10
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   use_node_local_storage ....... False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   wall_clock_breakdown ......... False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   world_size ................... 2
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   zero_allow_untested_optimizer  True
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   zero_enabled ................. False
+[2023-08-22 14:15:24,126] [INFO] [config.py:1012:print]   zero_optimization_stage ...... 0
+[2023-08-22 14:15:24,126] [INFO] [config.py:997:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 10, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1
+}
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Using /home/ylu130/.cache/torch_extensions/py39_cu113 as PyTorch extensions root...
+Emitting ninja build file /home/ylu130/.cache/torch_extensions/py39_cu113/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module utils...
+Time to load utils op: 0.39810657501220703 seconds
+Model mem
+ |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Active memory         |    2509 MB |    2509 MB |    2509 MB |       0 B  |
+|       from large pool |    2508 MB |    2508 MB |    2508 MB |       0 B  |
+|       from small pool |       1 MB |       1 MB |       1 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |    2716 MB |    2716 MB |    2716 MB |       0 B  |
+|       from large pool |    2714 MB |    2714 MB |    2714 MB |       0 B  |
+|       from small pool |       2 MB |       2 MB |       2 MB |       0 B  |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  211344 KB |  211384 KB |  605812 KB |  394468 KB |
+|       from large pool |  210552 KB |  210552 KB |  603768 KB |  393216 KB |
+|       from small pool |     792 KB |    2044 KB |    2044 KB |    1252 KB |
+|---------------------------------------------------------------------------|
+| Allocations           |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     388    |     388    |     388    |       0    |
+|       from large pool |     146    |     146    |     146    |       0    |
+|       from small pool |     242    |     242    |     242    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      99    |      99    |      99    |       0    |
+|       from large pool |      98    |      98    |      98    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |      51    |      51    |      51    |       0    |
+|       from large pool |      50    |      50    |      50    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Evaluating commonsenseqa :   0%|                                                                      | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/opt-1.3b/commonsenseqa/out-domain/o4-tgsm8k-s10-rFalse
+Loading extension module utils...
+Time to load utils op: 0.4047830104827881 seconds
+Evaluating commonsenseqa :   2%|█▏                                                            | 1/50 [01:00<49:13, 60.27s/it]Evaluating commonsenseqa :   4%|██▍                                                           | 2/50 [02:00<47:59, 59.99s/it]Evaluating commonsenseqa :   6%|███▋                                                          | 3/50 [02:58<46:23, 59.22s/it]
