@@ -5,6 +5,17 @@
 bash install.sh
 ```
 
+## Running
+Prepare Datasets
+```
+bash ./scripts/data/process_data_[DATASETNAME].sh
+```
+
+Inference (e.g., in-domain test)
+```
+bash ./scripts/model/[MODELNAME]/in-domain/inference_[DATASETNAME].sh [NUM_INDOMAIN_LIST] [RATIONALE_LIST] [MAX_PROMPT_LENGTH]
+```
+
 ## Experiment Log
 - [x] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: [1 10 20 30 40 50 60] / test: [-9,4] / both / max prompt token: 2048```
 - [x] ```in-domain: CommonsenseQA / out-domain: GSM8K /seed: [1 10 20 30 40 50 60] / test: [-25,-10] / without rationale / max prompt token: 2048```
