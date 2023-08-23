@@ -153,3 +153,14 @@ token_plot(acc_results3, "Out-domain GSM8K Accuracy")
 
 # Note: RuntimeError: probability tensor contains either `inf`, `nan` or element < 0 -> Probability distribution has been messed
 
+base_path = "./results/opt-1.3b"
+base_path_2 = "/scratch/ylu130/processed_data"
+model_path = "/scratch/ylu130/model/opt-1.3b/"
+# Commonsense out-domain results
+acc_results4 = get_results(result_path=os.path.join(base_path, "commonsenseqa/out-domain"),
+                            model_path=model_path,
+                            data_path=os.path.join(base_path_2, "commonsenseqa/out-domain"),
+                            data_name="commonsenseqa",
+                            metric_fn=compute_mc_acc)
+demo_plot(acc_results4, "Out-domain Commonsense Accuracy", limits=9)
+token_plot(acc_results4, "Out-domain Commonsense Accuracy")

@@ -72,12 +72,12 @@
 # print(tokenizer.decode(outputs[0])) 
 
 
-# import json
+import json
 
-# with open("/scratch/ylu130/processed_data/commonsenseqa/in-domain/i9-s1-rTrue/commonsenseqa.jsonl", "r") as f:
-#     data = [json.loads(line) for line in f.readlines()]
+with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s1-rTrue/commonsenseqa.jsonl", "r") as f:
+    data = [json.loads(line) for line in f.readlines()]
 
-# print(data[1]["prompt"])
+print(data[1]["prompt"])
 
 
 # # count tokens
@@ -150,11 +150,11 @@
 # tokenizer = AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
 # print(len(tokenizer(text)["input_ids"]))
 
-from transformers import AutoTokenizer, AutoModelForCausalLM
+# from transformers import AutoTokenizer, AutoModelForCausalLM
 
-tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b", cache_dir = "/scratch/ylu130/model-hf")
-model = AutoModelForCausalLM.from_pretrained("facebook/opt-1.3b", cache_dir = "/scratch/ylu130/model-hf")
+# tokenizer = AutoTokenizer.from_pretrained("facebook/opt-1.3b", cache_dir = "/scratch/ylu130/model-hf")
+# model = AutoModelForCausalLM.from_pretrained("facebook/opt-1.3b", cache_dir = "/scratch/ylu130/model-hf")
 
-# save model
-model.save_pretrained("/scratch/ylu130/model/opt-1.3b")
-tokenizer.save_pretrained("/scratch/ylu130/model/opt-1.3b")
+# # save model
+# model.save_pretrained("/scratch/ylu130/model/opt-1.3b")
+# tokenizer.save_pretrained("/scratch/ylu130/model/opt-1.3b")
