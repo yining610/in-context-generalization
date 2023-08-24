@@ -88,7 +88,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         all_rest_ids)
 
 
-def evaluate_main(args, tokenizer, model, dataset: PromptDataset, device):
+def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
         
     query_ids, response_ids, rest_ids = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)

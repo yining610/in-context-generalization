@@ -30,10 +30,9 @@ from args import get_args
 from utils import initialize, print_args
 from utils import print_rank
 from utils import save_rank
-from utils import load_parallel, save_parallel
 
 
-from inference_main import evaluate_main, prepare_dataset_main
+from inference_main import inference_main, prepare_dataset_main
 
 
 torch.set_num_threads(4)
@@ -90,7 +89,7 @@ def main():
 
     model = setup_model(args)
     
-    evaluate_main(args, tokenizer, model, dataset["test"], device)
+    inference_main(args, tokenizer, model, dataset["test"], device)
 
 if __name__ == "__main__":
     main()
