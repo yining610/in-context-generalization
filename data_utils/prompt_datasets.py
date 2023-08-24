@@ -72,18 +72,16 @@ class PromptDataset(Dataset):
     def __getitem__(self, index: int):
         data = self.data[index]
 
-        output_ids = data["output_ids"]
+        output = data["output_ids"]
         prompt = data["prompt_ids"]
         
-        rest = output_ids  
-
-        return index, prompt, rest
+        return index, prompt, output
     
     def collate(self, samples):
         bs = len(samples)
         
         max_prompt_length = self.max_prompt_length
-        max_rest_length = max([len(samp[2]) for samp in samples])
+        max_output_length = max([len(samp[2]) for samp in samples])
 
         model_batch = {
             "input_ids": torch.ones(bs, max_prompt_length, dtype=torch.long),
@@ -92,15 +90,15 @@ class PromptDataset(Dataset):
         
         no_model_batch = {
             "idx": torch.zeros(bs, dtype=torch.long),
-            "rest_ids": torch.ones(bs, max_rest_length, dtype=torch.long) * self.pad_id
+            "output_ids": torch.ones(bs, max_output_length, dtype=torch.long) * self.pad_id
         }
         
-        for i, (idx, prompt, rest) in enumerate(samples):
+        for i, (idx, prompt, output) in enumerate(samples):
             # left padding
             model_batch["input_ids"][i] = prompt["input_ids"][0]
             model_batch["attention_mask"][i] = prompt["attention_mask"][0]
             no_model_batch["idx"][i] = idx
-            no_model_batch["rest_ids"][i][:len(rest)] = torch.tensor(rest, dtype=torch.long)
+            no_model_batch["output_ids"][i][:len(output)] = torch.tensor(output, dtype=torch.long)
         
         return model_batch, no_model_batch
 
