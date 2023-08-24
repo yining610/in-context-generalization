@@ -1,83 +1,306 @@
-# import transformers
-# import tensor_parallel as tp
-# tokenizer = transformers.AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
-# model = transformers.AutoModelForCausalLM.from_pretrained("/scratch/ylu130/model/llama-2-7b").to("cuda:0")
-
-# prompt = """Below is an instruction that describes a task. Write a response that appropriately completes the request.
-
-# ### Instruction:Answer the following multiple choice question.
-
-# ### Demonstration:
-# Input: For every 12 cans you recycle, you receive $0.50, and for every 5 kilograms of newspapers, you receive $1.50. If your family collected 144 cans and 20 kilograms of newspapers, how much money would you receive?
-# Rationales: First, calculate how many sets of 12 cans the family collected by dividing the total number of cans (144) by the number of cans in a set (12). This gives you 12 sets of 12 cans.
-# Next, multiply the rate of return for cans ($0.50) by the number of sets (12) to find the total return for the cans. This gives you $6.00.
-# Then, calculate how many sets of 5 kilograms of newspapers the family collected by dividing the total weight of newspapers (20 kg) by the weight in a set (5 kg). This gives you 4 sets of 5 kilograms.
-# After, multiply the rate of return for newspapers ($1.50) by the number of sets (4) to find the total return for the newspapers. This gives you $6.00.
-# Finally, add the total return for the cans and the newspapers together ($6.00 + $6.00) to find the total return the family would receive. This results in $12.00. So, the answer is $12.
-# Answer: 12
-
-# Input: Betty picked 16 strawberries. Matthew picked 20 more strawberries than Betty and twice as many as Natalie. They used their strawberries to make jam. One jar of jam used 7 strawberries and they sold each jar at $4. How much money were they able to make from the strawberries they picked?
-# Rationales: Betty picked 16 strawberries.
-# Matthew picked 20 more strawberries than Betty. Hence he picked 16 + 20 = 36 strawberries.
-# Matthew also picked twice as many strawberries as Natalie. Hence Natalie picked 36/2 = 18 strawberries.
-# Together, they picked a total of 16 + 36 + 18 = 70 strawberries.
-# They used these strawberries to make jam. Each jar of jam required 7 strawberries. Hence they were able to make 70/7 = 10 jars of jam.
-# Lastly, Each jar of jam was sold for $4. Hence, they made 10 x $4 = $40 from the strawberries they picked.
-# Answer: 40
-
-# Input: Jack has a stack of books that is 12 inches thick. He knows from experience that 80 pages is one inch thick. If he has 6 books, how many pages is each one on average?
-# Rationales: Jack measures the thickness of his books and finds out that it is 12 inches.
-# He knows that 1 inch can accommodate 80 pages.
-# So, to find out how many pages, in total, are in his books we multiply the total thickness by the number of pages per inch.
-# This gives us a total of 960 pages, since 12 inches times 80 pages per inch equals 960 pages.
-
-# Each book, on average, contains 160 pages.
-# This is calculated by dividing the total number of pages, which is 960, by the number of books, which is 6.
-# So, 960 pages divided by 6 books equals 160 pages per book.
-# Answer: 160
-
-# Input: James dumps his whole collection of 500 Legos on the floor and starts building a castle out of them.  He uses half the pieces before finishing and is told to put the rest away.  He puts all of the leftover pieces back in the box they came from, except for 5 missing pieces that he can't find.  How many Legos are in the box at the end?
-# Rationales: First, determine how many Legos James used by dividing the initial number of Legos by 2. This is because James used half of the pieces, thus: 500/2 = 250 Legos used.
-# Next, subtract the number of missing Legos from the remaining unused Legos. So: 250 Legos unused - 5 missing Legos = 245 Legos.
-# Therefore, the number of Legos James puts back into the box is 245.
-# Answer: 245
-
-# Input: Ines had $20 in her purse. She bought 3 pounds of peaches, which are $2 per pound at the local farmers’ market. How much did she have left?
-# Rationales: Ines starts with $20.
-# The cost of the peaches is determined by how many pounds she bought multiplied by the price per pound.
-# The peaches are $2 per pound.
-# Ines bought 3 pounds of peaches, so the cost is 3 * $2 = $6.
-# This means she spent $6 on the peaches.
-# She originally had $20, and she spent $6, so she now has $20 - $6 = $14 left.
-# Therefore, Ines has $14 left.
-# Answer: 14
-
-# Input: Aaron pays his actuary membership fees each year. The membership fee increases yearly by $10. If he pays $80 in the first year, how much does his membership cost, in dollars, in the sixth year?
-# Rationales: The cost of Aaron's membership in the first year is $80.
-# The membership fee increases by $10 each year.
-# Therefore, in the second year, the cost of his membership would be his first year's fee plus $10, which equals $80 + $10 = $90.
-# In the third year, his membership fee would be his second year's fee plus $10, which equals $90 + $10 = $100.
-# Following this pattern, in the fourth year, the cost of his membership would be his third year's fee plus $10, which equals $100 + $10 = $110.
-# In the fifth year, his membership fee would be his fourth year's fee plus $10, which equals $110 + $10 = $120.
-# Finally, in the sixth year, the cost of his membership would be his fifth year's fee plus $10, which equals $120 + $10 = $130.
-# Therefore, his membership cost in the sixth year would be $130.
-# Answer: 130
-
-# ### Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
-
-# ### Response:"""
-
-# inputs = tokenizer(prompt, return_tensors="pt")["input_ids"].to("cuda:0")
-# outputs = model.generate(inputs, do_sample=True, top_p=1, top_k=50, max_new_tokens=512, temperature=1, no_repeat_ngram_size=6, num_beams=1)
-# print(tokenizer.decode(outputs[0])) 
+import transformers
+# set visible gpu to cuda:2
 
 
-import json
+tokenizer = transformers.AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
+model = transformers.AutoModelForCausalLM.from_pretrained("/scratch/ylu130/model/llama-2-7b").to("cuda:2")
+tokenizer.pad_token = tokenizer.eos_token
+tokenizer.pad_token_id = tokenizer.eos_token_id
+prompt = """### Instruction:Answer the following multiple choice question.
 
-with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s1-rTrue/commonsenseqa.jsonl", "r") as f:
-    data = [json.loads(line) for line in f.readlines()]
+Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
+Output: 128
 
-print(data[1]["prompt"])
+Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
+Output: 12
+
+Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
+Output: 40
+
+Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
+Output: 10
+
+Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
+Output: 10
+
+Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
+Output: 3400
+
+Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
+Output: 132
+
+Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
+Output: 3
+
+Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
+Output: 325
+
+Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
+Output: 21
+
+Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
+Output: 94
+
+Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
+Output: 96
+
+Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
+Output: 40
+
+Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
+Output: 20
+
+Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
+Output: 75
+
+Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
+Output: 10
+
+Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
+Output: 730
+
+Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
+Output: 8
+
+Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
+Output: 56
+
+Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
+Output: 10
+
+Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
+Output: 14
+
+Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
+Output: 165
+
+Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
+Output: 128
+
+Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
+Output: 12
+
+Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
+Output: 40
+
+Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
+Output: 10
+
+Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
+Output: 10
+
+Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
+Output: 3400
+
+Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
+Output: 132
+
+Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
+Output: 3
+
+Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
+Output: 325
+
+Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
+Output: 21
+
+Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
+Output: 94
+
+Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
+Output: 96
+
+Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
+Output: 40
+
+Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
+Output: 20
+
+Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
+Output: 75
+
+Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
+Output: 10
+
+Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
+Output: 730
+
+Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
+Output: 8
+
+Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
+Output: 56
+
+Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
+Output: 10
+
+Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
+Output: 14
+
+Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
+Output: 165
+
+Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
+Output: 128
+
+Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
+Output: 12
+
+Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
+Output: 40
+
+Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
+Output: 10
+
+Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
+Output: 10
+
+Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
+Output: 3400
+
+Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
+Output: 132
+
+Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
+Output: 3
+
+Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
+Output: 325
+
+Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
+Output: 21
+
+Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
+Output: 94
+
+Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
+Output: 96
+
+Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
+Output: 40
+
+Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
+Output: 20
+
+Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
+Output: 75
+
+Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
+Output: 10
+
+Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
+Output: 730
+
+Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
+Output: 8
+
+Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
+Output: 56
+
+Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
+Output: 10
+
+Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
+Output: 14
+
+Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
+Output: 165
+
+Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
+Output: 128
+
+Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
+Output: 12
+
+Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
+Output: 40
+
+Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
+Output: 10
+
+Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
+Output: 10
+
+Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
+Output: 3400
+
+Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
+Output: 132
+
+Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
+Output: 3
+
+Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
+Output: 325
+
+Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
+Output: 21
+
+Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
+Output: 94
+
+Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
+Output: 96
+
+Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
+Output: 40
+
+Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
+Output: 20
+
+Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
+Output: 75
+
+Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
+Output: 10
+
+Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
+Output: 730
+
+Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
+Output: 8
+
+Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
+Output: 56
+
+Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
+Output: 10
+
+Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
+Output: 14
+
+Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
+Output: 165
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:"""
+
+inputs = tokenizer(prompt, return_tensors="pt", max_length=2048, truncation=True, padding='max_length')
+
+outputs = model.generate(
+                         inputs["input_ids"].to("cuda:2"),
+                         attention_mask=inputs["attention_mask"].to("cuda:2"),
+                         do_sample=True, 
+                         top_p=1, 
+                         top_k=50, 
+                         max_new_tokens=512, 
+                         temperature=1, 
+                         no_repeat_ngram_size=6, 
+                         num_beams=1)
+print(inputs['input_ids'].shape)
+print(inputs['attention_mask'].shape)
+print(inputs['input_ids'])
+print(inputs['attention_mask'])
+print(outputs.shape)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True)) 
+
+
+# import json
+
+# with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s1-rTrue/commonsenseqa.jsonl", "r") as f:
+#     data = [json.loads(line) for line in f.readlines()]
+
+# print(data[1]["prompt"])
 
 
 # # count tokens
@@ -158,3 +381,4 @@ print(data[1]["prompt"])
 # # save model
 # model.save_pretrained("/scratch/ylu130/model/opt-1.3b")
 # tokenizer.save_pretrained("/scratch/ylu130/model/opt-1.3b")
+

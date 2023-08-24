@@ -51,13 +51,13 @@ class PromptDataset(Dataset):
         # TODO: count the token number
         for d in tqdm(data_origin, disable=(get_rank() != 0)):
             prompt = d["prompt"].replace("<n>", "\n")
-            prompt_ids = self.tokenizer.encode(prompt)
+            prompt_ids = self.tokenizer(prompt, 
+                                        return_tensors="pt", 
+                                        max_length=self.max_prompt_length, 
+                                        truncation=True, 
+                                        padding='max_length')
             output_ids = None
-            if "output" in d:
-                if isinstance(d["output"], list):
-                    output_ids = self.tokenizer.encode(d["output"][0])
-                else:
-                    output_ids = self.tokenizer.encode(d["output"])
+            output_ids = self.tokenizer.encode(d["output"])
             data.append({
                 "prompt_ids": prompt_ids,
                 "output_ids": output_ids
@@ -73,11 +73,8 @@ class PromptDataset(Dataset):
         data = self.data[index]
 
         output_ids = data["output_ids"]
-        data = data["prompt_ids"]
+        prompt = data["prompt_ids"]
         
-        prompt_length = self.max_prompt_length
-
-        prompt = data[:prompt_length]
         rest = output_ids  
 
         return index, prompt, rest
@@ -87,9 +84,9 @@ class PromptDataset(Dataset):
         
         max_prompt_length = self.max_prompt_length
         max_rest_length = max([len(samp[2]) for samp in samples])
-        
+
         model_batch = {
-            "input_ids": torch.ones(bs, max_prompt_length, dtype=torch.long) * self.pad_id,
+            "input_ids": torch.ones(bs, max_prompt_length, dtype=torch.long),
             "attention_mask": torch.zeros(bs, max_prompt_length, dtype=torch.long),
         }
         
@@ -100,12 +97,11 @@ class PromptDataset(Dataset):
         
         for i, (idx, prompt, rest) in enumerate(samples):
             # left padding
-            model_batch["input_ids"][i][-len(prompt):] = torch.tensor(prompt, dtype=torch.long)
-            model_batch["attention_mask"][i][-len(prompt):] = 1
+            model_batch["input_ids"][i] = prompt["input_ids"][0]
+            model_batch["attention_mask"][i] = prompt["attention_mask"][0]
             no_model_batch["idx"][i] = idx
             no_model_batch["rest_ids"][i][:len(rest)] = torch.tensor(rest, dtype=torch.long)
         
-
         return model_batch, no_model_batch
 
     def move_to_device(self, model_batch, no_model_batch, device):
