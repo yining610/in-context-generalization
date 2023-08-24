@@ -49,9 +49,9 @@ OPTS+=" --do-sample"
 OPTS+=" --top-k 50"
 OPTS+=" --top-p 1"
 OPTS+=" --temperature 1"
-# deepspeed
-OPTS+=" --deepspeed"
-OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
+# # deepspeed
+# OPTS+=" --deepspeed"
+# OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
 # hp
 OPTS+=" --batch-size ${BATCH_SIZE}"
 

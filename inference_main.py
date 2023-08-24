@@ -1,7 +1,6 @@
 from data_utils.prompt_datasets import PromptDataset
 from transformers import (
-    GenerationConfig,
-    mpu
+    GenerationConfig
     )
 
 import os
@@ -16,30 +15,19 @@ from torch.utils.data import DataLoader, DistributedSampler
 from tqdm import tqdm
 import numpy as np
 import json
-from utils import print_rank, save_rank, load_parallel
+from utils import print_rank, save_rank
 
 from metric import compute_metrics
 
 torch.set_num_threads(4)
 
 
-def prepare_dataset_main(args, tokenizer):
-    data = {}
-    data["test"] = PromptDataset(args, tokenizer, args.data_dir, args.num_eval)
-
-    return data
-
-
 def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     
     collate_fn = dataset.collate
     
-    if args.model_parallel:
-        dp_world_size = mpu.get_data_parallel_world_size()
-        dp_rank = mpu.get_data_parallel_rank()
-    else:
-        dp_world_size = dist.get_world_size()
-        dp_rank = dist.get_rank()
+    dp_world_size = dist.get_world_size()
+    dp_rank = dist.get_rank()
     
     sampler = DistributedSampler(dataset, shuffle=False, drop_last=False, rank=dp_rank, num_replicas=dp_world_size)
     dataloader = DataLoader(
