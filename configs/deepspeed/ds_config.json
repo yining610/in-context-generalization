@@ -1,16 +1,6 @@
 {
-    "train_micro_batch_size_per_gpu": 1,
-    "gradient_accumulation_steps": 1,
-    "zero_optimization": {
-        "stage": 1
-    },
-    "zero_allow_untested_optimizer": true,
-    "fp16": {
-        "enabled": true,
-        "loss_scale": 0,
-        "initial_scale_power": 11,
-        "loss_scale_window": 2000,
-        "hysteresis": 4
-    },
-    "wall_clock_breakdown": false
+    "kernel_inject": true,
+    "tensor_parallel": {"tp_size": 4},
+    "dtype": "fp16",
+    "enable_cuda_graph": true
 }

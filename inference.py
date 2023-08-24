@@ -40,51 +40,27 @@ torch.set_num_threads(4)
 
 
 def get_tokenizer(args):
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path, padding_side="left")
     if args.model_type in ["gpt2", "opt", "llama", "gptj"]:
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
     return tokenizer
 
 
-def get_model(args, device):
-    if args.model_parallel:
-        config = AutoConfig.from_pretrained(args.model_path)
-        config.is_model_parallel = True
-        model = parallel_model_map[args.model_type](config).half()
-        # save_parallel(model, args.model_path)
-        load_parallel(model, args.model_path)
-        model.eval()
 
-        if mpu.get_data_parallel_rank() == 0:
-            print(' > number of parameters on model parallel rank {}: {}'.format(
-                mpu.get_model_parallel_rank(),
-                sum([p.nelement() for p in model.parameters()])), flush=True)
-    else:
-        model = AutoModelForCausalLM.from_pretrained(args.model_path)
-
-    return model
-
-
-def setup_model_and_optimizer(args, ds_config, device):
+def setup_model(args):
     # get the model
-    model = get_model(args, device)
+    model = AutoModelForCausalLM.from_pretrained(args.model_path)
 
-    optimizer, lr_scheduler = None, None
-        
-    model, _, _, _ = deepspeed.initialize(
-        model=model,
-        optimizer=optimizer,
-        args=args,
-        lr_scheduler=lr_scheduler,
-        mpu=mpu if args.model_parallel else None,
-        config_params=ds_config
-    )
+    model = deepspeed.init_inference(model=model,
+                                     mp_size=args.model_parallel_size if args.model_parallel else 1,
+                                     mpu=mpu if args.model_parallel else None,
+                                     dtype=torch.float32,
+                                     )
     
     # get the memory usage
     print_rank("Model mem\n", torch.cuda.memory_summary())
     return model
-
 
 def main():
     torch.backends.cudnn.enabled = False
@@ -103,12 +79,6 @@ def main():
 
     with open(args.deepspeed_config, "r") as f:
         ds_config = json.load(f)
-
-    ds_config["gradient_accumulation_steps"] = args.gradient_accumulation_steps
-    ds_config["train_micro_batch_size_per_gpu"] = args.batch_size
-    ds_config["gradient_clipping"] = args.clip_grad
-    ds_config["steps_per_print"] = args.gradient_accumulation_steps
-    ds_config["zero_optimization"]["stage"] = 0
     
     # get the tokenizer
     if args.is_opensource:
@@ -118,7 +88,7 @@ def main():
         # TODO: prepare dataset for OpenAI Models
         pass
 
-    model = setup_model_and_optimizer(args, ds_config, device)
+    model = setup_model(args)
     
     evaluate_main(args, tokenizer, model, dataset["test"], device)
 

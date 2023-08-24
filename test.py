@@ -2,275 +2,74 @@ import transformers
 # set visible gpu to cuda:2
 
 
-tokenizer = transformers.AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b")
+tokenizer = transformers.AutoTokenizer.from_pretrained("/scratch/ylu130/model/llama-2-7b", padding_side="left")
 model = transformers.AutoModelForCausalLM.from_pretrained("/scratch/ylu130/model/llama-2-7b").to("cuda:2")
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.pad_token_id = tokenizer.eos_token_id
 prompt = """### Instruction:Answer the following multiple choice question.
 
-Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
-Output: 128
+Input: Mary had 89 stickers.  She used 3 large stickers on the front page of her journal and 7 stickers each to 6 other pages of her journal. How many stickers does Mary have remaining?
+Output: 44
 
-Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
-Output: 12
+Input: Zach is saving his money to buy a brand new bike that costs $100.  His weekly allowance is $5.  His parent will pay him an extra $10 to mow the lawn.  His neighbor will pay him $7 per hour to babysit their son.  He has already saved up $65.  He'll receive his allowance on Friday and he's planning on babysitting for 2 hours this Saturday after he mows the lawn.  How much more money does Zach need to earn before he can buy the bike?
+Output: 6
 
-Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
-Output: 40
+Input: Mark has kangaroos and goats.  Kangaroos have two legs and goats have four legs.  If he has 23 kangaroos and three times as many goats as kangaroos what is the total number of legs of all his animals?
+Output: 322
 
-Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
-Output: 10
-
-Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
-Output: 10
-
-Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
-Output: 3400
-
-Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
-Output: 132
-
-Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
+Input: Josh’s mom gives him $20 to go shopping at the mall. He buys a hat for $10 and a pencil for $2. Then he buys four cookies. If each cookie costs $1.25, how much money does Josh have left?
 Output: 3
 
-Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
-Output: 325
+Input: George's bowling team is one round away from breaking the league record for most points scored in a season. The old record is an average score per player of 287 per round. Each team has 4 players and there are 10 rounds in the season. Through the first 9 rounds, his team has scored a total of 10,440. How many points less than the current league record per game average is the minimum average they need to score, per player, in the final round to tie the league record?
+Output: 27
 
-Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
+Input: Max was doing homework in three different subjects. It took him 20 minutes to finish tasks from biology and two times more time to finish history. Geography took him the most time, three times more than history. How much time did Max spend on doing his homework?
+Output: 180
+
+Input: Sophia ate 1/6 of her pie and she put the rest on the fridge. If the pie left in the fridge weighs 1200 grams, how many grams did Sophia eat?
+Output: 240
+
+Input: Sarah, Mary, and Tuan decided to go to the restaurant for a meal. They decided to split the cost of the meal evenly. If the total price of the meal comes to $67 and they have a coupon for $4, how much does each person need to contribute to the bill?
 Output: 21
 
-Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
-Output: 94
-
-Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
-Output: 96
-
-Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
-Output: 40
-
-Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
-Output: 20
-
-Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
-Output: 75
-
-Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
-Output: 10
-
-Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
-Output: 730
-
-Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
-Output: 8
-
-Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
-Output: 56
-
-Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
-Output: 10
-
-Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
-Output: 14
-
-Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
-Output: 165
-
-Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
-Output: 128
-
-Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
+Input: Tom's brother is 4 times as old as Tom's dog. If in 6 years, Tom's brother will be 30 years, how old is Tom's dog going to be in six years?
 Output: 12
 
-Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
-Output: 40
-
-Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
-Output: 10
-
-Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
-Output: 10
-
-Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
-Output: 3400
-
-Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
-Output: 132
-
-Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
-Output: 3
-
-Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
-Output: 325
-
-Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
-Output: 21
-
-Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
-Output: 94
-
-Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
-Output: 96
-
-Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
-Output: 40
-
-Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
+Input: There are 50 children at the party. Three-fifths of them are boys. How many of the children are girls?
 Output: 20
 
-Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
-Output: 75
+Input: Gail has some bills in her wallet which amount to $100. She has four $5 bills and three $20 bills, and the rest are $10 bills. How many $10 bills are in her wallet?
+Output: 2
 
-Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
-Output: 10
+Input: A 220-liter barrel has a small leak. It lost 10% of its contents before anyone noticed. How many liters are left in the barrel?
+Output: 198
 
-Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
-Output: 730
+Input: Markese earned 5 fewer dollars than Evan. Together they earned $37. How many dollars did Markese earn? Use E to represent how many dollars Evan earned.
+Output: 16
 
-Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
+Input: Lou Senior took 3 cookies out of the cookie jar and ate them.  Since he didn't get caught by his wife, he went back the next day and took another 3 cookies out of the jar.  But after eating just one of the cookies, he felt guilty about it and put the other two cookies back.  His son, Louie Junior saw that his Dad was eating cookies.  So, Louie Junior took seven cookies out of the jar and hid them in his bedroom for later.  The next morning, Debra, Lou's wife looked into the cookie jar and reacted by accusing her husband of eating half of the cookies out of the cookie jar.  How many cookies remained in the jar?
+Output: 11
+
+Input: John had $200. He gave 3/8 of his money to his mother and 3/10 to his father. How much money did John have left?
+Output: 65
+
+Input: Tonya has $150.00 on her credit card.  If she leaves any balance on her card at the end of the month, she is charged 20% interest.  If she makes a $50.00 payment on her card, what will be the new balance?
+Output: 120
+
+Input: In her first term, Governor Sandoval gave twice as many commencement addresses as Governor Hawkins. Governor Sloan gave ten more commencement addresses than Governor Sandoval in the same amount of time. If Governor Sandoval gave 12 commencement addresses, how many commencement addresses did the three of them give altogether?
+Output: 40
+
+Input: If Buzz bought a pizza with 78 slices at a restaurant and then decided to share it with the waiter in the ratio of 5:8, with Buzz's ratio being 5, what's twenty less the number of slices of pizza that the waiter ate?
+Output: 28
+
+Input: Jolene and Phil have four children, each with the same birthday.  They gave birth to their first child exactly 15 years ago.  They gave birth to their second child exactly one year after the birth of their first child.  They gave birth to their third child on the fourth birthday of their second child. Two years after the birth of their third child, they gave birth to their fourth child.  How old, in years, is their fourth child?
 Output: 8
 
-Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
-Output: 56
+Input: Each purple book has 230 pages. Each orange book contains 510 pages. Mirella read 5 purple books and 4 orange books. How many more orange pages did she read than purple pages?
+Output: 890
 
-Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
-Output: 10
-
-Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
-Output: 14
-
-Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
-Output: 165
-
-Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
-Output: 128
-
-Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
-Output: 12
-
-Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
-Output: 40
-
-Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
-Output: 10
-
-Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
-Output: 10
-
-Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
-Output: 3400
-
-Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
-Output: 132
-
-Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
-Output: 3
-
-Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
-Output: 325
-
-Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
-Output: 21
-
-Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
-Output: 94
-
-Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
-Output: 96
-
-Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
-Output: 40
-
-Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
-Output: 20
-
-Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
-Output: 75
-
-Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
-Output: 10
-
-Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
-Output: 730
-
-Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
-Output: 8
-
-Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
-Output: 56
-
-Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
-Output: 10
-
-Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
-Output: 14
-
-Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
-Output: 165
-
-Input: The difference in ages between Richard and Hurley is 20. If Hurley is 14 years old, what are their combined ages 40 years from now?
-Output: 128
-
-Input: Pablo’s mother agrees to pay him one cent for every page he reads. He plans to save the money for some candy. Pablo always checks out books that are exactly 150 pages. After reading his books, he went to the store and bought $15 worth of candy and had $3 leftover. How many books did Pablo read?
-Output: 12
-
-Input: A group of six friends planned to buy a car. The cost of the car is $1700 and they plan to share the cost equally. They had a car wash to help raise funds, which would be taken out of the total cost. The remaining cost would be split between the six friends. At the car wash, they earn $500. However, Brad decided not to join in the purchase of the car. How much more does each friend have to pay now that Brad isn't participating?
-Output: 40
-
-Input: Harper needs to buy teacher appreciation gifts for her children’s teachers.  Her son has 3 different teachers and her daughter has 4.  If she spent $70 on gifts, how much did each gift cost?
-Output: 10
-
-Input: The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?
-Output: 10
-
-Input: After collecting all the old electronics in their house, Lauryn made $2000 from selling the items on eBay. If her friend Aurelia also made 70% of what she sold on eBay after selling her used electronics, calculate the total amount of money the two friends made on eBay.
-Output: 3400
-
-Input: $240 was divided between Kelvin and Samuel. Samuel received 3/4 of the money. From his share, Samuel then spent 1/5 of the original $240 on drinks. How much does Samuel have left?
-Output: 132
-
-Input: John and Sam were hungry so they ordered an extra-large pizza that was pre-sliced into 12 pieces.  John ate 3 slices while Sam ate twice the amount that John ate.  How many slices of pizza were left?
-Output: 3
-
-Input: On Thursday the Meat Market sold 210kg of ground beef. On Friday they sold twice that amount. On Saturday they only sold 130kg. On Sunday they sold half of what they sold Saturday. If they originally planned to sell only 500kg, how much meat did they sell beyond their original plans?
-Output: 325
-
-Input: There is a massive rainstorm lasting 4 days.  There is an area that collects water to prevent flooding in the area.  It ends up overflowing on the 4th day.  The area can hold the equivalent of 6 feet of rain.  It can also drain out the equivalent of 3 inches of rain per day to the nearby river without causing problems.  The first day it rained 10 inches.  The second day it rained twice that much.  On the third day, it rained 50% more than the second day.  It flooded the fourth day before getting a chance to do any of the draining.  What is the minimum amount it rained on the fourth day?
-Output: 21
-
-Input: There are 6 boxes of crayons that hold 8 orange crayons. There are 7 boxes of crayons that have 5 blue crayons. There is 1 box of 11 red crayons. How many crayons are there in total?
-Output: 94
-
-Input: Joey studies for his SAT exams 2 hours per night 5 nights a week.  On the weekends, he studies 3 hours a day.  If his SAT exam is 6 weeks away, how much time will Joey spend studying?
-Output: 96
-
-Input: Alexis can sew a skirt in 2 hours and a coat in 7 hours. How long does it take for Alexis to sew 6 skirts and 4 coats?
-Output: 40
-
-Input: Amy bought a 15-foot spool of string to cut up into wicks for making candles.   If she cuts up the entire string into an equal number of 6-inch and 12-inch wicks, what is the total number of wicks she will have cut?
-Output: 20
-
-Input: Jacob loves to build things. In Jacob's toy bin there are 18 red blocks. There are 7 more yellow blocks than red blocks. There are also 14 more blue blocks than red blocks. How many blocks are there in all?
-Output: 75
-
-Input: Five adults and two children go to see a movie and buy $12 worth of concessions. The total cost of their trip is $76. If each child's ticket is $7, how much, in dollars, are the adult tickets?
-Output: 10
-
-Input: James writes a comic every other day for 4 years. If there was no leap year, how many comics has he written?
-Output: 730
-
-Input: On a 16 GB (gigabyte) capacity USB drive, 50% is already busy. Calculate the number of gigabytes still available.
-Output: 8
-
-Input: The middle school sold 6 more than two times the number of fair tickets as it did tickets to the baseball game. If 25 fair tickets were sold, how many baseball game tickets did the school sell?
-Output: 56
-
-Input: Ethyl bought Lucy two new dolls for her doll collection.  This increased the doll collection by 25%.  After the addition of the two new dolls, how many dolls are in Lucy's collection?
-Output: 10
-
-Input: Matthew asked his children how many hotdogs they wanted for dinner.  Both Ella and Emma agreed they wanted 2 hotdogs each.  Luke said he could eat twice the amount of hotdogs as his sisters while Hunter said he could only eat 1 and half times the total amount of his sisters.  How many hotdogs did Matthew need to cook?
-Output: 14
-
-Input: A porcelain vase was originally priced at $200 but went on sale for 25% off. If Donna bought the porcelain vase and paid 10% sales tax, how much did she pay in total?
-Output: 165
+Input: Isabella has $45 more than Sam but only $15 more than Giselle. If Giselle has $120, calculate the total amount of money each shopper will receive if Isabella, Sam, and Giselle donate the money to three shoppers at their local town's supermarket who then decides to share it equally.
+Output: 115
 
 Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
 Output:"""

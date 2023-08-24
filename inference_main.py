@@ -1,18 +1,8 @@
 from data_utils.prompt_datasets import PromptDataset
 from transformers import (
     GenerationConfig,
-    mpu,
-    ParallelOPTForCausalLM,
-    ParallelLlamaForCausalLM,
-    ParallelGPTJForCausalLM,
-    ParallelGPT2LMHeadModel,)
-
-parallel_model_map = {
-    "opt": ParallelOPTForCausalLM,
-    "gptj": ParallelGPTJForCausalLM,
-    "gpt2": ParallelGPT2LMHeadModel,
-    "llama": ParallelLlamaForCausalLM
-}
+    mpu
+    )
 
 import os
 import random
@@ -66,11 +56,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         top_k=args.top_k,
         temperature=args.temperature,
         no_repeat_ngram_size=args.no_repeat_ngram_size,
-        repetition_penalty=args.repetition_penalty,
         max_new_tokens=args.max_length,
-        min_length=None,
-        eos_token_id=tokenizer.eos_token_id,
-        pad_token_id=tokenizer.pad_token_id,
         return_dict_in_generate=True,
         output_scores=True,
         num_beams=args.num_beams,
@@ -89,7 +75,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             gen_out = model.generate(
                     **model_batch,
                     generation_config=generation_config
-                )           
+                )         
             full_ids = gen_out.sequences
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
             all_query_ids.extend(query_ids)
