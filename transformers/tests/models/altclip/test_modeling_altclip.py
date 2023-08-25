@@ -35,6 +35,7 @@ from ...test_modeling_common import (
     ids_tensor,
     random_attention_mask,
 )
+from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -59,7 +60,7 @@ class AltCLIPVisionModelTester:
         is_training=True,
         hidden_size=32,
         projection_dim=32,
-        num_hidden_layers=5,
+        num_hidden_layers=2,
         num_attention_heads=4,
         intermediate_size=37,
         dropout=0.1,
@@ -211,7 +212,7 @@ class AltCLIPTextModelTester:
         hidden_size=32,
         projection_dim=32,
         project_dim=32,
-        num_hidden_layers=5,
+        num_hidden_layers=2,
         num_attention_heads=4,
         intermediate_size=37,
         dropout=0.1,
@@ -296,6 +297,11 @@ class AltCLIPTextModelTest(ModelTesterMixin, unittest.TestCase):
     fx_compatible = True
     test_pruning = False
     test_head_masking = False
+
+    # TODO (@SunMarc): Fix me
+    @unittest.skip("It's broken.")
+    def test_resize_tokens_embeddings(self):
+        super().test_resize_tokens_embeddings()
 
     def setUp(self):
         self.model_tester = AltCLIPTextModelTester(self)
@@ -392,13 +398,23 @@ def prepare_img():
 
 
 @require_torch
-class AltCLIPModelTest(ModelTesterMixin, unittest.TestCase):
+class AltCLIPModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
     all_model_classes = (AltCLIPModel,) if is_torch_available() else ()
+    pipeline_model_mapping = {"feature-extraction": AltCLIPModel} if is_torch_available() else {}
     fx_compatible = True
     test_head_masking = False
     test_pruning = False
     test_resize_embeddings = False
     test_attention_outputs = False
+
+    # TODO: Fix the failed tests when this model gets more usage
+    def is_pipeline_test_to_skip(
+        self, pipeline_test_casse_name, config_class, model_architecture, tokenizer_name, processor_name
+    ):
+        if pipeline_test_casse_name == "FeatureExtractionPipelineTests":
+            return True
+
+        return False
 
     def setUp(self):
         self.model_tester = AltCLIPModelTester(self)
@@ -497,6 +513,17 @@ class AltCLIPModelTest(ModelTesterMixin, unittest.TestCase):
             }
 
             self.assertEqual(set(model_state_dict.keys()), set(loaded_model_state_dict.keys()))
+
+            model_buffers = list(model.buffers())
+            for non_persistent_buffer in non_persistent_buffers.values():
+                found_buffer = False
+                for i, model_buffer in enumerate(model_buffers):
+                    if torch.equal(non_persistent_buffer, model_buffer):
+                        found_buffer = True
+                        break
+
+                self.assertTrue(found_buffer)
+                model_buffers.pop(i)
 
             models_equal = True
             for layer_name, p1 in model_state_dict.items():

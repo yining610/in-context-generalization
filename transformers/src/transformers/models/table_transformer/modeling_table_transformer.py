@@ -16,7 +16,6 @@
 
 
 import math
-import random
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
@@ -26,7 +25,6 @@ from torch import Tensor, nn
 from ...activations import ACT2FN
 from ...modeling_outputs import BaseModelOutput, BaseModelOutputWithCrossAttentions, Seq2SeqModelOutput
 from ...modeling_utils import PreTrainedModel
-from ...pytorch_utils import torch_int_div
 from ...utils import (
     ModelOutput,
     add_start_docstrings,
@@ -241,19 +239,27 @@ class TableTransformerFrozenBatchNorm2d(nn.Module):
 
 
 # Copied from transformers.models.detr.modeling_detr.replace_batch_norm with Detr->TableTransformer
-def replace_batch_norm(m, name=""):
-    for attr_str in dir(m):
-        target_attr = getattr(m, attr_str)
-        if isinstance(target_attr, nn.BatchNorm2d):
-            frozen = TableTransformerFrozenBatchNorm2d(target_attr.num_features)
-            bn = getattr(m, attr_str)
-            frozen.weight.data.copy_(bn.weight)
-            frozen.bias.data.copy_(bn.bias)
-            frozen.running_mean.data.copy_(bn.running_mean)
-            frozen.running_var.data.copy_(bn.running_var)
-            setattr(m, attr_str, frozen)
-    for n, ch in m.named_children():
-        replace_batch_norm(ch, n)
+def replace_batch_norm(model):
+    r"""
+    Recursively replace all `torch.nn.BatchNorm2d` with `TableTransformerFrozenBatchNorm2d`.
+
+    Args:
+        model (torch.nn.Module):
+            input model
+    """
+    for name, module in model.named_children():
+        if isinstance(module, nn.BatchNorm2d):
+            new_module = TableTransformerFrozenBatchNorm2d(module.num_features)
+
+            new_module.weight.data.copy_(module.weight)
+            new_module.bias.data.copy_(module.bias)
+            new_module.running_mean.data.copy_(module.running_mean)
+            new_module.running_var.data.copy_(module.running_var)
+
+            model._modules[name] = new_module
+
+        if len(list(module.children())) > 0:
+            replace_batch_norm(module)
 
 
 # Copied from transformers.models.detr.modeling_detr.DetrConvEncoder with Detr->TableTransformer
@@ -380,7 +386,7 @@ class TableTransformerSinePositionEmbedding(nn.Module):
             x_embed = x_embed / (x_embed[:, :, -1:] + 1e-6) * self.scale
 
         dim_t = torch.arange(self.embedding_dim, dtype=torch.float32, device=pixel_values.device)
-        dim_t = self.temperature ** (2 * torch_int_div(dim_t, 2) / self.embedding_dim)
+        dim_t = self.temperature ** (2 * torch.div(dim_t, 2, rounding_mode="floor") / self.embedding_dim)
 
         pos_x = x_embed[:, :, :, None] / dim_t
         pos_y = y_embed[:, :, :, None] / dim_t
@@ -441,7 +447,6 @@ class TableTransformerAttention(nn.Module):
         embed_dim: int,
         num_heads: int,
         dropout: float = 0.0,
-        is_decoder: bool = False,
         bias: bool = True,
     ):
         super().__init__()
@@ -587,7 +592,7 @@ class TableTransformerEncoderLayer(nn.Module):
     ):
         """
         Args:
-            hidden_states (`torch.FloatTensor`): input to the layer of shape `(seq_len, batch, embed_dim)`
+            hidden_states (`torch.FloatTensor`): input to the layer of shape `(batch, seq_len, embed_dim)`
             attention_mask (`torch.FloatTensor`): attention mask of size
                 `(batch, 1, target_len, source_len)` where padding elements are indicated by very large negative
                 values.
@@ -643,7 +648,6 @@ class TableTransformerDecoderLayer(nn.Module):
             embed_dim=self.embed_dim,
             num_heads=config.decoder_attention_heads,
             dropout=config.attention_dropout,
-            is_decoder=True,
         )
         self.dropout = config.dropout
         self.activation_fn = ACT2FN[config.activation_function]
@@ -654,7 +658,6 @@ class TableTransformerDecoderLayer(nn.Module):
             self.embed_dim,
             config.decoder_attention_heads,
             dropout=config.attention_dropout,
-            is_decoder=True,
         )
         self.encoder_attn_layer_norm = nn.LayerNorm(self.embed_dim)
         self.fc1 = nn.Linear(self.embed_dim, config.decoder_ffn_dim)
@@ -673,7 +676,7 @@ class TableTransformerDecoderLayer(nn.Module):
     ):
         """
         Args:
-            hidden_states (`torch.FloatTensor`): input to the layer of shape `(seq_len, batch, embed_dim)`
+            hidden_states (`torch.FloatTensor`): input to the layer of shape `(batch, seq_len, embed_dim)`
             attention_mask (`torch.FloatTensor`): attention mask of size
                 `(batch, 1, target_len, source_len)` where padding elements are indicated by very large negative
                 values.
@@ -684,7 +687,7 @@ class TableTransformerDecoderLayer(nn.Module):
                 position embeddings that are added to the queries and keys
             in the self-attention layer.
             encoder_hidden_states (`torch.FloatTensor`):
-                cross attention input to the layer of shape `(seq_len, batch, embed_dim)`
+                cross attention input to the layer of shape `(batch, seq_len, embed_dim)`
             encoder_attention_mask (`torch.FloatTensor`): encoder attention mask of size
                 `(batch, 1, target_len, source_len)` where padding elements are indicated by very large negative
                 values.
@@ -924,8 +927,13 @@ class TableTransformerEncoder(TableTransformerPreTrainedModel):
             if output_hidden_states:
                 encoder_states = encoder_states + (hidden_states,)
             # add LayerDrop (see https://arxiv.org/abs/1909.11556 for description)
-            dropout_probability = random.uniform(0, 1)
-            if self.training and (dropout_probability < self.layerdrop):  # skip the layer
+            to_drop = False
+            if self.training:
+                dropout_probability = torch.rand([])
+                if dropout_probability < self.layerdrop:  # skip the layer
+                    to_drop = True
+
+            if to_drop:
                 layer_outputs = (None, None)
             else:
                 # we add position_embeddings as extra input to the encoder_layer
@@ -1066,9 +1074,10 @@ class TableTransformerDecoder(TableTransformerPreTrainedModel):
             # add LayerDrop (see https://arxiv.org/abs/1909.11556 for description)
             if output_hidden_states:
                 all_hidden_states += (hidden_states,)
-            dropout_probability = random.uniform(0, 1)
-            if self.training and (dropout_probability < self.layerdrop):
-                continue
+            if self.training:
+                dropout_probability = torch.rand([])
+                if dropout_probability < self.layerdrop:
+                    continue
 
             if self.gradient_checkpointing and self.training:
 

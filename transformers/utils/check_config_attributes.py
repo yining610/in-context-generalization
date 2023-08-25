@@ -13,10 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import importlib
 import inspect
 import os
 import re
+
+from transformers.configuration_utils import PretrainedConfig
+from transformers.utils import direct_transformers_import
 
 
 # All paths are set with the intent you should run this script from the root of the repo with the command
@@ -25,16 +27,13 @@ PATH_TO_TRANSFORMERS = "src/transformers"
 
 
 # This is to make sure the transformers module imported is the one in the repo.
-spec = importlib.util.spec_from_file_location(
-    "transformers",
-    os.path.join(PATH_TO_TRANSFORMERS, "__init__.py"),
-    submodule_search_locations=[PATH_TO_TRANSFORMERS],
-)
-transformers = spec.loader.load_module()
+transformers = direct_transformers_import(PATH_TO_TRANSFORMERS)
 
 CONFIG_MAPPING = transformers.models.auto.configuration_auto.CONFIG_MAPPING
 
 SPECIAL_CASES_TO_ALLOW = {
+    # used to compute the property `self.chunk_length`
+    "EncodecConfig": ["overlap"],
     # used as `self.bert_model = BertModel(config, ...)`
     "DPRConfig": True,
     # not used in modeling files, but it's an important information
@@ -55,8 +54,11 @@ SPECIAL_CASES_TO_ALLOW = {
     # used internally in the configuration class file
     # `tokenizer_class` get default value `T5Tokenizer` intentionally
     "MT5Config": ["feed_forward_proj", "tokenizer_class"],
+    "UMT5Config": ["feed_forward_proj", "tokenizer_class"],
     # used internally in the configuration class file
     "LongT5Config": ["feed_forward_proj"],
+    # used internally in the configuration class file
+    "Pop2PianoConfig": ["feed_forward_proj"],
     # used internally in the configuration class file
     "SwitchTransformersConfig": ["feed_forward_proj"],
     # having default values other than `1e-5` - we can't fix them without breaking
@@ -69,11 +71,20 @@ SPECIAL_CASES_TO_ALLOW = {
     "CvtConfig": ["layer_norm_eps"],
     # having default values other than `1e-5` - we can't fix them without breaking
     "PerceiverConfig": ["layer_norm_eps"],
-    # having default values other than `1e-5` - we can't fix them without breaking
-    "RetriBertConfig": ["layer_norm_eps"],
-    # having default values other than `1e-5` - we can't fix them without breaking
-    "TrajectoryTransformerConfig": ["layer_norm_eps"],
+    # used internally to calculate the feature size
+    "InformerConfig": ["num_static_real_features", "num_time_features"],
+    # used internally to calculate the feature size
+    "TimeSeriesTransformerConfig": ["num_static_real_features", "num_time_features"],
+    # used internally to calculate the feature size
+    "AutoformerConfig": ["num_static_real_features", "num_time_features"],
+    # used internally to calculate `mlp_dim`
+    "SamVisionConfig": ["mlp_ratio"],
+    # For (head) training, but so far not implemented
+    "ClapAudioConfig": ["num_classes"],
+    # Not used, but providing useful information to users
+    "SpeechT5HifiGanConfig": ["sampling_rate"],
 }
+
 
 # TODO (ydshieh): Check the failing cases, try to fix them or move some cases to the above block once we are sure
 SPECIAL_CASES_TO_ALLOW.update(
@@ -89,11 +100,13 @@ SPECIAL_CASES_TO_ALLOW.update(
         "LayoutLMv2Config": True,
         "MaskFormerSwinConfig": True,
         "MT5Config": True,
+        # For backward compatibility with trust remote code models
+        "MptConfig": True,
+        "MptAttentionConfig": True,
         "NatConfig": True,
         "OneFormerConfig": True,
         "PerceiverConfig": True,
         "RagConfig": True,
-        "RetriBertConfig": True,
         "SpeechT5Config": True,
         "SwinConfig": True,
         "Swin2SRConfig": True,
@@ -101,14 +114,18 @@ SPECIAL_CASES_TO_ALLOW.update(
         "SwitchTransformersConfig": True,
         "TableTransformerConfig": True,
         "TapasConfig": True,
-        "TimeSeriesTransformerConfig": True,
-        "TrajectoryTransformerConfig": True,
         "TransfoXLConfig": True,
         "UniSpeechConfig": True,
         "UniSpeechSatConfig": True,
-        "VanConfig": True,
         "WavLMConfig": True,
         "WhisperConfig": True,
+        # TODO: @Arthur (for `alignment_head` and `alignment_layer`)
+        "JukeboxPriorConfig": True,
+        # TODO: @Younes (for `is_decoder`)
+        "Pix2StructTextConfig": True,
+        "IdeficsConfig": True,
+        "IdeficsVisionConfig": True,
+        "IdeficsPerceiverConfig": True,
     }
 )
 
@@ -171,6 +188,8 @@ def check_attribute_being_used(config_class, attributes, default_value, source_s
         "mask_index",
         "image_size",
         "use_cache",
+        "out_features",
+        "out_indices",
     ]
     attributes_used_in_generation = ["encoder_no_repeat_ngram_size"]
 
@@ -227,7 +246,7 @@ def check_config_attributes_being_used(config_class):
     modeling_sources = []
     for path in modeling_paths:
         if os.path.isfile(path):
-            with open(path) as fp:
+            with open(path, encoding="utf8") as fp:
                 modeling_sources.append(fp.read())
 
     unused_attributes = []
@@ -248,10 +267,24 @@ def check_config_attributes_being_used(config_class):
 def check_config_attributes():
     """Check the arguments in `__init__` of all configuration classes are used in  python files"""
     configs_with_unused_attributes = {}
-    for config_class in list(CONFIG_MAPPING.values()):
-        unused_attributes = check_config_attributes_being_used(config_class)
-        if len(unused_attributes) > 0:
-            configs_with_unused_attributes[config_class.__name__] = unused_attributes
+    for _config_class in list(CONFIG_MAPPING.values()):
+        # Skip deprecated models
+        if "models.deprecated" in _config_class.__module__:
+            continue
+        # Some config classes are not in `CONFIG_MAPPING` (e.g. `CLIPVisionConfig`, `Blip2VisionConfig`, etc.)
+        config_classes_in_module = [
+            cls
+            for name, cls in inspect.getmembers(
+                inspect.getmodule(_config_class),
+                lambda x: inspect.isclass(x)
+                and issubclass(x, PretrainedConfig)
+                and inspect.getmodule(x) == inspect.getmodule(_config_class),
+            )
+        ]
+        for config_class in config_classes_in_module:
+            unused_attributes = check_config_attributes_being_used(config_class)
+            if len(unused_attributes) > 0:
+                configs_with_unused_attributes[config_class.__name__] = unused_attributes
 
     if len(configs_with_unused_attributes) > 0:
         error = "The following configuration classes contain unused attributes in the corresponding modeling files:\n"

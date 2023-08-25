@@ -10,11 +10,11 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=1000
+NUM_EVL=40
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
-BATCH_SIZE=5
+BATCH_SIZE=10
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""

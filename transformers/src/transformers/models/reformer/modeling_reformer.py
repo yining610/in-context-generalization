@@ -87,7 +87,7 @@ def _get_least_common_mult_chunk_len(config):
         return config.lsh_attn_chunk_length
     elif len(attn_types_set) == 1 and attn_types[0] == "local":
         return config.local_attn_chunk_length
-    elif len(attn_types_set) == 2 and attn_types_set == set(["lsh", "local"]):
+    elif len(attn_types_set) == 2 and attn_types_set == {"lsh", "local"}:
         return np.lcm(config.lsh_attn_chunk_length, config.local_attn_chunk_length)
     else:
         raise NotImplementedError(
@@ -103,7 +103,7 @@ def _get_min_chunk_len(config):
         return config.lsh_attn_chunk_length
     elif len(attn_types_set) == 1 and attn_types[0] == "local":
         return config.local_attn_chunk_length
-    elif len(attn_types_set) == 2 and attn_types_set == set(["lsh", "local"]):
+    elif len(attn_types_set) == 2 and attn_types_set == {"lsh", "local"}:
         return min(config.lsh_attn_chunk_length, config.local_attn_chunk_length)
     else:
         raise NotImplementedError(
@@ -352,10 +352,10 @@ class LSHSelfAttention(nn.Module, EfficientAttentionMixin):
         self.value = nn.Linear(self.hidden_size, self.all_head_size, bias=False)
 
         # save mask value here. Need fp32 and fp16 mask values
-        self.register_buffer("self_mask_value_float16", torch.tensor(-1e3))
-        self.register_buffer("self_mask_value_float32", torch.tensor(-1e5))
-        self.register_buffer("mask_value_float16", torch.tensor(-1e4))
-        self.register_buffer("mask_value_float32", torch.tensor(-1e9))
+        self.register_buffer("self_mask_value_float16", torch.tensor(-1e3), persistent=False)
+        self.register_buffer("self_mask_value_float32", torch.tensor(-1e5), persistent=False)
+        self.register_buffer("mask_value_float16", torch.tensor(-1e4), persistent=False)
+        self.register_buffer("mask_value_float32", torch.tensor(-1e9), persistent=False)
 
     def forward(
         self,
@@ -666,7 +666,7 @@ class LSHSelfAttention(nn.Module, EfficientAttentionMixin):
             # add an extra bucket for padding tokens only
             num_buckets = num_buckets + 1
             # assign padding tokens extra bucket
-            buckets_mask = attention_mask.to(torch.uint8)[:, None, None, :].expand(buckets.shape)
+            buckets_mask = attention_mask.to(torch.bool)[:, None, None, :].expand(buckets.shape)
             buckets = torch.where(
                 buckets_mask, buckets, torch.tensor(num_buckets - 1, dtype=torch.long, device=buckets.device)
             )
@@ -841,7 +841,7 @@ class LSHSelfAttention(nn.Module, EfficientAttentionMixin):
         # attention mask for LSH
         if attention_mask is not None:
             # if chunked attention, the attention mask has to correspond to LSH order
-            attention_mask = attention_mask.to(torch.uint8)[:, None, :]
+            attention_mask = attention_mask.to(torch.bool)[:, None, :]
             if not do_standard_self_attention:
                 # expand attn_mask to fit with key_value_bucket_idx shape
                 attention_mask = attention_mask[:, None, :]
@@ -909,10 +909,9 @@ class LSHSelfAttention(nn.Module, EfficientAttentionMixin):
         relevant_bucket_idx_chunk = bucket_idx[tuple(relevant_bucket_idx_chunk.transpose(0, 1))]
 
         # adapt bucket_idx for batch and hidden states for index select
+        offset = torch.arange(relevant_bucket_idx_chunk.shape[-1], device=hidden_states.device, dtype=torch.long)
         bucket_idx_batch_offset = sequence_length * (
-            batch_size
-            * torch.arange(relevant_bucket_idx_chunk.shape[-1], device=hidden_states.device, dtype=torch.long)
-            // relevant_bucket_idx_chunk.shape[-1]
+            batch_size * torch.div(offset, relevant_bucket_idx_chunk.shape[-1], rounding_mode="floor")
         )
 
         # add batch offset
@@ -1050,8 +1049,8 @@ class LocalSelfAttention(nn.Module, EfficientAttentionMixin):
         self.dropout = config.local_attention_probs_dropout_prob
 
         # save mask value here
-        self.register_buffer("mask_value_float16", torch.tensor(-1e4))
-        self.register_buffer("mask_value_float32", torch.tensor(-1e9))
+        self.register_buffer("mask_value_float16", torch.tensor(-1e4), persistent=False)
+        self.register_buffer("mask_value_float32", torch.tensor(-1e9), persistent=False)
 
     def forward(
         self,
@@ -1225,7 +1224,7 @@ class LocalSelfAttention(nn.Module, EfficientAttentionMixin):
     ):
         # chunk attention mask and look before and after
         if attention_mask is not None:
-            attention_mask = attention_mask.to(torch.uint8)[:, None, :]
+            attention_mask = attention_mask.to(torch.bool)[:, None, :]
 
             if not do_standard_self_attention:
                 attention_mask = self._split_seq_length_dim_to(attention_mask, -1, self.chunk_length, 1)
@@ -1277,7 +1276,7 @@ class ReformerAttention(nn.Module):
             self.self_attention = LSHSelfAttention(config)
         elif len(set(self.attn_layers)) == 1 and self.attn_layers[0] == "local":
             self.self_attention = LocalSelfAttention(config)
-        elif len(set(self.attn_layers)) == 2 and set(self.attn_layers) == set(["lsh", "local"]):
+        elif len(set(self.attn_layers)) == 2 and set(self.attn_layers) == {"lsh", "local"}:
             # get correct attn layers
             if self.attn_layers[self.layer_id] == "lsh":
                 self.self_attention = LSHSelfAttention(config)
@@ -2032,6 +2031,7 @@ class ReformerModel(ReformerPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
+            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()  # noqa: F841
             device = input_ids.device
         elif inputs_embeds is not None:
@@ -2159,8 +2159,8 @@ class ReformerModel(ReformerPreTrainedModel):
         else:
             attention_mask = torch.cat(
                 [
-                    torch.ones(input_shape, device=device, dtype=torch.uint8),
-                    torch.zeros((input_shape[0], padding_length), device=device, dtype=torch.uint8),
+                    torch.ones(input_shape, device=device, dtype=torch.bool),
+                    torch.zeros((input_shape[0], padding_length), device=device, dtype=torch.bool),
                 ],
                 dim=-1,
             )
@@ -2186,7 +2186,7 @@ class ReformerModel(ReformerPreTrainedModel):
 
 @add_start_docstrings("""Reformer Model with a `language modeling` head on top.""", REFORMER_START_DOCSTRING)
 class ReformerModelWithLMHead(ReformerPreTrainedModel):
-    _keys_to_ignore_on_load_missing = ["lm_head.decoder.bias"]
+    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -2312,6 +2312,8 @@ class ReformerModelWithLMHead(ReformerPreTrainedModel):
 
 @add_start_docstrings("""Reformer Model with a `language modeling` head on top.""", REFORMER_START_DOCSTRING)
 class ReformerForMaskedLM(ReformerPreTrainedModel):
+    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias"]
+
     def __init__(self, config):
         super().__init__(config)
         assert not config.is_decoder, (

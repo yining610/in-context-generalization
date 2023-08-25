@@ -105,8 +105,8 @@ def window_reverse(windows, window_size, height, width):
     return windows
 
 
-# Copied from transformers.models.swin.modeling_swin.drop_path
-def drop_path(input, drop_prob=0.0, training=False, scale_by_keep=True):
+# Copied from transformers.models.beit.modeling_beit.drop_path
+def drop_path(input: torch.Tensor, drop_prob: float = 0.0, training: bool = False) -> torch.Tensor:
     """
     Drop paths (Stochastic Depth) per sample (when applied in main path of residual blocks).
 
@@ -520,9 +520,8 @@ class Swin2SRLayer(nn.Module):
             if isinstance(self.shift_size, collections.abc.Iterable)
             else (self.shift_size, self.shift_size)
         )
-        self.window_size = (
-            input_resolution[0] if input_resolution[0] <= target_window_size[0] else target_window_size[0]
-        )
+        window_dim = input_resolution[0].item() if torch.is_tensor(input_resolution[0]) else input_resolution[0]
+        self.window_size = window_dim if window_dim <= target_window_size[0] else target_window_size[0]
         self.shift_size = (
             0
             if input_resolution

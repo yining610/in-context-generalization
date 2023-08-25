@@ -139,11 +139,12 @@ class XCLIPVisionEmbeddings(nn.Module):
         self.num_patches = (self.image_size // self.patch_size) ** 2
         self.num_positions = self.num_patches + 1
         self.position_embedding = nn.Embedding(self.num_positions, self.embed_dim)
-        self.register_buffer("position_ids", torch.arange(self.num_positions).expand((1, -1)))
+        self.register_buffer("position_ids", torch.arange(self.num_positions).expand((1, -1)), persistent=False)
 
     def forward(self, pixel_values: torch.FloatTensor) -> torch.Tensor:
         batch_size = pixel_values.shape[0]
-        patch_embeds = self.patch_embedding(pixel_values)  # shape = [*, width, grid, grid]
+        target_dtype = self.patch_embedding.weight.dtype
+        patch_embeds = self.patch_embedding(pixel_values.to(dtype=target_dtype))  # shape = [*, width, grid, grid]
         patch_embeds = patch_embeds.flatten(2).transpose(1, 2)
 
         class_embeds = self.class_embedding.expand(batch_size, 1, -1)
@@ -162,7 +163,9 @@ class XCLIPTextEmbeddings(nn.Module):
         self.position_embedding = nn.Embedding(config.max_position_embeddings, embed_dim)
 
         # position_ids (1, len position emb) is contiguous in memory and exported when serialized
-        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
+        self.register_buffer(
+            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
+        )
 
     def forward(
         self,
@@ -357,7 +360,7 @@ class XCLIPEncoderLayer(nn.Module):
 
 
 # Copied from transformers.models.beit.modeling_beit.drop_path
-def drop_path(input, drop_prob: float = 0.0, training: bool = False):
+def drop_path(input: torch.Tensor, drop_prob: float = 0.0, training: bool = False) -> torch.Tensor:
     """
     Drop paths (Stochastic Depth) per sample (when applied in main path of residual blocks).
 
@@ -481,7 +484,6 @@ class XCLIPPreTrainedModel(PreTrainedModel):
     config_class = XCLIPConfig
     base_model_prefix = "x_clip"
     supports_gradient_checkpointing = True
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -737,6 +739,24 @@ class XCLIPEncoder(nn.Module):
         )
 
 
+# Copied from transformers.models.bart.modeling_bart._make_causal_mask
+def _make_causal_mask(
+    input_ids_shape: torch.Size, dtype: torch.dtype, device: torch.device, past_key_values_length: int = 0
+):
+    """
+    Make causal mask used for bi-directional self-attention.
+    """
+    bsz, tgt_len = input_ids_shape
+    mask = torch.full((tgt_len, tgt_len), torch.finfo(dtype).min, device=device)
+    mask_cond = torch.arange(mask.size(-1), device=device)
+    mask.masked_fill_(mask_cond < (mask_cond + 1).view(mask.size(-1), 1), 0)
+    mask = mask.to(dtype)
+
+    if past_key_values_length > 0:
+        mask = torch.cat([torch.zeros(tgt_len, past_key_values_length, dtype=dtype, device=device), mask], dim=-1)
+    return mask[None, None, :, :].expand(bsz, 1, tgt_len, tgt_len + past_key_values_length)
+
+
 class XCLIPTextTransformer(nn.Module):
     def __init__(self, config: XCLIPTextConfig):
         super().__init__()
@@ -775,12 +795,9 @@ class XCLIPTextTransformer(nn.Module):
 
         hidden_states = self.embeddings(input_ids=input_ids, position_ids=position_ids)
 
-        batch_size, seq_len = input_shape
         # X_CLIP's text model uses causal mask, prepare it here.
         # https://github.com/openai/CLIP/blob/cfcffb90e69f37bf2ff1e988237a0fbe41f33c04/clip/model.py#L324
-        causal_attention_mask = self._build_causal_attention_mask(batch_size, seq_len, hidden_states.dtype).to(
-            hidden_states.device
-        )
+        causal_attention_mask = _make_causal_mask(input_shape, hidden_states.dtype, device=hidden_states.device)
         # expand attention_mask
         if attention_mask is not None:
             # [batch_size, seq_len] -> [batch_size, 1, tgt_seq_len, src_seq_len]
@@ -811,15 +828,6 @@ class XCLIPTextTransformer(nn.Module):
             hidden_states=encoder_outputs.hidden_states,
             attentions=encoder_outputs.attentions,
         )
-
-    def _build_causal_attention_mask(self, batch_size, seq_len, dtype):
-        # lazily create causal attention mask, with full attention between the vision tokens
-        # pytorch uses additive attention mask; fill with -inf
-        mask = torch.empty(batch_size, seq_len, seq_len, dtype=dtype)
-        mask.fill_(torch.tensor(torch.finfo(dtype).min))
-        mask.triu_(1)  # zero out the lower diagonal
-        mask = mask.unsqueeze(1)  # expand mask
-        return mask
 
 
 class XCLIPTextModel(XCLIPPreTrainedModel):
@@ -1065,7 +1073,7 @@ class XCLIPVisionModel(XCLIPPreTrainedModel):
         Examples:
 
         ```python
-        >>> from decord import VideoReader, cpu
+        >>> import av
         >>> import torch
         >>> import numpy as np
 
@@ -1073,6 +1081,27 @@ class XCLIPVisionModel(XCLIPPreTrainedModel):
         >>> from huggingface_hub import hf_hub_download
 
         >>> np.random.seed(0)
+
+
+        >>> def read_video_pyav(container, indices):
+        ...     '''
+        ...     Decode the video with PyAV decoder.
+        ...     Args:
+        ...         container (`av.container.input.InputContainer`): PyAV container.
+        ...         indices (`List[int]`): List of frame indices to decode.
+        ...     Returns:
+        ...         result (np.ndarray): np array of decoded frames of shape (num_frames, height, width, 3).
+        ...     '''
+        ...     frames = []
+        ...     container.seek(0)
+        ...     start_index = indices[0]
+        ...     end_index = indices[-1]
+        ...     for i, frame in enumerate(container.decode(video=0)):
+        ...         if i > end_index:
+        ...             break
+        ...         if i >= start_index and i in indices:
+        ...             frames.append(frame)
+        ...     return np.stack([x.to_ndarray(format="rgb24") for x in frames])
 
 
         >>> def sample_frame_indices(clip_len, frame_sample_rate, seg_len):
@@ -1088,12 +1117,11 @@ class XCLIPVisionModel(XCLIPPreTrainedModel):
         >>> file_path = hf_hub_download(
         ...     repo_id="nielsr/video-demo", filename="eating_spaghetti.mp4", repo_type="dataset"
         ... )
-        >>> vr = VideoReader(file_path, num_threads=1, ctx=cpu(0))
+        >>> container = av.open(file_path)
 
         >>> # sample 16 frames
-        >>> vr.seek(0)
-        >>> indices = sample_frame_indices(clip_len=8, frame_sample_rate=1, seg_len=len(vr))
-        >>> video = vr.get_batch(indices).asnumpy()
+        >>> indices = sample_frame_indices(clip_len=8, frame_sample_rate=1, seg_len=container.streams.video[0].frames)
+        >>> video = read_video_pyav(container, indices)
 
         >>> processor = AutoProcessor.from_pretrained("microsoft/xclip-base-patch32")
         >>> model = XCLIPVisionModel.from_pretrained("microsoft/xclip-base-patch32")
@@ -1282,7 +1310,7 @@ class XCLIPModel(XCLIPPreTrainedModel):
 
         self.visual_projection = nn.Linear(self.vision_embed_dim, self.projection_dim, bias=False)
         self.text_projection = nn.Linear(self.text_embed_dim, self.projection_dim, bias=False)
-        self.logit_scale = nn.Parameter(torch.ones([]) * self.config.logit_scale_init_value)
+        self.logit_scale = nn.Parameter(torch.tensor(self.config.logit_scale_init_value))
 
         self.prompts_visual_layernorm = nn.LayerNorm(self.vision_embed_dim, eps=config.vision_config.layer_norm_eps)
         self.prompts_visual_projection = nn.Parameter(torch.randn(self.vision_embed_dim, self.projection_dim))
@@ -1363,7 +1391,7 @@ class XCLIPModel(XCLIPPreTrainedModel):
         Examples:
 
         ```python
-        >>> from decord import VideoReader, cpu
+        >>> import av
         >>> import torch
         >>> import numpy as np
 
@@ -1371,6 +1399,27 @@ class XCLIPModel(XCLIPPreTrainedModel):
         >>> from huggingface_hub import hf_hub_download
 
         >>> np.random.seed(0)
+
+
+        >>> def read_video_pyav(container, indices):
+        ...     '''
+        ...     Decode the video with PyAV decoder.
+        ...     Args:
+        ...         container (`av.container.input.InputContainer`): PyAV container.
+        ...         indices (`List[int]`): List of frame indices to decode.
+        ...     Returns:
+        ...         result (np.ndarray): np array of decoded frames of shape (num_frames, height, width, 3).
+        ...     '''
+        ...     frames = []
+        ...     container.seek(0)
+        ...     start_index = indices[0]
+        ...     end_index = indices[-1]
+        ...     for i, frame in enumerate(container.decode(video=0)):
+        ...         if i > end_index:
+        ...             break
+        ...         if i >= start_index and i in indices:
+        ...             frames.append(frame)
+        ...     return np.stack([x.to_ndarray(format="rgb24") for x in frames])
 
 
         >>> def sample_frame_indices(clip_len, frame_sample_rate, seg_len):
@@ -1386,12 +1435,11 @@ class XCLIPModel(XCLIPPreTrainedModel):
         >>> file_path = hf_hub_download(
         ...     repo_id="nielsr/video-demo", filename="eating_spaghetti.mp4", repo_type="dataset"
         ... )
-        >>> vr = VideoReader(file_path, num_threads=1, ctx=cpu(0))
+        >>> container = av.open(file_path)
 
-        >>> # sample 16 frames
-        >>> vr.seek(0)
-        >>> indices = sample_frame_indices(clip_len=8, frame_sample_rate=1, seg_len=len(vr))
-        >>> video = vr.get_batch(indices).asnumpy()
+        >>> # sample 8 frames
+        >>> indices = sample_frame_indices(clip_len=8, frame_sample_rate=1, seg_len=container.streams.video[0].frames)
+        >>> video = read_video_pyav(container, indices)
 
         >>> processor = AutoProcessor.from_pretrained("microsoft/xclip-base-patch32")
         >>> model = AutoModel.from_pretrained("microsoft/xclip-base-patch32")
@@ -1451,7 +1499,7 @@ class XCLIPModel(XCLIPPreTrainedModel):
         Examples:
 
         ```python
-        >>> from decord import VideoReader, cpu
+        >>> import av
         >>> import torch
         >>> import numpy as np
 
@@ -1459,6 +1507,27 @@ class XCLIPModel(XCLIPPreTrainedModel):
         >>> from huggingface_hub import hf_hub_download
 
         >>> np.random.seed(0)
+
+
+        >>> def read_video_pyav(container, indices):
+        ...     '''
+        ...     Decode the video with PyAV decoder.
+        ...     Args:
+        ...         container (`av.container.input.InputContainer`): PyAV container.
+        ...         indices (`List[int]`): List of frame indices to decode.
+        ...     Returns:
+        ...         result (np.ndarray): np array of decoded frames of shape (num_frames, height, width, 3).
+        ...     '''
+        ...     frames = []
+        ...     container.seek(0)
+        ...     start_index = indices[0]
+        ...     end_index = indices[-1]
+        ...     for i, frame in enumerate(container.decode(video=0)):
+        ...         if i > end_index:
+        ...             break
+        ...         if i >= start_index and i in indices:
+        ...             frames.append(frame)
+        ...     return np.stack([x.to_ndarray(format="rgb24") for x in frames])
 
 
         >>> def sample_frame_indices(clip_len, frame_sample_rate, seg_len):
@@ -1474,12 +1543,11 @@ class XCLIPModel(XCLIPPreTrainedModel):
         >>> file_path = hf_hub_download(
         ...     repo_id="nielsr/video-demo", filename="eating_spaghetti.mp4", repo_type="dataset"
         ... )
-        >>> vr = VideoReader(file_path, num_threads=1, ctx=cpu(0))
+        >>> container = av.open(file_path)
 
-        >>> # sample 16 frames
-        >>> vr.seek(0)
-        >>> indices = sample_frame_indices(clip_len=8, frame_sample_rate=1, seg_len=len(vr))
-        >>> video = vr.get_batch(indices).asnumpy()
+        >>> # sample 8 frames
+        >>> indices = sample_frame_indices(clip_len=8, frame_sample_rate=1, seg_len=container.streams.video[0].frames)
+        >>> video = read_video_pyav(container, indices)
 
         >>> processor = AutoProcessor.from_pretrained("microsoft/xclip-base-patch32")
         >>> model = AutoModel.from_pretrained("microsoft/xclip-base-patch32")

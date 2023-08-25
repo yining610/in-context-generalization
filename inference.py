@@ -31,7 +31,7 @@ def get_tokenizer(args):
 
 def setup_model(args):
     # get the model
-    model = AutoModelForCausalLM.from_pretrained(args.model_path)
+    model = AutoModelForCausalLM.from_pretrained(args.model_path, torch_dtype=torch.float16)
     
     kwargs = dict(replace_with_kernel_inject=True)
     model = deepspeed.init_inference(

@@ -17,8 +17,7 @@
 from collections import OrderedDict
 from typing import Any, List, Mapping, Optional
 
-from transformers import PreTrainedTokenizer, TensorType, is_torch_available
-
+from ... import PreTrainedTokenizer, TensorType, is_torch_available
 from ...configuration_utils import PretrainedConfig
 from ...onnx import OnnxConfigWithPast, PatchingSpec
 from ...utils import logging
@@ -61,11 +60,11 @@ class GPT2Config(PretrainedConfig):
             Number of attention heads for each attention layer in the Transformer encoder.
         n_inner (`int`, *optional*, defaults to None):
             Dimensionality of the inner feed-forward layers. `None` will set it to 4 times n_embd
-        activation_function (`str`, *optional*, defaults to `"gelu"`):
+        activation_function (`str`, *optional*, defaults to `"gelu_new"`):
             Activation function, to be selected in the list `["relu", "silu", "gelu", "tanh", "gelu_new"]`.
         resid_pdrop (`float`, *optional*, defaults to 0.1):
             The dropout probability for all fully connected layers in the embeddings, encoder, and pooler.
-        embd_pdrop (`int`, *optional*, defaults to 0.1):
+        embd_pdrop (`float`, *optional*, defaults to 0.1):
             The dropout ratio for the embeddings.
         attn_pdrop (`float`, *optional*, defaults to 0.1):
             The dropout ratio for the attention.
@@ -163,7 +162,6 @@ class GPT2Config(PretrainedConfig):
         eos_token_id=50256,
         scale_attn_by_inverse_layer_idx=False,
         reorder_and_upcast_attn=False,
-        drop_path_rate=0.0,
         **kwargs,
     ):
         self.vocab_size = vocab_size
@@ -187,7 +185,6 @@ class GPT2Config(PretrainedConfig):
         self.use_cache = use_cache
         self.scale_attn_by_inverse_layer_idx = scale_attn_by_inverse_layer_idx
         self.reorder_and_upcast_attn = reorder_and_upcast_attn
-        self.drop_path_rate = drop_path_rate
 
         self.bos_token_id = bos_token_id
         self.eos_token_id = eos_token_id

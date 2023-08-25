@@ -22,6 +22,7 @@ from transformers.utils import is_detectron2_available, is_torch_available
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, _config_zero_init, ids_tensor, random_attention_mask
+from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -54,7 +55,7 @@ class LayoutLMv2ModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=36,
-        num_hidden_layers=3,
+        num_hidden_layers=2,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -253,7 +254,7 @@ class LayoutLMv2ModelTester:
 
 @require_torch
 @require_detectron2
-class LayoutLMv2ModelTest(ModelTesterMixin, unittest.TestCase):
+class LayoutLMv2ModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
     test_pruning = False
     test_torchscript = True
     test_mismatched_shapes = False
@@ -267,6 +268,11 @@ class LayoutLMv2ModelTest(ModelTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else ()
+    )
+    pipeline_model_mapping = (
+        {"document-question-answering": LayoutLMv2ForQuestionAnswering, "feature-extraction": LayoutLMv2Model}
+        if is_torch_available()
+        else {}
     )
 
     def setUp(self):
@@ -408,6 +414,10 @@ class LayoutLMv2ModelTest(ModelTesterMixin, unittest.TestCase):
             config.output_hidden_states = True
 
             check_hidden_states_output(inputs_dict, config, model_class)
+
+    @unittest.skip("We cannot configure detectron2 to output a smaller backbone")
+    def test_model_is_small(self):
+        pass
 
     @slow
     def test_model_from_pretrained(self):

@@ -32,7 +32,7 @@ from copy import deepcopy  # noqa
 
 from parameterized import parameterized  # noqa
 from transformers import TrainingArguments, is_torch_available  # noqa
-from transformers.deepspeed import is_deepspeed_available  # noqa
+from transformers.integrations.deepspeed import is_deepspeed_available  # noqa
 from transformers.file_utils import WEIGHTS_NAME  # noqa
 from transformers.testing_utils import (  # noqa
     CaptureLogger,
@@ -51,7 +51,7 @@ from transformers.trainer_utils import set_seed  # noqa
 
 set_seed(42)
 
-models = dict(base="patrickvonplaten/wav2vec2_tiny_random", robust="patrickvonplaten/wav2vec2_tiny_random_robust")
+models = {"base": "patrickvonplaten/wav2vec2_tiny_random", "robust": "patrickvonplaten/wav2vec2_tiny_random_robust"}
 
 ZERO2 = "zero2"
 ZERO3 = "zero3"

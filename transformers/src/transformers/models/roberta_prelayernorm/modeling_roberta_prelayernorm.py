@@ -83,7 +83,9 @@ class RobertaPreLayerNormEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         # position_ids (1, len position emb) is contiguous in memory and exported when serialized
         self.position_embedding_type = getattr(config, "position_embedding_type", "absolute")
-        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
+        self.register_buffer(
+            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
+        )
         self.register_buffer(
             "token_type_ids", torch.zeros(self.position_ids.size(), dtype=torch.long), persistent=False
         )
@@ -494,6 +496,13 @@ class RobertaPreLayerNormEncoder(nn.Module):
         all_self_attentions = () if output_attentions else None
         all_cross_attentions = () if output_attentions and self.config.add_cross_attention else None
 
+        if self.gradient_checkpointing and self.training:
+            if use_cache:
+                logger.warning_once(
+                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
+                )
+                use_cache = False
+
         next_decoder_cache = () if use_cache else None
         for i, layer_module in enumerate(self.layer):
             if output_hidden_states:
@@ -503,11 +512,6 @@ class RobertaPreLayerNormEncoder(nn.Module):
             past_key_value = past_key_values[i] if past_key_values is not None else None
 
             if self.gradient_checkpointing and self.training:
-                if use_cache:
-                    logger.warning(
-                        "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                    )
-                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -592,7 +596,7 @@ class RobertaPreLayerNormPreTrainedModel(PreTrainedModel):
     config_class = RobertaPreLayerNormConfig
     base_model_prefix = "roberta_prelayernorm"
     supports_gradient_checkpointing = True
-    _no_split_modules = []
+    _no_split_modules = ["RobertaPreLayerNormEmbeddings", "RobertaPreLayerNormSelfAttention"]
 
     # Copied from transformers.models.bert.modeling_bert.BertPreTrainedModel._init_weights
     def _init_weights(self, module):
@@ -614,15 +618,6 @@ class RobertaPreLayerNormPreTrainedModel(PreTrainedModel):
     def _set_gradient_checkpointing(self, module, value=False):
         if isinstance(module, RobertaPreLayerNormEncoder):
             module.gradient_checkpointing = value
-
-    def update_keys_to_ignore(self, config, del_keys_to_ignore):
-        """Remove some keys from ignore list"""
-        if not config.tie_word_embeddings:
-            # must make a new list, or the class variable gets modified!
-            self._keys_to_ignore_on_save = [k for k in self._keys_to_ignore_on_save if k not in del_keys_to_ignore]
-            self._keys_to_ignore_on_load_missing = [
-                k for k in self._keys_to_ignore_on_load_missing if k not in del_keys_to_ignore
-            ]
 
 
 ROBERTA_PRELAYERNORM_START_DOCSTRING = r"""
@@ -712,8 +707,6 @@ class RobertaPreLayerNormModel(RobertaPreLayerNormPreTrainedModel):
 
     """
 
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
-
     def __init__(self, config, add_pooling_layer=True):
         super().__init__(config)
         self.config = config
@@ -797,6 +790,7 @@ class RobertaPreLayerNormModel(RobertaPreLayerNormPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
+            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -884,9 +878,7 @@ class RobertaPreLayerNormModel(RobertaPreLayerNormPreTrainedModel):
 )
 # Copied from transformers.models.roberta.modeling_roberta.RobertaForCausalLM with roberta-base->andreasmadsen/efficient_mlm_m0.40,ROBERTA->ROBERTA_PRELAYERNORM,Roberta->RobertaPreLayerNorm,roberta->roberta_prelayernorm, RobertaPreLayerNormTokenizer->RobertaTokenizer
 class RobertaPreLayerNormForCausalLM(RobertaPreLayerNormPreTrainedModel):
-    _keys_to_ignore_on_save = [r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
-    _keys_to_ignore_on_load_missing = [r"position_ids", r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -898,9 +890,6 @@ class RobertaPreLayerNormForCausalLM(RobertaPreLayerNormPreTrainedModel):
 
         self.roberta_prelayernorm = RobertaPreLayerNormModel(config, add_pooling_layer=False)
         self.lm_head = RobertaPreLayerNormLMHead(config)
-
-        # The LM head weights require special treatment only when they are tied with the word embeddings
-        self.update_keys_to_ignore(config, ["lm_head.decoder.weight"])
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -998,6 +987,8 @@ class RobertaPreLayerNormForCausalLM(RobertaPreLayerNormPreTrainedModel):
 
         lm_loss = None
         if labels is not None:
+            # move labels to correct device to enable model parallelism
+            labels = labels.to(prediction_scores.device)
             # we are doing next-token prediction; shift prediction scores and input ids by one
             shifted_prediction_scores = prediction_scores[:, :-1, :].contiguous()
             labels = labels[:, 1:].contiguous()
@@ -1040,9 +1031,7 @@ class RobertaPreLayerNormForCausalLM(RobertaPreLayerNormPreTrainedModel):
     """RoBERTa-PreLayerNorm Model with a `language modeling` head on top.""", ROBERTA_PRELAYERNORM_START_DOCSTRING
 )
 class RobertaPreLayerNormForMaskedLM(RobertaPreLayerNormPreTrainedModel):
-    _keys_to_ignore_on_save = [r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
-    _keys_to_ignore_on_load_missing = [r"position_ids", r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias"]
 
     # Copied from transformers.models.roberta.modeling_roberta.RobertaForMaskedLM.__init__ with ROBERTA->ROBERTA_PRELAYERNORM,Roberta->RobertaPreLayerNorm,roberta->roberta_prelayernorm
     def __init__(self, config):
@@ -1056,9 +1045,6 @@ class RobertaPreLayerNormForMaskedLM(RobertaPreLayerNormPreTrainedModel):
 
         self.roberta_prelayernorm = RobertaPreLayerNormModel(config, add_pooling_layer=False)
         self.lm_head = RobertaPreLayerNormLMHead(config)
-
-        # The LM head weights require special treatment only when they are tied with the word embeddings
-        self.update_keys_to_ignore(config, ["lm_head.decoder.weight"])
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -1122,6 +1108,8 @@ class RobertaPreLayerNormForMaskedLM(RobertaPreLayerNormPreTrainedModel):
 
         masked_lm_loss = None
         if labels is not None:
+            # move labels to correct device to enable model parallelism
+            labels = labels.to(prediction_scores.device)
             loss_fct = CrossEntropyLoss()
             masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), labels.view(-1))
 
@@ -1177,8 +1165,6 @@ class RobertaPreLayerNormLMHead(nn.Module):
     ROBERTA_PRELAYERNORM_START_DOCSTRING,
 )
 class RobertaPreLayerNormForSequenceClassification(RobertaPreLayerNormPreTrainedModel):
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
-
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1234,6 +1220,8 @@ class RobertaPreLayerNormForSequenceClassification(RobertaPreLayerNormPreTrained
 
         loss = None
         if labels is not None:
+            # move labels to correct device to enable model parallelism
+            labels = labels.to(logits.device)
             if self.config.problem_type is None:
                 if self.num_labels == 1:
                     self.config.problem_type = "regression"
@@ -1276,8 +1264,6 @@ class RobertaPreLayerNormForSequenceClassification(RobertaPreLayerNormPreTrained
 )
 # Copied from transformers.models.roberta.modeling_roberta.RobertaForMultipleChoice with ROBERTA->ROBERTA_PRELAYERNORM,Roberta->RobertaPreLayerNorm,roberta->roberta_prelayernorm
 class RobertaPreLayerNormForMultipleChoice(RobertaPreLayerNormPreTrainedModel):
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
-
     def __init__(self, config):
         super().__init__(config)
 
@@ -1347,6 +1333,8 @@ class RobertaPreLayerNormForMultipleChoice(RobertaPreLayerNormPreTrainedModel):
 
         loss = None
         if labels is not None:
+            # move labels to correct device to enable model parallelism
+            labels = labels.to(reshaped_logits.device)
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(reshaped_logits, labels)
 
@@ -1370,9 +1358,6 @@ class RobertaPreLayerNormForMultipleChoice(RobertaPreLayerNormPreTrainedModel):
     ROBERTA_PRELAYERNORM_START_DOCSTRING,
 )
 class RobertaPreLayerNormForTokenClassification(RobertaPreLayerNormPreTrainedModel):
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
-
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1432,6 +1417,8 @@ class RobertaPreLayerNormForTokenClassification(RobertaPreLayerNormPreTrainedMod
 
         loss = None
         if labels is not None:
+            # move labels to correct device to enable model parallelism
+            labels = labels.to(logits.device)
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
 
@@ -1478,9 +1465,6 @@ class RobertaPreLayerNormClassificationHead(nn.Module):
     ROBERTA_PRELAYERNORM_START_DOCSTRING,
 )
 class RobertaPreLayerNormForQuestionAnswering(RobertaPreLayerNormPreTrainedModel):
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
-
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels

@@ -22,6 +22,7 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
+from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -54,7 +55,7 @@ class RemBertModelTester:
         hidden_size=32,
         input_embedding_size=18,
         output_embedding_size=43,
-        num_hidden_layers=5,
+        num_hidden_layers=2,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -360,7 +361,7 @@ class RemBertModelTester:
 
 
 @require_torch
-class RemBertModelTest(ModelTesterMixin, unittest.TestCase):
+class RemBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             RemBertModel,
@@ -375,6 +376,19 @@ class RemBertModelTest(ModelTesterMixin, unittest.TestCase):
         else ()
     )
     all_generative_model_classes = (RemBertForCausalLM,) if is_torch_available() else ()
+    pipeline_model_mapping = (
+        {
+            "feature-extraction": RemBertModel,
+            "fill-mask": RemBertForMaskedLM,
+            "question-answering": RemBertForQuestionAnswering,
+            "text-classification": RemBertForSequenceClassification,
+            "text-generation": RemBertForCausalLM,
+            "token-classification": RemBertForTokenClassification,
+            "zero-shot": RemBertForSequenceClassification,
+        }
+        if is_torch_available()
+        else {}
+    )
 
     def setUp(self):
         self.model_tester = RemBertModelTester(self)

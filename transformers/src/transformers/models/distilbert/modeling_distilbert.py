@@ -27,10 +27,9 @@ import torch
 from torch import nn
 from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
 
-from transformers.configuration_utils import PretrainedConfig
-
 from ...activations import get_activation
-from ...deepspeed import is_deepspeed_zero3_enabled
+from ...configuration_utils import PretrainedConfig
+from ...integrations.deepspeed import is_deepspeed_zero3_enabled
 from ...modeling_outputs import (
     BaseModelOutput,
     MaskedLMOutput,
@@ -105,15 +104,22 @@ class Embeddings(nn.Module):
             "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
         )
 
-    def forward(self, input_ids: torch.Tensor) -> torch.Tensor:
+    def forward(self, input_ids: torch.Tensor, input_embeds: Optional[torch.Tensor] = None) -> torch.Tensor:
         """
         Parameters:
-            input_ids: torch.tensor(bs, max_seq_length) The token ids to embed.
+            input_ids (torch.Tensor):
+                torch.tensor(bs, max_seq_length) The token ids to embed.
+            input_embeds (*optional*, torch.Tensor):
+                The pre-computed word embeddings. Can only be passed if the input ids are `None`.
+
 
         Returns: torch.tensor(bs, max_seq_length, dim) The embedded tokens (plus position embeddings, no token_type
         embeddings)
         """
-        seq_length = input_ids.size(1)
+        if input_ids is not None:
+            input_embeds = self.word_embeddings(input_ids)  # (bs, max_seq_length, dim)
+
+        seq_length = input_embeds.size(1)
 
         # Setting the position-ids to the registered buffer in constructor, it helps
         # when tracing the model without passing position-ids, solves
@@ -124,10 +130,9 @@ class Embeddings(nn.Module):
             position_ids = torch.arange(seq_length, dtype=torch.long, device=input_ids.device)  # (max_seq_length)
             position_ids = position_ids.unsqueeze(0).expand_as(input_ids)  # (bs, max_seq_length)
 
-        word_embeddings = self.word_embeddings(input_ids)  # (bs, max_seq_length, dim)
         position_embeddings = self.position_embeddings(position_ids)  # (bs, max_seq_length, dim)
 
-        embeddings = word_embeddings + position_embeddings  # (bs, max_seq_length, dim)
+        embeddings = input_embeds + position_embeddings  # (bs, max_seq_length, dim)
         embeddings = self.LayerNorm(embeddings)  # (bs, max_seq_length, dim)
         embeddings = self.dropout(embeddings)  # (bs, max_seq_length, dim)
         return embeddings
@@ -319,6 +324,7 @@ class Transformer(nn.Module):
         super().__init__()
         self.n_layers = config.n_layers
         self.layer = nn.ModuleList([TransformerBlock(config) for _ in range(config.n_layers)])
+        self.gradient_checkpointing = False
 
     def forward(
         self,
@@ -351,9 +357,28 @@ class Transformer(nn.Module):
             if output_hidden_states:
                 all_hidden_states = all_hidden_states + (hidden_state,)
 
-            layer_outputs = layer_module(
-                x=hidden_state, attn_mask=attn_mask, head_mask=head_mask[i], output_attentions=output_attentions
-            )
+            if self.gradient_checkpointing and self.training:
+
+                def create_custom_forward(module):
+                    def custom_forward(*inputs):
+                        return module(*inputs, output_attentions)
+
+                    return custom_forward
+
+                layer_outputs = torch.utils.checkpoint.checkpoint(
+                    create_custom_forward(layer_module),
+                    hidden_state,
+                    attn_mask,
+                    head_mask[i],
+                )
+            else:
+                layer_outputs = layer_module(
+                    hidden_state,
+                    attn_mask,
+                    head_mask[i],
+                    output_attentions,
+                )
+
             hidden_state = layer_outputs[-1]
 
             if output_attentions:
@@ -387,6 +412,7 @@ class DistilBertPreTrainedModel(PreTrainedModel):
     config_class = DistilBertConfig
     load_tf_weights = None
     base_model_prefix = "distilbert"
+    supports_gradient_checkpointing = True
 
     def _init_weights(self, module: nn.Module):
         """Initialize the weights."""
@@ -403,6 +429,10 @@ class DistilBertPreTrainedModel(PreTrainedModel):
         elif isinstance(module, nn.LayerNorm):
             module.bias.data.zero_()
             module.weight.data.fill_(1.0)
+
+    def _set_gradient_checkpointing(self, module, value=False):
+        if isinstance(module, Transformer):
+            module.gradient_checkpointing = value
 
 
 DISTILBERT_START_DOCSTRING = r"""
@@ -559,6 +589,7 @@ class DistilBertModel(DistilBertPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
+            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -573,10 +604,10 @@ class DistilBertModel(DistilBertPreTrainedModel):
         # Prepare head mask if needed
         head_mask = self.get_head_mask(head_mask, self.config.num_hidden_layers)
 
-        if inputs_embeds is None:
-            inputs_embeds = self.embeddings(input_ids)  # (bs, seq_length, dim)
+        embeddings = self.embeddings(input_ids, inputs_embeds)  # (bs, seq_length, dim)
+
         return self.transformer(
-            x=inputs_embeds,
+            x=embeddings,
             attn_mask=attention_mask,
             head_mask=head_mask,
             output_attentions=output_attentions,
@@ -590,7 +621,7 @@ class DistilBertModel(DistilBertPreTrainedModel):
     DISTILBERT_START_DOCSTRING,
 )
 class DistilBertForMaskedLM(DistilBertPreTrainedModel):
-    _keys_to_ignore_on_load_missing = ["vocab_projector.weight"]
+    _tied_weights_keys = ["vocab_projector.weight"]
 
     def __init__(self, config: PretrainedConfig):
         super().__init__(config)

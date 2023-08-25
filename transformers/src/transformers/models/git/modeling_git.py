@@ -109,7 +109,9 @@ class GitEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         # position_ids (1, len position emb) is contiguous in memory and exported when serialized
         self.position_embedding_type = getattr(config, "position_embedding_type", "absolute")
-        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
+        self.register_buffer(
+            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
+        )
 
     def forward(
         self,
@@ -431,6 +433,13 @@ class GitEncoder(nn.Module):
         pixel_values_present: Optional[bool] = False,
         return_dict: Optional[bool] = True,
     ) -> Union[Tuple[torch.Tensor], BaseModelOutputWithPast]:
+        if self.gradient_checkpointing and self.training:
+            if use_cache:
+                logger.warning_once(
+                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
+                )
+                use_cache = False
+
         all_hidden_states = () if output_hidden_states else None
         all_self_attentions = () if output_attentions else None
 
@@ -443,11 +452,6 @@ class GitEncoder(nn.Module):
             past_key_value = past_key_values[i] if past_key_values is not None else None
 
             if self.gradient_checkpointing and self.training:
-                if use_cache:
-                    logger.warning(
-                        "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                    )
-                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -508,7 +512,6 @@ class GitPreTrainedModel(PreTrainedModel):
     config_class = GitConfig
     base_model_prefix = "git"
     supports_gradient_checkpointing = True
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -621,11 +624,12 @@ class GitVisionEmbeddings(nn.Module):
         self.num_patches = (self.image_size // self.patch_size) ** 2
         self.num_positions = self.num_patches + 1
         self.position_embedding = nn.Embedding(self.num_positions, self.embed_dim)
-        self.register_buffer("position_ids", torch.arange(self.num_positions).expand((1, -1)))
+        self.register_buffer("position_ids", torch.arange(self.num_positions).expand((1, -1)), persistent=False)
 
     def forward(self, pixel_values: torch.FloatTensor) -> torch.Tensor:
         batch_size = pixel_values.shape[0]
-        patch_embeds = self.patch_embedding(pixel_values)  # shape = [*, width, grid, grid]
+        target_dtype = self.patch_embedding.weight.dtype
+        patch_embeds = self.patch_embedding(pixel_values.to(dtype=target_dtype))  # shape = [*, width, grid, grid]
         patch_embeds = patch_embeds.flatten(2).transpose(1, 2)
 
         class_embeds = self.class_embedding.expand(batch_size, 1, -1)
@@ -1209,6 +1213,7 @@ class GitModel(GitPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
+            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -1322,6 +1327,8 @@ class GitModel(GitPreTrainedModel):
     """GIT Model with a `language modeling` head on top for autoregressive language modeling.""", GIT_START_DOCSTRING
 )
 class GitForCausalLM(GitPreTrainedModel):
+    _tied_weights_keys = ["output.weight"]
+
     def __init__(self, config):
         super().__init__(config)
 
@@ -1423,17 +1430,38 @@ class GitForCausalLM(GitPreTrainedModel):
         Video captioning example:
 
         ```python
-        >>> from transformers import AutoProcessor, AutoModelForCausalLM
-        >>> from PIL import Image
+        >>> import av
         >>> import numpy as np
+        >>> from PIL import Image
         >>> from huggingface_hub import hf_hub_download
-        >>> from decord import VideoReader, cpu
+        >>> from transformers import AutoProcessor, AutoModelForCausalLM
 
         >>> processor = AutoProcessor.from_pretrained("microsoft/git-base-vatex")
         >>> model = AutoModelForCausalLM.from_pretrained("microsoft/git-base-vatex")
 
         >>> # set seed for reproducability
         >>> np.random.seed(45)
+
+
+        >>> def read_video_pyav(container, indices):
+        ...     '''
+        ...     Decode the video with PyAV decoder.
+        ...     Args:
+        ...         container (`av.container.input.InputContainer`): PyAV container.
+        ...         indices (`List[int]`): List of frame indices to decode.
+        ...     Returns:
+        ...         result (np.ndarray): np array of decoded frames of shape (num_frames, height, width, 3).
+        ...     '''
+        ...     frames = []
+        ...     container.seek(0)
+        ...     start_index = indices[0]
+        ...     end_index = indices[-1]
+        ...     for i, frame in enumerate(container.decode(video=0)):
+        ...         if i > end_index:
+        ...             break
+        ...         if i >= start_index and i in indices:
+        ...             frames.append(frame)
+        ...     return np.stack([x.to_ndarray(format="rgb24") for x in frames])
 
 
         >>> def sample_frame_indices(clip_len, frame_sample_rate, seg_len):
@@ -1445,24 +1473,20 @@ class GitForCausalLM(GitPreTrainedModel):
         ...     return indices
 
 
-        >>> def sample_frames(file_path, num_frames):
-        ...     videoreader = VideoReader(file_path, num_threads=1, ctx=cpu(0))
-        ...     videoreader.seek(0)
-        ...     indices = sample_frame_indices(clip_len=num_frames, frame_sample_rate=4, seg_len=len(videoreader))
-        ...     frames = videoreader.get_batch(indices).asnumpy()
-        ...     return list(frames)
-
-
         >>> # load video
         >>> file_path = hf_hub_download(
         ...     repo_id="nielsr/video-demo", filename="eating_spaghetti.mp4", repo_type="dataset"
         ... )
+        >>> container = av.open(file_path)
 
         >>> # sample frames
         >>> num_frames = model.config.num_image_with_embedding
-        >>> frames = sample_frames(file_path, num_frames)
+        >>> indices = sample_frame_indices(
+        ...     clip_len=num_frames, frame_sample_rate=4, seg_len=container.streams.video[0].frames
+        ... )
+        >>> frames = read_video_pyav(container, indices)
 
-        >>> pixel_values = processor(images=frames, return_tensors="pt").pixel_values
+        >>> pixel_values = processor(images=list(frames), return_tensors="pt").pixel_values
 
         >>> generated_ids = model.generate(pixel_values=pixel_values, max_length=50)
 

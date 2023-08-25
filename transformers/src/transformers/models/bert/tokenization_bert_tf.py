@@ -48,7 +48,9 @@ class TFBertTokenizer(tf.keras.layers.Layer):
         return_attention_mask (`bool`, *optional*, defaults to `True`):
             Whether to return the attention_mask.
         use_fast_bert_tokenizer (`bool`, *optional*, defaults to `True`):
-            If set to false will use standard TF Text BertTokenizer, making it servable by TF Serving.
+            If True, will use the FastBertTokenizer class from Tensorflow Text. If False, will use the BertTokenizer
+            class instead. BertTokenizer supports some additional options, but is slower and cannot be exported to
+            TFLite.
     """
 
     def __init__(
@@ -65,11 +67,12 @@ class TFBertTokenizer(tf.keras.layers.Layer):
         return_token_type_ids: bool = True,
         return_attention_mask: bool = True,
         use_fast_bert_tokenizer: bool = True,
+        **tokenizer_kwargs,
     ):
         super().__init__()
         if use_fast_bert_tokenizer:
             self.tf_tokenizer = FastBertTokenizer(
-                vocab_list, token_out_type=tf.int64, lower_case_nfd_strip_accents=do_lower_case
+                vocab_list, token_out_type=tf.int64, lower_case_nfd_strip_accents=do_lower_case, **tokenizer_kwargs
             )
         else:
             lookup_table = tf.lookup.StaticVocabularyTable(
@@ -81,7 +84,9 @@ class TFBertTokenizer(tf.keras.layers.Layer):
                 ),
                 num_oov_buckets=1,
             )
-            self.tf_tokenizer = BertTokenizerLayer(lookup_table, token_out_type=tf.int64, lower_case=do_lower_case)
+            self.tf_tokenizer = BertTokenizerLayer(
+                lookup_table, token_out_type=tf.int64, lower_case=do_lower_case, **tokenizer_kwargs
+            )
 
         self.vocab_list = vocab_list
         self.do_lower_case = do_lower_case
@@ -114,15 +119,24 @@ class TFBertTokenizer(tf.keras.layers.Layer):
         tf_tokenizer = TFBertTokenizer.from_tokenizer(tokenizer)
         ```
         """
+        do_lower_case = kwargs.pop("do_lower_case", None)
+        do_lower_case = tokenizer.do_lower_case if do_lower_case is None else do_lower_case
+        cls_token_id = kwargs.pop("cls_token_id", None)
+        cls_token_id = tokenizer.cls_token_id if cls_token_id is None else cls_token_id
+        sep_token_id = kwargs.pop("sep_token_id", None)
+        sep_token_id = tokenizer.sep_token_id if sep_token_id is None else sep_token_id
+        pad_token_id = kwargs.pop("pad_token_id", None)
+        pad_token_id = tokenizer.pad_token_id if pad_token_id is None else pad_token_id
+
         vocab = tokenizer.get_vocab()
         vocab = sorted([(wordpiece, idx) for wordpiece, idx in vocab.items()], key=lambda x: x[1])
         vocab_list = [entry[0] for entry in vocab]
         return cls(
             vocab_list=vocab_list,
-            do_lower_case=tokenizer.do_lower_case,
-            cls_token_id=tokenizer.cls_token_id,
-            sep_token_id=tokenizer.sep_token_id,
-            pad_token_id=tokenizer.pad_token_id,
+            do_lower_case=do_lower_case,
+            cls_token_id=cls_token_id,
+            sep_token_id=sep_token_id,
+            pad_token_id=pad_token_id,
             **kwargs,
         )
 

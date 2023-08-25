@@ -146,7 +146,7 @@ def load_tf_weights_in_roc_bert(model, config, tf_checkpoint_path):
         try:
             if pointer.shape != array.shape:
                 raise ValueError(f"Pointer shape {pointer.shape} and array shape {array.shape} mismatched")
-        except AssertionError as e:
+        except ValueError as e:
             e.args += (pointer.shape, array.shape)
             raise
         logger.info(f"Initialize PyTorch weight {name}")
@@ -190,7 +190,9 @@ class RoCBertEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
         # position_ids (1, len position emb) is contiguous in memory and exported when serialized
-        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
+        self.register_buffer(
+            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
+        )
         self.position_embedding_type = getattr(config, "position_embedding_type", "absolute")
         self.register_buffer(
             "token_type_ids",
@@ -626,6 +628,13 @@ class RoCBertEncoder(nn.Module):
         all_self_attentions = () if output_attentions else None
         all_cross_attentions = () if output_attentions and self.config.add_cross_attention else None
 
+        if self.gradient_checkpointing and self.training:
+            if use_cache:
+                logger.warning_once(
+                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
+                )
+                use_cache = False
+
         next_decoder_cache = () if use_cache else None
         for i, layer_module in enumerate(self.layer):
             if output_hidden_states:
@@ -635,11 +644,6 @@ class RoCBertEncoder(nn.Module):
             past_key_value = past_key_values[i] if past_key_values is not None else None
 
             if self.gradient_checkpointing and self.training:
-                if use_cache:
-                    logger.warning(
-                        "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                    )
-                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -775,7 +779,6 @@ class RoCBertPreTrainedModel(PreTrainedModel):
     load_tf_weights = load_tf_weights_in_roc_bert
     base_model_prefix = "roc_bert"
     supports_gradient_checkpointing = True
-    _keys_to_ignore_on_load_missing = [r"position_ids"]
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -990,6 +993,7 @@ class RoCBertModel(RoCBertPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
+            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -1079,7 +1083,7 @@ class RoCBertModel(RoCBertPreTrainedModel):
     ROC_BERT_START_DOCSTRING,
 )
 class RoCBertForPreTraining(RoCBertPreTrainedModel):
-    _keys_to_ignore_on_load_missing = [r"predictions.decoder.bias", "cls.predictions.decoder.weight"]
+    _tied_weights_keys = ["cls.predictions.decoder.weight", "cls.predictions.decoder.bias"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -1240,7 +1244,7 @@ class RoCBertForPreTraining(RoCBertPreTrainedModel):
 
                 sim_matrix = torch.matmul(pooled_output_norm, attack_pooled_output_norm.T)  # batch_size * hidden_dim
                 sim_matrix_target = torch.matmul(labels_pooled_output_norm, attack_pooled_output_norm.T)
-                batch_labels = torch.tensor([i for i in range(batch_size)], device=device)
+                batch_labels = torch.tensor(list(range(batch_size)), device=device)
                 contrastive_loss = (
                     loss_fct(100 * sim_matrix.view(batch_size, -1), batch_labels.view(-1))
                     + loss_fct(100 * sim_matrix_target.view(batch_size, -1), batch_labels.view(-1))
@@ -1264,8 +1268,7 @@ class RoCBertForPreTraining(RoCBertPreTrainedModel):
 
 @add_start_docstrings("""RoCBert Model with a `language modeling` head on top.""", ROC_BERT_START_DOCSTRING)
 class RoCBertForMaskedLM(RoCBertPreTrainedModel):
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
-    _keys_to_ignore_on_load_missing = [r"position_ids", r"predictions.decoder.bias", "cls.predictions.decoder.weight"]
+    _tied_weights_keys = ["cls.predictions.decoder.weight", "cls.predictions.decoder.bias"]
 
     # Copied from transformers.models.bert.modeling_bert.BertForMaskedLM.__init__ with Bert->RoCBert,bert->roc_bert
     def __init__(self, config):
@@ -1405,8 +1408,7 @@ class RoCBertForMaskedLM(RoCBertPreTrainedModel):
     """RoCBert Model with a `language modeling` head on top for CLM fine-tuning.""", ROC_BERT_START_DOCSTRING
 )
 class RoCBertForCausalLM(RoCBertPreTrainedModel):
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
-    _keys_to_ignore_on_load_missing = [r"position_ids", r"predictions.decoder.bias", "cls.predictions.decoder.weight"]
+    _tied_weights_keys = ["cls.predictions.decoder.weight", "cls.predictions.decoder.bias"]
 
     # Copied from transformers.models.bert.modeling_bert.BertLMHeadModel.__init__ with BertLMHeadModel->RoCBertForCausalLM,Bert->RoCBert,bert->roc_bert
     def __init__(self, config):
@@ -1799,8 +1801,6 @@ class RoCBertForMultipleChoice(RoCBertPreTrainedModel):
     ROC_BERT_START_DOCSTRING,
 )
 class RoCBertForTokenClassification(RoCBertPreTrainedModel):
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
-
     # Copied from transformers.models.bert.modeling_bert.BertForTokenClassification.__init__ with Bert->RoCBert,bert->roc_bert
     def __init__(self, config):
         super().__init__(config)
@@ -1887,8 +1887,6 @@ class RoCBertForTokenClassification(RoCBertPreTrainedModel):
     ROC_BERT_START_DOCSTRING,
 )
 class RoCBertForQuestionAnswering(RoCBertPreTrainedModel):
-    _keys_to_ignore_on_load_unexpected = [r"pooler"]
-
     # Copied from transformers.models.bert.modeling_bert.BertForQuestionAnswering.__init__ with Bert->RoCBert,bert->roc_bert
     def __init__(self, config):
         super().__init__(config)

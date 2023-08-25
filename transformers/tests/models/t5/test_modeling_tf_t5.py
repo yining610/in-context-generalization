@@ -13,14 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import annotations
+
 import unittest
 
 from transformers import T5Config, is_tf_available
-from transformers.testing_utils import require_sentencepiece, require_tf, require_tokenizers, slow, tooslow
+from transformers.testing_utils import require_sentencepiece, require_tf, require_tokenizers, slow
 from transformers.utils import cached_property
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, ids_tensor, random_attention_mask
+from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -43,7 +46,7 @@ class TFT5ModelTester:
         self.vocab_size = 99
         self.n_positions = 14
         self.hidden_size = 32
-        self.num_hidden_layers = 5
+        self.num_hidden_layers = 2
         self.num_attention_heads = 4
         self.d_ff = 37
         self.relative_attention_num_buckets = 8
@@ -239,10 +242,21 @@ class TFT5ModelTester:
 
 
 @require_tf
-class TFT5ModelTest(TFModelTesterMixin, unittest.TestCase):
+class TFT5ModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
     is_encoder_decoder = True
     all_model_classes = (TFT5Model, TFT5ForConditionalGeneration) if is_tf_available() else ()
     all_generative_model_classes = (TFT5ForConditionalGeneration,) if is_tf_available() else ()
+    pipeline_model_mapping = (
+        {
+            "conversational": TFT5ForConditionalGeneration,
+            "feature-extraction": TFT5Model,
+            "summarization": TFT5ForConditionalGeneration,
+            "text2text-generation": TFT5ForConditionalGeneration,
+            "translation": TFT5ForConditionalGeneration,
+        }
+        if is_tf_available()
+        else {}
+    )
     test_onnx = False
 
     def setUp(self):
@@ -286,28 +300,6 @@ class TFT5ModelTest(TFModelTesterMixin, unittest.TestCase):
 
         self.model_tester.create_and_check_t5_decoder_model_past_large_inputs(*config_and_inputs)
 
-    def test_model_common_attributes(self):
-        config, inputs_dict = self.model_tester.prepare_config_and_inputs_for_common()
-
-        for model_class in self.all_model_classes:
-            model = model_class(config)
-            assert isinstance(model.get_input_embeddings(), tf.keras.layers.Layer)
-
-            if model_class in self.all_generative_model_classes:
-                x = model.get_output_embeddings()
-                assert isinstance(x, tf.keras.layers.Layer)
-                name = model.get_bias()
-                assert name is None
-            else:
-                x = model.get_output_embeddings()
-                assert x is None
-                name = model.get_bias()
-                assert name is None
-
-    @tooslow
-    def test_saved_model_creation(self):
-        pass
-
     @slow
     def test_model_from_pretrained(self):
         model = TFT5Model.from_pretrained("t5-small")
@@ -333,7 +325,7 @@ class TFT5EncoderOnlyModelTester:
         # For common tests
         use_attention_mask=True,
         hidden_size=32,
-        num_hidden_layers=5,
+        num_hidden_layers=2,
         num_attention_heads=4,
         d_ff=37,
         relative_attention_num_buckets=8,
@@ -557,6 +549,8 @@ class TFT5GenerationIntegrationTests(unittest.TestCase):
 
         self.assertListEqual(expected_output_string, output_strings)
 
+    # TODO (ydshieh): undo skip once a fix is done on TF side.
+    @unittest.skip("Skip for now as TF 2.13 breaks it on GPU")
     @slow
     def test_beam_search_xla_generate_simple(self):
         model = TFT5ForConditionalGeneration.from_pretrained("t5-small")

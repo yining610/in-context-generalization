@@ -23,6 +23,7 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, _config_zero_init, global_rng, ids_tensor, random_attention_mask
+from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -49,9 +50,10 @@ class CanineModelTester:
         use_token_type_ids=True,
         use_labels=True,
         # let's use a vocab size that's way bigger than BERT's one
+        # NOTE: this is not a model parameter, just an input
         vocab_size=100000,
         hidden_size=32,
-        num_hidden_layers=5,
+        num_hidden_layers=2,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -63,6 +65,7 @@ class CanineModelTester:
         initializer_range=0.02,
         num_labels=3,
         num_choices=4,
+        num_hash_buckets=16,
         scope=None,
     ):
         self.parent = parent
@@ -86,6 +89,7 @@ class CanineModelTester:
         self.initializer_range = initializer_range
         self.num_labels = num_labels
         self.num_choices = num_choices
+        self.num_hash_buckets = num_hash_buckets
         self.scope = scope
 
     def prepare_config_and_inputs(self):
@@ -124,6 +128,7 @@ class CanineModelTester:
             type_vocab_size=self.type_vocab_size,
             is_decoder=False,
             initializer_range=self.initializer_range,
+            num_hash_buckets=self.num_hash_buckets,
         )
 
     def create_and_check_model(
@@ -207,7 +212,7 @@ class CanineModelTester:
 
 
 @require_torch
-class CanineModelTest(ModelTesterMixin, unittest.TestCase):
+class CanineModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             CanineModel,
@@ -218,6 +223,17 @@ class CanineModelTest(ModelTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else ()
+    )
+    pipeline_model_mapping = (
+        {
+            "feature-extraction": CanineModel,
+            "question-answering": CanineForQuestionAnswering,
+            "text-classification": CanineForSequenceClassification,
+            "token-classification": CanineForTokenClassification,
+            "zero-shot": CanineForSequenceClassification,
+        }
+        if is_torch_available()
+        else {}
     )
 
     test_mismatched_shapes = False
