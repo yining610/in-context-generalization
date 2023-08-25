@@ -28,7 +28,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset):
     
     all_query_ids = []
     all_response_ids = []
-    all_output_ids = []
+    all_answer = []
     
     generation_config = GenerationConfig (
         do_sample=args.do_sample,
@@ -43,37 +43,35 @@ def run_model(args, tokenizer, model, dataset: PromptDataset):
     )
 
     with torch.no_grad():
-        for it, (model_batch, no_model_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))): 
+        for it, (prompt_ids, answer_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))): 
             if it == 0:
                 print_rank("############### Example ###############")
-                print_rank(tokenizer.decode(model_batch["input_ids"][0], skip_special_tokens=True))
+                print_rank(tokenizer.decode(prompt_ids["input_ids"][0], skip_special_tokens=True))
                 print_rank("############### End ###############")
                 print_rank(f"Experiment Save Path: {args.save}")
-            dataset.move_to_device(model_batch, no_model_batch, torch.cuda.current_device())
-            query_ids = model_batch["input_ids"]
-            output_ids = no_model_batch["output_ids"]
+            dataset.move_to_device(prompt_ids, torch.cuda.current_device())
+            query_ids = prompt_ids["input_ids"]
             gen_out = model.generate(
-                    **model_batch,
+                    **prompt_ids,
                     generation_config=generation_config
                 )         
             full_ids = gen_out.sequences
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
             all_query_ids.extend(query_ids)
             all_response_ids.extend(response_ids)
-            all_output_ids.extend(output_ids)
+            all_answer.extend(answer_batch)
 
     return (
         all_query_ids,
         all_response_ids,
-        all_output_ids)
+        all_answer)
 
 def inference_main(args, tokenizer, model, dataset: PromptDataset):
     start_time = time.time()
 
-    query_ids, response_ids, output_ids = run_model(args, tokenizer, model, dataset)
+    query_ids, response_ids, answer_strs = run_model(args, tokenizer, model, dataset)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
-    answer_strs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
 
     with open(os.path.join(args.save, "preds.txt"), "a") as f:
         for q, r in zip(query_strs, response_strs):
@@ -97,8 +95,6 @@ def inference_main(args, tokenizer, model, dataset: PromptDataset):
                 "answer": a
             }) + "\n")
             all_responses.append(r.replace("<n>", "\n").strip())
-
-    all_answers = [x if isinstance(x, list) else [x] for x in answer_strs]
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 

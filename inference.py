@@ -8,13 +8,14 @@ import deepspeed
 import json
 
 from transformers import (
+    LlamaForCausalLM,
     AutoModelForCausalLM,
     AutoTokenizer,
-    AutoConfig,)
+    )
 
 from args import get_args
 
-from utils import initialize, print_args, print_rank
+from utils import initialize, print_args
 
 from data_utils.prompt_datasets import PromptDataset
 from inference_main import inference_main
@@ -30,15 +31,17 @@ def get_tokenizer(args):
     return tokenizer
 
 def setup_model(args):
-    # get the model
-    model = AutoModelForCausalLM.from_pretrained(args.model_path, torch_dtype=torch.float16)
+    if args.model_type == "llama":
+        model = LlamaForCausalLM.from_pretrained(args.model_path)
+        model.bfloat16()
+    else:
+        model = AutoModelForCausalLM.from_pretrained(args.model_path)
     
     kwargs = dict(replace_with_kernel_inject=True)
     model = deepspeed.init_inference(
         model,
         mp_size=args.world_size,
         dtype=torch.float16,
-        checkpoint=None,
         **kwargs,
     )
 
