@@ -4,13 +4,12 @@ from transformers import (
     )
 
 import os
-import random
 import time
 
 import torch
 import torch.nn as nn
 import torch.distributed as dist
-from torch.utils.data import DataLoader, DistributedSampler
+from torch.utils.data import DataLoader
 from tqdm import tqdm
 import numpy as np
 import json
@@ -19,7 +18,7 @@ from utils import print_rank
 torch.set_num_threads(4)
 
 
-def run_model(args, tokenizer, model, dataset: PromptDataset, device):
+def run_model(args, tokenizer, model, dataset: PromptDataset):
     
     collate_fn = dataset.collate
         
@@ -44,13 +43,13 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     )
 
     with torch.no_grad():
-        for it, (model_batch, no_model_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))):
+        for it, (model_batch, no_model_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))): 
             if it == 0:
                 print_rank("############### Example ###############")
                 print_rank(tokenizer.decode(model_batch["input_ids"][0], skip_special_tokens=True))
                 print_rank("############### End ###############")
                 print_rank(f"Experiment Save Path: {args.save}")
-            dataset.move_to_device(model_batch, no_model_batch, device)
+            dataset.move_to_device(model_batch, no_model_batch, torch.cuda.current_device())
             query_ids = model_batch["input_ids"]
             output_ids = no_model_batch["output_ids"]
             gen_out = model.generate(
@@ -68,11 +67,10 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
         all_response_ids,
         all_output_ids)
 
-
-def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
+def inference_main(args, tokenizer, model, dataset: PromptDataset):
     start_time = time.time()
 
-    query_ids, response_ids, output_ids = run_model(args, tokenizer, model, dataset, device)
+    query_ids, response_ids, output_ids = run_model(args, tokenizer, model, dataset)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
     answer_strs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)

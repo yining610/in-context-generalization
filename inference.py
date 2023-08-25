@@ -56,7 +56,6 @@ def main():
         with open(os.path.join(args.save, "args.json"), "w") as f:
             json.dump(vars(args), f)
     
-    device = torch.cuda.current_device()
     # get the tokenizer
     if args.is_opensource:
         tokenizer = get_tokenizer(args)
@@ -66,7 +65,7 @@ def main():
 
     model = setup_model(args)
     
-    inference_main(args, tokenizer, model, dataset, device)
+    inference_main(args, tokenizer, model, dataset)
 
 if __name__ == "__main__":
     main()
