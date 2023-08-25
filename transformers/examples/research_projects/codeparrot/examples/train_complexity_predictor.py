@@ -3,7 +3,7 @@ from copy import deepcopy
 
 import numpy as np
 from datasets import ClassLabel, DatasetDict, load_dataset
-from evaluate import load
+from inference import load
 
 from transformers import (
     AutoModelForSequenceClassification,
