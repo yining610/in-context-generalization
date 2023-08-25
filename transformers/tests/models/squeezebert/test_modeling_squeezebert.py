@@ -21,7 +21,6 @@ from transformers.testing_utils import require_sentencepiece, require_tokenizers
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -50,7 +49,7 @@ class SqueezeBertModelTester(object):
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=64,
         hidden_act="gelu",
@@ -215,7 +214,7 @@ class SqueezeBertModelTester(object):
 
 
 @require_torch
-class SqueezeBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class SqueezeBertModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             SqueezeBertModel,
@@ -227,18 +226,6 @@ class SqueezeBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestC
         )
         if is_torch_available()
         else None
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": SqueezeBertModel,
-            "fill-mask": SqueezeBertForMaskedLM,
-            "question-answering": SqueezeBertForQuestionAnswering,
-            "text-classification": SqueezeBertForSequenceClassification,
-            "token-classification": SqueezeBertForTokenClassification,
-            "zero-shot": SqueezeBertForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
     test_pruning = False
     test_resize_embeddings = True

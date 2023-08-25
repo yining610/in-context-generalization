@@ -24,7 +24,6 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -37,7 +36,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import PoolFormerImageProcessor
+    from transformers import PoolFormerFeatureExtractor
 
 
 class PoolFormerConfigTester(ConfigTester):
@@ -122,13 +121,8 @@ class PoolFormerModelTester:
 
 
 @require_torch
-class PoolFormerModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class PoolFormerModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (PoolFormerModel, PoolFormerForImageClassification) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": PoolFormerModel, "image-classification": PoolFormerForImageClassification}
-        if is_torch_available()
-        else {}
-    )
 
     test_head_masking = False
     test_pruning = False
@@ -237,10 +231,10 @@ def prepare_img():
 class PoolFormerModelIntegrationTest(unittest.TestCase):
     @slow
     def test_inference_image_classification_head(self):
-        image_processor = PoolFormerImageProcessor()
+        feature_extractor = PoolFormerFeatureExtractor()
         model = PoolFormerForImageClassification.from_pretrained("sail/poolformer_s12").to(torch_device)
 
-        inputs = image_processor(images=prepare_img(), return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=prepare_img(), return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():

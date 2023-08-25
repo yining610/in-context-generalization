@@ -204,7 +204,7 @@ class VisionTextDualEncoderModel(PreTrainedModel):
 
         self.visual_projection = nn.Linear(self.vision_embed_dim, self.projection_dim, bias=False)
         self.text_projection = nn.Linear(self.text_embed_dim, self.projection_dim, bias=False)
-        self.logit_scale = nn.Parameter(torch.tensor(self.config.logit_scale_init_value))
+        self.logit_scale = nn.Parameter(torch.ones([]) * self.config.logit_scale_init_value)
 
     @add_start_docstrings_to_model_forward(VISION_TEXT_DUAL_ENCODER_TEXT_INPUTS_DOCSTRING)
     def get_text_features(
@@ -316,7 +316,7 @@ class VisionTextDualEncoderModel(PreTrainedModel):
         ...     VisionTextDualEncoderModel,
         ...     VisionTextDualEncoderProcessor,
         ...     AutoImageProcessor,
-        ...     AutoTokenizer,
+        ...     Autookenizer,
         ... )
 
         >>> tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
@@ -428,7 +428,7 @@ class VisionTextDualEncoderModel(PreTrainedModel):
                       Valid model ids can be located at the root-level, like `bert-base-uncased`, or namespaced under a
                       user or organization name, like `dbmdz/bert-base-german-cased`.
                     - A path to a *directory* containing model weights saved using
-                      [`~PreTrainedModel.save_pretrained`], e.g., `./my_model_directory/`.
+                      [`~FlaxPreTrainedModel.save_pretrained`], e.g., `./my_model_directory/`.
                     - A path or url to a *PyTorch checkpoint folder* (e.g, `./pt_model`). In this case, `from_pt`
                       should be set to `True` and a configuration object should be provided as `config` argument. This
                       loading path is slower than converting the PyTorch checkpoint in a Flax model using the provided
@@ -441,7 +441,7 @@ class VisionTextDualEncoderModel(PreTrainedModel):
                       Valid model ids can be located at the root-level, like `bert-base-uncased`, or namespaced under a
                       user or organization name, like `dbmdz/bert-base-german-cased`.
                     - A path to a *directory* containing model weights saved using
-                      [`~PreTrainedModel.save_pretrained`], e.g., `./my_model_directory/`.
+                      [`~FlaxPreTrainedModel.save_pretrained`], e.g., `./my_model_directory/`.
                     - A path or url to a *PyTorch checkpoint folder* (e.g, `./pt_model`). In this case, `from_pt`
                       should be set to `True` and a configuration object should be provided as `config` argument. This
                       loading path is slower than converting the PyTorch checkpoint in a Flax model using the provided

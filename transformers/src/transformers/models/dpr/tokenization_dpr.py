@@ -316,7 +316,6 @@ class CustomDPRReaderTokenizerMixin:
         >>> outputs = model(**encoded_inputs)
         >>> predicted_spans = tokenizer.decode_best_spans(encoded_inputs, outputs)
         >>> print(predicted_spans[0].text)  # best span
-        a song
         ```"""
         input_ids = reader_input["input_ids"]
         start_logits, end_logits, relevance_logits = reader_output[:3]
@@ -379,9 +378,11 @@ class CustomDPRReaderTokenizerMixin:
             if length > max_answer_length:
                 raise ValueError(f"Span is too long: {length} > {max_answer_length}")
             if any(
-                start_index <= prev_start_index <= prev_end_index <= end_index
-                or prev_start_index <= start_index <= end_index <= prev_end_index
-                for (prev_start_index, prev_end_index) in chosen_span_intervals
+                [
+                    start_index <= prev_start_index <= prev_end_index <= end_index
+                    or prev_start_index <= start_index <= end_index <= prev_end_index
+                    for (prev_start_index, prev_end_index) in chosen_span_intervals
+                ]
             ):
                 continue
             chosen_span_intervals.append((start_index, end_index))

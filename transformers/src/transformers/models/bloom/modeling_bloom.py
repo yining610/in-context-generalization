@@ -135,7 +135,7 @@ def dropout_add(x: torch.Tensor, residual: torch.Tensor, prob: float, training: 
         x (`torch.tensor`, *required*):
             input tensor
         residual (`torch.tensor`, *required*):
-            residual tensor
+            esidual tensor
         prob (`float`, *required*):
             dropout probability
         training (`bool`, *required*):
@@ -253,10 +253,10 @@ class BloomAttention(nn.Module):
 
     def _merge_heads(self, x: torch.Tensor) -> torch.Tensor:
         """
-        Merge heads together over the last dimension
+        Merge heads together over the last dimenstion
 
         Args:
-            x (`torch.tensor`, *required*): [batch_size * num_heads, seq_length, head_dim]
+            x: (`torch.tensor`, *required*): [batch_size * num_heads, seq_length, head_dim]
 
         Returns:
             torch.tensor: [batch_size, seq_length, num_heads * head_dim]
@@ -344,7 +344,7 @@ class BloomAttention(nn.Module):
         # matmul: [batch_size * num_heads, q_length, head_dim]
         context_layer = torch.bmm(attention_probs_reshaped, value_layer)
 
-        # change view [batch_size, q_length, num_heads * head_dim]
+        # change view [batch_size, num_heads, q_length, head_dim]
         context_layer = self._merge_heads(context_layer)
 
         # aggregate results across tp ranks. See here: https://github.com/pytorch/pytorch/issues/76232
@@ -471,11 +471,16 @@ class BloomBlock(nn.Module):
 
 
 class BloomPreTrainedModel(PreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"h.*.self_attention.scale_mask_softmax.causal_mask", r"lm_head.weight"]
+    """
+    An abstract class to handle weights initialization and a simple interface for downloading and loading pretrained
+    models.
+    """
+
     config_class = BloomConfig
     base_model_prefix = "transformer"
     supports_gradient_checkpointing = True
     _no_split_modules = ["BloomBlock"]
-    _skip_keys_device_placement = "past_key_values"
 
     def __init__(self, *inputs, **kwargs):
         super().__init__(*inputs, **kwargs)
@@ -636,9 +641,6 @@ class BloomModel(BloomPreTrainedModel):
         # Initialize weights and apply final processing
         self.post_init()
 
-    def build_alibi_tensor(self, attention_mask: torch.Tensor, num_heads: int, dtype: torch.dtype) -> torch.Tensor:
-        return build_alibi_tensor(attention_mask, num_heads, dtype)
-
     def get_input_embeddings(self):
         return self.word_embeddings
 
@@ -730,13 +732,6 @@ class BloomModel(BloomPreTrainedModel):
         all_self_attentions = () if output_attentions else None
         all_hidden_states = () if output_hidden_states else None
 
-        if self.gradient_checkpointing and self.training:
-            if use_cache:
-                logger.warning_once(
-                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                )
-                use_cache = False
-
         # Compute alibi tensor: check build_alibi_tensor documentation
         seq_length_with_past = seq_length
         past_key_values_length = 0
@@ -748,7 +743,7 @@ class BloomModel(BloomPreTrainedModel):
         else:
             attention_mask = attention_mask.to(hidden_states.device)
 
-        alibi = self.build_alibi_tensor(attention_mask, self.num_heads, dtype=hidden_states.dtype)
+        alibi = build_alibi_tensor(attention_mask, self.num_heads, dtype=hidden_states.dtype)
 
         causal_mask = self._prepare_attn_mask(
             attention_mask,
@@ -761,6 +756,11 @@ class BloomModel(BloomPreTrainedModel):
                 all_hidden_states = all_hidden_states + (hidden_states,)
 
             if self.gradient_checkpointing and self.training:
+                if use_cache:
+                    logger.warning(
+                        "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
+                    )
+                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -774,7 +774,6 @@ class BloomModel(BloomPreTrainedModel):
                     hidden_states,
                     alibi,
                     causal_mask,
-                    layer_past,
                     head_mask[i],
                 )
             else:
@@ -820,7 +819,7 @@ class BloomModel(BloomPreTrainedModel):
     BLOOM_START_DOCSTRING,
 )
 class BloomForCausalLM(BloomPreTrainedModel):
-    _tied_weights_keys = ["lm_head.weight"]
+    _keys_to_ignore_on_load_missing = [r"h.*.self_attention.scale_mask_softmax.causal_mask", r"lm_head.weight"]
 
     def __init__(self, config: BloomConfig):
         super().__init__(config)
@@ -922,8 +921,6 @@ class BloomForCausalLM(BloomPreTrainedModel):
 
         loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(lm_logits.device)
             # Shift so that tokens < n predict n
             shift_logits = lm_logits[..., :-1, :].contiguous()
             shift_labels = labels[..., 1:].contiguous()
@@ -988,6 +985,8 @@ class BloomForCausalLM(BloomPreTrainedModel):
     BLOOM_START_DOCSTRING,
 )
 class BloomForSequenceClassification(BloomPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"h.*.self_attention.scale_mask_softmax.causal_mask", r"lm_head.weight"]
+
     def __init__(self, config: BloomConfig):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1114,6 +1113,8 @@ class BloomForSequenceClassification(BloomPreTrainedModel):
     BLOOM_START_DOCSTRING,
 )
 class BloomForTokenClassification(BloomPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"h.*.self_attention.scale_mask_softmax.causal_mask", r"lm_head.weight"]
+
     def __init__(self, config: BloomConfig):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1187,8 +1188,6 @@ class BloomForTokenClassification(BloomPreTrainedModel):
 
         loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             batch_size, seq_length = labels.shape
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(
@@ -1215,6 +1214,8 @@ class BloomForTokenClassification(BloomPreTrainedModel):
     BLOOM_START_DOCSTRING,
 )
 class BloomForQuestionAnswering(BloomPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"h.*.self_attention.scale_mask_softmax.causal_mask", r"lm_head.weight"]
+
     def __init__(self, config):
         super().__init__(config)
         self.transformer = BloomModel(config)

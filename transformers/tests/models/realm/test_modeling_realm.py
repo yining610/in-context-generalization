@@ -24,7 +24,6 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -54,7 +53,7 @@ class RealmModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -304,7 +303,7 @@ class RealmModelTester:
 
 
 @require_torch
-class RealmModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class RealmModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             RealmEmbedder,
@@ -317,7 +316,6 @@ class RealmModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
         else ()
     )
     all_generative_model_classes = ()
-    pipeline_model_mapping = {} if is_torch_available() else {}
 
     # disable these tests because there is no base_model in Realm
     test_save_load_fast_init_from_base = False
@@ -392,7 +390,7 @@ class RealmModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
                 b"This is the fourth record.",
                 b"This is the fifth record.",
             ],
-            dtype=object,
+            dtype=np.object,
         )
         retriever = RealmRetriever(block_records, tokenizer)
         model = RealmForOpenQA(openqa_config, retriever)

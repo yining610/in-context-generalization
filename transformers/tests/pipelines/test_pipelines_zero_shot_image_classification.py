@@ -16,16 +16,9 @@ import unittest
 
 from transformers import is_vision_available
 from transformers.pipelines import pipeline
-from transformers.testing_utils import (
-    is_pipeline_test,
-    nested_simplify,
-    require_tf,
-    require_torch,
-    require_vision,
-    slow,
-)
+from transformers.testing_utils import nested_simplify, require_tf, require_torch, require_vision, slow
 
-from .test_pipelines_common import ANY
+from .test_pipelines_common import ANY, PipelineTestCaseMeta
 
 
 if is_vision_available():
@@ -38,9 +31,8 @@ else:
             pass
 
 
-@is_pipeline_test
 @require_vision
-class ZeroShotImageClassificationPipelineTests(unittest.TestCase):
+class ZeroShotImageClassificationPipelineTests(unittest.TestCase, metaclass=PipelineTestCaseMeta):
     # Deactivating auto tests since we don't have a good MODEL_FOR_XX mapping,
     # and only CLIP would be there for now.
     # model_mapping = {CLIPConfig: CLIPModel}
@@ -78,15 +70,9 @@ class ZeroShotImageClassificationPipelineTests(unittest.TestCase):
         image = Image.open("./tests/fixtures/tests_samples/COCO/000000039769.png")
         output = image_classifier(image, candidate_labels=["a", "b", "c"])
 
-        # The floating scores are so close, we enter floating error approximation and the order is not guaranteed across
-        # python and torch versions.
-        self.assertIn(
+        self.assertEqual(
             nested_simplify(output),
-            [
-                [{"score": 0.333, "label": "a"}, {"score": 0.333, "label": "b"}, {"score": 0.333, "label": "c"}],
-                [{"score": 0.333, "label": "a"}, {"score": 0.333, "label": "c"}, {"score": 0.333, "label": "b"}],
-                [{"score": 0.333, "label": "b"}, {"score": 0.333, "label": "a"}, {"score": 0.333, "label": "c"}],
-            ],
+            [{"score": 0.333, "label": "a"}, {"score": 0.333, "label": "b"}, {"score": 0.333, "label": "c"}],
         )
 
         output = image_classifier([image] * 5, candidate_labels=["A", "B", "C"], batch_size=2)

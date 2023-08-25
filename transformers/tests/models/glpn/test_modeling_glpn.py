@@ -24,7 +24,6 @@ from transformers.testing_utils import require_torch, require_vision, slow, torc
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -37,7 +36,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import GLPNImageProcessor
+    from transformers import GLPNFeatureExtractor
 
 
 class GLPNConfigTester(ConfigTester):
@@ -144,11 +143,8 @@ class GLPNModelTester:
 
 
 @require_torch
-class GLPNModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class GLPNModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (GLPNModel, GLPNForDepthEstimation) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {"depth-estimation": GLPNForDepthEstimation, "feature-extraction": GLPNModel} if is_torch_available() else {}
-    )
 
     test_head_masking = False
     test_pruning = False
@@ -337,11 +333,11 @@ def prepare_img():
 class GLPNModelIntegrationTest(unittest.TestCase):
     @slow
     def test_inference_depth_estimation(self):
-        image_processor = GLPNImageProcessor.from_pretrained(GLPN_PRETRAINED_MODEL_ARCHIVE_LIST[0])
+        feature_extractor = GLPNFeatureExtractor.from_pretrained(GLPN_PRETRAINED_MODEL_ARCHIVE_LIST[0])
         model = GLPNForDepthEstimation.from_pretrained(GLPN_PRETRAINED_MODEL_ARCHIVE_LIST[0]).to(torch_device)
 
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():

@@ -43,7 +43,6 @@ from .models.auto.modeling_auto import (
     MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING_NAMES,
     MODEL_FOR_TABLE_QUESTION_ANSWERING_MAPPING_NAMES,
     MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING_NAMES,
-    MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING_NAMES,
 )
 from .training_args import ParallelMode
 from .utils import (
@@ -71,7 +70,6 @@ TASK_MAPPING = {
     "token-classification": MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING_NAMES,
     "audio-classification": MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING_NAMES,
     "automatic-speech-recognition": {**MODEL_FOR_CTC_MAPPING_NAMES, **MODEL_FOR_SPEECH_SEQ_2_SEQ_MAPPING_NAMES},
-    "zero-shot-image-classification": MODEL_FOR_ZERO_SHOT_IMAGE_CLASSIFICATION_MAPPING_NAMES,
 }
 
 logger = logging.get_logger(__name__)
@@ -279,7 +277,6 @@ TASK_TAG_TO_NAME_MAPPING = {
     "translation": "Translation",
     "zero-shot-classification": "Zero Shot Classification",
     "automatic-speech-recognition": "Automatic Speech Recognition",
-    "audio-classification": "Audio Classification",
 }
 
 
@@ -400,9 +397,9 @@ class TrainingSummary:
         dataset_metadata = _listify(self.dataset_metadata)
         if len(dataset_args) < len(dataset_tags):
             dataset_args = dataset_args + [None] * (len(dataset_tags) - len(dataset_args))
-        dataset_mapping = dict(zip(dataset_tags, dataset_names))
-        dataset_arg_mapping = dict(zip(dataset_tags, dataset_args))
-        dataset_metadata_mapping = dict(zip(dataset_tags, dataset_metadata))
+        dataset_mapping = {tag: name for tag, name in zip(dataset_tags, dataset_names)}
+        dataset_arg_mapping = {tag: arg for tag, arg in zip(dataset_tags, dataset_args)}
+        dataset_metadata_mapping = {tag: metadata for tag, metadata in zip(dataset_tags, dataset_metadata)}
 
         task_mapping = {
             task: TASK_TAG_TO_NAME_MAPPING[task] for task in _listify(self.tasks) if task in TASK_TAG_TO_NAME_MAPPING
@@ -459,8 +456,6 @@ class TrainingSummary:
         metadata = {}
         metadata = _insert_values_as_list(metadata, "language", self.language)
         metadata = _insert_value(metadata, "license", self.license)
-        if self.finetuned_from is not None:
-            metadata = _insert_value(metadata, "base_model", self.finetuned_from)
         metadata = _insert_values_as_list(metadata, "tags", self.tags)
         metadata = _insert_values_as_list(metadata, "datasets", self.dataset_tags)
         metadata = _insert_values_as_list(metadata, "metrics", list(metric_mapping.keys()))
@@ -682,7 +677,7 @@ class TrainingSummary:
             _, eval_lines, eval_results = parse_keras_history(keras_history)
         else:
             eval_lines = []
-            eval_results = {}
+            eval_results = dict()
         hyperparameters = extract_hyperparameters_from_keras(model)
 
         return cls(
@@ -711,7 +706,7 @@ def parse_keras_history(logs):
         # This looks like a `History` object
         if not hasattr(logs, "epoch"):
             # This history looks empty, return empty results
-            return None, [], {}
+            return None, [], dict()
         logs.history["epoch"] = logs.epoch
         logs = logs.history
     else:
@@ -721,7 +716,7 @@ def parse_keras_history(logs):
     lines = []
     for i in range(len(logs["epoch"])):
         epoch_dict = {log_key: log_value_list[i] for log_key, log_value_list in logs.items()}
-        values = {}
+        values = dict()
         for k, v in epoch_dict.items():
             if k.startswith("val_"):
                 k = "validation_" + k[4:]
@@ -802,7 +797,7 @@ def parse_log_history(log_history):
 def extract_hyperparameters_from_keras(model):
     import tensorflow as tf
 
-    hyperparameters = {}
+    hyperparameters = dict()
     if hasattr(model, "optimizer") and model.optimizer is not None:
         hyperparameters["optimizer"] = model.optimizer.get_config()
     else:

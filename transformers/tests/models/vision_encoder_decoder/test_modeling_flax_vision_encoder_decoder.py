@@ -48,7 +48,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import ViTImageProcessor
+    from transformers import ViTFeatureExtractor
 
 
 @require_flax
@@ -462,12 +462,12 @@ class FlaxViT2GPT2ModelIntegrationTest(unittest.TestCase):
     def test_inference_coco_en(self):
         loc = "ydshieh/vit-gpt2-coco-en"
 
-        image_processor = ViTImageProcessor.from_pretrained(loc)
+        feature_extractor = ViTFeatureExtractor.from_pretrained(loc)
         tokenizer = AutoTokenizer.from_pretrained(loc)
         model = FlaxVisionEncoderDecoderModel.from_pretrained(loc)
 
         img = prepare_img()
-        pixel_values = image_processor(images=img, return_tensors="np").pixel_values
+        pixel_values = feature_extractor(images=img, return_tensors="np").pixel_values
 
         decoder_input_ids = np.array([[model.config.decoder_start_token_id]])
         logits = model(pixel_values, decoder_input_ids)[0]

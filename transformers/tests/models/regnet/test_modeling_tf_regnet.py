@@ -14,8 +14,6 @@
 # limitations under the License.
 """ Testing suite for the TensorFlow RegNet model. """
 
-from __future__ import annotations
-
 import inspect
 import unittest
 from typing import List, Tuple
@@ -26,7 +24,6 @@ from transformers.utils import cached_property, is_tf_available, is_vision_avail
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -38,7 +35,7 @@ if is_tf_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import AutoImageProcessor
+    from transformers import AutoFeatureExtractor
 
 
 class TFRegNetModelTester:
@@ -114,18 +111,13 @@ class TFRegNetModelTester:
 
 
 @require_tf
-class TFRegNetModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TFRegNetModelTest(TFModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as RegNet does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
     """
 
     all_model_classes = (TFRegNetModel, TFRegNetForImageClassification) if is_tf_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": TFRegNetModel, "image-classification": TFRegNetForImageClassification}
-        if is_tf_available()
-        else {}
-    )
 
     test_pruning = False
     test_onnx = False
@@ -148,7 +140,6 @@ class TFRegNetModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         not is_tf_available() or len(tf.config.list_physical_devices("GPU")) == 0,
         reason="TF does not support backprop for grouped convolutions on CPU.",
     )
-    @slow
     def test_keras_fit(self):
         super().test_keras_fit()
 
@@ -267,9 +258,9 @@ def prepare_img():
 @require_vision
 class RegNetModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
+    def default_feature_extractor(self):
         return (
-            AutoImageProcessor.from_pretrained(TF_REGNET_PRETRAINED_MODEL_ARCHIVE_LIST[0])
+            AutoFeatureExtractor.from_pretrained(TF_REGNET_PRETRAINED_MODEL_ARCHIVE_LIST[0])
             if is_vision_available()
             else None
         )
@@ -278,9 +269,9 @@ class RegNetModelIntegrationTest(unittest.TestCase):
     def test_inference_image_classification_head(self):
         model = TFRegNetForImageClassification.from_pretrained(TF_REGNET_PRETRAINED_MODEL_ARCHIVE_LIST[0])
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="tf")
+        inputs = feature_extractor(images=image, return_tensors="tf")
 
         # forward pass
         outputs = model(**inputs, training=False)

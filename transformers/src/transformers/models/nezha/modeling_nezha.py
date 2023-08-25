@@ -163,7 +163,7 @@ class NezhaRelativePositionsEncoding(nn.Module):
         my_shape = list(final_mat.size())
         my_shape.append(depth)
         positions_encoding = positions_encoding.view(my_shape)
-        self.register_buffer("positions_encoding", positions_encoding, persistent=False)
+        self.register_buffer("positions_encoding", positions_encoding)
 
     def forward(self, length):
         return self.positions_encoding[:length, :length, :]
@@ -561,13 +561,6 @@ class NezhaEncoder(nn.Module):
         all_self_attentions = () if output_attentions else None
         all_cross_attentions = () if output_attentions and self.config.add_cross_attention else None
 
-        if self.gradient_checkpointing and self.training:
-            if use_cache:
-                logger.warning_once(
-                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                )
-                use_cache = False
-
         next_decoder_cache = () if use_cache else None
         for i, layer_module in enumerate(self.layer):
             if output_hidden_states:
@@ -577,6 +570,11 @@ class NezhaEncoder(nn.Module):
             past_key_value = past_key_values[i] if past_key_values is not None else None
 
             if self.gradient_checkpointing and self.training:
+                if use_cache:
+                    logger.warning(
+                        "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
+                    )
+                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -735,6 +733,7 @@ class NezhaPreTrainedModel(PreTrainedModel):
     load_tf_weights = load_tf_weights_in_nezha
     base_model_prefix = "nezha"
     supports_gradient_checkpointing = True
+    _keys_to_ignore_on_load_missing = [r"positions_encoding"]
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -950,7 +949,6 @@ class NezhaModel(NezhaPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
-            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -1037,7 +1035,7 @@ class NezhaModel(NezhaPreTrainedModel):
     NEZHA_START_DOCSTRING,
 )
 class NezhaForPreTraining(NezhaPreTrainedModel):
-    _tied_weights_keys = ["cls.predictions.decoder"]
+    _keys_to_ignore_on_load_missing = ["cls.predictions.decoder"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -1139,7 +1137,8 @@ class NezhaForPreTraining(NezhaPreTrainedModel):
 
 @add_start_docstrings("""Nezha Model with a `language modeling` head on top.""", NEZHA_START_DOCSTRING)
 class NezhaForMaskedLM(NezhaPreTrainedModel):
-    _tied_weights_keys = ["cls.predictions.decoder"]
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _keys_to_ignore_on_load_missing = [r"cls.predictions.decoder", r"positions_encoding"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -1539,6 +1538,8 @@ class NezhaForMultipleChoice(NezhaPreTrainedModel):
     NEZHA_START_DOCSTRING,
 )
 class NezhaForTokenClassification(NezhaPreTrainedModel):
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1618,6 +1619,8 @@ class NezhaForTokenClassification(NezhaPreTrainedModel):
     NEZHA_START_DOCSTRING,
 )
 class NezhaForQuestionAnswering(NezhaPreTrainedModel):
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels

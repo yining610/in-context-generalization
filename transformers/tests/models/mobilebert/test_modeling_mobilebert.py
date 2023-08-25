@@ -22,7 +22,6 @@ from transformers.testing_utils import require_sentencepiece, require_tokenizers
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -54,7 +53,7 @@ class MobileBertModelTester:
         vocab_size=99,
         hidden_size=64,
         embedding_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -254,7 +253,7 @@ class MobileBertModelTester:
 
 
 @require_torch
-class MobileBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class MobileBertModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             MobileBertModel,
@@ -268,18 +267,6 @@ class MobileBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": MobileBertModel,
-            "fill-mask": MobileBertForMaskedLM,
-            "question-answering": MobileBertForQuestionAnswering,
-            "text-classification": MobileBertForSequenceClassification,
-            "token-classification": MobileBertForTokenClassification,
-            "zero-shot": MobileBertForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
     fx_compatible = True
 
@@ -296,11 +283,6 @@ class MobileBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
                     self.model_tester.batch_size, dtype=torch.long, device=torch_device
                 )
         return inputs_dict
-
-    # TODO (@SunMarc): Fix me
-    @unittest.skip("It's broken.")
-    def test_resize_tokens_embeddings(self):
-        super().test_resize_tokens_embeddings()
 
     def setUp(self):
         self.model_tester = MobileBertModelTester(self)

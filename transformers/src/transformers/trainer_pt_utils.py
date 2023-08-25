@@ -35,7 +35,6 @@ from torch import nn
 from torch.utils.data import Dataset, IterableDataset, RandomSampler, Sampler
 from torch.utils.data.distributed import DistributedSampler
 
-from .integrations.deepspeed import is_deepspeed_zero3_enabled
 from .tokenization_utils_base import BatchEncoding
 from .utils import is_sagemaker_mp_enabled, is_torch_tpu_available, is_training_run_on_sagemaker, logging
 
@@ -257,7 +256,7 @@ class DistributedSamplerWithLoop(DistributedSampler):
             Dataset used for sampling.
         batch_size (`int`):
             The batch size used with this sampler
-        kwargs (`Dict[str, Any]`, *optional*):
+        kwargs:
             All other keyword arguments passed to `DistributedSampler`.
     """
 
@@ -535,7 +534,7 @@ def get_length_grouped_indices(lengths, batch_size, mega_batch_mult=None, genera
     indices = torch.randperm(len(lengths), generator=generator)
     megabatch_size = mega_batch_mult * batch_size
     megabatches = [indices[i : i + megabatch_size].tolist() for i in range(0, len(lengths), megabatch_size)]
-    megabatches = [sorted(megabatch, key=lambda i: lengths[i], reverse=True) for megabatch in megabatches]
+    megabatches = [list(sorted(megabatch, key=lambda i: lengths[i], reverse=True)) for megabatch in megabatches]
 
     # The rest is to get the biggest batch first.
     # Since each megabatch is sorted by descending length, the longest element is the first
@@ -838,7 +837,7 @@ class IterableDatasetShard(IterableDataset):
 
 
 def _get_learning_rate(self):
-    if self.is_deepspeed_enabled:
+    if self.deepspeed:
         # with deepspeed's fp16 and dynamic loss scale enabled the optimizer/scheduler steps may
         # not run for the first few dozen steps while loss scale is too large, and thus during
         # that time `get_last_lr` will fail if called during that warm up stage, so work around it:
@@ -851,10 +850,7 @@ def _get_learning_rate(self):
             else:
                 raise
     else:
-        if isinstance(self.lr_scheduler, torch.optim.lr_scheduler.ReduceLROnPlateau):
-            last_lr = self.optimizer.param_groups[0]["lr"]
-        else:
-            last_lr = self.lr_scheduler.get_last_lr()[0]
+        last_lr = self.lr_scheduler.get_last_lr()[0]
         if torch.is_tensor(last_lr):
             last_lr = last_lr.item()
     return last_lr
@@ -1034,23 +1030,6 @@ def save_state(self):
 
     path = os.path.join(self.args.output_dir, "trainer_state.json")
     self.state.save_to_json(path)
-
-
-def get_model_param_count(model, trainable_only=False):
-    """
-    Calculate model's total param count. If trainable_only is True then count only those requiring grads
-    """
-    if is_deepspeed_zero3_enabled():
-
-        def numel(p):
-            return p.ds_numel if hasattr(p, "ds_numel") else p.numel()
-
-    else:
-
-        def numel(p):
-            return p.numel()
-
-    return sum(numel(p) for p in model.parameters() if not trainable_only or p.requires_grad)
 
 
 def get_parameter_names(model, forbidden_layer_types):

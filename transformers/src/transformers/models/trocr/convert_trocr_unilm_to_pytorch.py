@@ -29,7 +29,7 @@ from transformers import (
     TrOCRProcessor,
     VisionEncoderDecoderModel,
     ViTConfig,
-    ViTImageProcessor,
+    ViTFeatureExtractor,
     ViTModel,
 )
 from transformers.utils import logging
@@ -182,9 +182,9 @@ def convert_tr_ocr_checkpoint(checkpoint_url, pytorch_dump_folder_path):
     model.load_state_dict(state_dict)
 
     # Check outputs on an image
-    image_processor = ViTImageProcessor(size=encoder_config.image_size)
+    feature_extractor = ViTFeatureExtractor(size=encoder_config.image_size)
     tokenizer = RobertaTokenizer.from_pretrained("roberta-large")
-    processor = TrOCRProcessor(image_processor, tokenizer)
+    processor = TrOCRProcessor(feature_extractor, tokenizer)
 
     pixel_values = processor(images=prepare_img(checkpoint_url), return_tensors="pt").pixel_values
 

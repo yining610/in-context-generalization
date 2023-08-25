@@ -31,7 +31,7 @@ from ...modeling_outputs import (
     TokenClassifierOutput,
 )
 from ...modeling_utils import PreTrainedModel
-from ...pytorch_utils import apply_chunking_to_forward
+from ...pytorch_utils import apply_chunking_to_forward, torch_int_div
 from ...utils import (
     add_start_docstrings,
     add_start_docstrings_to_model_forward,
@@ -77,9 +77,7 @@ class LayoutLMv2Embeddings(nn.Module):
         self.LayerNorm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
-        self.register_buffer(
-            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
-        )
+        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
 
     def _calc_spatial_position_embeddings(self, bbox):
         try:
@@ -508,6 +506,7 @@ class LayoutLMv2PreTrainedModel(PreTrainedModel):
     config_class = LayoutLMv2Config
     pretrained_model_archive_map = LAYOUTLMV2_PRETRAINED_MODEL_ARCHIVE_LIST
     base_model_prefix = "layoutlmv2"
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -568,11 +567,8 @@ class LayoutLMv2VisualBackbone(nn.Module):
         self.register_buffer(
             "pixel_mean",
             torch.Tensor(self.cfg.MODEL.PIXEL_MEAN).view(num_channels, 1, 1),
-            persistent=False,
         )
-        self.register_buffer(
-            "pixel_std", torch.Tensor(self.cfg.MODEL.PIXEL_STD).view(num_channels, 1, 1), persistent=False
-        )
+        self.register_buffer("pixel_std", torch.Tensor(self.cfg.MODEL.PIXEL_STD).view(num_channels, 1, 1))
         self.out_feature_key = "p2"
         if torch.are_deterministic_algorithms_enabled():
             logger.warning("using `AvgPool2d` instead of `AdaptiveAvgPool2d`")
@@ -608,7 +604,7 @@ class LayoutLMv2VisualBackbone(nn.Module):
         self_rank = torch.distributed.get_rank()
         node_size = torch.cuda.device_count()
         world_size = torch.distributed.get_world_size()
-        if not (world_size % node_size == 0):
+        if not (world_size & node_size == 0):
             raise RuntimeError("Make sure the number of processes can be divided by the number of nodes")
 
         node_global_ranks = [list(range(i * node_size, (i + 1) * node_size)) for i in range(world_size // node_size)]
@@ -774,7 +770,7 @@ class LayoutLMv2Model(LayoutLMv2PreTrainedModel):
         return embeddings
 
     def _calc_visual_bbox(self, image_feature_pool_shape, bbox, device, final_shape):
-        visual_bbox_x = torch.div(
+        visual_bbox_x = torch_int_div(
             torch.arange(
                 0,
                 1000 * (image_feature_pool_shape[1] + 1),
@@ -783,9 +779,8 @@ class LayoutLMv2Model(LayoutLMv2PreTrainedModel):
                 dtype=bbox.dtype,
             ),
             self.config.image_feature_pool_shape[1],
-            rounding_mode="floor",
         )
-        visual_bbox_y = torch.div(
+        visual_bbox_y = torch_int_div(
             torch.arange(
                 0,
                 1000 * (self.config.image_feature_pool_shape[0] + 1),
@@ -794,7 +789,6 @@ class LayoutLMv2Model(LayoutLMv2PreTrainedModel):
                 dtype=bbox.dtype,
             ),
             self.config.image_feature_pool_shape[0],
-            rounding_mode="floor",
         )
         visual_bbox = torch.stack(
             [
@@ -1047,7 +1041,6 @@ class LayoutLMv2ForSequenceClassification(LayoutLMv2PreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
-            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]

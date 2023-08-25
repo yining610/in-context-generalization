@@ -24,7 +24,6 @@ from transformers.utils import cached_property, is_torch_available, is_vision_av
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -37,7 +36,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import MobileNetV1ImageProcessor
+    from transformers import MobileNetV1FeatureExtractor
 
 
 class MobileNetV1ConfigTester(ConfigTester):
@@ -140,18 +139,13 @@ class MobileNetV1ModelTester:
 
 
 @require_torch
-class MobileNetV1ModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class MobileNetV1ModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as MobileNetV1 does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
     """
 
     all_model_classes = (MobileNetV1Model, MobileNetV1ForImageClassification) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": MobileNetV1Model, "image-classification": MobileNetV1ForImageClassification}
-        if is_torch_available()
-        else {}
-    )
 
     test_pruning = False
     test_resize_embeddings = False
@@ -240,18 +234,20 @@ def prepare_img():
 @require_vision
 class MobileNetV1ModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
+    def default_feature_extractor(self):
         return (
-            MobileNetV1ImageProcessor.from_pretrained("google/mobilenet_v1_1.0_224") if is_vision_available() else None
+            MobileNetV1FeatureExtractor.from_pretrained("google/mobilenet_v1_1.0_224")
+            if is_vision_available()
+            else None
         )
 
     @slow
     def test_inference_image_classification_head(self):
         model = MobileNetV1ForImageClassification.from_pretrained("google/mobilenet_v1_1.0_224").to(torch_device)
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():

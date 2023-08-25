@@ -50,7 +50,6 @@ class GPTNeoXJapanesePreTrainedModel(PreTrainedModel):
     base_model_prefix = "gpt_neox_japanese"
     supports_gradient_checkpointing = True
     _no_split_modules = ["GPTNeoXJapaneseLayer"]
-    _skip_keys_device_placement = "past_key_values"
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -181,13 +180,13 @@ class GPTNeoXJapaneseAttention(nn.Module):
         # -> [bs, seq_len, hidden_size]
         return tensor
 
-    def _create_causal_mask(self, key_length, query_length):
-        causal_mask = torch.tril(
-            torch.ones((self.max_positions, self.max_positions), dtype=torch.bool).view(
+    def _create_casual_mask(self, key_length, query_length):
+        casual_mask = torch.tril(
+            torch.ones((self.max_positions, self.max_positions), dtype=torch.uint8).view(
                 1, 1, self.max_positions, self.max_positions
             )
         )
-        return causal_mask[:, :, key_length - query_length : key_length, :key_length]
+        return casual_mask[:, :, key_length - query_length : key_length, :key_length].bool()
 
     def _attn(self, query, key, value, attention_mask=None, head_mask=None):
         # q, k, v: [bs, num_attention_heads, seq_len, attn_head_size]
@@ -195,7 +194,7 @@ class GPTNeoXJapaneseAttention(nn.Module):
         batch_size, num_attention_heads, query_length, attn_head_size = query.size()
         key_length = key.size(-2)
 
-        causal_mask = self._create_causal_mask(key_length, query_length)
+        causal_mask = self._create_casual_mask(key_length, query_length)
 
         query = query.view(batch_size * num_attention_heads, query_length, attn_head_size)
         key = key.view(batch_size * num_attention_heads, key_length, attn_head_size)
@@ -238,24 +237,16 @@ class GPTNeoXJapaneseAttention(nn.Module):
         return attn_output, attn_weights
 
 
-# Copied from transformers.models.gpt_neox.modeling_gpt_neox.GPTNeoXRotaryEmbedding
+# Copied from transformers.models.gpt_neox.modeling_gpt_neox.RotaryEmbedding
 class RotaryEmbedding(torch.nn.Module):
     def __init__(self, dim, max_position_embeddings, base=10000, device=None):
         super().__init__()
-
-        self.dim = dim
-        self.max_position_embeddings = max_position_embeddings
-        self.base = base
-        inv_freq = 1.0 / (self.base ** (torch.arange(0, self.dim, 2).float().to(device) / self.dim))
+        inv_freq = 1.0 / (base ** (torch.arange(0, dim, 2).float().to(device) / dim))
         self.register_buffer("inv_freq", inv_freq)
 
         # Build here to make `torch.jit.trace` work.
-        self._set_cos_sin_cache(seq_len=max_position_embeddings, device=self.inv_freq.device)
-
-    def _set_cos_sin_cache(self, seq_len, device):
-        self.max_seq_len_cached = seq_len
-        t = torch.arange(self.max_seq_len_cached, device=device, dtype=self.inv_freq.dtype)
-
+        self.max_seq_len_cached = max_position_embeddings
+        t = torch.arange(self.max_seq_len_cached, device=self.inv_freq.device, dtype=self.inv_freq.dtype)
         freqs = torch.einsum("i,j->ij", t, self.inv_freq)
         # Different from paper, but it uses a different permutation in order to obtain the same calculation
         emb = torch.cat((freqs, freqs), dim=-1)
@@ -264,8 +255,15 @@ class RotaryEmbedding(torch.nn.Module):
 
     def forward(self, x, seq_len=None):
         # x: [bs, num_attention_heads, seq_len, head_size]
+        # This `if` block is unlikely to be run after we build sin/cos in `__init__`. Keep the logic here just in case.
         if seq_len > self.max_seq_len_cached:
-            self._set_cos_sin_cache(seq_len=seq_len, device=x.device)
+            self.max_seq_len_cached = seq_len
+            t = torch.arange(self.max_seq_len_cached, device=x.device, dtype=self.inv_freq.dtype)
+            freqs = torch.einsum("i,j->ij", t, self.inv_freq)
+            # Different from paper, but it uses a different permutation in order to obtain the same calculation
+            emb = torch.cat((freqs, freqs), dim=-1).to(x.device)
+            self.cos_cached = emb.cos()[None, None, :, :]
+            self.sin_cached = emb.sin()[None, None, :, :]
         return self.cos_cached[:seq_len, ...].to(x.device), self.sin_cached[:seq_len, ...].to(x.device)
 
 
@@ -508,7 +506,6 @@ class GPTNeoXJapaneseModel(GPTNeoXJapanesePreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
-            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -593,7 +590,7 @@ class GPTNeoXJapaneseModel(GPTNeoXJapanesePreTrainedModel):
     GPT_NEOX_JAPANESE_START_DOCSTRING,
 )
 class GPTNeoXJapaneseForCausalLM(GPTNeoXJapanesePreTrainedModel):
-    _tied_weights_keys = ["embed_out.weight"]
+    _keys_to_ignore_on_load_missing = [r"position_ids", r"predictions.decoder.bias", "embed_out.weight"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -685,9 +682,6 @@ class GPTNeoXJapaneseForCausalLM(GPTNeoXJapanesePreTrainedModel):
 
         lm_loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(lm_logits.device)
-
             # we are doing next-token prediction; shift prediction scores and input ids by one
             shift_logits = lm_logits[:, :-1, :].contiguous()
             labels = labels[:, 1:].contiguous()

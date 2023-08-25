@@ -262,13 +262,13 @@ First, install the Neptune client library. You can do it with either `pip` or `c
 `pip`:
 
 ```bash
-pip install neptune
+pip install neptune-client
 ```
 
 `conda`:
 
 ```bash
-conda install -c conda-forge neptune
+conda install -c conda-forge neptune-client
 ```
 
 Next, in your model training script, import `NeptuneCallback`:
@@ -283,8 +283,8 @@ To enable Neptune logging, in your `TrainingArguments`, set the `report_to` argu
 training_args = TrainingArguments(
     "quick-training-distilbert-mrpc", 
     evaluation_strategy="steps",
-    eval_steps=20,
-    report_to="neptune",
+    eval_steps = 20,
+    report_to = "neptune",
 )
 
 trainer = Trainer(
@@ -293,8 +293,6 @@ trainer = Trainer(
     ...
 )
 ```
-
-**Note:** This method requires saving your Neptune credentials as environment variables (see the bottom of the section).
 
 Alternatively, for more logging options, create a Neptune callback:
 
@@ -320,7 +318,7 @@ neptune_callback = NeptuneCallback(
 Pass the callback to the Trainer:
 
 ```python
-training_args = TrainingArguments(..., report_to=None)
+training_args = TrainingArguments(..., report_to = None)
 trainer = Trainer(
     model,
     training_args,
@@ -338,7 +336,7 @@ Now, when you start the training with `trainer.train()`, your metadata will be l
 | `NEPTUNE_API_TOKEN`  | Your Neptune API token. To find and copy it, click your Neptune avatar and select **Get your API token**. |
 | `NEPTUNE_PROJECT` | The full name of your Neptune project (`workspace-name/project-name`). To find and copy it, head to **project settings** &rarr; **Properties**. |
 
-For detailed instructions and examples, see the [Neptune docs](https://docs.neptune.ai/integrations/transformers/).
+For detailed instructions and examples, see the [Neptune docs](https://docs.neptune.ai/integrations-and-supported-tools/model-training/hugging-face).
 
 ### ClearML
 

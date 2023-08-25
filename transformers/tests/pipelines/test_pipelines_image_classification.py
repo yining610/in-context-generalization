@@ -22,7 +22,6 @@ from transformers import (
 )
 from transformers.pipelines import ImageClassificationPipeline, pipeline
 from transformers.testing_utils import (
-    is_pipeline_test,
     nested_simplify,
     require_tf,
     require_torch,
@@ -31,7 +30,7 @@ from transformers.testing_utils import (
     slow,
 )
 
-from .test_pipelines_common import ANY
+from .test_pipelines_common import ANY, PipelineTestCaseMeta
 
 
 if is_vision_available():
@@ -44,10 +43,9 @@ else:
             pass
 
 
-@is_pipeline_test
 @require_torch_or_tf
 @require_vision
-class ImageClassificationPipelineTests(unittest.TestCase):
+class ImageClassificationPipelineTests(unittest.TestCase, metaclass=PipelineTestCaseMeta):
     model_mapping = MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
     tf_model_mapping = TF_MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
 

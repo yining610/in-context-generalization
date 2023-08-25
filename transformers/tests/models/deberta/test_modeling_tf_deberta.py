@@ -14,8 +14,6 @@
 # limitations under the License.
 
 
-from __future__ import annotations
-
 import unittest
 
 from transformers import DebertaConfig, is_tf_available
@@ -23,7 +21,6 @@ from transformers.testing_utils import require_tf, slow
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -50,7 +47,7 @@ class TFDebertaModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -73,7 +70,7 @@ class TFDebertaModelTester:
         self.use_labels = True
         self.vocab_size = 99
         self.hidden_size = 32
-        self.num_hidden_layers = 2
+        self.num_hidden_layers = 5
         self.num_attention_heads = 4
         self.intermediate_size = 37
         self.hidden_act = "gelu"
@@ -210,7 +207,7 @@ class TFDebertaModelTester:
 
 
 @require_tf
-class TFDebertaModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TFDebertaModelTest(TFModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             TFDebertaModel,
@@ -221,18 +218,6 @@ class TFDebertaModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestC
         )
         if is_tf_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": TFDebertaModel,
-            "fill-mask": TFDebertaForMaskedLM,
-            "question-answering": TFDebertaForQuestionAnswering,
-            "text-classification": TFDebertaForSequenceClassification,
-            "token-classification": TFDebertaForTokenClassification,
-            "zero-shot": TFDebertaForSequenceClassification,
-        }
-        if is_tf_available()
-        else {}
     )
 
     test_head_masking = False

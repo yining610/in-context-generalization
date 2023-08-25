@@ -12,30 +12,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""
-Utility that checks the list of models in the tips in the task-specific pages of the doc is up to date and potentially
-fixes it.
 
-Use from the root of the repo with:
-
-```bash
-python utils/check_task_guides.py
-```
-
-for a check that will error in case of inconsistencies (used by `make repo-consistency`).
-
-To auto-fix issues run:
-
-```bash
-python utils/check_task_guides.py --fix_and_overwrite
-```
-
-which is used by `make fix-copies`.
-"""
 import argparse
+import importlib.util
 import os
-
-from transformers.utils import direct_transformers_import
 
 
 # All paths are set with the intent you should run this script from the root of the repo with the command
@@ -44,17 +24,10 @@ TRANSFORMERS_PATH = "src/transformers"
 PATH_TO_TASK_GUIDES = "docs/source/en/tasks"
 
 
-def _find_text_in_file(filename: str, start_prompt: str, end_prompt: str) -> str:
+def _find_text_in_file(filename, start_prompt, end_prompt):
     """
-    Find the text in filename between two prompts.
-
-    Args:
-        filename (`str`): The file to search into.
-        start_prompt (`str`): A string to look for at the start of the content searched.
-        end_prompt (`str`): A string that will mark the end of the content to look for.
-
-    Returns:
-        `str`: The content between the prompts.
+    Find the text in `filename` between a line beginning with `start_prompt` and before `end_prompt`, removing empty
+    lines.
     """
     with open(filename, "r", encoding="utf-8", newline="\n") as f:
         lines = f.readlines()
@@ -64,7 +37,6 @@ def _find_text_in_file(filename: str, start_prompt: str, end_prompt: str) -> str
         start_index += 1
     start_index += 1
 
-    # Now go until the end prompt.
     end_index = start_index
     while not lines[end_index].startswith(end_prompt):
         end_index += 1
@@ -79,67 +51,46 @@ def _find_text_in_file(filename: str, start_prompt: str, end_prompt: str) -> str
 
 
 # This is to make sure the transformers module imported is the one in the repo.
-transformers_module = direct_transformers_import(TRANSFORMERS_PATH)
+spec = importlib.util.spec_from_file_location(
+    "transformers",
+    os.path.join(TRANSFORMERS_PATH, "__init__.py"),
+    submodule_search_locations=[TRANSFORMERS_PATH],
+)
+transformers_module = spec.loader.load_module()
 
-# Map between a task guide and the corresponding auto class.
 TASK_GUIDE_TO_MODELS = {
-    "asr.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_CTC_MAPPING_NAMES,
-    "audio_classification.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING_NAMES,
-    "language_modeling.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_CAUSAL_LM_MAPPING_NAMES,
-    "image_classification.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES,
-    "masked_language_modeling.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_MASKED_LM_MAPPING_NAMES,
-    "multiple_choice.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_MULTIPLE_CHOICE_MAPPING_NAMES,
-    "object_detection.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_OBJECT_DETECTION_MAPPING_NAMES,
-    "question_answering.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_QUESTION_ANSWERING_MAPPING_NAMES,
-    "semantic_segmentation.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING_NAMES,
-    "sequence_classification.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES,
-    "summarization.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING_NAMES,
-    "token_classification.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING_NAMES,
-    "translation.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING_NAMES,
-    "video_classification.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING_NAMES,
-    "document_question_answering.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING_NAMES,
-    "monocular_depth_estimation.md": transformers_module.models.auto.modeling_auto.MODEL_FOR_DEPTH_ESTIMATION_MAPPING_NAMES,
-}
-
-# This list contains model types used in some task guides that are not in `CONFIG_MAPPING_NAMES` (therefore not in any
-# `MODEL_MAPPING_NAMES` or any `MODEL_FOR_XXX_MAPPING_NAMES`).
-SPECIAL_TASK_GUIDE_TO_MODEL_TYPES = {
-    "summarization.md": ("nllb",),
-    "translation.md": ("nllb",),
+    "asr.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_CTC_MAPPING_NAMES,
+    "audio_classification.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_AUDIO_CLASSIFICATION_MAPPING_NAMES,
+    "language_modeling.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_CAUSAL_LM_MAPPING_NAMES,
+    "image_classification.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES,
+    "masked_language_modeling.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_MASKED_LM_MAPPING_NAMES,
+    "multiple_choice.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_MULTIPLE_CHOICE_MAPPING_NAMES,
+    "object_detection.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_OBJECT_DETECTION_MAPPING_NAMES,
+    "question_answering.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_QUESTION_ANSWERING_MAPPING_NAMES,
+    "semantic_segmentation.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEMANTIC_SEGMENTATION_MAPPING_NAMES,
+    "sequence_classification.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES,
+    "summarization.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING_NAMES,
+    "token_classification.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING_NAMES,
+    "translation.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING_NAMES,
+    "video_classification.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_VIDEO_CLASSIFICATION_MAPPING_NAMES,
+    "document_question_answering.mdx": transformers_module.models.auto.modeling_auto.MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING_NAMES,
 }
 
 
-def get_model_list_for_task(task_guide: str) -> str:
+def get_model_list_for_task(task_guide):
     """
-    Return the list of models supporting a given task.
-
-    Args:
-        task_guide (`str`): The name of the task guide to check.
-
-    Returns:
-        `str`: The list of models supporting this task, as links to their respective doc pages separated by commas.
+    Return the list of models supporting given task.
     """
-    model_maping_names = TASK_GUIDE_TO_MODELS[task_guide]
-    special_model_types = SPECIAL_TASK_GUIDE_TO_MODEL_TYPES.get(task_guide, set())
+    config_maping_names = TASK_GUIDE_TO_MODELS[task_guide]
     model_names = {
-        code: name
-        for code, name in transformers_module.MODEL_NAMES_MAPPING.items()
-        if (code in model_maping_names or code in special_model_types)
+        code: name for code, name in transformers_module.MODEL_NAMES_MAPPING.items() if code in config_maping_names
     }
     return ", ".join([f"[{name}](../model_doc/{code})" for code, name in model_names.items()]) + "\n"
 
 
-def check_model_list_for_task(task_guide: str, overwrite: bool = False):
-    """
-    For a given task guide, checks the model list in the generated tip for consistency with the state of the lib and
-    updates it if needed.
+def check_model_list_for_task(task_guide, overwrite=False):
+    """For a given task guide, checks the model list in the generated tip for consistency with the state of the lib and overwrites if needed."""
 
-    Args:
-        task_guide (`str`):
-            The name of the task guide to check.
-        overwrite (`bool`, *optional*, defaults to `False`):
-            Whether or not to overwrite the table when it's not up to date.
-    """
     current_list, start_index, end_index, lines = _find_text_in_file(
         filename=os.path.join(PATH_TO_TASK_GUIDES, task_guide),
         start_prompt="<!--This tip is automatically generated by `make fix-copies`, do not fill manually!-->",

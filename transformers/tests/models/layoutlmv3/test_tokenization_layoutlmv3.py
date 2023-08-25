@@ -264,10 +264,6 @@ class LayoutLMv3TokenizationTest(TokenizerTesterMixin, unittest.TestCase):
     def test_right_and_left_truncation(self):
         pass
 
-    @unittest.skip("Not implemented")
-    def test_split_special_tokens(self):
-        pass
-
     def test_encode_plus_with_padding(self):
         tokenizers = self.get_tokenizers(do_lower_case=False)
         for tokenizer in tokenizers:
@@ -2281,14 +2277,14 @@ class LayoutLMv3TokenizationTest(TokenizerTesterMixin, unittest.TestCase):
 
     @slow
     def test_only_label_first_subword(self):
-        words = ["hello", "niels", "0000000000000000"]
+        words = ["hello", "niels"]
         boxes = [[1000, 1000, 1000, 1000] for _ in range(len(words))]
-        word_labels = [0, 1, 2]
+        word_labels = [0, 1]
 
         # test slow tokenizer
         tokenizer_p = LayoutLMv3Tokenizer.from_pretrained("microsoft/layoutlmv3-base", add_visual_labels=False)
         encoding = tokenizer_p(words, boxes=boxes, word_labels=word_labels)
-        self.assertListEqual(encoding.labels, [-100, 0, 1, -100, 2, -100, -100])
+        self.assertListEqual(encoding.labels, [-100, 0, 1, -100, -100])
 
         tokenizer_p = LayoutLMv3Tokenizer.from_pretrained(
             "microsoft/layoutlmv3-base",
@@ -2296,12 +2292,12 @@ class LayoutLMv3TokenizationTest(TokenizerTesterMixin, unittest.TestCase):
             add_visual_labels=False,
         )
         encoding = tokenizer_p(words, boxes=boxes, word_labels=word_labels)
-        self.assertListEqual(encoding.labels, [-100, 0, 1, 1, 2, 2, -100])
+        self.assertListEqual(encoding.labels, [-100, 0, 1, 1, -100])
 
         # test fast tokenizer
         tokenizer_r = LayoutLMv3TokenizerFast.from_pretrained("microsoft/layoutlmv3-base", add_visual_labels=False)
         encoding = tokenizer_r(words, boxes=boxes, word_labels=word_labels)
-        self.assertListEqual(encoding.labels, [-100, 0, 1, -100, 2, -100, -100])
+        self.assertListEqual(encoding.labels, [-100, 0, 1, -100, -100])
 
         tokenizer_r = LayoutLMv3Tokenizer.from_pretrained(
             "microsoft/layoutlmv3-base",
@@ -2309,7 +2305,7 @@ class LayoutLMv3TokenizationTest(TokenizerTesterMixin, unittest.TestCase):
             add_visual_labels=False,
         )
         encoding = tokenizer_r(words, boxes=boxes, word_labels=word_labels)
-        self.assertListEqual(encoding.labels, [-100, 0, 1, 1, 2, 2, -100])
+        self.assertListEqual(encoding.labels, [-100, 0, 1, 1, -100])
 
     @slow
     def test_layoutlmv3_integration_test(self):

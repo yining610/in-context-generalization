@@ -21,7 +21,6 @@ from transformers.testing_utils import require_torch, require_torch_gpu, slow, t
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -50,7 +49,7 @@ class DistilBertModelTester(object):
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -196,7 +195,7 @@ class DistilBertModelTester(object):
 
 
 @require_torch
-class DistilBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class DistilBertModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             DistilBertModel,
@@ -208,18 +207,6 @@ class DistilBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         )
         if is_torch_available()
         else None
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": DistilBertModel,
-            "fill-mask": DistilBertForMaskedLM,
-            "question-answering": DistilBertForQuestionAnswering,
-            "text-classification": DistilBertForSequenceClassification,
-            "token-classification": DistilBertForTokenClassification,
-            "zero-shot": DistilBertForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
     fx_compatible = True
     test_pruning = True

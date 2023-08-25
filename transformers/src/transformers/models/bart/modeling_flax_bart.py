@@ -22,6 +22,7 @@ from typing import Callable, Optional, Tuple
 import flax.linen as nn
 import jax
 import jax.numpy as jnp
+import numpy as np
 from flax.core.frozen_dict import FrozenDict, freeze, unfreeze
 from flax.linen import combine_masks, make_causal_mask
 from flax.linen.attention import dot_product_attention_weights
@@ -217,15 +218,15 @@ BART_DECODE_INPUTS_DOCSTRING = r"""
 """
 
 
-def shift_tokens_right(input_ids: jnp.array, pad_token_id: int, decoder_start_token_id: int) -> jnp.ndarray:
+def shift_tokens_right(input_ids: np.array, pad_token_id: int, decoder_start_token_id: int) -> np.ndarray:
     """
     Shift input ids one token to the right.
     """
-    shifted_input_ids = jnp.zeros_like(input_ids)
-    shifted_input_ids = shifted_input_ids.at[:, 1:].set(input_ids[:, :-1])
-    shifted_input_ids = shifted_input_ids.at[:, 0].set(decoder_start_token_id)
+    shifted_input_ids = np.zeros_like(input_ids)
+    shifted_input_ids[:, 1:] = input_ids[:, :-1]
+    shifted_input_ids[:, 0] = decoder_start_token_id
 
-    shifted_input_ids = jnp.where(shifted_input_ids == -100, pad_token_id, shifted_input_ids)
+    shifted_input_ids = np.where(shifted_input_ids == -100, pad_token_id, shifted_input_ids)
     return shifted_input_ids
 
 
@@ -1467,8 +1468,8 @@ class FlaxBartForConditionalGeneration(FlaxBartPreTrainedModel):
         self,
         decoder_input_ids,
         max_length,
-        attention_mask: Optional[jax.Array] = None,
-        decoder_attention_mask: Optional[jax.Array] = None,
+        attention_mask: Optional[jnp.DeviceArray] = None,
+        decoder_attention_mask: Optional[jnp.DeviceArray] = None,
         encoder_outputs=None,
         **kwargs,
     ):
@@ -1960,7 +1961,7 @@ class FlaxBartForCausalLMModule(nn.Module):
 class FlaxBartForCausalLM(FlaxBartDecoderPreTrainedModel):
     module_class = FlaxBartForCausalLMModule
 
-    def prepare_inputs_for_generation(self, input_ids, max_length, attention_mask: Optional[jax.Array] = None):
+    def prepare_inputs_for_generation(self, input_ids, max_length, attention_mask: Optional[jnp.DeviceArray] = None):
         # initializing the cache
         batch_size, seq_length = input_ids.shape
 

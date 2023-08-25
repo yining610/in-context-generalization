@@ -27,9 +27,8 @@ from torch import Tensor, nn
 from ...activations import ACT2FN
 from ...file_utils import ModelOutput
 from ...modeling_outputs import BackboneOutput
-from ...modeling_utils import PreTrainedModel
+from ...modeling_utils import BackboneMixin, PreTrainedModel
 from ...pytorch_utils import find_pruneable_heads_and_indices, meshgrid, prune_linear_layer
-from ...utils.backbone_utils import BackboneMixin
 from .configuration_maskformer_swin import MaskFormerSwinConfig
 
 
@@ -123,7 +122,7 @@ def window_reverse(windows, window_size, height, width):
 
 
 # Copied from transformers.models.swin.modeling_swin.drop_path
-def drop_path(input: torch.Tensor, drop_prob: float = 0.0, training: bool = False) -> torch.Tensor:
+def drop_path(input, drop_prob=0.0, training=False, scale_by_keep=True):
     """
     Drop paths (Stochastic Depth) per sample (when applied in main path of residual blocks).
 
@@ -852,18 +851,27 @@ class MaskFormerSwinBackbone(MaskFormerSwinPreTrainedModel, BackboneMixin):
 
     def __init__(self, config: MaskFormerSwinConfig):
         super().__init__(config)
-        super()._init_backbone(config)
 
+        self.stage_names = config.stage_names
         self.model = MaskFormerSwinModel(config)
+
+        self.out_features = config.out_features if config.out_features is not None else [self.stage_names[-1]]
         if "stem" in self.out_features:
             raise ValueError("This backbone does not support 'stem' in the `out_features`.")
-        self.num_features = [config.embed_dim] + [int(config.embed_dim * 2**i) for i in range(len(config.depths))]
-        self.hidden_states_norms = nn.ModuleList(
-            [nn.LayerNorm(num_channels) for num_channels in self.num_features[1:]]
-        )
+
+        num_features = [int(config.embed_dim * 2**i) for i in range(len(config.depths))]
+        self.out_feature_channels = {}
+        for i, stage in enumerate(self.stage_names[1:]):
+            self.out_feature_channels[stage] = num_features[i]
+
+        self.hidden_states_norms = nn.ModuleList([nn.LayerNorm(num_channels) for num_channels in self.channels])
 
         # Initialize weights and apply final processing
         self.post_init()
+
+    @property
+    def channels(self):
+        return [self.out_feature_channels[name] for name in self.out_features]
 
     def forward(
         self,
@@ -885,10 +893,10 @@ class MaskFormerSwinBackbone(MaskFormerSwinPreTrainedModel, BackboneMixin):
         # we skip the stem
         hidden_states = outputs.hidden_states[1:]
 
+        feature_maps = ()
         # we need to reshape the hidden states to their original spatial dimensions
         # spatial dimensions contains all the heights and widths of each stage, including after the embeddings
         spatial_dimensions: Tuple[Tuple[int, int]] = outputs.hidden_states_spatial_dimensions
-        feature_maps = ()
         for i, (hidden_state, stage, (height, width)) in enumerate(
             zip(hidden_states, self.stage_names[1:], spatial_dimensions)
         ):

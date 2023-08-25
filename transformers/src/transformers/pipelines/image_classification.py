@@ -19,11 +19,11 @@ if is_vision_available():
 if is_tf_available():
     import tensorflow as tf
 
-    from ..models.auto.modeling_tf_auto import TF_MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES
+    from ..models.auto.modeling_tf_auto import TF_MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
     from ..tf_utils import stable_softmax
 
 if is_torch_available():
-    from ..models.auto.modeling_auto import MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES
+    from ..models.auto.modeling_auto import MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
 
 logger = logging.get_logger(__name__)
 
@@ -57,19 +57,16 @@ class ImageClassificationPipeline(Pipeline):
         super().__init__(*args, **kwargs)
         requires_backends(self, "vision")
         self.check_model_type(
-            TF_MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES
+            TF_MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
             if self.framework == "tf"
-            else MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING_NAMES
+            else MODEL_FOR_IMAGE_CLASSIFICATION_MAPPING
         )
 
-    def _sanitize_parameters(self, top_k=None, timeout=None):
-        preprocess_params = {}
-        if timeout is not None:
-            preprocess_params["timeout"] = timeout
+    def _sanitize_parameters(self, top_k=None):
         postprocess_params = {}
         if top_k is not None:
             postprocess_params["top_k"] = top_k
-        return preprocess_params, {}, postprocess_params
+        return {}, {}, postprocess_params
 
     def __call__(self, images: Union[str, List[str], "Image.Image", List["Image.Image"]], **kwargs):
         """
@@ -89,9 +86,6 @@ class ImageClassificationPipeline(Pipeline):
             top_k (`int`, *optional*, defaults to 5):
                 The number of top labels that will be returned by the pipeline. If the provided number is higher than
                 the number of labels available in the model configuration, it will default to the number of labels.
-            timeout (`float`, *optional*, defaults to None):
-                The maximum time in seconds to wait for fetching images from the web. If None, no timeout is set and
-                the call may block forever.
 
         Return:
             A dictionary or a list of dictionaries containing result. If the input is a single image, will return a
@@ -105,8 +99,8 @@ class ImageClassificationPipeline(Pipeline):
         """
         return super().__call__(images, **kwargs)
 
-    def preprocess(self, image, timeout=None):
-        image = load_image(image, timeout=timeout)
+    def preprocess(self, image):
+        image = load_image(image)
         model_inputs = self.image_processor(images=image, return_tensors=self.framework)
         return model_inputs
 

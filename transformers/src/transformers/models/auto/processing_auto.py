@@ -16,13 +16,11 @@
 import importlib
 import inspect
 import json
-import os
-import warnings
 from collections import OrderedDict
 
 # Build the list of all feature extractors
 from ...configuration_utils import PretrainedConfig
-from ...dynamic_module_utils import get_class_from_dynamic_module, resolve_trust_remote_code
+from ...dynamic_module_utils import get_class_from_dynamic_module
 from ...feature_extraction_utils import FeatureExtractionMixin
 from ...image_processing_utils import ImageProcessingMixin
 from ...tokenization_utils import TOKENIZER_CONFIG_FILE
@@ -43,45 +41,36 @@ logger = logging.get_logger(__name__)
 
 PROCESSOR_MAPPING_NAMES = OrderedDict(
     [
-        ("align", "AlignProcessor"),
         ("altclip", "AltCLIPProcessor"),
-        ("bark", "BarkProcessor"),
         ("blip", "BlipProcessor"),
         ("blip-2", "Blip2Processor"),
         ("bridgetower", "BridgeTowerProcessor"),
         ("chinese_clip", "ChineseCLIPProcessor"),
-        ("clap", "ClapProcessor"),
         ("clip", "CLIPProcessor"),
         ("clipseg", "CLIPSegProcessor"),
         ("flava", "FlavaProcessor"),
-        ("git", "GitProcessor"),
+        ("git", "GITProcessor"),
         ("groupvit", "CLIPProcessor"),
         ("hubert", "Wav2Vec2Processor"),
-        ("idefics", "IdeficsProcessor"),
-        ("instructblip", "InstructBlipProcessor"),
         ("layoutlmv2", "LayoutLMv2Processor"),
         ("layoutlmv3", "LayoutLMv3Processor"),
+        ("layoutxlm", "LayoutXLMProcessor"),
         ("markuplm", "MarkupLMProcessor"),
-        ("mctct", "MCTCTProcessor"),
-        ("mgp-str", "MgpstrProcessor"),
         ("oneformer", "OneFormerProcessor"),
         ("owlvit", "OwlViTProcessor"),
-        ("pix2struct", "Pix2StructProcessor"),
-        ("pop2piano", "Pop2PianoProcessor"),
-        ("sam", "SamProcessor"),
         ("sew", "Wav2Vec2Processor"),
         ("sew-d", "Wav2Vec2Processor"),
         ("speech_to_text", "Speech2TextProcessor"),
         ("speech_to_text_2", "Speech2Text2Processor"),
         ("speecht5", "SpeechT5Processor"),
         ("trocr", "TrOCRProcessor"),
-        ("tvlt", "TvltProcessor"),
         ("unispeech", "Wav2Vec2Processor"),
         ("unispeech-sat", "Wav2Vec2Processor"),
         ("vilt", "ViltProcessor"),
         ("vision-text-dual-encoder", "VisionTextDualEncoderProcessor"),
         ("wav2vec2", "Wav2Vec2Processor"),
         ("wav2vec2-conformer", "Wav2Vec2Processor"),
+        ("wav2vec2_with_lm", "Wav2Vec2ProcessorWithLM"),
         ("wavlm", "Wav2Vec2Processor"),
         ("whisper", "WhisperProcessor"),
         ("xclip", "XCLIPProcessor"),
@@ -161,7 +150,7 @@ class AutoProcessor:
             proxies (`Dict[str, str]`, *optional*):
                 A dictionary of proxy servers to use by protocol or endpoint, e.g., `{'http': 'foo.bar:3128',
                 'http://hostname': 'foo.bar:4012'}.` The proxies are used on each request.
-            token (`str` or *bool*, *optional*):
+            use_auth_token (`str` or *bool*, *optional*):
                 The token to use as HTTP bearer authorization for remote files. If `True`, will use the token generated
                 when running `huggingface-cli login` (stored in `~/.huggingface`).
             revision (`str`, *optional*, defaults to `"main"`):
@@ -184,7 +173,7 @@ class AutoProcessor:
 
         <Tip>
 
-        Passing `token=True` is required when you want to use a private model.
+        Passing `use_auth_token=True` is required when you want to use a private model.
 
         </Tip>
 
@@ -197,21 +186,10 @@ class AutoProcessor:
         >>> processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base-960h")
 
         >>> # If processor files are in a directory (e.g. processor was saved using *save_pretrained('./test/saved_model/')*)
-        >>> # processor = AutoProcessor.from_pretrained("./test/saved_model/")
+        >>> processor = AutoProcessor.from_pretrained("./test/saved_model/")
         ```"""
-        use_auth_token = kwargs.pop("use_auth_token", None)
-        if use_auth_token is not None:
-            warnings.warn(
-                "The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.", FutureWarning
-            )
-            if kwargs.get("token", None) is not None:
-                raise ValueError(
-                    "`token` and `use_auth_token` are both specified. Please set only the argument `token`."
-                )
-            kwargs["token"] = use_auth_token
-
         config = kwargs.pop("config", None)
-        trust_remote_code = kwargs.pop("trust_remote_code", None)
+        trust_remote_code = kwargs.pop("trust_remote_code", False)
         kwargs["_from_auto"] = True
 
         processor_class = None
@@ -265,30 +243,34 @@ class AutoProcessor:
                 processor_auto_map = config.auto_map["AutoProcessor"]
 
         if processor_class is not None:
-            processor_class = processor_class_from_name(processor_class)
+            # If we have custom code for a feature extractor, we get the proper class.
+            if processor_auto_map is not None:
+                if not trust_remote_code:
+                    raise ValueError(
+                        f"Loading {pretrained_model_name_or_path} requires you to execute the feature extractor file "
+                        "in that repo on your local machine. Make sure you have read the code there to avoid "
+                        "malicious use, then set the option `trust_remote_code=True` to remove this error."
+                    )
+                if kwargs.get("revision", None) is None:
+                    logger.warning(
+                        "Explicitly passing a `revision` is encouraged when loading a feature extractor with custom "
+                        "code to ensure no malicious code has been contributed in a newer revision."
+                    )
 
-        has_remote_code = processor_auto_map is not None
-        has_local_code = processor_class is not None or type(config) in PROCESSOR_MAPPING
-        trust_remote_code = resolve_trust_remote_code(
-            trust_remote_code, pretrained_model_name_or_path, has_local_code, has_remote_code
-        )
-
-        if has_remote_code and trust_remote_code:
-            processor_class = get_class_from_dynamic_module(
-                processor_auto_map, pretrained_model_name_or_path, **kwargs
-            )
-            _ = kwargs.pop("code_revision", None)
-            if os.path.isdir(pretrained_model_name_or_path):
+                module_file, class_name = processor_auto_map.split(".")
+                processor_class = get_class_from_dynamic_module(
+                    pretrained_model_name_or_path, module_file + ".py", class_name, **kwargs
+                )
                 processor_class.register_for_auto_class()
+            else:
+                processor_class = processor_class_from_name(processor_class)
+
             return processor_class.from_pretrained(
                 pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
             )
-        elif processor_class is not None:
-            return processor_class.from_pretrained(
-                pretrained_model_name_or_path, trust_remote_code=trust_remote_code, **kwargs
-            )
+
         # Last try: we use the PROCESSOR_MAPPING.
-        elif type(config) in PROCESSOR_MAPPING:
+        if type(config) in PROCESSOR_MAPPING:
             return PROCESSOR_MAPPING[type(config)].from_pretrained(pretrained_model_name_or_path, **kwargs)
 
         # At this stage, there doesn't seem to be a `Processor` class available for this model, so let's try a

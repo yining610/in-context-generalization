@@ -185,7 +185,7 @@ class PositionalEmbedding(nn.Module):
         self.register_buffer("inv_freq", inv_freq)
 
     def forward(self, pos_seq, bsz=None):
-        sinusoid_inp = torch.outer(pos_seq, self.inv_freq)
+        sinusoid_inp = torch.ger(pos_seq, self.inv_freq)
         pos_emb = torch.cat([sinusoid_inp.sin(), sinusoid_inp.cos()], dim=-1)
 
         if bsz is not None:
@@ -927,7 +927,7 @@ class TransfoXLModel(TransfoXLPreTrainedModel):
         mlen = mems[0].size(0) if mems is not None else 0
         klen = mlen + qlen
         if self.same_length:
-            all_ones = word_emb.new_ones((qlen, klen), dtype=torch.bool)
+            all_ones = word_emb.new_ones((qlen, klen), dtype=torch.uint8)
             mask_len = klen - self.mem_len
             if mask_len > 0:
                 mask_shift_len = qlen - mask_len
@@ -935,7 +935,7 @@ class TransfoXLModel(TransfoXLPreTrainedModel):
                 mask_shift_len = qlen
             dec_attn_mask = (torch.triu(all_ones, 1 + mlen) + torch.tril(all_ones, -mask_shift_len))[:, :, None]  # -1
         else:
-            dec_attn_mask = torch.triu(word_emb.new_ones((qlen, klen), dtype=torch.bool), diagonal=1 + mlen)[
+            dec_attn_mask = torch.triu(word_emb.new_ones((qlen, klen), dtype=torch.uint8), diagonal=1 + mlen)[
                 :, :, None
             ]
 
@@ -1002,7 +1002,7 @@ class TransfoXLModel(TransfoXLPreTrainedModel):
     TRANSFO_XL_START_DOCSTRING,
 )
 class TransfoXLLMHeadModel(TransfoXLPreTrainedModel):
-    _tied_weights_keys = [r"crit\.out_projs\.\d+", r"crit\.out_layers\.\d+\.weight"]
+    _keys_to_ignore_on_load_missing = [r"crit\.out_projs\.\d+", r"crit\.out_layers\.\d+\.weight"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -1190,6 +1190,8 @@ class TransfoXLLMHeadModel(TransfoXLPreTrainedModel):
     TRANSFO_XL_START_DOCSTRING,
 )
 class TransfoXLForSequenceClassification(TransfoXLPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"h\.\d+\.attn\.masked_bias", r"lm_head.weight"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1247,9 +1249,7 @@ class TransfoXLForSequenceClassification(TransfoXLPreTrainedModel):
             sequence_lengths = -1
         else:
             if input_ids is not None:
-                sequence_lengths = (torch.eq(input_ids, self.config.pad_token_id).long().argmax(-1) - 1).to(
-                    logits.device
-                )
+                sequence_lengths = torch.ne(input_ids, self.config.pad_token_id).sum(-1) - 1
             else:
                 sequence_lengths = -1
                 logger.warning(

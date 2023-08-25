@@ -24,7 +24,6 @@ from transformers.utils import cached_property, is_torch_available, is_vision_av
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -37,7 +36,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import MobileViTImageProcessor
+    from transformers import MobileViTFeatureExtractor
 
 
 class MobileViTConfigTester(ConfigTester):
@@ -56,7 +55,7 @@ class MobileViTModelTester:
         image_size=32,
         patch_size=2,
         num_channels=3,
-        last_hidden_size=32,
+        last_hidden_size=640,
         num_attention_heads=4,
         hidden_act="silu",
         conv_kernel_size=3,
@@ -115,8 +114,6 @@ class MobileViTModelTester:
             attention_probs_dropout_prob=self.attention_probs_dropout_prob,
             classifier_dropout_prob=self.classifier_dropout_prob,
             initializer_range=self.initializer_range,
-            hidden_sizes=[12, 16, 20],
-            neck_hidden_sizes=[8, 8, 16, 16, 32, 32, 32],
         )
 
     def create_and_check_model(self, config, pixel_values, labels, pixel_labels):
@@ -176,7 +173,7 @@ class MobileViTModelTester:
 
 
 @require_torch
-class MobileViTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class MobileViTModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as MobileViT does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
@@ -186,15 +183,6 @@ class MobileViTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCas
         (MobileViTModel, MobileViTForImageClassification, MobileViTForSemanticSegmentation)
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": MobileViTModel,
-            "image-classification": MobileViTForImageClassification,
-            "image-segmentation": MobileViTForSemanticSegmentation,
-        }
-        if is_torch_available()
-        else {}
     )
 
     test_pruning = False
@@ -300,16 +288,16 @@ def prepare_img():
 @require_vision
 class MobileViTModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
-        return MobileViTImageProcessor.from_pretrained("apple/mobilevit-xx-small") if is_vision_available() else None
+    def default_feature_extractor(self):
+        return MobileViTFeatureExtractor.from_pretrained("apple/mobilevit-xx-small") if is_vision_available() else None
 
     @slow
     def test_inference_image_classification_head(self):
         model = MobileViTForImageClassification.from_pretrained("apple/mobilevit-xx-small").to(torch_device)
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
@@ -328,10 +316,10 @@ class MobileViTModelIntegrationTest(unittest.TestCase):
         model = MobileViTForSemanticSegmentation.from_pretrained("apple/deeplabv3-mobilevit-xx-small")
         model = model.to(torch_device)
 
-        image_processor = MobileViTImageProcessor.from_pretrained("apple/deeplabv3-mobilevit-xx-small")
+        feature_extractor = MobileViTFeatureExtractor.from_pretrained("apple/deeplabv3-mobilevit-xx-small")
 
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
@@ -358,10 +346,10 @@ class MobileViTModelIntegrationTest(unittest.TestCase):
         model = MobileViTForSemanticSegmentation.from_pretrained("apple/deeplabv3-mobilevit-xx-small")
         model = model.to(torch_device)
 
-        image_processor = MobileViTImageProcessor.from_pretrained("apple/deeplabv3-mobilevit-xx-small")
+        feature_extractor = MobileViTFeatureExtractor.from_pretrained("apple/deeplabv3-mobilevit-xx-small")
 
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
@@ -369,10 +357,10 @@ class MobileViTModelIntegrationTest(unittest.TestCase):
 
         outputs.logits = outputs.logits.detach().cpu()
 
-        segmentation = image_processor.post_process_semantic_segmentation(outputs=outputs, target_sizes=[(50, 60)])
+        segmentation = feature_extractor.post_process_semantic_segmentation(outputs=outputs, target_sizes=[(50, 60)])
         expected_shape = torch.Size((50, 60))
         self.assertEqual(segmentation[0].shape, expected_shape)
 
-        segmentation = image_processor.post_process_semantic_segmentation(outputs=outputs)
+        segmentation = feature_extractor.post_process_semantic_segmentation(outputs=outputs)
         expected_shape = torch.Size((32, 32))
         self.assertEqual(segmentation[0].shape, expected_shape)

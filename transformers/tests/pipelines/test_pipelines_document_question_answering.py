@@ -18,7 +18,6 @@ from transformers import MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING, AutoToke
 from transformers.pipelines import pipeline
 from transformers.pipelines.document_question_answering import apply_tesseract
 from transformers.testing_utils import (
-    is_pipeline_test,
     nested_simplify,
     require_detectron2,
     require_pytesseract,
@@ -28,7 +27,7 @@ from transformers.testing_utils import (
     slow,
 )
 
-from .test_pipelines_common import ANY
+from .test_pipelines_common import ANY, PipelineTestCaseMeta
 
 
 if is_vision_available():
@@ -53,10 +52,9 @@ INVOICE_URL = (
 )
 
 
-@is_pipeline_test
 @require_torch
 @require_vision
-class DocumentQuestionAnsweringPipelineTests(unittest.TestCase):
+class DocumentQuestionAnsweringPipelineTests(unittest.TestCase, metaclass=PipelineTestCaseMeta):
     model_mapping = MODEL_FOR_DOCUMENT_QUESTION_ANSWERING_MAPPING
 
     @require_pytesseract

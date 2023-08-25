@@ -208,12 +208,12 @@ class DisjunctiveTrie:
         """
         self.max_height = max([len(one) for one in nested_token_ids])
 
-        root = {}
+        root = dict()
         for token_ids in nested_token_ids:
             level = root
             for tidx, token_id in enumerate(token_ids):
                 if token_id not in level:
-                    level[token_id] = {}
+                    level[token_id] = dict()
 
                 level = level[token_id]
 

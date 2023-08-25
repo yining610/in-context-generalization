@@ -14,16 +14,13 @@
 # limitations under the License.
 
 
-from __future__ import annotations
-
 import unittest
 
 from transformers import is_tf_available
-from transformers.testing_utils import require_sentencepiece, require_tf, require_tokenizers, slow
+from transformers.testing_utils import require_sentencepiece, require_tf, require_tokenizers, slow, tooslow
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -56,7 +53,7 @@ class TFLongformerModelTester:
         self.use_labels = True
         self.vocab_size = 99
         self.hidden_size = 32
-        self.num_hidden_layers = 2
+        self.num_hidden_layers = 5
         self.num_attention_heads = 4
         self.intermediate_size = 37
         self.hidden_act = "gelu"
@@ -273,7 +270,7 @@ class TFLongformerModelTester:
 
 
 @require_tf
-class TFLongformerModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TFLongformerModelTest(TFModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             TFLongformerModel,
@@ -286,36 +283,8 @@ class TFLongformerModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.Te
         if is_tf_available()
         else ()
     )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": TFLongformerModel,
-            "fill-mask": TFLongformerForMaskedLM,
-            "question-answering": TFLongformerForQuestionAnswering,
-            "text-classification": TFLongformerForSequenceClassification,
-            "token-classification": TFLongformerForTokenClassification,
-            "zero-shot": TFLongformerForSequenceClassification,
-        }
-        if is_tf_available()
-        else {}
-    )
     test_head_masking = False
     test_onnx = False
-
-    # TODO: Fix the failed tests
-    def is_pipeline_test_to_skip(
-        self, pipeline_test_casse_name, config_class, model_architecture, tokenizer_name, processor_name
-    ):
-        if (
-            pipeline_test_casse_name == "QAPipelineTests"
-            and tokenizer_name is not None
-            and not tokenizer_name.endswith("Fast")
-        ):
-            # `QAPipelineTests` fails for a few models when the slower tokenizer are used.
-            # (The slower tokenizers were never used for pipeline tests before the pipeline testing rework)
-            # TODO: check (and possibly fix) the `QAPipelineTests` with slower tokenizer
-            return True
-
-        return False
 
     def setUp(self):
         self.model_tester = TFLongformerModelTester(self)
@@ -356,12 +325,12 @@ class TFLongformerModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.Te
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester.create_and_check_for_multiple_choice(*config_and_inputs)
 
-    @unittest.skip("Longformer keeps using potentially symbolic tensors in conditionals and breaks tracing.")
+    @tooslow
     def test_saved_model_creation(self):
         pass
 
-    @unittest.skip("Longformer keeps using potentially symbolic tensors in conditionals and breaks tracing.")
-    def test_compile_tf_model(self):
+    def test_xla_mode(self):
+        # TODO JP: Make Longformer XLA compliant
         pass
 
 

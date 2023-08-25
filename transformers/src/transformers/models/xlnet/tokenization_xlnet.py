@@ -254,7 +254,7 @@ class XLNetTokenizer(PreTrainedTokenizer):
         self,
         token_ids: List[int],
         skip_special_tokens: bool = False,
-        clean_up_tokenization_spaces: bool = None,
+        clean_up_tokenization_spaces: bool = True,
         spaces_between_special_tokens: bool = True,
         **kwargs,
     ) -> str:
@@ -284,11 +284,6 @@ class XLNetTokenizer(PreTrainedTokenizer):
         # By default, there are no spaces between special tokens
         text = "".join(sub_texts)
 
-        clean_up_tokenization_spaces = (
-            clean_up_tokenization_spaces
-            if clean_up_tokenization_spaces is not None
-            else self.clean_up_tokenization_spaces
-        )
         if clean_up_tokenization_spaces:
             clean_text = self.clean_up_tokenization(text)
             return clean_text

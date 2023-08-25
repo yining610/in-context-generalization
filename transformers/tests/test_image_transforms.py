@@ -39,7 +39,6 @@ if is_vision_available():
         center_to_corners_format,
         convert_to_rgb,
         corners_to_center_format,
-        flip_channel_order,
         get_resize_output_image_size,
         id_to_rgb,
         normalize,
@@ -96,32 +95,6 @@ class ImageTransformsTester(unittest.TestCase):
 
         # make sure image is correctly rescaled
         self.assertTrue(np.abs(np.asarray(pil_image)).sum() > 0)
-
-        # Make sure that an exception is raised if image is not in [0, 1]
-        image = np.random.randn(*image_shape).astype(dtype)
-        with self.assertRaises(ValueError):
-            to_pil_image(image)
-
-    @require_vision
-    def test_to_pil_image_from_mask(self):
-        # Make sure binary mask remains a binary mask
-        image = np.random.randint(0, 2, (3, 4, 5)).astype(np.uint8)
-        pil_image = to_pil_image(image)
-        self.assertIsInstance(pil_image, PIL.Image.Image)
-        self.assertEqual(pil_image.size, (5, 4))
-
-        np_img = np.asarray(pil_image)
-        self.assertTrue(np_img.min() == 0)
-        self.assertTrue(np_img.max() == 1)
-
-        image = np.random.randint(0, 2, (3, 4, 5)).astype(np.float32)
-        pil_image = to_pil_image(image)
-        self.assertIsInstance(pil_image, PIL.Image.Image)
-        self.assertEqual(pil_image.size, (5, 4))
-
-        np_img = np.asarray(pil_image)
-        self.assertTrue(np_img.min() == 0)
-        self.assertTrue(np_img.max() == 1)
 
     @require_tf
     def test_to_pil_image_from_tensorflow(self):
@@ -185,11 +158,6 @@ class ImageTransformsTester(unittest.TestCase):
         image = to_channel_dimension_format(image, "channels_first")
         self.assertEqual(image.shape, (3, 4, 5))
 
-        # Can pass in input_data_format and works if data format is ambiguous or unknown.
-        image = np.random.rand(4, 5, 6)
-        image = to_channel_dimension_format(image, "channels_first", input_channel_dim="channels_last")
-        self.assertEqual(image.shape, (6, 4, 5))
-
     def test_get_resize_output_image_size(self):
         image = np.random.randint(0, 256, (3, 224, 224))
 
@@ -216,14 +184,6 @@ class ImageTransformsTester(unittest.TestCase):
         # Test size is resized if longer size > max_size
         image = np.random.randint(0, 256, (3, 50, 40))
         self.assertEqual(get_resize_output_image_size(image, 20, default_to_square=False, max_size=22), (22, 17))
-
-        # Test output size = (int(size * height / width), size) if size is an int and height > width and
-        # input has 4 channels
-        image = np.random.randint(0, 256, (4, 50, 40))
-        self.assertEqual(
-            get_resize_output_image_size(image, 20, default_to_square=False, input_data_format="channels_first"),
-            (25, 20),
-        )
 
         # Test correct channel dimension is returned if output size if height == 3
         # Defaults to input format - channels first
@@ -257,25 +217,11 @@ class ImageTransformsTester(unittest.TestCase):
         self.assertIsInstance(resized_image, np.ndarray)
         self.assertEqual(resized_image.shape, (30, 40, 3))
 
-        # Check PIL.Image.Image is returned if return_numpy=False
+        # Check PIL.Image.Image is return if return_numpy=False
         resized_image = resize(image, (30, 40), return_numpy=False)
         self.assertIsInstance(resized_image, PIL.Image.Image)
         # PIL size is in (width, height) order
         self.assertEqual(resized_image.size, (40, 30))
-
-        # Check an image with float values between 0-1 is returned with values in this range
-        image = np.random.rand(3, 224, 224)
-        resized_image = resize(image, (30, 40))
-        self.assertIsInstance(resized_image, np.ndarray)
-        self.assertEqual(resized_image.shape, (3, 30, 40))
-        self.assertTrue(np.all(resized_image >= 0))
-        self.assertTrue(np.all(resized_image <= 1))
-
-        # Check that an image with 4 channels is resized correctly
-        image = np.random.randint(0, 256, (4, 224, 224))
-        resized_image = resize(image, (30, 40), input_data_format="channels_first")
-        self.assertIsInstance(resized_image, np.ndarray)
-        self.assertEqual(resized_image.shape, (4, 30, 40))
 
     def test_normalize(self):
         image = np.random.randint(0, 256, (224, 224, 3)) / 255
@@ -304,15 +250,6 @@ class ImageTransformsTester(unittest.TestCase):
         self.assertEqual(normalized_image.shape, (3, 224, 224))
         self.assertTrue(np.allclose(normalized_image, expected_image))
 
-        # Test image with 4 channels is normalized correctly
-        image = np.random.randint(0, 256, (224, 224, 4)) / 255
-        mean = (0.5, 0.6, 0.7, 0.8)
-        std = (0.1, 0.2, 0.3, 0.4)
-        expected_image = (image - mean) / std
-        self.assertTrue(
-            np.allclose(normalize(image, mean=mean, std=std, input_data_format="channels_last"), expected_image)
-        )
-
     def test_center_crop(self):
         image = np.random.randint(0, 256, (3, 224, 224))
 
@@ -335,11 +272,6 @@ class ImageTransformsTester(unittest.TestCase):
         self.assertIsInstance(cropped_image, np.ndarray)
         self.assertEqual(cropped_image.shape, (300, 260, 3))
         self.assertTrue(np.allclose(cropped_image, expected_image))
-
-        # Test image with 4 channels is cropped correctly
-        image = np.random.randint(0, 256, (224, 224, 4))
-        expected_image = image[52:172, 82:142, :]
-        self.assertTrue(np.allclose(center_crop(image, (120, 60), input_data_format="channels_last"), expected_image))
 
     def test_center_to_corners_format(self):
         bbox_center = np.array([[10, 20, 4, 8], [15, 16, 3, 4]])
@@ -526,22 +458,6 @@ class ImageTransformsTester(unittest.TestCase):
             np.allclose(expected_image, pad(image, ((0, 2), (2, 1)), mode="reflect", data_format="channels_last"))
         )
 
-        # Test we can pad on an image with 2 channels
-        # fmt: off
-        image = np.array([
-            [[0, 1], [2, 3]],
-        ])
-        expected_image = np.array([
-            [[0, 0], [0, 1], [2, 3]],
-            [[0, 0], [0, 0], [0, 0]],
-        ])
-        # fmt: on
-        self.assertTrue(
-            np.allclose(
-                expected_image, pad(image, ((0, 1), (1, 0)), mode="constant", input_data_format="channels_last")
-            )
-        )
-
     @require_vision
     def test_convert_to_rgb(self):
         # Test that an RGBA image is converted to RGB
@@ -570,58 +486,3 @@ class ImageTransformsTester(unittest.TestCase):
         self.assertEqual(rgb_image.mode, "RGB")
         self.assertEqual(rgb_image.size, (2, 1))
         self.assertTrue(np.allclose(np.array(rgb_image), np.array([[[0, 0, 0], [255, 255, 255]]], dtype=np.uint8)))
-
-    def test_flip_channel_order(self):
-        # fmt: off
-        img_channels_first = np.array([
-            [[ 0,  1,  2,  3],
-             [ 4,  5,  6,  7]],
-
-            [[ 8,  9, 10, 11],
-             [12, 13, 14, 15]],
-
-            [[16, 17, 18, 19],
-             [20, 21, 22, 23]],
-        ])
-        # fmt: on
-        img_channels_last = np.moveaxis(img_channels_first, 0, -1)
-        # fmt: off
-        flipped_img_channels_first = np.array([
-            [[16, 17, 18, 19],
-             [20, 21, 22, 23]],
-
-            [[ 8,  9, 10, 11],
-             [12, 13, 14, 15]],
-
-            [[ 0,  1,  2,  3],
-             [ 4,  5,  6,  7]],
-        ])
-        # fmt: on
-        flipped_img_channels_last = np.moveaxis(flipped_img_channels_first, 0, -1)
-
-        self.assertTrue(np.allclose(flip_channel_order(img_channels_first), flipped_img_channels_first))
-        self.assertTrue(
-            np.allclose(flip_channel_order(img_channels_first, "channels_last"), flipped_img_channels_last)
-        )
-
-        self.assertTrue(np.allclose(flip_channel_order(img_channels_last), flipped_img_channels_last))
-        self.assertTrue(
-            np.allclose(flip_channel_order(img_channels_last, "channels_first"), flipped_img_channels_first)
-        )
-
-        # Can flip when the image has 2 channels
-        # fmt: off
-        img_channels_first = np.array([
-            [[ 0,  1,  2,  3],
-             [ 4,  5,  6,  7]],
-
-            [[ 8,  9, 10, 11],
-             [12, 13, 14, 15]],
-        ])
-        # fmt: on
-        flipped_img_channels_first = img_channels_first[::-1, :, :]
-        self.assertTrue(
-            np.allclose(
-                flip_channel_order(img_channels_first, input_data_format="channels_first"), flipped_img_channels_first
-            )
-        )

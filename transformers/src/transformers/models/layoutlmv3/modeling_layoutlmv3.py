@@ -24,16 +24,18 @@ import torch.nn.functional as F
 import torch.utils.checkpoint
 from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
 
-from ...activations import ACT2FN
-from ...modeling_outputs import (
+from transformers import apply_chunking_to_forward
+from transformers.modeling_outputs import (
     BaseModelOutput,
     QuestionAnsweringModelOutput,
     SequenceClassifierOutput,
     TokenClassifierOutput,
 )
-from ...modeling_utils import PreTrainedModel
-from ...pytorch_utils import apply_chunking_to_forward
-from ...utils import add_start_docstrings, add_start_docstrings_to_model_forward, logging, replace_return_docstrings
+from transformers.modeling_utils import PreTrainedModel
+from transformers.utils import logging
+
+from ...activations import ACT2FN
+from ...utils import add_start_docstrings, add_start_docstrings_to_model_forward, replace_return_docstrings
 from .configuration_layoutlmv3 import LayoutLMv3Config
 
 
@@ -245,9 +247,7 @@ class LayoutLMv3TextEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
         # position_ids (1, len position emb) is contiguous in memory and exported when serialized
-        self.register_buffer(
-            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
-        )
+        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
 
         self.padding_idx = config.pad_token_id
         self.position_embeddings = nn.Embedding(
@@ -752,6 +752,8 @@ class LayoutLMv3Output(nn.Module):
     LAYOUTLMV3_START_DOCSTRING,
 )
 class LayoutLMv3Model(LayoutLMv3PreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.config = config
@@ -1038,6 +1040,9 @@ class LayoutLMv3ClassificationHead(nn.Module):
     LAYOUTLMV3_START_DOCSTRING,
 )
 class LayoutLMv3ForTokenClassification(LayoutLMv3PreTrainedModel):
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1150,6 +1155,9 @@ class LayoutLMv3ForTokenClassification(LayoutLMv3PreTrainedModel):
     LAYOUTLMV3_START_DOCSTRING,
 )
 class LayoutLMv3ForQuestionAnswering(LayoutLMv3PreTrainedModel):
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1280,6 +1288,8 @@ class LayoutLMv3ForQuestionAnswering(LayoutLMv3PreTrainedModel):
     LAYOUTLMV3_START_DOCSTRING,
 )
 class LayoutLMv3ForSequenceClassification(LayoutLMv3PreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels

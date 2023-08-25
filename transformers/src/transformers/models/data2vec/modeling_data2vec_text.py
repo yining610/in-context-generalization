@@ -80,9 +80,7 @@ class Data2VecTextForTextEmbeddings(nn.Module):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         # position_ids (1, len position emb) is contiguous in memory and exported when serialized
         self.position_embedding_type = getattr(config, "position_embedding_type", "absolute")
-        self.register_buffer(
-            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
-        )
+        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
         self.register_buffer(
             "token_type_ids", torch.zeros(self.position_ids.size(), dtype=torch.long), persistent=False
         )
@@ -494,13 +492,6 @@ class Data2VecTextEncoder(nn.Module):
         all_self_attentions = () if output_attentions else None
         all_cross_attentions = () if output_attentions and self.config.add_cross_attention else None
 
-        if self.gradient_checkpointing and self.training:
-            if use_cache:
-                logger.warning_once(
-                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                )
-                use_cache = False
-
         next_decoder_cache = () if use_cache else None
         for i, layer_module in enumerate(self.layer):
             if output_hidden_states:
@@ -510,6 +501,11 @@ class Data2VecTextEncoder(nn.Module):
             past_key_value = past_key_values[i] if past_key_values is not None else None
 
             if self.gradient_checkpointing and self.training:
+                if use_cache:
+                    logger.warning(
+                        "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
+                    )
+                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -593,7 +589,7 @@ class Data2VecTextPreTrainedModel(PreTrainedModel):
     config_class = Data2VecTextConfig
     base_model_prefix = "data2vec_text"
     supports_gradient_checkpointing = True
-    _no_split_modules = ["Data2VecTextForTextEmbeddings", "Data2VecTextLayer"]
+    _no_split_modules = []
 
     def _init_weights(self, module):
         """Initialize the weights"""
@@ -616,6 +612,15 @@ class Data2VecTextPreTrainedModel(PreTrainedModel):
     def _set_gradient_checkpointing(self, module, value=False):
         if isinstance(module, Data2VecTextEncoder):
             module.gradient_checkpointing = value
+
+    def update_keys_to_ignore(self, config, del_keys_to_ignore):
+        """Remove some keys from ignore list"""
+        if not config.tie_word_embeddings:
+            # must make a new list, or the class variable gets modified!
+            self._keys_to_ignore_on_save = [k for k in self._keys_to_ignore_on_save if k not in del_keys_to_ignore]
+            self._keys_to_ignore_on_load_missing = [
+                k for k in self._keys_to_ignore_on_load_missing if k not in del_keys_to_ignore
+            ]
 
 
 DATA2VECTEXT_START_DOCSTRING = r"""
@@ -707,6 +712,8 @@ class Data2VecTextModel(Data2VecTextPreTrainedModel):
 
     """
 
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config, add_pooling_layer=True):
         super().__init__(config)
         self.config = config
@@ -790,7 +797,6 @@ class Data2VecTextModel(Data2VecTextPreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
-            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -875,7 +881,9 @@ class Data2VecTextModel(Data2VecTextPreTrainedModel):
     """Data2VecText Model with a `language modeling` head on top for CLM fine-tuning.""", DATA2VECTEXT_START_DOCSTRING
 )
 class Data2VecTextForCausalLM(Data2VecTextPreTrainedModel):
-    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias"]
+    _keys_to_ignore_on_save = [r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
+    _keys_to_ignore_on_load_missing = [r"position_ids", r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -885,6 +893,9 @@ class Data2VecTextForCausalLM(Data2VecTextPreTrainedModel):
 
         self.data2vec_text = Data2VecTextModel(config, add_pooling_layer=False)
         self.lm_head = Data2VecTextLMHead(config)
+
+        # The LM head weights require special treatment only when they are tied with the word embeddings
+        self.update_keys_to_ignore(config, ["lm_head.decoder.weight"])
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -986,8 +997,6 @@ class Data2VecTextForCausalLM(Data2VecTextPreTrainedModel):
             shifted_prediction_scores = prediction_scores[:, :-1, :].contiguous()
             labels = labels[:, 1:].contiguous()
             loss_fct = CrossEntropyLoss()
-
-            labels = labels.to(shifted_prediction_scores.device)
             lm_loss = loss_fct(shifted_prediction_scores.view(-1, self.config.vocab_size), labels.view(-1))
 
         if not return_dict:
@@ -1024,7 +1033,9 @@ class Data2VecTextForCausalLM(Data2VecTextPreTrainedModel):
 
 @add_start_docstrings("""data2vec Model with a `language modeling` head on top.""", DATA2VECTEXT_START_DOCSTRING)
 class Data2VecTextForMaskedLM(Data2VecTextPreTrainedModel):
-    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias"]
+    _keys_to_ignore_on_save = [r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
+    _keys_to_ignore_on_load_missing = [r"position_ids", r"lm_head.decoder.weight", r"lm_head.decoder.bias"]
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
     def __init__(self, config):
         super().__init__(config)
@@ -1037,6 +1048,9 @@ class Data2VecTextForMaskedLM(Data2VecTextPreTrainedModel):
 
         self.data2vec_text = Data2VecTextModel(config, add_pooling_layer=False)
         self.lm_head = Data2VecTextLMHead(config)
+
+        # The LM head weights require special treatment only when they are tied with the word embeddings
+        self.update_keys_to_ignore(config, ["lm_head.decoder.weight"])
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -1098,8 +1112,6 @@ class Data2VecTextForMaskedLM(Data2VecTextPreTrainedModel):
         masked_lm_loss = None
         if labels is not None:
             loss_fct = CrossEntropyLoss()
-
-            labels = labels.to(prediction_scores.device)
             masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), labels.view(-1))
 
         if not return_dict:
@@ -1154,6 +1166,8 @@ class Data2VecTextLMHead(nn.Module):
     DATA2VECTEXT_START_DOCSTRING,
 )
 class Data2VecTextForSequenceClassification(Data2VecTextPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1208,8 +1222,6 @@ class Data2VecTextForSequenceClassification(Data2VecTextPreTrainedModel):
 
         loss = None
         if labels is not None:
-            labels = labels.to(logits.device)
-
             if self.config.problem_type is None:
                 if self.num_labels == 1:
                     self.config.problem_type = "regression"
@@ -1251,6 +1263,8 @@ class Data2VecTextForSequenceClassification(Data2VecTextPreTrainedModel):
     DATA2VECTEXT_START_DOCSTRING,
 )
 class Data2VecTextForMultipleChoice(Data2VecTextPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
 
@@ -1321,8 +1335,6 @@ class Data2VecTextForMultipleChoice(Data2VecTextPreTrainedModel):
         loss = None
         if labels is not None:
             loss_fct = CrossEntropyLoss()
-
-            labels = labels.to(reshaped_logits.device)
             loss = loss_fct(reshaped_logits, labels)
 
         if not return_dict:
@@ -1345,6 +1357,9 @@ class Data2VecTextForMultipleChoice(Data2VecTextPreTrainedModel):
     DATA2VECTEXT_START_DOCSTRING,
 )
 class Data2VecTextForTokenClassification(Data2VecTextPreTrainedModel):
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
@@ -1404,8 +1419,6 @@ class Data2VecTextForTokenClassification(Data2VecTextPreTrainedModel):
         loss = None
         if labels is not None:
             loss_fct = CrossEntropyLoss()
-
-            labels = labels.to(logits.device)
             loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
 
         if not return_dict:
@@ -1451,6 +1464,9 @@ class Data2VecTextClassificationHead(nn.Module):
     DATA2VECTEXT_START_DOCSTRING,
 )
 class Data2VecTextForQuestionAnswering(Data2VecTextPreTrainedModel):
+    _keys_to_ignore_on_load_unexpected = [r"pooler"]
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels

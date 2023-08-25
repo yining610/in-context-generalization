@@ -15,8 +15,6 @@
 """ Testing suite for the TensorFlow VisionEncoderDecoder model. """
 
 
-from __future__ import annotations
-
 import copy
 import os
 import tempfile
@@ -45,7 +43,7 @@ if is_tf_available():
 
     from transformers import (
         AutoConfig,
-        AutoImageProcessor,
+        AutoFeatureExtractor,
         AutoTokenizer,
         TFAutoModel,
         TFAutoModelForCausalLM,
@@ -64,7 +62,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import ViTImageProcessor
+    from transformers import ViTFeatureExtractor
 
 
 @require_tf
@@ -729,9 +727,9 @@ class TFVisionEncoderDecoderModelSaveLoadTests(unittest.TestCase):
 
         # create two random ViT/GPT2 models for vit-gpt2 & initialize weights (+cross_attention weights)
         encoder = TFViTModel(config.encoder)
-        encoder.build()
+        encoder(encoder.dummy_inputs)
         decoder = TFGPT2LMHeadModel(config.decoder)
-        decoder.build()
+        decoder(decoder.dummy_inputs)
 
         encoder_decoder_orig = TFVisionEncoderDecoderModel(encoder=encoder, decoder=decoder)
 
@@ -828,11 +826,11 @@ class TFVisionEncoderDecoderModelSaveLoadTests(unittest.TestCase):
         load_weight_prefix = TFVisionEncoderDecoderModel.load_weight_prefix
 
         config = self.get_encoder_decoder_config()
-        image_processor = AutoImageProcessor.from_pretrained("google/vit-base-patch16-224-in21k")
+        feature_extractor = AutoFeatureExtractor.from_pretrained("google/vit-base-patch16-224-in21k")
         decoder_tokenizer = AutoTokenizer.from_pretrained("gpt2")
 
         img = prepare_img()
-        pixel_values = image_processor(images=img, return_tensors="tf").pixel_values
+        pixel_values = feature_extractor(images=img, return_tensors="tf").pixel_values
         decoder_input_ids = decoder_tokenizer("Linda Davis", return_tensors="tf").input_ids
 
         with tempfile.TemporaryDirectory() as tmp_dirname:
@@ -893,13 +891,13 @@ class TFViT2GPT2ModelIntegrationTest(unittest.TestCase):
     def test_inference_coco_en(self):
         loc = "ydshieh/vit-gpt2-coco-en"
 
-        image_processor = ViTImageProcessor.from_pretrained(loc)
+        feature_extractor = ViTFeatureExtractor.from_pretrained(loc)
         tokenizer = AutoTokenizer.from_pretrained(loc)
         model = TFVisionEncoderDecoderModel.from_pretrained(loc)
 
         # We will verify our results on an image of cute cats
         img = Image.open("./tests/fixtures/tests_samples/COCO/000000039769.png")
-        pixel_values = image_processor(images=img, return_tensors="tf").pixel_values
+        pixel_values = feature_extractor(images=img, return_tensors="tf").pixel_values
 
         decoder_input_ids = tf.constant([[model.config.decoder_start_token_id]])
 
@@ -927,14 +925,16 @@ class TFViT2GPT2ModelIntegrationTest(unittest.TestCase):
         self.assertLessEqual(max_diff, 1e-4)
 
         def generate_step(pixel_values):
-            outputs = model.generate(pixel_values, max_length=16, num_beams=4, return_dict_in_generate=True)
+            outputs = model.generate(
+                pixel_values, max_length=16, num_beams=4, return_dict_in_generate=True, output_scores=True
+            )
             output_ids = outputs.sequences
             preds = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
             preds = [pred.strip() for pred in preds]
 
-            return preds
+            return preds, outputs.scores.numpy()
 
-        preds = generate_step(pixel_values)
+        preds, scores = generate_step(pixel_values)
 
         # should produce
         # ["a cat laying on top of a couch next to another cat"]

@@ -7,7 +7,6 @@ from pathlib import Path
 import datasets
 import torch
 from accelerate import Accelerator, DistributedType
-from accelerate.utils import ProjectConfiguration
 from arguments import TrainingArguments
 from datasets import load_dataset
 from huggingface_hub import Repository
@@ -196,8 +195,7 @@ parser = HfArgumentParser(TrainingArguments)
 args = parser.parse_args()
 
 # Accelerator
-config = ProjectConfiguration(project_dir=args.save_dir, logging_dir="log")
-accelerator = Accelerator(log_with=["wandb", "tensorboard"], project_config=config)
+accelerator = Accelerator(log_with=["wandb", "tensorboard"], logging_dir=f"{args.save_dir}/log")
 acc_state = {str(k): str(v) for k, v in accelerator.state.__dict__.items()}
 
 args = Namespace(**vars(args), **acc_state)

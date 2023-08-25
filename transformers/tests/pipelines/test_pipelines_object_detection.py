@@ -23,7 +23,6 @@ from transformers import (
     pipeline,
 )
 from transformers.testing_utils import (
-    is_pipeline_test,
     nested_simplify,
     require_pytesseract,
     require_tf,
@@ -33,7 +32,7 @@ from transformers.testing_utils import (
     slow,
 )
 
-from .test_pipelines_common import ANY
+from .test_pipelines_common import ANY, PipelineTestCaseMeta
 
 
 if is_vision_available():
@@ -46,11 +45,10 @@ else:
             pass
 
 
-@is_pipeline_test
 @require_vision
 @require_timm
 @require_torch
-class ObjectDetectionPipelineTests(unittest.TestCase):
+class ObjectDetectionPipelineTests(unittest.TestCase, metaclass=PipelineTestCaseMeta):
     model_mapping = MODEL_FOR_OBJECT_DETECTION_MAPPING
 
     def get_test_pipeline(self, model, tokenizer, processor):

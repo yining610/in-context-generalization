@@ -44,7 +44,7 @@ class BlipTextModelTester:
         vocab_size=99,
         hidden_size=32,
         projection_dim=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         dropout=0.1,
@@ -164,6 +164,3 @@ class BlipTextModelTest(ModelTesterMixin, unittest.TestCase):
         for model_name in BLIP_PRETRAINED_MODEL_ARCHIVE_LIST[:1]:
             model = BlipTextModel.from_pretrained(model_name)
             self.assertIsNotNone(model)
-
-    def test_pt_tf_model_equivalence(self):
-        super().test_pt_tf_model_equivalence(allow_missing_keys=True)

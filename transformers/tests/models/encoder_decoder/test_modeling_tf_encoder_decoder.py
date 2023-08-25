@@ -14,8 +14,6 @@
 # limitations under the License.
 
 
-from __future__ import annotations
-
 import copy
 import os
 import tempfile
@@ -1070,9 +1068,9 @@ class TFEncoderDecoderModelSaveLoadTests(unittest.TestCase):
 
         # create two random BERT models for bert2bert & initialize weights (+cross_attention weights)
         encoder = TFBertModel(config.encoder)
-        encoder.build()
+        encoder(encoder.dummy_inputs)
         decoder = TFBertLMHeadModel(config.decoder)
-        decoder.build()
+        decoder(decoder.dummy_inputs)
 
         encoder_decoder_orig = TFEncoderDecoderModel(encoder=encoder, decoder=decoder)
 

@@ -31,7 +31,6 @@ from transformers.utils import cached_property, is_torch_available, is_vision_av
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -45,7 +44,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import ViTImageProcessor
+    from transformers import ViTFeatureExtractor
 
 
 class ViTModelTester:
@@ -59,7 +58,7 @@ class ViTModelTester:
         is_training=True,
         use_labels=True,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -134,7 +133,7 @@ class ViTModelTester:
         model.eval()
         result = model(pixel_values)
         self.parent.assertEqual(
-            result.reconstruction.shape, (self.batch_size, self.num_channels, self.image_size, self.image_size)
+            result.logits.shape, (self.batch_size, self.num_channels, self.image_size, self.image_size)
         )
 
         # test greyscale images
@@ -145,7 +144,7 @@ class ViTModelTester:
 
         pixel_values = floats_tensor([self.batch_size, 1, self.image_size, self.image_size])
         result = model(pixel_values)
-        self.parent.assertEqual(result.reconstruction.shape, (self.batch_size, 1, self.image_size, self.image_size))
+        self.parent.assertEqual(result.logits.shape, (self.batch_size, 1, self.image_size, self.image_size))
 
     def create_and_check_for_image_classification(self, config, pixel_values, labels):
         config.num_labels = self.type_sequence_label_size
@@ -177,7 +176,7 @@ class ViTModelTester:
 
 
 @require_torch
-class ViTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class ViTModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as ViT does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
@@ -191,11 +190,6 @@ class ViTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {"feature-extraction": ViTModel, "image-classification": ViTForImageClassification}
-        if is_torch_available()
-        else {}
     )
     fx_compatible = True
 
@@ -264,16 +258,16 @@ def prepare_img():
 @require_vision
 class ViTModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
-        return ViTImageProcessor.from_pretrained("google/vit-base-patch16-224") if is_vision_available() else None
+    def default_feature_extractor(self):
+        return ViTFeatureExtractor.from_pretrained("google/vit-base-patch16-224") if is_vision_available() else None
 
     @slow
     def test_inference_image_classification_head(self):
         model = ViTForImageClassification.from_pretrained("google/vit-base-patch16-224").to(torch_device)
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
@@ -295,9 +289,9 @@ class ViTModelIntegrationTest(unittest.TestCase):
         # to visualize self-attention on higher resolution images.
         model = ViTModel.from_pretrained("facebook/dino-vits8").to(torch_device)
 
-        image_processor = ViTImageProcessor.from_pretrained("facebook/dino-vits8", size=480)
+        feature_extractor = ViTFeatureExtractor.from_pretrained("facebook/dino-vits8", size=480)
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt")
+        inputs = feature_extractor(images=image, return_tensors="pt")
         pixel_values = inputs.pixel_values.to(torch_device)
 
         # forward pass
@@ -322,10 +316,10 @@ class ViTModelIntegrationTest(unittest.TestCase):
         A small test to make sure that inference work in half precision without any problem.
         """
         model = ViTModel.from_pretrained("facebook/dino-vits8", torch_dtype=torch.float16, device_map="auto")
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
 
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt")
+        inputs = feature_extractor(images=image, return_tensors="pt")
         pixel_values = inputs.pixel_values.to(torch_device)
 
         # forward pass to make sure inference works in fp16

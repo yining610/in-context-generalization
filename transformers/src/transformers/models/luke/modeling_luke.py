@@ -1022,6 +1022,8 @@ LUKE_INPUTS_DOCSTRING = r"""
     LUKE_START_DOCSTRING,
 )
 class LukeModel(LukePreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config: LukeConfig, add_pooling_layer: bool = True):
         super().__init__(config)
         self.config = config
@@ -1116,7 +1118,6 @@ class LukeModel(LukePreTrainedModel):
         if input_ids is not None and inputs_embeds is not None:
             raise ValueError("You cannot specify both input_ids and inputs_embeds at the same time")
         elif input_ids is not None:
-            self.warn_if_padding_and_no_attention_mask(input_ids, attention_mask)
             input_shape = input_ids.size()
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
@@ -1277,7 +1278,17 @@ class LukeLMHead(nn.Module):
     LUKE_START_DOCSTRING,
 )
 class LukeForMaskedLM(LukePreTrainedModel):
-    _tied_weights_keys = ["lm_head.decoder.weight", "lm_head.decoder.bias", "entity_predictions.decoder.weight"]
+    _keys_to_ignore_on_save = [
+        r"lm_head.decoder.weight",
+        r"lm_head.decoder.bias",
+        r"entity_predictions.decoder.weight",
+    ]
+    _keys_to_ignore_on_load_missing = [
+        r"position_ids",
+        r"lm_head.decoder.weight",
+        r"lm_head.decoder.bias",
+        r"entity_predictions.decoder.weight",
+    ]
 
     def __init__(self, config):
         super().__init__(config)
@@ -1287,7 +1298,7 @@ class LukeForMaskedLM(LukePreTrainedModel):
         self.lm_head = LukeLMHead(config)
         self.entity_predictions = EntityPredictionHead(config)
 
-        self.loss_fn = nn.CrossEntropyLoss()
+        self.loss_fn = nn.CrossEntropyLoss(ignore_index=-1)
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -1359,8 +1370,6 @@ class LukeForMaskedLM(LukePreTrainedModel):
         mlm_loss = None
         logits = self.lm_head(outputs.last_hidden_state)
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             mlm_loss = self.loss_fn(logits.view(-1, self.config.vocab_size), labels.view(-1))
             if loss is None:
                 loss = mlm_loss
@@ -1496,8 +1505,6 @@ class LukeForEntityClassification(LukePreTrainedModel):
         if labels is not None:
             # When the number of dimension of `labels` is 1, cross entropy is used as the loss function. The binary
             # cross entropy is used otherwise.
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             if labels.ndim == 1:
                 loss = nn.functional.cross_entropy(logits, labels)
             else:
@@ -1616,8 +1623,6 @@ class LukeForEntityPairClassification(LukePreTrainedModel):
         if labels is not None:
             # When the number of dimension of `labels` is 1, cross entropy is used as the loss function. The binary
             # cross entropy is used otherwise.
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             if labels.ndim == 1:
                 loss = nn.functional.cross_entropy(logits, labels)
             else:
@@ -1664,7 +1669,7 @@ class LukeForEntitySpanClassification(LukePreTrainedModel):
     def forward(
         self,
         input_ids: Optional[torch.LongTensor] = None,
-        attention_mask: Optional[torch.FloatTensor] = None,
+        attention_mask=None,
         token_type_ids: Optional[torch.LongTensor] = None,
         position_ids: Optional[torch.LongTensor] = None,
         entity_ids: Optional[torch.LongTensor] = None,
@@ -1760,8 +1765,6 @@ class LukeForEntitySpanClassification(LukePreTrainedModel):
 
         loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             # When the number of dimension of `labels` is 2, cross entropy is used as the loss function. The binary
             # cross entropy is used otherwise.
             if labels.ndim == 2:
@@ -1859,8 +1862,6 @@ class LukeForSequenceClassification(LukePreTrainedModel):
 
         loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             if self.config.problem_type is None:
                 if self.num_labels == 1:
                     self.config.problem_type = "regression"
@@ -1974,8 +1975,6 @@ class LukeForTokenClassification(LukePreTrainedModel):
 
         loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(logits.device)
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
 
@@ -2217,8 +2216,6 @@ class LukeForMultipleChoice(LukePreTrainedModel):
 
         loss = None
         if labels is not None:
-            # move labels to correct device to enable model parallelism
-            labels = labels.to(reshaped_logits.device)
             loss_fct = CrossEntropyLoss()
             loss = loss_fct(reshaped_logits, labels)
 

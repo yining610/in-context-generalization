@@ -49,7 +49,6 @@ else:
         "BartForQuestionAnswering",
         "BartForSequenceClassification",
         "BartModel",
-        "BartPreTrainedModel",
         "BartPretrainedModel",
         "PretrainedBartModel",
     ]
@@ -108,7 +107,6 @@ if TYPE_CHECKING:
             BartForQuestionAnswering,
             BartForSequenceClassification,
             BartModel,
-            BartPreTrainedModel,
             BartPretrainedModel,
             PretrainedBartModel,
         )

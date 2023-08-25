@@ -23,7 +23,7 @@ import torch
 import torch.nn as nn
 from torch.nn import LayerNorm
 
-from ...integrations.deepspeed import is_deepspeed_available
+from ...deepspeed import is_deepspeed_available
 from ...modeling_outputs import ModelOutput
 from ...utils import (
     ContextManagers,
@@ -201,9 +201,9 @@ def collate_dense_tensors(samples: List[torch.Tensor], pad_v: float = 0) -> torc
     """
     if len(samples) == 0:
         return torch.Tensor()
-    if len({x.dim() for x in samples}) != 1:
+    if len(set(x.dim() for x in samples)) != 1:
         raise RuntimeError(f"Samples has varying dimensions: {[x.dim() for x in samples]}")
-    (device,) = tuple({x.device for x in samples})  # assumes all on same device
+    (device,) = tuple(set(x.device for x in samples))  # assumes all on same device
     max_shape = [max(lst) for lst in zip(*[x.shape for x in samples])]
     result = torch.empty(len(samples), *max_shape, dtype=samples[0].dtype, device=device)
     result.fill_(pad_v)
@@ -2018,8 +2018,6 @@ class EsmFoldingTrunk(nn.Module):
     ESM_START_DOCSTRING,
 )
 class EsmForProteinFolding(EsmPreTrainedModel):
-    _no_split_modules = ["EsmFoldStructureModule", "EsmFoldTriangularSelfAttentionBlock"]
-
     def __init__(self, config):
         super().__init__(config)
 
@@ -2086,11 +2084,11 @@ class EsmForProteinFolding(EsmPreTrainedModel):
     def forward(
         self,
         input_ids: torch.Tensor,
-        attention_mask: Optional[torch.Tensor] = None,
+        attention_mask: torch.Tensor = None,
         position_ids: Optional[torch.Tensor] = None,
         masking_pattern: Optional[torch.Tensor] = None,
         num_recycles: Optional[int] = None,
-    ) -> EsmForProteinFoldingOutput:
+    ):
         r"""
         Returns:
 

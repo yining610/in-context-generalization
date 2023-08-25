@@ -33,7 +33,6 @@ from transformers.utils import cached_property, is_torch_available, is_vision_av
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -55,7 +54,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import DeiTImageProcessor
+    from transformers import DeiTFeatureExtractor
 
 
 class DeiTModelTester:
@@ -69,7 +68,7 @@ class DeiTModelTester:
         is_training=True,
         use_labels=True,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -145,7 +144,7 @@ class DeiTModelTester:
         model.eval()
         result = model(pixel_values)
         self.parent.assertEqual(
-            result.reconstruction.shape, (self.batch_size, self.num_channels, self.image_size, self.image_size)
+            result.logits.shape, (self.batch_size, self.num_channels, self.image_size, self.image_size)
         )
 
         # test greyscale images
@@ -156,7 +155,7 @@ class DeiTModelTester:
 
         pixel_values = floats_tensor([self.batch_size, 1, self.image_size, self.image_size])
         result = model(pixel_values)
-        self.parent.assertEqual(result.reconstruction.shape, (self.batch_size, 1, self.image_size, self.image_size))
+        self.parent.assertEqual(result.logits.shape, (self.batch_size, 1, self.image_size, self.image_size))
 
     def create_and_check_for_image_classification(self, config, pixel_values, labels):
         config.num_labels = self.type_sequence_label_size
@@ -188,7 +187,7 @@ class DeiTModelTester:
 
 
 @require_torch
-class DeiTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class DeiTModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as DeiT does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
@@ -203,14 +202,6 @@ class DeiTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": DeiTModel,
-            "image-classification": (DeiTForImageClassification, DeiTForImageClassificationWithTeacher),
-        }
-        if is_torch_available()
-        else {}
     )
 
     test_pruning = False
@@ -381,9 +372,9 @@ def prepare_img():
 @require_vision
 class DeiTModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
+    def default_feature_extractor(self):
         return (
-            DeiTImageProcessor.from_pretrained("facebook/deit-base-distilled-patch16-224")
+            DeiTFeatureExtractor.from_pretrained("facebook/deit-base-distilled-patch16-224")
             if is_vision_available()
             else None
         )
@@ -394,9 +385,9 @@ class DeiTModelIntegrationTest(unittest.TestCase):
             torch_device
         )
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
@@ -420,10 +411,10 @@ class DeiTModelIntegrationTest(unittest.TestCase):
         model = DeiTModel.from_pretrained(
             "facebook/deit-base-distilled-patch16-224", torch_dtype=torch.float16, device_map="auto"
         )
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
 
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt")
+        inputs = feature_extractor(images=image, return_tensors="pt")
         pixel_values = inputs.pixel_values.to(torch_device)
 
         # forward pass to make sure inference works in fp16

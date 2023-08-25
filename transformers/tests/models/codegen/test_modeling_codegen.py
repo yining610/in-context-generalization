@@ -18,13 +18,11 @@ import datetime
 import unittest
 
 from transformers import CodeGenConfig, is_torch_available
-from transformers.file_utils import cached_property
-from transformers.testing_utils import is_flaky, require_torch, slow, torch_device
+from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...generation.test_utils import GenerationTesterMixin
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -47,7 +45,7 @@ class CodeGenModelTester:
         vocab_size=256,
         hidden_size=32,
         rotary_dim=4,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -350,12 +348,9 @@ class CodeGenModelTester:
 
 
 @require_torch
-class CodeGenModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class CodeGenModelTest(ModelTesterMixin, GenerationTesterMixin, unittest.TestCase):
     all_model_classes = (CodeGenModel, CodeGenForCausalLM) if is_torch_available() else ()
     all_generative_model_classes = (CodeGenForCausalLM,) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": CodeGenModel, "text-generation": CodeGenForCausalLM} if is_torch_available() else {}
-    )
     fx_compatible = False
     test_pruning = False
     test_missing_keys = False
@@ -463,19 +458,11 @@ class CodeGenModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMi
 
 @require_torch
 class CodeGenModelLanguageGenerationTest(unittest.TestCase):
-    @cached_property
-    def cached_tokenizer(self):
-        return AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
-
-    @cached_property
-    def cached_model(self):
-        return CodeGenForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
-
     @slow
     def test_lm_generate_codegen(self):
-        tokenizer = self.cached_tokenizer
+        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
         for checkpointing in [True, False]:
-            model = self.cached_model
+            model = CodeGenForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
 
             if checkpointing:
                 model.gradient_checkpointing_enable()
@@ -493,8 +480,8 @@ class CodeGenModelLanguageGenerationTest(unittest.TestCase):
 
     @slow
     def test_codegen_sample(self):
-        tokenizer = self.cached_tokenizer
-        model = self.cached_model
+        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
+        model = CodeGenForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
         model.to(torch_device)
 
         torch.manual_seed(0)
@@ -521,14 +508,13 @@ class CodeGenModelLanguageGenerationTest(unittest.TestCase):
 
         self.assertEqual(output_str, EXPECTED_OUTPUT_STR)
         self.assertTrue(
-            all(output_seq_strs[idx] != output_seq_tt_strs[idx] for idx in range(len(output_seq_tt_strs)))
+            all([output_seq_strs[idx] != output_seq_tt_strs[idx] for idx in range(len(output_seq_tt_strs))])
         )  # token_type_ids should change output
 
-    @is_flaky(max_attempts=3, description="measure of timing is somehow flaky.")
     @slow
     def test_codegen_sample_max_time(self):
-        tokenizer = self.cached_tokenizer
-        model = self.cached_model
+        tokenizer = AutoTokenizer.from_pretrained("Salesforce/codegen-350M-mono")
+        model = CodeGenForCausalLM.from_pretrained("Salesforce/codegen-350M-mono")
         model.to(torch_device)
 
         torch.manual_seed(0)

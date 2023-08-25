@@ -976,15 +976,16 @@ class XLNetModel(XLNetPreTrainedModel):
                v [0 0 0 0 0 0 0 0 0] [1 1 1 1 0 0 0 0 0]
 
         """
-        mask = torch.ones(qlen, qlen + mlen, self.device)
+        attn_mask = torch.ones([qlen, qlen])
+        mask_up = torch.triu(attn_mask, diagonal=1)
+        attn_mask_pad = torch.zeros([qlen, mlen])
+        ret = torch.cat([attn_mask_pad, mask_up], dim=1)
         if self.same_length:
-            mask_lo = mask[:, :qlen].tril(-1)
-            mask.triu_(mlen + 1)
-            mask[:, :qlen] += mask_lo
-        else:
-            mask.triu_(mlen + 1)
+            mask_lo = torch.tril(attn_mask, diagonal=-1)
+            ret = torch.cat([ret[:, :qlen] + mask_lo, ret[:, qlen:]], dim=1)
 
-        return mask
+        ret = ret.to(self.device)
+        return ret
 
     def cache_mem(self, curr_out, prev_mem):
         # cache hidden states into memory.
@@ -1292,7 +1293,7 @@ class XLNetModel(XLNetPreTrainedModel):
     XLNET_START_DOCSTRING,
 )
 class XLNetLMHeadModel(XLNetPreTrainedModel):
-    _tied_weights_keys = ["lm_loss.weight"]
+    _keys_to_ignore_on_load_missing = [r"lm_loss.weight"]
 
     def __init__(self, config):
         super().__init__(config)

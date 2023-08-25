@@ -29,7 +29,7 @@ from detectron2.projects.deeplab import add_deeplab_config
 from PIL import Image
 from torch import Tensor, nn
 
-from transformers.models.maskformer.feature_extraction_maskformer import MaskFormerImageProcessor
+from transformers.models.maskformer.feature_extraction_maskformer import MaskFormerFeatureExtractor
 from transformers.models.maskformer.modeling_maskformer import (
     MaskFormerConfig,
     MaskFormerForInstanceSegmentation,
@@ -72,7 +72,7 @@ class TrackedStateDict:
         Returns:
             List[str]: List of keys not yet updated
         """
-        return set(self.to_track.keys()) - self._seen
+        return set(list(self.to_track.keys())) - self._seen
 
     def copy(self) -> Dict:
         # proxy the call to the internal dictionary
@@ -111,7 +111,7 @@ class OriginalMaskFormerConfigToOursConverter:
         swin = model.SWIN
 
         dataset_catalog = MetadataCatalog.get(original_config.DATASETS.TEST[0])
-        id2label = dict(enumerate(dataset_catalog.stuff_classes))
+        id2label = {idx: label for idx, label in enumerate(dataset_catalog.stuff_classes)}
         label2id = {label: idx for idx, label in id2label.items()}
 
         config: MaskFormerConfig = MaskFormerConfig(
@@ -120,43 +120,43 @@ class OriginalMaskFormerConfigToOursConverter:
             num_labels=model.SEM_SEG_HEAD.NUM_CLASSES,
             no_object_weight=mask_former.NO_OBJECT_WEIGHT,
             num_queries=mask_former.NUM_OBJECT_QUERIES,
-            backbone_config={
-                "pretrain_img_size": swin.PRETRAIN_IMG_SIZE,
-                "image_size": swin.PRETRAIN_IMG_SIZE,
-                "in_channels": 3,
-                "patch_size": swin.PATCH_SIZE,
-                "embed_dim": swin.EMBED_DIM,
-                "depths": swin.DEPTHS,
-                "num_heads": swin.NUM_HEADS,
-                "window_size": swin.WINDOW_SIZE,
-                "drop_path_rate": swin.DROP_PATH_RATE,
-                "model_type": "swin",
-            },
+            backbone_config=dict(
+                pretrain_img_size=swin.PRETRAIN_IMG_SIZE,
+                image_size=swin.PRETRAIN_IMG_SIZE,
+                in_channels=3,
+                patch_size=swin.PATCH_SIZE,
+                embed_dim=swin.EMBED_DIM,
+                depths=swin.DEPTHS,
+                num_heads=swin.NUM_HEADS,
+                window_size=swin.WINDOW_SIZE,
+                drop_path_rate=swin.DROP_PATH_RATE,
+                model_type="swin",
+            ),
             dice_weight=mask_former.DICE_WEIGHT,
             ce_weight=1.0,
             mask_weight=mask_former.MASK_WEIGHT,
-            decoder_config={
-                "model_type": "detr",
-                "max_position_embeddings": 1024,
-                "encoder_layers": 6,
-                "encoder_ffn_dim": 2048,
-                "encoder_attention_heads": 8,
-                "decoder_layers": mask_former.DEC_LAYERS,
-                "decoder_ffn_dim": mask_former.DIM_FEEDFORWARD,
-                "decoder_attention_heads": mask_former.NHEADS,
-                "encoder_layerdrop": 0.0,
-                "decoder_layerdrop": 0.0,
-                "d_model": mask_former.HIDDEN_DIM,
-                "dropout": mask_former.DROPOUT,
-                "attention_dropout": 0.0,
-                "activation_dropout": 0.0,
-                "init_std": 0.02,
-                "init_xavier_std": 1.0,
-                "scale_embedding": False,
-                "auxiliary_loss": False,
-                "dilation": False,
+            decoder_config=dict(
+                model_type="detr",
+                max_position_embeddings=1024,
+                encoder_layers=6,
+                encoder_ffn_dim=2048,
+                encoder_attention_heads=8,
+                decoder_layers=mask_former.DEC_LAYERS,
+                decoder_ffn_dim=mask_former.DIM_FEEDFORWARD,
+                decoder_attention_heads=mask_former.NHEADS,
+                encoder_layerdrop=0.0,
+                decoder_layerdrop=0.0,
+                d_model=mask_former.HIDDEN_DIM,
+                dropout=mask_former.DROPOUT,
+                attention_dropout=0.0,
+                activation_dropout=0.0,
+                init_std=0.02,
+                init_xavier_std=1.0,
+                scale_embedding=False,
+                auxiliary_loss=False,
+                dilation=False,
                 # default pretrained config values
-            },
+            ),
             id2label=id2label,
             label2id=label2id,
         )
@@ -164,13 +164,13 @@ class OriginalMaskFormerConfigToOursConverter:
         return config
 
 
-class OriginalMaskFormerConfigToImageProcessorConverter:
-    def __call__(self, original_config: object) -> MaskFormerImageProcessor:
+class OriginalMaskFormerConfigToFeatureExtractorConverter:
+    def __call__(self, original_config: object) -> MaskFormerFeatureExtractor:
         model = original_config.MODEL
         model_input = original_config.INPUT
         dataset_catalog = MetadataCatalog.get(original_config.DATASETS.TEST[0])
 
-        return MaskFormerImageProcessor(
+        return MaskFormerFeatureExtractor(
             image_mean=(torch.tensor(model.PIXEL_MEAN) / 255).tolist(),
             image_std=(torch.tensor(model.PIXEL_STD) / 255).tolist(),
             size=model_input.MIN_SIZE_TEST,
@@ -554,7 +554,7 @@ class OriginalMaskFormerCheckpointToOursConverter:
             yield config, checkpoint
 
 
-def test(original_model, our_model: MaskFormerForInstanceSegmentation, image_processor: MaskFormerImageProcessor):
+def test(original_model, our_model: MaskFormerForInstanceSegmentation, feature_extractor: MaskFormerFeatureExtractor):
     with torch.no_grad():
         original_model = original_model.eval()
         our_model = our_model.eval()
@@ -600,7 +600,7 @@ def test(original_model, our_model: MaskFormerForInstanceSegmentation, image_pro
 
         our_model_out: MaskFormerForInstanceSegmentationOutput = our_model(x)
 
-        our_segmentation = image_processor.post_process_segmentation(our_model_out, target_size=(384, 384))
+        our_segmentation = feature_extractor.post_process_segmentation(our_model_out, target_size=(384, 384))
 
         assert torch.allclose(
             original_segmentation, our_segmentation, atol=1e-3
@@ -686,7 +686,9 @@ if __name__ == "__main__":
     for config_file, checkpoint_file in OriginalMaskFormerCheckpointToOursConverter.using_dirs(
         checkpoints_dir, config_dir
     ):
-        image_processor = OriginalMaskFormerConfigToImageProcessorConverter()(setup_cfg(Args(config_file=config_file)))
+        feature_extractor = OriginalMaskFormerConfigToFeatureExtractorConverter()(
+            setup_cfg(Args(config_file=config_file))
+        )
 
         original_config = setup_cfg(Args(config_file=config_file))
         mask_former_kwargs = OriginalMaskFormer.from_config(original_config)
@@ -710,15 +712,15 @@ if __name__ == "__main__":
             mask_former_for_instance_segmentation
         )
 
-        test(original_model, mask_former_for_instance_segmentation, image_processor)
+        test(original_model, mask_former_for_instance_segmentation, feature_extractor)
 
         model_name = get_name(checkpoint_file)
         logger.info(f"🪄 Saving {model_name}")
 
-        image_processor.save_pretrained(save_directory / model_name)
+        feature_extractor.save_pretrained(save_directory / model_name)
         mask_former_for_instance_segmentation.save_pretrained(save_directory / model_name)
 
-        image_processor.push_to_hub(
+        feature_extractor.push_to_hub(
             repo_path_or_name=save_directory / model_name,
             commit_message="Add model",
             use_temp_dir=True,

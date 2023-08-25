@@ -117,9 +117,9 @@ def create_optimizer(
             The beta2 to use in Adam.
         adam_epsilon (`float`, *optional*, defaults to 1e-8):
             The epsilon to use in Adam.
-        adam_clipnorm (`float`, *optional*, defaults to `None`):
+        adam_clipnorm: (`float`, *optional*, defaults to `None`):
             If not `None`, clip the gradient norm for each weight tensor to this value.
-        adam_global_clipnorm (`float`, *optional*, defaults to `None`)
+        adam_global_clipnorm: (`float`, *optional*, defaults to `None`)
             If not `None`, clip gradient norm to this value. When using this argument, the norm is computed over all
             weight tensors, as if they were concatenated into a single vector.
         weight_decay_rate (`float`, *optional*, defaults to 0):
@@ -201,7 +201,7 @@ class AdamWeightDecay(Adam):
             `include_in_weight_decay` is passed, the names in it will supersede this list.
         name (`str`, *optional*, defaults to 'AdamWeightDecay'):
             Optional name for the operations created when applying gradients.
-        kwargs (`Dict[str, Any]`, *optional*):
+        kwargs:
             Keyword arguments. Allowed to be {`clipnorm`, `clipvalue`, `lr`, `decay`}. `clipnorm` is clip gradients by
             norm; `clipvalue` is clip gradients by value, `decay` is included for backward compatibility to allow time
             inverse decay of learning rate. `lr` is included for backward compatibility, recommended to use
@@ -262,7 +262,7 @@ class AdamWeightDecay(Adam):
             coefficients = self._fallback_apply_state(var_device, var_dtype)
             apply_state[(var_device, var_dtype)] = coefficients
 
-        return coefficients["lr_t"], {"apply_state": apply_state}
+        return coefficients["lr_t"], dict(apply_state=apply_state)
 
     def _resource_apply_dense(self, grad, var, apply_state=None):
         lr_t, kwargs = self._get_lr(var.device, var.dtype.base_dtype, apply_state)
@@ -333,7 +333,7 @@ class GradientAccumulator(object):
         """The accumulated gradients on the current replica."""
         if not self._gradients:
             raise ValueError("The accumulator should be called first to initialize the gradients")
-        return [gradient.value() if gradient is not None else gradient for gradient in self._gradients]
+        return list(gradient.value() if gradient is not None else gradient for gradient in self._gradients)
 
     def __call__(self, gradients):
         """Accumulates `gradients` on the current replica."""

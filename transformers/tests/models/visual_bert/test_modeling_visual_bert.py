@@ -22,7 +22,6 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -54,7 +53,7 @@ class VisualBertModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -300,7 +299,7 @@ class VisualBertModelTester:
 
 
 @require_torch
-class VisualBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class VisualBertModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             VisualBertModel,
@@ -313,7 +312,6 @@ class VisualBertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         if is_torch_available()
         else ()
     )
-    pipeline_model_mapping = {"feature-extraction": VisualBertModel} if is_torch_available() else {}
     test_torchscript = False
     test_pruning = False
 

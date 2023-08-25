@@ -22,7 +22,6 @@ from transformers.testing_utils import require_sentencepiece, require_tokenizers
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -352,7 +351,7 @@ class FunnelModelTester:
 
 
 @require_torch
-class FunnelModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class FunnelModelTest(ModelTesterMixin, unittest.TestCase):
     test_head_masking = False
     test_pruning = False
     all_model_classes = (
@@ -365,18 +364,6 @@ class FunnelModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": (FunnelBaseModel, FunnelModel),
-            "fill-mask": FunnelForMaskedLM,
-            "question-answering": FunnelForQuestionAnswering,
-            "text-classification": FunnelForSequenceClassification,
-            "token-classification": FunnelForTokenClassification,
-            "zero-shot": FunnelForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
 
     # special case for ForPreTraining model

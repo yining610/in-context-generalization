@@ -24,7 +24,6 @@ from transformers.utils import cached_property, is_torch_available, is_vision_av
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -38,7 +37,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import ViTImageProcessor
+    from transformers import ViTFeatureExtractor
 
 
 class ViTMSNModelTester:
@@ -52,7 +51,7 @@ class ViTMSNModelTester:
         is_training=True,
         use_labels=True,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -145,18 +144,13 @@ class ViTMSNModelTester:
 
 
 @require_torch
-class ViTMSNModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class ViTMSNModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as ViTMSN does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
     """
 
     all_model_classes = (ViTMSNModel, ViTMSNForImageClassification) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": ViTMSNModel, "image-classification": ViTMSNForImageClassification}
-        if is_torch_available()
-        else {}
-    )
 
     test_pruning = False
     test_torchscript = False
@@ -220,17 +214,17 @@ def prepare_img():
 @require_vision
 class ViTMSNModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
-        return ViTImageProcessor.from_pretrained("facebook/vit-msn-small") if is_vision_available() else None
+    def default_feature_extractor(self):
+        return ViTFeatureExtractor.from_pretrained("facebook/vit-msn-small") if is_vision_available() else None
 
     @slow
     def test_inference_image_classification_head(self):
         torch.manual_seed(2)
         model = ViTMSNForImageClassification.from_pretrained("facebook/vit-msn-small").to(torch_device)
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():

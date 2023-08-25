@@ -20,7 +20,6 @@ from transformers.testing_utils import require_sentencepiece, require_tokenizers
 from ...generation.test_utils import GenerationTesterMixin
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -51,7 +50,7 @@ class XmodModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -355,7 +354,7 @@ class XmodModelTester:
 
 
 @require_torch
-class XmodModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class XmodModelTest(ModelTesterMixin, GenerationTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             XmodForCausalLM,
@@ -370,28 +369,6 @@ class XmodModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMixin
         else ()
     )
     all_generative_model_classes = (XmodForCausalLM,) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": XmodModel,
-            "fill-mask": XmodForMaskedLM,
-            "question-answering": XmodForQuestionAnswering,
-            "text-classification": XmodForSequenceClassification,
-            "text-generation": XmodForCausalLM,
-            "token-classification": XmodForTokenClassification,
-            "zero-shot": XmodForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
-    )
-
-    # TODO: Fix the failed tests
-    def is_pipeline_test_to_skip(
-        self, pipeline_test_casse_name, config_class, model_architecture, tokenizer_name, processor_name
-    ):
-        if pipeline_test_casse_name == "QAPipelineTests" and not tokenizer_name.endswith("Fast"):
-            return True
-
-        return False
 
     def setUp(self):
         self.model_tester = XmodModelTester(self)
@@ -535,7 +512,7 @@ class XmodModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMixin
 class XmodModelIntegrationTest(unittest.TestCase):
     @slow
     def test_xmod_base(self):
-        model = XmodModel.from_pretrained("facebook/xmod-base")
+        model = XmodModel.from_pretrained("jvamvas/xmod-base")
 
         # language en_XX
         model.set_default_language("en_XX")
@@ -568,7 +545,7 @@ class XmodModelIntegrationTest(unittest.TestCase):
 
     @slow
     def test_xmod_large_prenorm(self):
-        model = XmodModel.from_pretrained("facebook/xmod-large-prenorm")
+        model = XmodModel.from_pretrained("jvamvas/xmod-large-prenorm")
 
         # language en_XX
         model.set_default_language("en_XX")
@@ -604,7 +581,7 @@ class XmodModelIntegrationTest(unittest.TestCase):
 
     @slow
     def test_multilingual_batch(self):
-        model = XmodModel.from_pretrained("facebook/xmod-base")
+        model = XmodModel.from_pretrained("jvamvas/xmod-base")
         # fmt: off
         input_ids = torch.tensor([
             [0, 581, 10269, 83, 99942, 136, 60742, 23, 70, 80583, 18276, 2],
@@ -631,7 +608,7 @@ class XmodModelIntegrationTest(unittest.TestCase):
     @slow
     def test_end_to_end_mask_fill(self):
         tokenizer = XLMRobertaTokenizer.from_pretrained("xlm-roberta-base")
-        model = XmodForMaskedLM.from_pretrained("facebook/xmod-base", default_language="en_XX")
+        model = XmodForMaskedLM.from_pretrained("jvamvas/xmod-base", default_language="en_XX")
         model.to(torch_device)
 
         sentences = [

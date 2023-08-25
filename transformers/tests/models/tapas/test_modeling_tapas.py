@@ -37,7 +37,6 @@ from transformers.utils import cached_property
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -60,9 +59,6 @@ if is_torch_available():
         reduce_mean,
         reduce_sum,
     )
-    from transformers.pytorch_utils import is_torch_greater_or_equal_than_1_12
-else:
-    is_torch_greater_or_equal_than_1_12 = False
 
 
 class TapasModelTester:
@@ -79,7 +75,7 @@ class TapasModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -411,9 +407,8 @@ class TapasModelTester:
         return config, inputs_dict
 
 
-@unittest.skipIf(not is_torch_greater_or_equal_than_1_12, reason="Tapas is only available in torch v1.12+")
 @require_torch
-class TapasModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TapasModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             TapasModel,
@@ -423,17 +418,6 @@ class TapasModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else None
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": TapasModel,
-            "fill-mask": TapasForMaskedLM,
-            "table-question-answering": TapasForQuestionAnswering,
-            "text-classification": TapasForSequenceClassification,
-            "zero-shot": TapasForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
     test_pruning = False
     test_resize_embeddings = True
@@ -489,12 +473,6 @@ class TapasModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
                     (self.model_tester.batch_size, self.model_tester.seq_length), dtype=torch.long, device=torch_device
                 )
         return inputs_dict
-
-    # TODO: Fix the failed tests
-    def is_pipeline_test_to_skip(
-        self, pipeline_test_casse_name, config_class, model_architecture, tokenizer_name, processor_name
-    ):
-        return True
 
     def setUp(self):
         self.model_tester = TapasModelTester(self)
@@ -566,7 +544,6 @@ def prepare_tapas_batch_inputs_for_training():
     return table, queries, answer_coordinates, answer_text, float_answer
 
 
-@unittest.skipIf(not is_torch_greater_or_equal_than_1_12, reason="Tapas is only available in torch v1.12+")
 @require_torch
 class TapasModelIntegrationTest(unittest.TestCase):
     @cached_property
@@ -921,7 +898,6 @@ class TapasModelIntegrationTest(unittest.TestCase):
 # Below: tests for Tapas utilities which are defined in modeling_tapas.py.
 # These are based on segmented_tensor_test.py of the original implementation.
 # URL: https://github.com/google-research/tapas/blob/master/tapas/models/segmented_tensor_test.py
-@unittest.skipIf(not is_torch_greater_or_equal_than_1_12, reason="Tapas is only available in torch v1.12+")
 @require_torch
 class TapasUtilitiesTest(unittest.TestCase):
     def _prepare_tables(self):

@@ -1,4 +1,3 @@
-import inspect
 import warnings
 from typing import Dict
 
@@ -9,10 +8,10 @@ from .base import PIPELINE_INIT_ARGS, GenericTensor, Pipeline
 
 
 if is_tf_available():
-    from ..models.auto.modeling_tf_auto import TF_MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES
+    from ..models.auto.modeling_tf_auto import TF_MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
 
 if is_torch_available():
-    from ..models.auto.modeling_auto import MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES
+    from ..models.auto.modeling_auto import MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
 
 
 def sigmoid(_outputs):
@@ -84,9 +83,9 @@ class TextClassificationPipeline(Pipeline):
         super().__init__(**kwargs)
 
         self.check_model_type(
-            TF_MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES
+            TF_MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
             if self.framework == "tf"
-            else MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING_NAMES
+            else MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
         )
 
     def _sanitize_parameters(self, return_all_scores=None, function_to_apply=None, top_k="", **tokenizer_kwargs):
@@ -103,7 +102,7 @@ class TextClassificationPipeline(Pipeline):
             postprocess_params["_legacy"] = False
         elif return_all_scores is not None:
             warnings.warn(
-                "`return_all_scores` is now deprecated,  if want a similar functionality use `top_k=None` instead of"
+                "`return_all_scores` is now deprecated,  if want a similar funcionality use `top_k=None` instead of"
                 " `return_all_scores=True` or `top_k=1` instead of `return_all_scores=False`.",
                 UserWarning,
             )
@@ -180,10 +179,6 @@ class TextClassificationPipeline(Pipeline):
         return self.tokenizer(inputs, return_tensors=return_tensors, **tokenizer_kwargs)
 
     def _forward(self, model_inputs):
-        # `XXXForSequenceClassification` models should not use `use_cache=True` even if it's supported
-        model_forward = self.model.forward if self.framework == "pt" else self.model.call
-        if "use_cache" in inspect.signature(model_forward).parameters.keys():
-            model_inputs["use_cache"] = False
         return self.model(**model_inputs)
 
     def postprocess(self, model_outputs, function_to_apply=None, top_k=1, _legacy=True):

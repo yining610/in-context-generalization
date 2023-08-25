@@ -12,35 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""
-Utility that sorts the imports in the custom inits of Transformers. Transformers uses init files that delay the
-import of an object to when it's actually needed. This is to avoid the main init importing all models, which would
-make the line `import transformers` very slow when the user has all optional dependencies installed. The inits with
-delayed imports have two halves: one definining a dictionary `_import_structure` which maps modules to the name of the
-objects in each module, and one in `TYPE_CHECKING` which looks like a normal init for type-checkers. `isort` or `ruff`
-properly sort the second half which looks like traditionl imports, the goal of this script is to sort the first half.
 
-Use from the root of the repo with:
-
-```bash
-python utils/custom_init_isort.py
-```
-
-which will auto-sort the imports (used in `make style`).
-
-For a check only (as used in `make quality`) run:
-
-```bash
-python utils/custom_init_isort.py --check_only
-```
-"""
 import argparse
 import os
 import re
-from typing import Any, Callable, List, Optional
 
 
-# Path is defined with the intent you should run this script from the root of the repo.
 PATH_TO_TRANSFORMERS = "src/transformers"
 
 # Pattern that looks at the indentation in a line.
@@ -55,30 +32,17 @@ _re_strip_line = re.compile(r'^\s*"([^"]+)",\s*$')
 _re_bracket_content = re.compile(r"\[([^\]]+)\]")
 
 
-def get_indent(line: str) -> str:
-    """Returns the indent in  given line (as string)."""
+def get_indent(line):
+    """Returns the indent in `line`."""
     search = _re_indent.search(line)
     return "" if search is None else search.groups()[0]
 
 
-def split_code_in_indented_blocks(
-    code: str, indent_level: str = "", start_prompt: Optional[str] = None, end_prompt: Optional[str] = None
-) -> List[str]:
+def split_code_in_indented_blocks(code, indent_level="", start_prompt=None, end_prompt=None):
     """
-    Split some code into its indented blocks, starting at a given level.
-
-    Args:
-        code (`str`): The code to split.
-        indent_level (`str`): The indent level (as string) to use for identifying the blocks to split.
-        start_prompt (`str`, *optional*): If provided, only starts splitting at the line where this text is.
-        end_prompt (`str`, *optional*): If provided, stops splitting at a line where this text is.
-
-    Warning:
-        The text before `start_prompt` or after `end_prompt` (if provided) is not ignored, just not split. The input `code`
-        can thus be retrieved by joining the result.
-
-    Returns:
-        `List[str]`: The list of blocks.
+    Split `code` into its indented blocks, starting at `indent_level`. If provided, begins splitting after
+    `start_prompt` and stops at `end_prompt` (but returns what's before `start_prompt` as a first block and what's
+    after `end_prompt` as a last block, so `code` is always the same as joining the result of this function).
     """
     # Let's split the code into lines and move to start_index.
     index = 0
@@ -90,17 +54,12 @@ def split_code_in_indented_blocks(
     else:
         blocks = []
 
-    # This variable contains the block treated at a given time.
+    # We split into blocks until we get to the `end_prompt` (or the end of the block).
     current_block = [lines[index]]
     index += 1
-    # We split into blocks until we get to the `end_prompt` (or the end of the file).
     while index < len(lines) and (end_prompt is None or not lines[index].startswith(end_prompt)):
-        # We have a non-empty line with the proper indent -> start of a new block
         if len(lines[index]) > 0 and get_indent(lines[index]) == indent_level:
-            # Store the current block in the result and rest. There are two cases: the line is part of the block (like
-            # a closing parenthesis) or not.
             if len(current_block) > 0 and get_indent(current_block[-1]).startswith(indent_level + " "):
-                # Line is part of the current block
                 current_block.append(lines[index])
                 blocks.append("\n".join(current_block))
                 if index < len(lines) - 1:
@@ -109,11 +68,9 @@ def split_code_in_indented_blocks(
                 else:
                     current_block = []
             else:
-                # Line is not part of the current block
                 blocks.append("\n".join(current_block))
                 current_block = [lines[index]]
         else:
-            # Just add the line to the current block
             current_block.append(lines[index])
         index += 1
 
@@ -128,10 +85,8 @@ def split_code_in_indented_blocks(
     return blocks
 
 
-def ignore_underscore_and_lowercase(key: Callable[[Any], str]) -> Callable[[Any], str]:
-    """
-    Wraps a key function (as used in a sort) to lowercase and ignore underscores.
-    """
+def ignore_underscore(key):
+    "Wraps a `key` (that maps an object to string) to lower case and remove underscores."
 
     def _inner(x):
         return key(x).lower().replace("_", "")
@@ -139,21 +94,8 @@ def ignore_underscore_and_lowercase(key: Callable[[Any], str]) -> Callable[[Any]
     return _inner
 
 
-def sort_objects(objects: List[Any], key: Optional[Callable[[Any], str]] = None) -> List[Any]:
-    """
-    Sort a list of objects following the rules of isort (all uppercased first, camel-cased second and lower-cased
-    last).
-
-    Args:
-        objects (`List[Any]`):
-            The list of objects to sort.
-        key (`Callable[[Any], str]`, *optional*):
-            A function taking an object as input and returning a string, used to sort them by alphabetical order.
-            If not provided, will default to noop (so a `key` must be provided if the `objects` are not of type string).
-
-    Returns:
-        `List[Any]`: The sorted list with the same elements as in the inputs
-    """
+def sort_objects(objects, key=None):
+    "Sort a list of `objects` following the rules of isort. `key` optionally maps an object to a str."
 
     # If no key is provided, we use a noop.
     def noop(x):
@@ -168,26 +110,18 @@ def sort_objects(objects: List[Any], key: Optional[Callable[[Any], str]] = None)
     # Functions begin with a lowercase, they go last.
     functions = [obj for obj in objects if not key(obj)[0].isupper()]
 
-    # Then we sort each group.
-    key1 = ignore_underscore_and_lowercase(key)
+    key1 = ignore_underscore(key)
     return sorted(constants, key=key1) + sorted(classes, key=key1) + sorted(functions, key=key1)
 
 
-def sort_objects_in_import(import_statement: str) -> str:
+def sort_objects_in_import(import_statement):
     """
-    Sorts the imports in a single import statement.
-
-    Args:
-        import_statement (`str`): The import statement in which to sort the imports.
-
-    Returns:
-        `str`: The same as the input, but with objects properly sorted.
+    Return the same `import_statement` but with objects properly sorted.
     """
 
     # This inner function sort imports between [ ].
     def _replace(match):
         imports = match.groups()[0]
-        # If there is one import only, nothing to do.
         if "," not in imports:
             return f"[{imports}]"
         keys = [part.strip().replace('"', "") for part in imports.split(",")]
@@ -231,18 +165,13 @@ def sort_objects_in_import(import_statement: str) -> str:
         return import_statement
 
 
-def sort_imports(file: str, check_only: bool = True):
+def sort_imports(file, check_only=True):
     """
-    Sort the imports defined in the `_import_structure` of a given init.
-
-    Args:
-        file (`str`): The path to the init to check/fix.
-        check_only (`bool`, *optional*, defaults to `True`): Whether or not to just check (and not auto-fix) the init.
+    Sort `_import_structure` imports in `file`, `check_only` determines if we only check or overwrite.
     """
     with open(file, encoding="utf-8") as f:
         code = f.read()
 
-    # If the file is not a custom init, there is nothing to do.
     if "_import_structure" not in code:
         return
 
@@ -305,12 +234,6 @@ def sort_imports(file: str, check_only: bool = True):
 
 
 def sort_imports_in_all_inits(check_only=True):
-    """
-    Sort the imports defined in the `_import_structure` of all inits in the repo.
-
-    Args:
-        check_only (`bool`, *optional*, defaults to `True`): Whether or not to just check (and not auto-fix) the init.
-    """
     failures = []
     for root, _, files in os.walk(PATH_TO_TRANSFORMERS):
         if "__init__.py" in files:

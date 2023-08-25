@@ -22,7 +22,6 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -54,9 +53,8 @@ class AlbertModelTester:
         vocab_size=99,
         embedding_size=16,
         hidden_size=36,
-        num_hidden_layers=2,
-        # this needs to be the same as `num_hidden_layers`!
-        num_hidden_groups=2,
+        num_hidden_layers=6,
+        num_hidden_groups=6,
         num_attention_heads=6,
         intermediate_size=37,
         hidden_act="gelu",
@@ -241,7 +239,7 @@ class AlbertModelTester:
 
 
 @require_torch
-class AlbertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class AlbertModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             AlbertModel,
@@ -254,18 +252,6 @@ class AlbertModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": AlbertModel,
-            "fill-mask": AlbertForMaskedLM,
-            "question-answering": AlbertForQuestionAnswering,
-            "text-classification": AlbertForSequenceClassification,
-            "token-classification": AlbertForTokenClassification,
-            "zero-shot": AlbertForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
     fx_compatible = True
 

@@ -25,7 +25,6 @@ from transformers.testing_utils import require_torch, require_vision, slow, torc
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, _config_zero_init, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -39,7 +38,7 @@ if is_torch_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import DPTImageProcessor
+    from transformers import DPTFeatureExtractor
 
 
 class DPTModelTester:
@@ -62,8 +61,7 @@ class DPTModelTester:
         attention_probs_dropout_prob=0.1,
         initializer_range=0.02,
         num_labels=3,
-        backbone_featmap_shape=[1, 32, 24, 24],
-        neck_hidden_sizes=[16, 16, 32, 32],
+        backbone_featmap_shape=[1, 384, 24, 24],
         is_hybrid=True,
         scope=None,
     ):
@@ -87,7 +85,6 @@ class DPTModelTester:
         self.backbone_featmap_shape = backbone_featmap_shape
         self.scope = scope
         self.is_hybrid = is_hybrid
-        self.neck_hidden_sizes = neck_hidden_sizes
         # sequence length of DPT = num_patches + 1 (we add 1 for the [CLS] token)
         num_patches = (image_size // patch_size) ** 2
         self.seq_length = num_patches + 1
@@ -110,7 +107,7 @@ class DPTModelTester:
             "depths": [3, 4, 9],
             "out_features": ["stage1", "stage2", "stage3"],
             "embedding_dynamic_padding": True,
-            "hidden_sizes": [16, 16, 32, 32],
+            "hidden_sizes": [96, 192, 384, 768],
             "num_groups": 2,
         }
 
@@ -119,7 +116,6 @@ class DPTModelTester:
             patch_size=self.patch_size,
             num_channels=self.num_channels,
             hidden_size=self.hidden_size,
-            fusion_hidden_size=self.hidden_size,
             num_hidden_layers=self.num_hidden_layers,
             backbone_out_indices=self.backbone_out_indices,
             num_attention_heads=self.num_attention_heads,
@@ -132,7 +128,6 @@ class DPTModelTester:
             is_hybrid=self.is_hybrid,
             backbone_config=backbone_config,
             backbone_featmap_shape=self.backbone_featmap_shape,
-            neck_hidden_sizes=self.neck_hidden_sizes,
         )
 
     def create_and_check_model(self, config, pixel_values, labels):
@@ -168,22 +163,13 @@ class DPTModelTester:
 
 
 @require_torch
-class DPTModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class DPTModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as DPT does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
     """
 
     all_model_classes = (DPTModel, DPTForDepthEstimation, DPTForSemanticSegmentation) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {
-            "depth-estimation": DPTForDepthEstimation,
-            "feature-extraction": DPTModel,
-            "image-segmentation": DPTForSemanticSegmentation,
-        }
-        if is_torch_available()
-        else {}
-    )
 
     test_pruning = False
     test_resize_embeddings = False
@@ -318,11 +304,11 @@ def prepare_img():
 @slow
 class DPTModelIntegrationTest(unittest.TestCase):
     def test_inference_depth_estimation(self):
-        image_processor = DPTImageProcessor.from_pretrained("Intel/dpt-hybrid-midas")
+        feature_extractor = DPTFeatureExtractor.from_pretrained("Intel/dpt-hybrid-midas")
         model = DPTForDepthEstimation.from_pretrained("Intel/dpt-hybrid-midas").to(torch_device)
 
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():

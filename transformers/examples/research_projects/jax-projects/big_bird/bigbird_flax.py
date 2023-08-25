@@ -247,12 +247,9 @@ class Trainer:
                     lr = self.scheduler_fn(state_step - 1)
 
                     eval_loss = self.evaluate(state, val_dataset)
-                    logging_dict = {
-                        "step": state_step.item(),
-                        "eval_loss": eval_loss.item(),
-                        "tr_loss": tr_loss,
-                        "lr": lr.item(),
-                    }
+                    logging_dict = dict(
+                        step=state_step.item(), eval_loss=eval_loss.item(), tr_loss=tr_loss, lr=lr.item()
+                    )
                     tqdm.write(str(logging_dict))
                     self.logger.log(logging_dict, commit=True)
 

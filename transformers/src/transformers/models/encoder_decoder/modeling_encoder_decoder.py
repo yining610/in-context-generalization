@@ -16,7 +16,6 @@
 
 
 import gc
-import inspect
 import os
 import tempfile
 import warnings
@@ -244,13 +243,6 @@ class EncoderDecoderModel(PreTrainedModel):
         if self.encoder.get_output_embeddings() is not None:
             raise ValueError(
                 f"The encoder {self.encoder} should not have a LM Head. Please use a model without LM Head"
-            )
-
-        decoder_signature = set(inspect.signature(self.decoder.forward).parameters.keys())
-        if "encoder_hidden_states" not in decoder_signature:
-            raise ValueError(
-                "The selected decoder is not prepared for the encoder hidden states to be passed. Please see the "
-                "following discussion on GitHub: https://github.com/huggingface/transformers/issues/23350"
             )
 
         # tie encoder, decoder weights if config set accordingly

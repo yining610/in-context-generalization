@@ -176,8 +176,7 @@ class MultiHeadAttention(nn.Module):
                     k, v = cache[self.layer_id]
             cache[self.layer_id] = (k, v)
 
-        q = q / math.sqrt(dim_per_head)  # (bs, n_heads, qlen, dim_per_head)
-        scores = torch.matmul(q, k.transpose(2, 3))  # (bs, n_heads, qlen, klen)
+        scores = torch.matmul(q, k.transpose(2, 3)) / math.sqrt(dim_per_head)  # (bs, n_heads, qlen, klen)
         mask = (mask == 0).view(mask_reshape).expand_as(scores)  # (bs, n_heads, qlen, klen)
         scores.masked_fill_(mask, torch.finfo(scores.dtype).min)  # (bs, n_heads, qlen, klen)
 
@@ -391,6 +390,8 @@ XLM_INPUTS_DOCSTRING = r"""
     XLM_START_DOCSTRING,
 )
 class XLMModel(XLMPreTrainedModel):
+    _keys_to_ignore_on_load_missing = [r"position_ids"]
+
     def __init__(self, config):
         super().__init__(config)
 
@@ -459,9 +460,7 @@ class XLMModel(XLMPreTrainedModel):
 
         # Initialize weights and apply final processing
         self.post_init()
-        self.register_buffer(
-            "position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)), persistent=False
-        )
+        self.register_buffer("position_ids", torch.arange(config.max_position_embeddings).expand((1, -1)))
 
     def get_input_embeddings(self):
         return self.embeddings
@@ -670,7 +669,7 @@ class XLMPredLayer(nn.Module):
     XLM_START_DOCSTRING,
 )
 class XLMWithLMHeadModel(XLMPreTrainedModel):
-    _tied_weights_keys = ["pred_layer.proj.weight"]
+    _keys_to_ignore_on_load_missing = ["pred_layer.proj.weight"]
 
     def __init__(self, config):
         super().__init__(config)

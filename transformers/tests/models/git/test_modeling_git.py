@@ -25,7 +25,6 @@ from transformers.testing_utils import require_torch, require_vision, slow, torc
 from ...generation.test_utils import GenerationTesterMixin
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -51,7 +50,7 @@ class GitVisionModelTester:
         is_training=True,
         hidden_size=32,
         projection_dim=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         dropout=0.1,
@@ -203,7 +202,7 @@ class GitModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -268,10 +267,6 @@ class GitModelTester:
                 "num_channels": self.num_channels,
                 "image_size": self.image_size,
                 "patch_size": self.patch_size,
-                "hidden_size": self.hidden_size,
-                "projection_dim": 32,
-                "num_hidden_layers": self.num_hidden_layers,
-                "num_attention_heads": self.num_attention_heads,
             },
             vocab_size=self.vocab_size,
             hidden_size=self.hidden_size,
@@ -345,24 +340,6 @@ class GitModelTester:
 
         self.parent.assertEqual(generated_ids.shape, (self.batch_size * 2, 20))
 
-    def _test_batched_generate_captioning(self, config, input_ids, input_mask, pixel_values):
-        model = GitForCausalLM(config=config)
-        model.to(torch_device)
-        model.eval()
-
-        # generate
-        generated_ids = model.generate(
-            input_ids=None,  # captioning -> no input_ids
-            attention_mask=None,
-            pixel_values=pixel_values,
-            do_sample=False,
-            max_length=20,
-            num_beams=2,
-            num_return_sequences=2,
-        )
-
-        self.parent.assertEqual(generated_ids.shape, (self.batch_size * 2, 20))
-
     def prepare_config_and_inputs_for_common(self):
         config_and_inputs = self.prepare_config_and_inputs()
 
@@ -383,14 +360,9 @@ class GitModelTester:
 
 
 @require_torch
-class GitModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class GitModelTest(ModelTesterMixin, GenerationTesterMixin, unittest.TestCase):
     all_model_classes = (GitModel, GitForCausalLM) if is_torch_available() else ()
     all_generative_model_classes = (GitForCausalLM,) if is_torch_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": GitModel, "image-to-text": GitForCausalLM, "text-generation": GitForCausalLM}
-        if is_torch_available()
-        else {}
-    )
     fx_compatible = False
     test_torchscript = False
 
@@ -425,10 +397,6 @@ class GitModelTest(ModelTesterMixin, GenerationTesterMixin, PipelineTesterMixin,
     def test_beam_search_generate(self):
         config_and_inputs = self.model_tester.prepare_config_and_inputs()
         self.model_tester._test_beam_search_generate(*config_and_inputs)
-
-    def test_batched_generate_captioning(self):
-        config_and_inputs = self.model_tester.prepare_config_and_inputs()
-        self.model_tester._test_batched_generate_captioning(*config_and_inputs)
 
     def test_model_various_embeddings(self):
         config_and_inputs = self.model_tester.prepare_config_and_inputs()

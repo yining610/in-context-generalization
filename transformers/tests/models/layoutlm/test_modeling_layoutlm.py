@@ -19,7 +19,6 @@ from transformers.testing_utils import require_torch, slow, torch_device
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -48,7 +47,7 @@ class LayoutLMModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=32,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=37,
         hidden_act="gelu",
@@ -220,7 +219,7 @@ class LayoutLMModelTester:
 
 
 @require_torch
-class LayoutLMModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class LayoutLMModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             LayoutLMModel,
@@ -231,18 +230,6 @@ class LayoutLMModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase
         )
         if is_torch_available()
         else None
-    )
-    pipeline_model_mapping = (
-        {
-            "document-question-answering": LayoutLMForQuestionAnswering,
-            "feature-extraction": LayoutLMModel,
-            "fill-mask": LayoutLMForMaskedLM,
-            "text-classification": LayoutLMForSequenceClassification,
-            "token-classification": LayoutLMForTokenClassification,
-            "zero-shot": LayoutLMForSequenceClassification,
-        }
-        if is_torch_available()
-        else {}
     )
     fx_compatible = True
 

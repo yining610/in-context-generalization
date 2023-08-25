@@ -17,6 +17,7 @@ from ...utils import (
     OptionalDependencyNotAvailable,
     _LazyModule,
     is_sentencepiece_available,
+    is_speech_available,
     is_torch_available,
 )
 
@@ -28,7 +29,6 @@ _import_structure = {
         "SpeechT5Config",
         "SpeechT5HifiGanConfig",
     ],
-    "feature_extraction_speecht5": ["SpeechT5FeatureExtractor"],
     "processing_speecht5": ["SpeechT5Processor"],
 }
 
@@ -39,6 +39,14 @@ except OptionalDependencyNotAvailable:
     pass
 else:
     _import_structure["tokenization_speecht5"] = ["SpeechT5Tokenizer"]
+
+try:
+    if not is_speech_available():
+        raise OptionalDependencyNotAvailable()
+except OptionalDependencyNotAvailable:
+    pass
+else:
+    _import_structure["feature_extraction_speecht5"] = ["SpeechT5FeatureExtractor"]
 
 try:
     if not is_torch_available():
@@ -63,7 +71,6 @@ if TYPE_CHECKING:
         SpeechT5Config,
         SpeechT5HifiGanConfig,
     )
-    from .feature_extraction_speecht5 import SpeechT5FeatureExtractor
     from .processing_speecht5 import SpeechT5Processor
 
     try:
@@ -73,6 +80,14 @@ if TYPE_CHECKING:
         pass
     else:
         from .tokenization_speecht5 import SpeechT5Tokenizer
+
+    try:
+        if not is_speech_available():
+            raise OptionalDependencyNotAvailable()
+    except OptionalDependencyNotAvailable:
+        pass
+    else:
+        from .feature_extraction_speecht5 import SpeechT5FeatureExtractor
 
     try:
         if not is_torch_available():

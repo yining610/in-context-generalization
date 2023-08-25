@@ -22,7 +22,6 @@ from packaging import version
 from ...configuration_utils import PretrainedConfig
 from ...onnx import OnnxConfig
 from ...utils import logging
-from ...utils.backbone_utils import BackboneConfigMixin, get_aligned_output_features_output_indices
 
 
 logger = logging.get_logger(__name__)
@@ -35,7 +34,7 @@ SWIN_PRETRAINED_CONFIG_ARCHIVE_MAP = {
 }
 
 
-class SwinConfig(BackboneConfigMixin, PretrainedConfig):
+class SwinConfig(PretrainedConfig):
     r"""
     This is the configuration class to store the configuration of a [`SwinModel`]. It is used to instantiate a Swin
     model according to the specified arguments, defining the model architecture. Instantiating a configuration with the
@@ -84,12 +83,7 @@ class SwinConfig(BackboneConfigMixin, PretrainedConfig):
             Factor to increase the spatial resolution by in the decoder head for masked image modeling.
         out_features (`List[str]`, *optional*):
             If used as backbone, list of features to output. Can be any of `"stem"`, `"stage1"`, `"stage2"`, etc.
-            (depending on how many stages the model has). If unset and `out_indices` is set, will default to the
-            corresponding stages. If unset and `out_indices` is unset, will default to the last stage.
-        out_indices (`List[int]`, *optional*):
-            If used as backbone, list of indices of features to output. Can be any of 0, 1, 2, etc. (depending on how
-            many stages the model has). If unset and `out_features` is set, will default to the corresponding stages.
-            If unset and `out_features` is unset, will default to the last stage.
+            (depending on how many stages the model has). Will default to the last stage if unset.
 
     Example:
 
@@ -132,7 +126,6 @@ class SwinConfig(BackboneConfigMixin, PretrainedConfig):
         layer_norm_eps=1e-5,
         encoder_stride=32,
         out_features=None,
-        out_indices=None,
         **kwargs,
     ):
         super().__init__(**kwargs)
@@ -159,9 +152,15 @@ class SwinConfig(BackboneConfigMixin, PretrainedConfig):
         # this indicates the channel dimension after the last stage of the model
         self.hidden_size = int(embed_dim * 2 ** (len(depths) - 1))
         self.stage_names = ["stem"] + [f"stage{idx}" for idx in range(1, len(depths) + 1)]
-        self._out_features, self._out_indices = get_aligned_output_features_output_indices(
-            out_features=out_features, out_indices=out_indices, stage_names=self.stage_names
-        )
+        if out_features is not None:
+            if not isinstance(out_features, list):
+                raise ValueError("out_features should be a list")
+            for feature in out_features:
+                if feature not in self.stage_names:
+                    raise ValueError(
+                        f"Feature {feature} is not a valid feature name. Valid names are {self.stage_names}"
+                    )
+        self.out_features = out_features
 
 
 class SwinOnnxConfig(OnnxConfig):

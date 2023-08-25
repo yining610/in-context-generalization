@@ -1,8 +1,6 @@
 """ Testing suite for the Tensorflow CvT model. """
 
 
-from __future__ import annotations
-
 import inspect
 import unittest
 from math import floor
@@ -15,7 +13,6 @@ from transformers.utils import cached_property, is_tf_available, is_vision_avail
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -28,7 +25,7 @@ if is_tf_available():
 if is_vision_available():
     from PIL import Image
 
-    from transformers import AutoImageProcessor
+    from transformers import AutoFeatureExtractor
 
 
 class TFCvtConfigTester(ConfigTester):
@@ -45,8 +42,8 @@ class TFCvtModelTester:
         batch_size=13,
         image_size=64,
         num_channels=3,
-        embed_dim=[16, 32, 48],
-        num_heads=[1, 2, 3],
+        embed_dim=[16, 48, 96],
+        num_heads=[1, 3, 6],
         depth=[1, 2, 10],
         patch_sizes=[7, 3, 3],
         patch_stride=[4, 2, 2],
@@ -131,18 +128,13 @@ class TFCvtModelTester:
 
 
 @require_tf
-class TFCvtModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TFCvtModelTest(TFModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as Cvt
     does not use input_ids, inputs_embeds, attention_mask and seq_length.
     """
 
     all_model_classes = (TFCvtModel, TFCvtForImageClassification) if is_tf_available() else ()
-    pipeline_model_mapping = (
-        {"feature-extraction": TFCvtModel, "image-classification": TFCvtForImageClassification}
-        if is_tf_available()
-        else {}
-    )
     test_pruning = False
     test_resize_embeddings = False
     test_head_masking = False
@@ -185,16 +177,8 @@ class TFCvtModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase)
         not is_tf_available() or len(tf.config.list_physical_devices("GPU")) == 0,
         reason="TF does not support backprop for grouped convolutions on CPU.",
     )
-    @slow
     def test_keras_fit(self):
         super().test_keras_fit()
-
-    @unittest.skip(reason="Get `Failed to determine best cudnn convolution algo.` error after using TF 2.12+cuda 11.8")
-    def test_keras_fit_mixed_precision(self):
-        policy = tf.keras.mixed_precision.Policy("mixed_float16")
-        tf.keras.mixed_precision.set_global_policy(policy)
-        super().test_keras_fit()
-        tf.keras.mixed_precision.set_global_policy("float32")
 
     def test_forward_signature(self):
         config, _ = self.model_tester.prepare_config_and_inputs_for_common()
@@ -265,16 +249,16 @@ def prepare_img():
 @require_vision
 class TFCvtModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
-        return AutoImageProcessor.from_pretrained(TF_CVT_PRETRAINED_MODEL_ARCHIVE_LIST[0])
+    def default_feature_extractor(self):
+        return AutoFeatureExtractor.from_pretrained(TF_CVT_PRETRAINED_MODEL_ARCHIVE_LIST[0])
 
     @slow
     def test_inference_image_classification_head(self):
         model = TFCvtForImageClassification.from_pretrained(TF_CVT_PRETRAINED_MODEL_ARCHIVE_LIST[0])
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="tf")
+        inputs = feature_extractor(images=image, return_tensors="tf")
 
         # forward pass
         outputs = model(**inputs)

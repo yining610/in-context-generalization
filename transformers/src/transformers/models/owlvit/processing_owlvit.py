@@ -21,9 +21,10 @@ from typing import List
 
 import numpy as np
 
+from transformers import is_flax_available, is_tf_available, is_torch_available
+
 from ...processing_utils import ProcessorMixin
 from ...tokenization_utils_base import BatchEncoding
-from ...utils import is_flax_available, is_tf_available, is_torch_available
 
 
 class OwlViTProcessor(ProcessorMixin):
@@ -43,7 +44,6 @@ class OwlViTProcessor(ProcessorMixin):
     tokenizer_class = ("CLIPTokenizer", "CLIPTokenizerFast")
 
     def __init__(self, image_processor=None, tokenizer=None, **kwargs):
-        feature_extractor = None
         if "feature_extractor" in kwargs:
             warnings.warn(
                 "The `feature_extractor` argument is deprecated and will be removed in v5, use `image_processor`"

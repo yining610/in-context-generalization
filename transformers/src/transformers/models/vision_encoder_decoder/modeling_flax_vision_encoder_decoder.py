@@ -688,7 +688,7 @@ class FlaxVisionEncoderDecoderModel(FlaxPreTrainedModel):
         self,
         decoder_input_ids,
         max_length,
-        decoder_attention_mask: Optional[jax.Array] = None,
+        decoder_attention_mask: Optional[jnp.DeviceArray] = None,
         encoder_outputs=None,
         **kwargs,
     ):

@@ -14,8 +14,6 @@
 # limitations under the License.
 
 
-from __future__ import annotations
-
 import unittest
 
 from transformers import MPNetConfig, is_tf_available
@@ -23,7 +21,6 @@ from transformers.testing_utils import require_tf, slow
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -51,7 +48,7 @@ class TFMPNetModelTester:
         use_labels=True,
         vocab_size=99,
         hidden_size=64,
-        num_hidden_layers=2,
+        num_hidden_layers=5,
         num_attention_heads=4,
         intermediate_size=64,
         hidden_act="gelu",
@@ -187,7 +184,7 @@ class TFMPNetModelTester:
 
 
 @require_tf
-class TFMPNetModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TFMPNetModelTest(TFModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             TFMPNetForMaskedLM,
@@ -199,18 +196,6 @@ class TFMPNetModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCas
         )
         if is_tf_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": TFMPNetModel,
-            "fill-mask": TFMPNetForMaskedLM,
-            "question-answering": TFMPNetForQuestionAnswering,
-            "text-classification": TFMPNetForSequenceClassification,
-            "token-classification": TFMPNetForTokenClassification,
-            "zero-shot": TFMPNetForSequenceClassification,
-        }
-        if is_tf_available()
-        else {}
     )
     test_head_masking = False
     test_onnx = False

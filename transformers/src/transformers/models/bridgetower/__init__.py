@@ -42,7 +42,6 @@ except OptionalDependencyNotAvailable:
 else:
     _import_structure["modeling_bridgetower"] = [
         "BRIDGETOWER_PRETRAINED_MODEL_ARCHIVE_LIST",
-        "BridgeTowerForContrastiveLearning",
         "BridgeTowerForImageAndTextRetrieval",
         "BridgeTowerForMaskedLM",
         "BridgeTowerModel",
@@ -75,7 +74,6 @@ if TYPE_CHECKING:
     else:
         from .modeling_bridgetower import (
             BRIDGETOWER_PRETRAINED_MODEL_ARCHIVE_LIST,
-            BridgeTowerForContrastiveLearning,
             BridgeTowerForImageAndTextRetrieval,
             BridgeTowerForMaskedLM,
             BridgeTowerModel,

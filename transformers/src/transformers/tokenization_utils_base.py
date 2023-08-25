@@ -40,7 +40,6 @@ from .utils import (
     PushToHubMixin,
     TensorType,
     add_end_docstrings,
-    add_model_info_to_auto_map,
     cached_file,
     copy_func,
     download_url,
@@ -233,20 +232,15 @@ class BatchEncoding(UserDict):
         etc.).
 
         If the key is an integer, get the `tokenizers.Encoding` for batch item with index `key`.
-
-        If the key is a slice, returns the value of the dict associated to `key` ('input_ids', 'attention_mask', etc.)
-        with the constraint of slice.
         """
         if isinstance(item, str):
             return self.data[item]
         elif self._encodings is not None:
             return self._encodings[item]
-        elif isinstance(item, slice):
-            return {key: self.data[key][item] for key in self.data.keys()}
         else:
             raise KeyError(
-                "Invalid key. Only three types of key are available: "
-                "(1) string, (2) integers for backend Encoding, and (3) slices for data subsetting."
+                "Indexing with integers (to access backend Encoding for a given batch index) "
+                "is not available when using Python based tokenizers"
             )
 
     def __getattr__(self, item: str):
@@ -700,13 +694,8 @@ class BatchEncoding(UserDict):
                 raise ImportError("Unable to convert output to PyTorch tensors format, PyTorch is not installed.")
             import torch
 
+            as_tensor = torch.tensor
             is_tensor = torch.is_tensor
-
-            def as_tensor(value, dtype=None):
-                if isinstance(value, list) and isinstance(value[0], np.ndarray):
-                    return torch.tensor(np.array(value))
-                return torch.tensor(value)
-
         elif tensor_type == TensorType.JAX:
             if not is_flax_available():
                 raise ImportError("Unable to convert output to JAX tensors format, JAX is not installed.")
@@ -715,15 +704,7 @@ class BatchEncoding(UserDict):
             as_tensor = jnp.array
             is_tensor = is_jax_tensor
         else:
-
-            def as_tensor(value, dtype=None):
-                if isinstance(value, (list, tuple)) and isinstance(value[0], (list, tuple, np.ndarray)):
-                    value_lens = [len(val) for val in value]
-                    if len(set(value_lens)) > 1 and dtype is None:
-                        # we have a ragged list so handle explicitly
-                        value = as_tensor([np.asarray(val) for val in value], dtype=object)
-                return np.asarray(value, dtype=dtype)
-
+            as_tensor = np.asarray
             is_tensor = is_numpy_array
 
         # Do the tensor conversion in batch
@@ -743,18 +724,18 @@ class BatchEncoding(UserDict):
                     #     tensor = tensor[None, :]
 
                     self[key] = tensor
-            except Exception as e:
+            except:  # noqa E722
                 if key == "overflowing_tokens":
                     raise ValueError(
                         "Unable to create tensor returning overflowing tokens of different lengths. "
                         "Please see if a fast version of this tokenizer is available to have this feature available."
-                    ) from e
+                    )
                 raise ValueError(
                     "Unable to create tensor, you should probably activate truncation and/or padding with"
                     " 'padding=True' 'truncation=True' to have batched tensors with the same length. Perhaps your"
                     f" features (`{key}` in this case) have excessive nesting (inputs type `list` where type `int` is"
                     " expected)."
-                ) from e
+                )
 
         return self
 
@@ -1361,9 +1342,8 @@ ENCODE_KWARGS_DOCSTRING = r"""
                 tokenizer assumes the input is already split into words (for instance, by splitting it on whitespace)
                 which it will tokenize. This is useful for NER or token classification.
             pad_to_multiple_of (`int`, *optional*):
-                If set will pad the sequence to a multiple of the provided value. Requires `padding` to be activated.
-                This is especially useful to enable the use of Tensor Cores on NVIDIA hardware with compute capability
-                `>= 7.5` (Volta).
+                If set will pad the sequence to a multiple of the provided value. This is especially useful to enable
+                the use of Tensor Cores on NVIDIA hardware with compute capability `>= 7.5` (Volta).
             return_tensors (`str` or [`~utils.TensorType`], *optional*):
                 If set, will return tensors instead of list of python integers. Acceptable values are:
 
@@ -1489,14 +1469,6 @@ INIT_TOKENIZER_DOCSTRING = r"""
             A tuple or a list of additional special tokens. Add them here to ensure they won't be split by the
             tokenization process. Will be associated to `self.additional_special_tokens` and
             `self.additional_special_tokens_ids`.
-        clean_up_tokenization_spaces (`bool`, *optional*, defaults to `True`):
-            Whether or not the model should cleanup the spaces that were added when splitting the input text during the
-            tokenization process.
-        split_special_tokens (`bool`, *optional*, defaults to `False`):
-            Whether or not the special tokens should be split during the tokenization process. The default behavior is
-            to not split special tokens. This means that if `<s>` is the `bos_token`, then `tokenizer.tokenize("<s>") =
-            ['<s>`]. Otherwise, if `split_special_tokens=True`, then `tokenizer.tokenize("<s>")` will be give `['<',
-            's', '>']`. This argument is only supported for `slow` tokenizers for the moment.
 """
 
 
@@ -1547,12 +1519,6 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
             )
 
         self.model_input_names = kwargs.pop("model_input_names", self.model_input_names)
-
-        # By default, cleaning tokenization spaces for both fast and slow tokenizers
-        self.clean_up_tokenization_spaces = kwargs.pop("clean_up_tokenization_spaces", True)
-
-        # By default, do not split special tokens for both fast and slow tokenizers
-        self.split_special_tokens = kwargs.pop("split_special_tokens", False)
 
         self.deprecation_warnings = (
             {}
@@ -1609,7 +1575,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
             f"{self.__class__.__name__}(name_or_path='{self.name_or_path}',"
             f" vocab_size={self.vocab_size}, model_max_length={self.model_max_length}, is_fast={self.is_fast},"
             f" padding_side='{self.padding_side}', truncation_side='{self.truncation_side}',"
-            f" special_tokens={self.special_tokens_map_extended}, clean_up_tokenization_spaces={self.clean_up_tokenization_spaces})"
+            f" special_tokens={self.special_tokens_map_extended})"
         )
 
     def __len__(self) -> int:
@@ -1628,17 +1594,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         raise NotImplementedError()
 
     @classmethod
-    def from_pretrained(
-        cls,
-        pretrained_model_name_or_path: Union[str, os.PathLike],
-        *init_inputs,
-        cache_dir: Optional[Union[str, os.PathLike]] = None,
-        force_download: bool = False,
-        local_files_only: bool = False,
-        token: Optional[Union[str, bool]] = None,
-        revision: str = "main",
-        **kwargs,
-    ):
+    def from_pretrained(cls, pretrained_model_name_or_path: Union[str, os.PathLike], *init_inputs, **kwargs):
         r"""
         Instantiate a [`~tokenization_utils_base.PreTrainedTokenizerBase`] (or a derived class) from a predefined
         tokenizer.
@@ -1668,7 +1624,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
             proxies (`Dict[str, str]`, *optional*):
                 A dictionary of proxy servers to use by protocol or endpoint, e.g., `{'http': 'foo.bar:3128',
                 'http://hostname': 'foo.bar:4012'}`. The proxies are used on each request.
-            token (`str` or *bool*, *optional*):
+            use_auth_token (`str` or *bool*, *optional*):
                 The token to use as HTTP bearer authorization for remote files. If `True`, will use the token generated
                 when running `huggingface-cli login` (stored in `~/.huggingface`).
             local_files_only (`bool`, *optional*, defaults to `False`):
@@ -1689,7 +1645,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
 
         <Tip>
 
-        Passing `token=True` is required when you want to use a private model.
+        Passing `use_auth_token=True` is required when you want to use a private model.
 
         </Tip>
 
@@ -1715,23 +1671,17 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         # Otherwise use tokenizer.add_special_tokens({'unk_token': '<unk>'}) instead)
         assert tokenizer.unk_token == "<unk>"
         ```"""
+        cache_dir = kwargs.pop("cache_dir", None)
+        force_download = kwargs.pop("force_download", False)
         resume_download = kwargs.pop("resume_download", False)
         proxies = kwargs.pop("proxies", None)
+        local_files_only = kwargs.pop("local_files_only", False)
         use_auth_token = kwargs.pop("use_auth_token", None)
+        revision = kwargs.pop("revision", None)
         subfolder = kwargs.pop("subfolder", None)
         from_pipeline = kwargs.pop("_from_pipeline", None)
         from_auto_class = kwargs.pop("_from_auto", False)
         commit_hash = kwargs.pop("_commit_hash", None)
-
-        if use_auth_token is not None:
-            warnings.warn(
-                "The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.", FutureWarning
-            )
-            if token is not None:
-                raise ValueError(
-                    "`token` and `use_auth_token` are both specified. Please set only the argument `token`."
-                )
-            token = use_auth_token
 
         user_agent = {"file_type": "tokenizer", "from_auto_class": from_auto_class, "is_fast": "Fast" in cls.__name__}
         if from_pipeline is not None:
@@ -1781,7 +1731,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                     force_download=force_download,
                     resume_download=resume_download,
                     proxies=proxies,
-                    token=token,
+                    use_auth_token=use_auth_token,
                     revision=revision,
                     local_files_only=local_files_only,
                     subfolder=subfolder,
@@ -1818,7 +1768,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                     proxies=proxies,
                     resume_download=resume_download,
                     local_files_only=local_files_only,
-                    token=token,
+                    use_auth_token=use_auth_token,
                     user_agent=user_agent,
                     revision=revision,
                     subfolder=subfolder,
@@ -1856,11 +1806,10 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
             pretrained_model_name_or_path,
             init_configuration,
             *init_inputs,
-            token=token,
+            use_auth_token=use_auth_token,
             cache_dir=cache_dir,
             local_files_only=local_files_only,
             _commit_hash=commit_hash,
-            _is_local=is_local,
             **kwargs,
         )
 
@@ -1871,11 +1820,10 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         pretrained_model_name_or_path,
         init_configuration,
         *init_inputs,
-        token=None,
+        use_auth_token=None,
         cache_dir=None,
         local_files_only=False,
         _commit_hash=None,
-        _is_local=False,
         **kwargs,
     ):
         # We instantiate fast tokenizers based on a slow tokenizer if we don't have access to the tokenizer.json
@@ -1888,7 +1836,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 pretrained_model_name_or_path,
                 copy.deepcopy(init_configuration),
                 *init_inputs,
-                token=token,
+                use_auth_token=use_auth_token,
                 cache_dir=cache_dir,
                 local_files_only=local_files_only,
                 _commit_hash=_commit_hash,
@@ -1906,20 +1854,13 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
             # First attempt. We get tokenizer_class from tokenizer_config to check mismatch between tokenizers.
             config_tokenizer_class = init_kwargs.get("tokenizer_class")
             init_kwargs.pop("tokenizer_class", None)
+            init_kwargs.pop("auto_map", None)
             saved_init_inputs = init_kwargs.pop("init_inputs", ())
             if not init_inputs:
                 init_inputs = saved_init_inputs
         else:
             config_tokenizer_class = None
             init_kwargs = init_configuration
-
-        if "auto_map" in init_kwargs and not _is_local:
-            # For backward compatibility with odl format.
-            if isinstance(init_kwargs["auto_map"], (tuple, list)):
-                init_kwargs["auto_map"] = {"AutoTokenizer": init_kwargs["auto_map"]}
-            init_kwargs["auto_map"] = add_model_info_to_auto_map(
-                init_kwargs["auto_map"], pretrained_model_name_or_path
-            )
 
         if config_tokenizer_class is None:
             from .models.auto.configuration_auto import AutoConfig  # tests_ignore
@@ -1928,7 +1869,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
             try:
                 config = AutoConfig.from_pretrained(
                     pretrained_model_name_or_path,
-                    token=token,
+                    use_auth_token=use_auth_token,
                     cache_dir=cache_dir,
                     local_files_only=local_files_only,
                     _commit_hash=_commit_hash,
@@ -1977,7 +1918,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 obj.pop("__type")
                 return AddedToken(**obj)
             elif isinstance(obj, (list, tuple)):
-                return [convert_added_tokens(o) for o in obj]
+                return list(convert_added_tokens(o) for o in obj)
             elif isinstance(obj, dict):
                 return {k: convert_added_tokens(v) for k, v in obj.items()}
             return obj
@@ -2051,7 +1992,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 added_tok_encoder = json.load(added_tokens_handle)
 
             # Sort added tokens by index
-            added_tok_encoder_sorted = sorted(added_tok_encoder.items(), key=lambda x: x[1])
+            added_tok_encoder_sorted = list(sorted(added_tok_encoder.items(), key=lambda x: x[1]))
 
             # Accumulate added tokens into batches of special/non-special tokens, because calling add_tokens() for
             # individual tokens would repeatedly rebuild a trie, which can be slow.
@@ -2135,30 +2076,18 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
 
                 If `True`, will save the tokenizer in legacy format. If the "slow" tokenizer doesn't exits, a value
                 error is raised.
-            filename_prefix (`str`, *optional*):
+            filename_prefix: (`str`, *optional*):
                 A prefix to add to the names of the files saved by the tokenizer.
             push_to_hub (`bool`, *optional*, defaults to `False`):
                 Whether or not to push your model to the Hugging Face model hub after saving it. You can specify the
                 repository you want to push to with `repo_id` (will default to the name of `save_directory` in your
                 namespace).
-            kwargs (`Dict[str, Any]`, *optional*):
+            kwargs:
                 Additional key word arguments passed along to the [`~utils.PushToHubMixin.push_to_hub`] method.
 
         Returns:
             A tuple of `str`: The files saved.
         """
-        use_auth_token = kwargs.pop("use_auth_token", None)
-
-        if use_auth_token is not None:
-            warnings.warn(
-                "The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers.", FutureWarning
-            )
-            if kwargs.get("token", None) is not None:
-                raise ValueError(
-                    "`token` and `use_auth_token` are both specified. Please set only the argument `token`."
-                )
-            kwargs["token"] = use_auth_token
-
         if os.path.isfile(save_directory):
             logger.error(f"Provided path ({save_directory}) should be a directory, not a file")
             return
@@ -2182,7 +2111,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
 
         # TODO: Ensure the modified attributes (those are also in the __init__ kwargs) will give identical tokenizers
         # target_keys = self.init_kwargs.keys()
-        target_keys = ["model_max_length", "clean_up_tokenization_spaces"]
+        target_keys = ["model_max_length"]
         for k in target_keys:
             if hasattr(self, k):
                 tokenizer_config[k] = getattr(self, k)
@@ -2200,7 +2129,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                     out["__type"] = "AddedToken"
                 return out
             elif isinstance(obj, (list, tuple)):
-                return [convert_added_tokens(o, add_type_field=add_type_field) for o in obj]
+                return list(convert_added_tokens(o, add_type_field=add_type_field) for o in obj)
             elif isinstance(obj, dict):
                 return {k: convert_added_tokens(v, add_type_field=add_type_field) for k, v in obj.items()}
             return obj
@@ -2227,7 +2156,6 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         # remove private information
         if "name_or_path" in tokenizer_config:
             tokenizer_config.pop("name_or_path")
-            tokenizer_config.pop("special_tokens_map_file", None)
 
         with open(tokenizer_config_file, "w", encoding="utf-8") as f:
             out_str = json.dumps(tokenizer_config, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
@@ -2256,7 +2184,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 repo_id,
                 files_timestamps,
                 commit_message=commit_message,
-                token=kwargs.get("token"),
+                token=kwargs.get("use_auth_token"),
             )
 
         return save_files
@@ -2503,7 +2431,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                     max_length = self.model_max_length
 
         # Test if we have a padding token
-        if padding_strategy != PaddingStrategy.DO_NOT_PAD and (self.pad_token is None or self.pad_token_id < 0):
+        if padding_strategy != PaddingStrategy.DO_NOT_PAD and (not self.pad_token or self.pad_token_id < 0):
             raise ValueError(
                 "Asking to pad but the tokenizer does not have a padding token. "
                 "Please select a token to use as `pad_token` `(tokenizer.pad_token = tokenizer.eos_token e.g.)` "
@@ -2574,23 +2502,23 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 you must set `is_split_into_words=True` (to lift the ambiguity with a batch of sequences).
         """
         # To avoid duplicating
-        all_kwargs = {
-            "add_special_tokens": add_special_tokens,
-            "padding": padding,
-            "truncation": truncation,
-            "max_length": max_length,
-            "stride": stride,
-            "is_split_into_words": is_split_into_words,
-            "pad_to_multiple_of": pad_to_multiple_of,
-            "return_tensors": return_tensors,
-            "return_token_type_ids": return_token_type_ids,
-            "return_attention_mask": return_attention_mask,
-            "return_overflowing_tokens": return_overflowing_tokens,
-            "return_special_tokens_mask": return_special_tokens_mask,
-            "return_offsets_mapping": return_offsets_mapping,
-            "return_length": return_length,
-            "verbose": verbose,
-        }
+        all_kwargs = dict(
+            add_special_tokens=add_special_tokens,
+            padding=padding,
+            truncation=truncation,
+            max_length=max_length,
+            stride=stride,
+            is_split_into_words=is_split_into_words,
+            pad_to_multiple_of=pad_to_multiple_of,
+            return_tensors=return_tensors,
+            return_token_type_ids=return_token_type_ids,
+            return_attention_mask=return_attention_mask,
+            return_overflowing_tokens=return_overflowing_tokens,
+            return_special_tokens_mask=return_special_tokens_mask,
+            return_offsets_mapping=return_offsets_mapping,
+            return_length=return_length,
+            verbose=verbose,
+        )
         all_kwargs.update(kwargs)
         if text is None and text_target is None:
             raise ValueError("You need to specify either `text` or `text_target`.")
@@ -3082,7 +3010,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
 
         batch_outputs = {}
         for i in range(batch_size):
-            inputs = {k: v[i] for k, v in encoded_inputs.items()}
+            inputs = dict((k, v[i]) for k, v in encoded_inputs.items())
             outputs = self._pad(
                 inputs,
                 max_length=max_length,
@@ -3487,7 +3415,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         self,
         sequences: Union[List[int], List[List[int]], "np.ndarray", "torch.Tensor", "tf.Tensor"],
         skip_special_tokens: bool = False,
-        clean_up_tokenization_spaces: bool = None,
+        clean_up_tokenization_spaces: bool = True,
         **kwargs,
     ) -> List[str]:
         """
@@ -3498,9 +3426,8 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 List of tokenized input ids. Can be obtained using the `__call__` method.
             skip_special_tokens (`bool`, *optional*, defaults to `False`):
                 Whether or not to remove special tokens in the decoding.
-            clean_up_tokenization_spaces (`bool`, *optional*):
-                Whether or not to clean up the tokenization spaces. If `None`, will default to
-                `self.clean_up_tokenization_spaces`.
+            clean_up_tokenization_spaces (`bool`, *optional*, defaults to `True`):
+                Whether or not to clean up the tokenization spaces.
             kwargs (additional keyword arguments, *optional*):
                 Will be passed to the underlying model specific decode method.
 
@@ -3521,7 +3448,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         self,
         token_ids: Union[int, List[int], "np.ndarray", "torch.Tensor", "tf.Tensor"],
         skip_special_tokens: bool = False,
-        clean_up_tokenization_spaces: bool = None,
+        clean_up_tokenization_spaces: bool = True,
         **kwargs,
     ) -> str:
         """
@@ -3535,9 +3462,8 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
                 List of tokenized input ids. Can be obtained using the `__call__` method.
             skip_special_tokens (`bool`, *optional*, defaults to `False`):
                 Whether or not to remove special tokens in the decoding.
-            clean_up_tokenization_spaces (`bool`, *optional*):
-                Whether or not to clean up the tokenization spaces. If `None`, will default to
-                `self.clean_up_tokenization_spaces`.
+            clean_up_tokenization_spaces (`bool`, *optional*, defaults to `True`):
+                Whether or not to clean up the tokenization spaces.
             kwargs (additional keyword arguments, *optional*):
                 Will be passed to the underlying model specific decode method.
 
@@ -3558,7 +3484,7 @@ class PreTrainedTokenizerBase(SpecialTokensMixin, PushToHubMixin):
         self,
         token_ids: Union[int, List[int]],
         skip_special_tokens: bool = False,
-        clean_up_tokenization_spaces: bool = None,
+        clean_up_tokenization_spaces: bool = True,
         **kwargs,
     ) -> str:
         raise NotImplementedError

@@ -275,11 +275,7 @@ class LongT5DenseActDense(nn.Module):
         hidden_states = self.wi(hidden_states)
         hidden_states = self.act(hidden_states)
         hidden_states = self.dropout(hidden_states)
-        if (
-            isinstance(self.wo.weight, torch.Tensor)
-            and hidden_states.dtype != self.wo.weight.dtype
-            and self.wo.weight.dtype != torch.int8
-        ):
+        if hidden_states.dtype != self.wo.weight.dtype and self.wo.weight.dtype != torch.int8:
             hidden_states = hidden_states.to(self.wo.weight.dtype)
         hidden_states = self.wo(hidden_states)
         return hidden_states
@@ -451,10 +447,9 @@ class LongT5Attention(nn.Module):
         real_seq_length = seq_length
 
         if past_key_value is not None:
-            if len(past_key_value) != 2:
-                raise ValueError(
-                    f"past_key_value should have 2 past states: keys and values. Got { len(past_key_value)} past states"
-                )
+            assert (
+                len(past_key_value) == 2
+            ), f"past_key_value should have 2 past states: keys and values. Got { len(past_key_value)} past states"
             real_seq_length += past_key_value[0].shape[2] if query_length is None else query_length
 
         key_length = real_seq_length if key_value_states is None else key_value_states.shape[1]
@@ -1350,11 +1345,10 @@ class LongT5PreTrainedModel(PreTrainedModel):
         decoder_start_token_id = self.config.decoder_start_token_id
         pad_token_id = self.config.pad_token_id
 
-        if decoder_start_token_id is None:
-            raise ValueError(
-                "self.model.config.decoder_start_token_id has to be defined. In LongT5 it is usually set to the pad_token_id."
-                "See LongT5 docs for more information."
-            )
+        assert decoder_start_token_id is not None, (
+            "self.model.config.decoder_start_token_id has to be defined. In LongT5 it is usually set to the pad_token_id."
+            " See LongT5 docs for more information"
+        )
 
         # shift inputs to the right
         if is_torch_fx_proxy(input_ids):
@@ -1366,8 +1360,7 @@ class LongT5PreTrainedModel(PreTrainedModel):
             shifted_input_ids[..., 1:] = input_ids[..., :-1].clone()
             shifted_input_ids[..., 0] = decoder_start_token_id
 
-        if pad_token_id is None:
-            raise ValueError("self.model.config.pad_token_id has to be defined.")
+        assert pad_token_id is not None, "self.model.config.pad_token_id has to be defined."
         # replace possible -100 values in labels by `pad_token_id`
         shifted_input_ids.masked_fill_(shifted_input_ids == -100, pad_token_id)
 
@@ -1483,13 +1476,6 @@ class LongT5Stack(LongT5PreTrainedModel):
         else:
             encoder_extended_attention_mask = None
 
-        if self.gradient_checkpointing and self.training:
-            if use_cache:
-                logger.warning_once(
-                    "`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`..."
-                )
-                use_cache = False
-
         # Prepare head mask if needed
         head_mask = self.get_head_mask(head_mask, self.config.num_layers)
         cross_attn_head_mask = self.get_head_mask(cross_attn_head_mask, self.config.num_layers)
@@ -1510,6 +1496,8 @@ class LongT5Stack(LongT5PreTrainedModel):
                 all_hidden_states = all_hidden_states + (hidden_states,)
 
             if self.gradient_checkpointing and self.training:
+                if use_cache:
+                    use_cache = False
 
                 def create_custom_forward(module):
                     def custom_forward(*inputs):
@@ -1763,10 +1751,13 @@ num_heads)`.
     LONGT5_START_DOCSTRING,
 )
 class LongT5Model(LongT5PreTrainedModel):
+    _keys_to_ignore_on_load_missing = [
+        r"encoder.embed_tokens.weight",
+        r"decoder.embed_tokens.weight",
+    ]
     _keys_to_ignore_on_load_unexpected = [
         r"decoder.block.0.layer.1.EncDecAttention.relative_attention_bias.weight",
     ]
-    _tied_weights_keys = ["encoder.embed_tokens.weight", "decoder.embed_tokens.weight"]
 
     def __init__(self, config: LongT5Config):
         super().__init__(config)
@@ -1913,10 +1904,14 @@ class LongT5Model(LongT5PreTrainedModel):
 
 @add_start_docstrings("""LONGT5 Model with a `language modeling` head on top.""", LONGT5_START_DOCSTRING)
 class LongT5ForConditionalGeneration(LongT5PreTrainedModel):
+    _keys_to_ignore_on_load_missing = [
+        r"encoder.embed_tokens.weight",
+        r"decoder.embed_tokens.weight",
+        r"lm_head.weight",
+    ]
     _keys_to_ignore_on_load_unexpected = [
         r"decoder.block.0.layer.1.EncDecAttention.relative_attention_bias.weight",
     ]
-    _tied_weights_keys = ["encoder.embed_tokens.weight", "decoder.embed_tokens.weight", "lm_head.weight"]
 
     def __init__(self, config: LongT5Config):
         super().__init__(config)
@@ -2070,8 +2065,6 @@ class LongT5ForConditionalGeneration(LongT5PreTrainedModel):
         loss = None
         if labels is not None:
             loss_fct = CrossEntropyLoss(ignore_index=-100)
-
-            labels = labels.to(lm_logits.device)
             loss = loss_fct(lm_logits.view(-1, lm_logits.size(-1)), labels.view(-1))
             # TODO(thom): Add z_loss https://github.com/tensorflow/mesh/blob/fa19d69eafc9a482aff0b59ddd96b025c0cb207d/mesh_tensorflow/layers.py#L666
 
@@ -2151,7 +2144,7 @@ class LongT5ForConditionalGeneration(LongT5PreTrainedModel):
     LONGT5_START_DOCSTRING,
 )
 class LongT5EncoderModel(LongT5PreTrainedModel):
-    _tied_weights_keys = ["encoder.embed_tokens.weight"]
+    _keys_to_ignore_on_load_missing = [r"encoder.embed_tokens.weight"]
 
     def __init__(self, config: LongT5Config):
         super().__init__(config)

@@ -12,29 +12,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""
-This script is responsible for cleaning the model section of the table of content by removing duplicates and sorting
-the entries in alphabetical order.
-
-Usage (from the root of the repo):
-
-Check that the table of content is properly sorted (used in `make quality`):
-
-```bash
-python utils/check_doc_toc.py
-```
-
-Auto-sort the table of content if it is not properly sorted (used in `make style`):
-
-```bash
-python utils/check_doc_toc.py --fix_and_overwrite
-```
-"""
-
 
 import argparse
 from collections import defaultdict
-from typing import List
 
 import yaml
 
@@ -42,17 +22,9 @@ import yaml
 PATH_TO_TOC = "docs/source/en/_toctree.yml"
 
 
-def clean_model_doc_toc(model_doc: List[dict]) -> List[dict]:
+def clean_model_doc_toc(model_doc):
     """
-    Cleans a section of the table of content of the model documentation (one specific modality) by removing duplicates
-    and sorting models alphabetically.
-
-    Args:
-        model_doc (`List[dict]`):
-            The list of dictionaries extracted from the `_toctree.yml` file for this specific modality.
-
-    Returns:
-        `List[dict]`: List of dictionaries like the input, but cleaned up and sorted.
+    Cleans the table of content of the model documentation by removing duplicates and sorting models alphabetically.
     """
     counts = defaultdict(int)
     for doc in model_doc:
@@ -61,7 +33,7 @@ def clean_model_doc_toc(model_doc: List[dict]) -> List[dict]:
 
     new_doc = []
     for duplicate_key in duplicates:
-        titles = list({doc["title"] for doc in model_doc if doc["local"] == duplicate_key})
+        titles = list(set(doc["title"] for doc in model_doc if doc["local"] == duplicate_key))
         if len(titles) > 1:
             raise ValueError(
                 f"{duplicate_key} is present several times in the documentation table of content at "
@@ -78,15 +50,7 @@ def clean_model_doc_toc(model_doc: List[dict]) -> List[dict]:
     return sorted(new_doc, key=lambda s: s["title"].lower())
 
 
-def check_model_doc(overwrite: bool = False):
-    """
-    Check that the content of the table of content in `_toctree.yml` is clean (no duplicates and sorted for the model
-    API doc) and potentially auto-cleans it.
-
-    Args:
-        overwrite (`bool`, *optional*, defaults to `False`):
-            Whether to just check if the TOC is clean or to auto-clean it (when `overwrite=True`).
-    """
+def check_model_doc(overwrite=False):
     with open(PATH_TO_TOC, encoding="utf-8") as f:
         content = yaml.safe_load(f.read())
 
@@ -103,7 +67,6 @@ def check_model_doc(overwrite: bool = False):
 
     model_doc = api_doc[model_idx]["sections"]
 
-    # Extract the modalities and clean them one by one.
     modalities_docs = [(idx, section) for idx, section in enumerate(model_doc) if "sections" in section]
     diff = False
     for idx, modality_doc in modalities_docs:

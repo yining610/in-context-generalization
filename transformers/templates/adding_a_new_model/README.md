@@ -34,14 +34,6 @@ cd transformers
 pip install -e ".[dev]"
 ```
 
-Depending on your OS, and since the number of optional dependencies of Transformers is growing, you might get a
-failure with this command. If that's the case make sure to install the Deep Learning framework you are working with
-(PyTorch, TensorFlow and/or Flax) then do:
-
-```bash
-pip install -e ".[quality]"
-```
-
 Once the installation is done, you can use the CLI command `add-new-model` to generate your models:
 
 ```shell script
@@ -92,7 +84,7 @@ Choose from 1, 2 [1]:
 
 Once the command has finished, you should have a total of 7 new files spread across the repository:
 ```
-docs/source/model_doc/<model_name>.md
+docs/source/model_doc/<model_name>.mdx
 src/transformers/models/<model_name>/configuration_<model_name>.py
 src/transformers/models/<model_name>/modeling_<model_name>.py
 src/transformers/models/<model_name>/modeling_tf_<model_name>.py
@@ -139,14 +131,6 @@ first clone the repository and install it in our environment:
 git clone https://github.com/huggingface/transformers
 cd transformers
 pip install -e ".[dev]"
-```
-
-Depending on your OS, and since the number of optional dependencies of Transformers is growing, you might get a
-failure with this command. If that's the case make sure to install the Deep Learning framework you are working with
-(PyTorch, TensorFlow and/or Flax) then do:
-
-```bash
-pip install -e ".[quality]"
 ```
 
 Once the installation is done, you can use the CLI command `add-new-model-like` to generate your models:
@@ -242,7 +226,7 @@ make fix-copies
 ```
 
 and then you can start tweaking your model. You should:
-- fill the doc file at `docs/source/model_doc/model_name.md`
+- fill the doc file at `docs/source/model_doc/model_name.mdx`
 - tweak the configuration and modeling files to your need
 
 Once you're done, you can run the tests to ensure that they all pass:

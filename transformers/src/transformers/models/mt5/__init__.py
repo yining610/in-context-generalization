@@ -50,8 +50,6 @@ else:
     _import_structure["modeling_mt5"] = [
         "MT5EncoderModel",
         "MT5ForConditionalGeneration",
-        "MT5ForQuestionAnswering",
-        "MT5ForSequenceClassification",
         "MT5Model",
         "MT5PreTrainedModel",
         "MT5Stack",
@@ -83,15 +81,7 @@ if TYPE_CHECKING:
     except OptionalDependencyNotAvailable:
         pass
     else:
-        from .modeling_mt5 import (
-            MT5EncoderModel,
-            MT5ForConditionalGeneration,
-            MT5ForQuestionAnswering,
-            MT5ForSequenceClassification,
-            MT5Model,
-            MT5PreTrainedModel,
-            MT5Stack,
-        )
+        from .modeling_mt5 import MT5EncoderModel, MT5ForConditionalGeneration, MT5Model, MT5PreTrainedModel, MT5Stack
 
     try:
         if not is_tf_available():

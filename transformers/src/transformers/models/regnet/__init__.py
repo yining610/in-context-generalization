@@ -13,13 +13,7 @@
 # limitations under the License.
 from typing import TYPE_CHECKING
 
-from ...utils import (
-    OptionalDependencyNotAvailable,
-    _LazyModule,
-    is_flax_available,
-    is_tf_available,
-    is_torch_available,
-)
+from ...utils import OptionalDependencyNotAvailable, _LazyModule, is_tf_available, is_torch_available
 
 
 _import_structure = {"configuration_regnet": ["REGNET_PRETRAINED_CONFIG_ARCHIVE_MAP", "RegNetConfig"]}
@@ -50,18 +44,6 @@ else:
         "TFRegNetPreTrainedModel",
     ]
 
-try:
-    if not is_flax_available():
-        raise OptionalDependencyNotAvailable()
-except OptionalDependencyNotAvailable:
-    pass
-else:
-    _import_structure["modeling_flax_regnet"] = [
-        "FlaxRegNetForImageClassification",
-        "FlaxRegNetModel",
-        "FlaxRegNetPreTrainedModel",
-    ]
-
 
 if TYPE_CHECKING:
     from .configuration_regnet import REGNET_PRETRAINED_CONFIG_ARCHIVE_MAP, RegNetConfig
@@ -90,18 +72,6 @@ if TYPE_CHECKING:
             TFRegNetForImageClassification,
             TFRegNetModel,
             TFRegNetPreTrainedModel,
-        )
-
-    try:
-        if not is_flax_available():
-            raise OptionalDependencyNotAvailable()
-    except OptionalDependencyNotAvailable:
-        pass
-    else:
-        from .modeling_flax_regnet import (
-            FlaxRegNetForImageClassification,
-            FlaxRegNetModel,
-            FlaxRegNetPreTrainedModel,
         )
 
 

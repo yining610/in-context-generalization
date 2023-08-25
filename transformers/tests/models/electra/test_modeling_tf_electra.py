@@ -14,8 +14,6 @@
 # limitations under the License.
 
 
-from __future__ import annotations
-
 import unittest
 
 from transformers import ElectraConfig, is_tf_available
@@ -23,7 +21,6 @@ from transformers.testing_utils import require_tf, slow
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_tf_common import TFModelTesterMixin, floats_tensor, ids_tensor, random_attention_mask
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_tf_available():
@@ -54,7 +51,7 @@ class TFElectraModelTester:
         self.use_labels = True
         self.vocab_size = 99
         self.hidden_size = 32
-        self.num_hidden_layers = 2
+        self.num_hidden_layers = 5
         self.num_attention_heads = 4
         self.intermediate_size = 37
         self.hidden_act = "gelu"
@@ -490,7 +487,7 @@ class TFElectraModelTester:
 
 
 @require_tf
-class TFElectraModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class TFElectraModelTest(TFModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             TFElectraModel,
@@ -503,18 +500,6 @@ class TFElectraModelTest(TFModelTesterMixin, PipelineTesterMixin, unittest.TestC
         )
         if is_tf_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": TFElectraModel,
-            "fill-mask": TFElectraForMaskedLM,
-            "question-answering": TFElectraForQuestionAnswering,
-            "text-classification": TFElectraForSequenceClassification,
-            "token-classification": TFElectraForTokenClassification,
-            "zero-shot": TFElectraForSequenceClassification,
-        }
-        if is_tf_available()
-        else {}
     )
     test_head_masking = False
     test_onnx = False

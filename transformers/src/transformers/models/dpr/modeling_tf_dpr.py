@@ -15,10 +15,8 @@
 
 """ TensorFlow DPR model for Open Domain Question Answering."""
 
-from __future__ import annotations
-
 from dataclasses import dataclass
-from typing import Tuple, Union
+from typing import Optional, Tuple, Union
 
 import tensorflow as tf
 
@@ -82,8 +80,8 @@ class TFDPRContextEncoderOutput(ModelOutput):
     """
 
     pooler_output: tf.Tensor = None
-    hidden_states: Tuple[tf.Tensor] | None = None
-    attentions: Tuple[tf.Tensor] | None = None
+    hidden_states: Optional[Tuple[tf.Tensor]] = None
+    attentions: Optional[Tuple[tf.Tensor]] = None
 
 
 @dataclass
@@ -110,8 +108,8 @@ class TFDPRQuestionEncoderOutput(ModelOutput):
     """
 
     pooler_output: tf.Tensor = None
-    hidden_states: Tuple[tf.Tensor] | None = None
-    attentions: Tuple[tf.Tensor] | None = None
+    hidden_states: Optional[Tuple[tf.Tensor]] = None
+    attentions: Optional[Tuple[tf.Tensor]] = None
 
 
 @dataclass
@@ -143,8 +141,8 @@ class TFDPRReaderOutput(ModelOutput):
     start_logits: tf.Tensor = None
     end_logits: tf.Tensor = None
     relevance_logits: tf.Tensor = None
-    hidden_states: Tuple[tf.Tensor] | None = None
-    attentions: Tuple[tf.Tensor] | None = None
+    hidden_states: Optional[Tuple[tf.Tensor]] = None
+    attentions: Optional[Tuple[tf.Tensor]] = None
 
 
 class TFDPREncoderLayer(tf.keras.layers.Layer):
@@ -169,9 +167,9 @@ class TFDPREncoderLayer(tf.keras.layers.Layer):
     def call(
         self,
         input_ids: tf.Tensor = None,
-        attention_mask: tf.Tensor | None = None,
-        token_type_ids: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        token_type_ids: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions: bool = None,
         output_hidden_states: bool = None,
         return_dict: bool = None,
@@ -229,8 +227,8 @@ class TFDPRSpanPredictorLayer(tf.keras.layers.Layer):
     def call(
         self,
         input_ids: tf.Tensor = None,
-        attention_mask: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions: bool = False,
         output_hidden_states: bool = False,
         return_dict: bool = False,
@@ -285,9 +283,9 @@ class TFDPRSpanPredictor(TFPreTrainedModel):
     def call(
         self,
         input_ids: tf.Tensor = None,
-        attention_mask: tf.Tensor | None = None,
-        token_type_ids: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        token_type_ids: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions: bool = False,
         output_hidden_states: bool = False,
         return_dict: bool = False,
@@ -318,9 +316,9 @@ class TFDPREncoder(TFPreTrainedModel):
     def call(
         self,
         input_ids: tf.Tensor = None,
-        attention_mask: tf.Tensor | None = None,
-        token_type_ids: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        token_type_ids: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions: bool = False,
         output_hidden_states: bool = False,
         return_dict: bool = False,
@@ -371,6 +369,19 @@ class TFDPRPretrainedReader(TFPreTrainedModel):
 
     config_class = DPRConfig
     base_model_prefix = "reader"
+
+    @tf.function(
+        input_signature=[
+            {
+                "input_ids": tf.TensorSpec((None, None), tf.int32, name="input_ids"),
+                "attention_mask": tf.TensorSpec((None, None), tf.int32, name="attention_mask"),
+            }
+        ]
+    )
+    def serving(self, inputs):
+        output = self.call(inputs)
+
+        return self.serving_output(output)
 
 
 ###############
@@ -532,7 +543,7 @@ class TFDPRContextEncoder(TFDPRPretrainedContextEncoder):
         try:
             return self.ctx_encoder.bert_model.get_input_embeddings()
         except AttributeError:
-            self.build()
+            self(self.dummy_inputs)
             return self.ctx_encoder.bert_model.get_input_embeddings()
 
     @unpack_inputs
@@ -541,9 +552,9 @@ class TFDPRContextEncoder(TFDPRPretrainedContextEncoder):
     def call(
         self,
         input_ids=None,
-        attention_mask: tf.Tensor | None = None,
-        token_type_ids: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        token_type_ids: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions=None,
         output_hidden_states=None,
         return_dict=None,
@@ -599,6 +610,12 @@ class TFDPRContextEncoder(TFDPRPretrainedContextEncoder):
             pooler_output=outputs.pooler_output, hidden_states=outputs.hidden_states, attentions=outputs.attentions
         )
 
+    def serving_output(self, output):
+        hs = tf.convert_to_tensor(output.hidden_states) if self.config.output_hidden_states else None
+        attns = tf.convert_to_tensor(output.attentions) if self.config.output_attentions else None
+
+        return TFDPRContextEncoderOutput(pooler_output=output.pooler_output, hidden_states=hs, attentions=attns)
+
 
 @add_start_docstrings(
     "The bare DPRQuestionEncoder transformer outputting pooler outputs as question representations.",
@@ -613,7 +630,7 @@ class TFDPRQuestionEncoder(TFDPRPretrainedQuestionEncoder):
         try:
             return self.question_encoder.bert_model.get_input_embeddings()
         except AttributeError:
-            self.build()
+            self(self.dummy_inputs)
             return self.question_encoder.bert_model.get_input_embeddings()
 
     @unpack_inputs
@@ -622,9 +639,9 @@ class TFDPRQuestionEncoder(TFDPRPretrainedQuestionEncoder):
     def call(
         self,
         input_ids=None,
-        attention_mask: tf.Tensor | None = None,
-        token_type_ids: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        token_type_ids: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions=None,
         output_hidden_states=None,
         return_dict=None,
@@ -679,6 +696,12 @@ class TFDPRQuestionEncoder(TFDPRPretrainedQuestionEncoder):
             pooler_output=outputs.pooler_output, hidden_states=outputs.hidden_states, attentions=outputs.attentions
         )
 
+    def serving_output(self, output):
+        hs = tf.convert_to_tensor(output.hidden_states) if self.config.output_hidden_states else None
+        attns = tf.convert_to_tensor(output.attentions) if self.config.output_attentions else None
+
+        return TFDPRQuestionEncoderOutput(pooler_output=output.pooler_output, hidden_states=hs, attentions=attns)
+
 
 @add_start_docstrings(
     "The bare DPRReader transformer outputting span predictions.",
@@ -693,7 +716,7 @@ class TFDPRReader(TFDPRPretrainedReader):
         try:
             return self.span_predictor.encoder.bert_model.get_input_embeddings()
         except AttributeError:
-            self.build()
+            self(self.dummy_inputs)
             return self.span_predictor.encoder.bert_model.get_input_embeddings()
 
     @unpack_inputs
@@ -702,8 +725,8 @@ class TFDPRReader(TFDPRPretrainedReader):
     def call(
         self,
         input_ids=None,
-        attention_mask: tf.Tensor | None = None,
-        inputs_embeds: tf.Tensor | None = None,
+        attention_mask: Optional[tf.Tensor] = None,
+        inputs_embeds: Optional[tf.Tensor] = None,
         output_attentions: bool = None,
         output_hidden_states: bool = None,
         return_dict=None,
@@ -751,4 +774,16 @@ class TFDPRReader(TFDPRPretrainedReader):
             output_hidden_states=output_hidden_states,
             return_dict=return_dict,
             training=training,
+        )
+
+    def serving_output(self, output):
+        hs = tf.convert_to_tensor(output.hidden_states) if self.config.output_hidden_states else None
+        attns = tf.convert_to_tensor(output.attentions) if self.config.output_attentions else None
+
+        return TFDPRReaderOutput(
+            start_logits=output.start_logits,
+            end_logits=output.end_logits,
+            relevance_logits=output.relevance_logits,
+            hidden_states=hs,
+            attentions=attns,
         )

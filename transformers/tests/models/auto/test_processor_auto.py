@@ -21,10 +21,9 @@ import unittest
 from pathlib import Path
 from shutil import copyfile
 
-from huggingface_hub import HfFolder, Repository, create_repo, delete_repo
+from huggingface_hub import HfFolder, Repository, create_repo, delete_repo, set_access_token
 from requests.exceptions import HTTPError
 
-import transformers
 from transformers import (
     CONFIG_MAPPING,
     FEATURE_EXTRACTOR_MAPPING,
@@ -34,8 +33,6 @@ from transformers import (
     AutoFeatureExtractor,
     AutoProcessor,
     AutoTokenizer,
-    BertTokenizer,
-    ProcessorMixin,
     Wav2Vec2Config,
     Wav2Vec2FeatureExtractor,
     Wav2Vec2Processor,
@@ -60,9 +57,6 @@ SAMPLE_PROCESSOR_CONFIG_DIR = get_tests_dir("fixtures")
 
 class AutoFeatureExtractorTest(unittest.TestCase):
     vocab_tokens = ["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]", "bla", "blou"]
-
-    def setUp(self):
-        transformers.dynamic_module_utils.TIME_OUT_REMOTE_CODE = 0
 
     def test_processor_from_model_shortcut(self):
         processor = AutoProcessor.from_pretrained("facebook/wav2vec2-base-960h")
@@ -150,15 +144,6 @@ class AutoFeatureExtractorTest(unittest.TestCase):
         self.assertIsInstance(processor, Wav2Vec2Processor)
 
     def test_from_pretrained_dynamic_processor(self):
-        # If remote code is not set, we will time out when asking whether to load the model.
-        with self.assertRaises(ValueError):
-            processor = AutoProcessor.from_pretrained("hf-internal-testing/test_dynamic_processor")
-        # If remote code is disabled, we can't load this config.
-        with self.assertRaises(ValueError):
-            processor = AutoProcessor.from_pretrained(
-                "hf-internal-testing/test_dynamic_processor", trust_remote_code=False
-            )
-
         processor = AutoProcessor.from_pretrained("hf-internal-testing/test_dynamic_processor", trust_remote_code=True)
         self.assertTrue(processor.special_attribute_present)
         self.assertEqual(processor.__class__.__name__, "NewProcessor")
@@ -218,58 +203,6 @@ class AutoFeatureExtractorTest(unittest.TestCase):
             if CustomConfig in PROCESSOR_MAPPING._extra_content:
                 del PROCESSOR_MAPPING._extra_content[CustomConfig]
 
-    def test_from_pretrained_dynamic_processor_conflict(self):
-        class NewFeatureExtractor(Wav2Vec2FeatureExtractor):
-            special_attribute_present = False
-
-        class NewTokenizer(BertTokenizer):
-            special_attribute_present = False
-
-        class NewProcessor(ProcessorMixin):
-            feature_extractor_class = "AutoFeatureExtractor"
-            tokenizer_class = "AutoTokenizer"
-            special_attribute_present = False
-
-        try:
-            AutoConfig.register("custom", CustomConfig)
-            AutoFeatureExtractor.register(CustomConfig, NewFeatureExtractor)
-            AutoTokenizer.register(CustomConfig, slow_tokenizer_class=NewTokenizer)
-            AutoProcessor.register(CustomConfig, NewProcessor)
-            # If remote code is not set, the default is to use local classes.
-            processor = AutoProcessor.from_pretrained("hf-internal-testing/test_dynamic_processor")
-            self.assertEqual(processor.__class__.__name__, "NewProcessor")
-            self.assertFalse(processor.special_attribute_present)
-            self.assertFalse(processor.feature_extractor.special_attribute_present)
-            self.assertFalse(processor.tokenizer.special_attribute_present)
-
-            # If remote code is disabled, we load the local ones.
-            processor = AutoProcessor.from_pretrained(
-                "hf-internal-testing/test_dynamic_processor", trust_remote_code=False
-            )
-            self.assertEqual(processor.__class__.__name__, "NewProcessor")
-            self.assertFalse(processor.special_attribute_present)
-            self.assertFalse(processor.feature_extractor.special_attribute_present)
-            self.assertFalse(processor.tokenizer.special_attribute_present)
-
-            # If remote is enabled, we load from the Hub.
-            processor = AutoProcessor.from_pretrained(
-                "hf-internal-testing/test_dynamic_processor", trust_remote_code=True
-            )
-            self.assertEqual(processor.__class__.__name__, "NewProcessor")
-            self.assertTrue(processor.special_attribute_present)
-            self.assertTrue(processor.feature_extractor.special_attribute_present)
-            self.assertTrue(processor.tokenizer.special_attribute_present)
-
-        finally:
-            if "custom" in CONFIG_MAPPING._extra_content:
-                del CONFIG_MAPPING._extra_content["custom"]
-            if CustomConfig in FEATURE_EXTRACTOR_MAPPING._extra_content:
-                del FEATURE_EXTRACTOR_MAPPING._extra_content[CustomConfig]
-            if CustomConfig in TOKENIZER_MAPPING._extra_content:
-                del TOKENIZER_MAPPING._extra_content[CustomConfig]
-            if CustomConfig in PROCESSOR_MAPPING._extra_content:
-                del PROCESSOR_MAPPING._extra_content[CustomConfig]
-
     def test_auto_processor_creates_tokenizer(self):
         processor = AutoProcessor.from_pretrained("hf-internal-testing/tiny-random-bert")
         self.assertEqual(processor.__class__.__name__, "BertTokenizerFast")
@@ -286,6 +219,7 @@ class ProcessorPushToHubTester(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls._token = TOKEN
+        set_access_token(TOKEN)
         HfFolder.save_token(TOKEN)
 
     @classmethod

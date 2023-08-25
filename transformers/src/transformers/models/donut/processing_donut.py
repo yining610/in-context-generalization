@@ -42,7 +42,6 @@ class DonutProcessor(ProcessorMixin):
     tokenizer_class = "AutoTokenizer"
 
     def __init__(self, image_processor=None, tokenizer=None, **kwargs):
-        feature_extractor = None
         if "feature_extractor" in kwargs:
             warnings.warn(
                 "The `feature_extractor` argument is deprecated and will be removed in v5, use `image_processor`"
@@ -131,16 +130,14 @@ class DonutProcessor(ProcessorMixin):
         if added_vocab is None:
             added_vocab = self.tokenizer.get_added_vocab()
 
-        output = {}
+        output = dict()
 
         while tokens:
             start_token = re.search(r"<s_(.*?)>", tokens, re.IGNORECASE)
             if start_token is None:
                 break
             key = start_token.group(1)
-            key_escaped = re.escape(key)
-
-            end_token = re.search(rf"</s_{key_escaped}>", tokens, re.IGNORECASE)
+            end_token = re.search(rf"</s_{key}>", tokens, re.IGNORECASE)
             start_token = start_token.group()
             if end_token is None:
                 tokens = tokens.replace(start_token, "")

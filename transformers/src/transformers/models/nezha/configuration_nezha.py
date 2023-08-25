@@ -1,4 +1,4 @@
-from ... import PretrainedConfig
+from transformers import PretrainedConfig
 
 
 NEZHA_PRETRAINED_CONFIG_ARCHIVE_MAP = {

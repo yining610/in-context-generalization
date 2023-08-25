@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """ Table Transformer model configuration"""
+
 from collections import OrderedDict
 from typing import Mapping
 
@@ -188,8 +189,6 @@ class TableTransformerConfig(PretrainedConfig):
                 backbone_model_type = backbone_config.get("model_type")
                 config_class = CONFIG_MAPPING[backbone_model_type]
                 backbone_config = config_class.from_dict(backbone_config)
-            # set timm attributes to None
-            dilation, backbone, use_pretrained_backbone = None, None, None
 
         self.use_timm_backbone = use_timm_backbone
         self.backbone_config = backbone_config

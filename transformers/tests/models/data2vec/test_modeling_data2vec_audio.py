@@ -26,7 +26,6 @@ from transformers.testing_utils import is_pt_flax_cross_test, require_soundfile,
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, _config_zero_init
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -59,7 +58,7 @@ class Data2VecAudioModelTester:
         conv_bias=False,
         num_conv_pos_embeddings=16,
         num_conv_pos_embedding_groups=2,
-        num_hidden_layers=2,
+        num_hidden_layers=4,
         num_attention_heads=2,
         hidden_dropout_prob=0.1,
         intermediate_size=20,
@@ -359,7 +358,7 @@ class Data2VecAudioModelTester:
 
 
 @require_torch
-class Data2VecAudioModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class Data2VecAudioModelTest(ModelTesterMixin, unittest.TestCase):
     all_model_classes = (
         (
             Data2VecAudioForCTC,
@@ -370,15 +369,6 @@ class Data2VecAudioModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.Tes
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "audio-classification": Data2VecAudioForSequenceClassification,
-            "automatic-speech-recognition": Data2VecAudioForCTC,
-            "feature-extraction": Data2VecAudioModel,
-        }
-        if is_torch_available()
-        else {}
     )
     test_pruning = False
     test_headmasking = False
@@ -516,7 +506,7 @@ class Data2VecAudioModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.Tes
                     "objective.weight",
                 ]
                 if param.requires_grad:
-                    if any(x in name for x in uniform_init_parms):
+                    if any([x in name for x in uniform_init_parms]):
                         self.assertTrue(
                             -1.0 <= ((param.data.mean() * 1e9).round() / 1e9).item() <= 1.0,
                             msg=f"Parameter {name} of model {model_class} seems not properly initialized",

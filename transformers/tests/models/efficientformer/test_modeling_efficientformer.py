@@ -18,7 +18,6 @@
 import inspect
 import unittest
 import warnings
-from typing import List
 
 from transformers import EfficientFormerConfig
 from transformers.models.auto import get_values
@@ -27,7 +26,6 @@ from transformers.utils import cached_property, is_torch_available, is_vision_av
 
 from ...test_configuration_common import ConfigTester
 from ...test_modeling_common import ModelTesterMixin, floats_tensor, ids_tensor
-from ...test_pipeline_mixin import PipelineTesterMixin
 
 
 if is_torch_available():
@@ -56,16 +54,15 @@ class EfficientFormerModelTester:
         self,
         parent,
         batch_size: int = 13,
-        image_size: int = 64,
+        image_size: int = 224,
         patch_size: int = 2,
-        embed_dim: int = 3,
+        embed_dim: int = 48,  # last embed dim of stem
         num_channels: int = 3,
         is_training: bool = True,
         use_labels: bool = True,
-        hidden_size: int = 128,
-        hidden_sizes=[16, 32, 64, 128],
-        num_hidden_layers: int = 7,
-        num_attention_heads: int = 4,
+        hidden_size: int = 448,
+        num_hidden_layers: int = 7,  # For the l1
+        num_attention_heads: int = 8,
         intermediate_size: int = 37,
         hidden_act: str = "gelu",
         hidden_dropout_prob: float = 0.1,
@@ -73,11 +70,7 @@ class EfficientFormerModelTester:
         type_sequence_label_size: int = 10,
         initializer_range: float = 0.02,
         encoder_stride: int = 2,
-        num_attention_outputs: int = 1,
-        dim: int = 128,
-        depths: List[int] = [2, 2, 2, 2],
-        resolution: int = 2,
-        mlp_expansion_ratio: int = 2,
+        num_attention_outputs: int = 1,  # For l1
     ):
         self.parent = parent
         self.batch_size = batch_size
@@ -99,11 +92,6 @@ class EfficientFormerModelTester:
         self.num_attention_outputs = num_attention_outputs
         self.embed_dim = embed_dim
         self.seq_length = embed_dim + 1
-        self.resolution = resolution
-        self.depths = depths
-        self.hidden_sizes = hidden_sizes
-        self.dim = dim
-        self.mlp_expansion_ratio = mlp_expansion_ratio
 
     def prepare_config_and_inputs(self):
         pixel_values = floats_tensor([self.batch_size, self.num_channels, self.image_size, self.image_size])
@@ -130,11 +118,6 @@ class EfficientFormerModelTester:
             is_decoder=False,
             initializer_range=self.initializer_range,
             encoder_stride=self.encoder_stride,
-            resolution=self.resolution,
-            depths=self.depths,
-            hidden_sizes=self.hidden_sizes,
-            dim=self.dim,
-            mlp_expansion_ratio=self.mlp_expansion_ratio,
         )
 
     def create_and_check_model(self, config, pixel_values, labels):
@@ -174,7 +157,7 @@ class EfficientFormerModelTester:
 
 
 @require_torch
-class EfficientFormerModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCase):
+class EfficientFormerModelTest(ModelTesterMixin, unittest.TestCase):
     """
     Here we also overwrite some of the tests of test_modeling_common.py, as EfficientFormer does not use input_ids, inputs_embeds,
     attention_mask and seq_length.
@@ -188,17 +171,6 @@ class EfficientFormerModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.T
         )
         if is_torch_available()
         else ()
-    )
-    pipeline_model_mapping = (
-        {
-            "feature-extraction": EfficientFormerModel,
-            "image-classification": (
-                EfficientFormerForImageClassification,
-                EfficientFormerForImageClassificationWithTeacher,
-            ),
-        }
-        if is_torch_available()
-        else {}
     )
     fx_compatible = False
 
@@ -395,7 +367,6 @@ class EfficientFormerModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.T
         encoder_seq_length = getattr(self.model_tester, "encoder_seq_length", seq_len)
         encoder_key_length = getattr(self.model_tester, "key_length", encoder_seq_length)
         chunk_length = getattr(self.model_tester, "chunk_length", None)
-
         if chunk_length is not None and hasattr(self.model_tester, "num_hashes"):
             encoder_seq_length = encoder_seq_length * self.model_tester.num_hashes
 
@@ -444,7 +415,7 @@ def prepare_img():
 @require_vision
 class EfficientFormerModelIntegrationTest(unittest.TestCase):
     @cached_property
-    def default_image_processor(self):
+    def default_feature_extractor(self):
         return (
             EfficientFormerImageProcessor.from_pretrained("snap-research/efficientformer-l1-300")
             if is_vision_available()
@@ -457,9 +428,9 @@ class EfficientFormerModelIntegrationTest(unittest.TestCase):
             torch_device
         )
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
@@ -478,9 +449,9 @@ class EfficientFormerModelIntegrationTest(unittest.TestCase):
             "snap-research/efficientformer-l1-300"
         ).to(torch_device)
 
-        image_processor = self.default_image_processor
+        feature_extractor = self.default_feature_extractor
         image = prepare_img()
-        inputs = image_processor(images=image, return_tensors="pt").to(torch_device)
+        inputs = feature_extractor(images=image, return_tensors="pt").to(torch_device)
 
         # forward pass
         with torch.no_grad():
