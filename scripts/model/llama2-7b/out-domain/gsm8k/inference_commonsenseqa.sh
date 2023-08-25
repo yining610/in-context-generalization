@@ -1,7 +1,16 @@
-# deepspeed config
-INCLUDE="localhost:1,2,3,4"
+#! /bin/bash
+MASTER_ADDR=localhost
+MASTER_PORT=2113
+NNODES=1
+NODE_RANK=0
+GPUS_PER_NODE=4
 
-DEEPSPEED_CONFIG="--include $INCLUDE"
+DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
+                  --nnodes $NNODES \
+                  --node_rank $NODE_RANK \
+                  --master_addr $MASTER_ADDR \
+                  --master_port $MASTER_PORT"
+
 # model
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
 MODEL_NAME="llama2-7b"
@@ -10,11 +19,13 @@ MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=40
+NUM_EVL=1000
+NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
-BATCH_SIZE=10
+# hp
+BATCH_SIZE=5
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
@@ -22,10 +33,14 @@ OPTS=""
 OPTS+=" --model-name ${MODEL_NAME}"
 OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
+OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
+# OPTS+=" --model-parallel"
+# OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
 # data
 OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
+OPTS+=" --num-workers ${NUM_WORKERS}"
 OPTS+=" --num-in-domain 0"
 OPTS+=" --out-domain-data-name ${OUT_DOMAIN_TASK_NAME}"
 # generation
@@ -34,13 +49,21 @@ OPTS+=" --do-sample"
 OPTS+=" --top-k 50"
 OPTS+=" --top-p 1"
 OPTS+=" --temperature 1"
+# deepspeed
+OPTS+=" --deepspeed"
+OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
+# hp
 OPTS+=" --batch-size ${BATCH_SIZE}"
 
 export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
+export PYTHONPATH=${BASE_PATH}
+export CUDA_VISIBLE_DEVICES=2,3,4,5
 
-NUM_OUTDOMAIN_LIST=${1-"21"}
+echo "PYTHONPATH=${PYTHONPATH}"
+
+NUM_OUTDOMAIN_LIST=${1-"10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25"}
 RATIONALE_LIST=${2-"False"}
 MAX_PROMPT_LENGTH=${3-2048}
 
@@ -59,7 +82,7 @@ do
                 OPTS_BACKUP+=" --rationales"
             fi
             OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
-            CMD="deepspeed ${DEEPSPEED_CONFIG} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+            CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
             echo ${CMD}
             ${CMD}
         done
