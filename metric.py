@@ -7,60 +7,10 @@ from typing import *
 
 default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
 
-# adapted the flowing from Squad v1.1 evaluation, without removing the articles.
-def normalize_answer(s):
-    """Lower text and remove punctuation, and extra whitespace."""
-
-    def white_space_fix(text):
-        return ' '.join(text.split())
-
-    def remove_punc(text):
-        exclude = set(string.punctuation)
-        return ''.join(ch for ch in text if ch not in exclude)
-
-    def lower(text):
-        return text.lower()
-
-    return white_space_fix(remove_punc(lower(s)))
-
-
-def exact_match(prediction, ground_truth, xlingual=False):
-    return (normalize_answer(prediction) == normalize_answer(ground_truth))
-
 def rouge(prediction, ground_truth, xlingual=False):
     scorer = default_rouge_scorer
     scores = scorer.score(prediction=prediction, target=ground_truth)
     return scores["rougeL"].fmeasure
-
-
-def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
-    scores_for_ground_truths = []
-    for ground_truth in ground_truths:
-        score = metric_fn(prediction, ground_truth, xlingual=xlingual)
-        scores_for_ground_truths.append(score)
-    return max(scores_for_ground_truths)
-
-
-def compute_metrics(predictions, references, xlingual=False):
-    
-    min_length = min(len((predictions)), len(references))
-    predictions = predictions[:min_length]
-    references = references[:min_length]
-    
-    em, rougeL = 0, 0
-    for pred, gold in zip(predictions, references):
-        assert isinstance(gold, list)
-        em += metric_max_over_ground_truths(
-            exact_match, prediction=pred, ground_truths=gold, xlingual=xlingual
-        )
-        rougeL += metric_max_over_ground_truths(
-            rouge, prediction=pred, ground_truths=gold, xlingual=xlingual
-        )
-    em = 100.0 * em / len(references)
-    rougeL = 100.0 * rougeL / len(references)
-    metrics = {"exact_match": em, "rougeL": rougeL}
-    metrics = {k: round(v, 4) for k, v in metrics.items()}
-    return metrics
 
 def match_multiplechoice_answer(answer, text):
     if text is None:

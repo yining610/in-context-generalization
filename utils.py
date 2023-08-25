@@ -8,6 +8,7 @@ import torch.nn as nn
 import random
 import torch
 from datetime import timedelta
+import deepspeed
 
 
 def print_args(args):
@@ -19,14 +20,8 @@ def print_args(args):
         print('  {} {} {}'.format(arg, dots, getattr(args, arg)), flush=True)
 
 
-def save_rank(log_str, save_path, rank=0):
-    if not dist.is_initialized() or dist.get_rank() == rank:
-        with open(save_path, "a") as f:
-            f.write(log_str + "\n")
-
-
 def print_rank(*args, rank=0, **kwargs):
-    if not dist.is_initialized() or dist.get_rank() == rank:
+    if dist.get_rank() == rank:
         print(*args, **kwargs)
 
 
@@ -50,20 +45,20 @@ def set_random_seed(seed):
         torch.manual_seed(seed)
 
 def init_distributed(args):
-    args.rank = int(os.getenv("RANK", "0"))             # this is the rank of the current GPU
+    args.rank = int(os.getenv("RANK", "0")) # this is the rank of the current node
     args.world_size = int(os.getenv("WORLD_SIZE", "1")) # this is the number of GPUs
     args.local_rank = int(os.getenv("LOCAL_RANK", "0")) # this is the rank of the current GPU within the node
 
     if args.rank == 0:
         print(f"using world size: {args.world_size}")
 
-    # Manually set the device ids.
-    device = args.rank % torch.cuda.device_count()
-    if args.local_rank is not None:
-        device = args.local_rank
-    torch.cuda.set_device(device)
+    # # Manually set the device ids.
+    # device = args.rank % torch.cuda.device_count()
+    # if args.local_rank is not None:
+    #     device = args.local_rank
+    # torch.cuda.set_device(device)
 
-    dist.init_process_group(backend="nccl", timeout=timedelta(minutes=300))
+    deepspeed.init_distributed("nccl")
 
 def initialize(args):
     

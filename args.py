@@ -8,11 +8,8 @@ def add_model_args(parser: argparse.ArgumentParser):
     group.add_argument('--model-name', type=str)
     group.add_argument("--model-type", type=str)
     group.add_argument("--model-path", type=str)
-    group.add_argument("--n-gpu", type=int, default=1)
-    group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
-    group.add_argument("--model-parallel", action="store_true")
-    group.add_argument("--model-parallel-size", type=int, default=None)
+    group.add_argument("--local_rank", required=False, type=int, help="used by dist launchers")
     return parser
 
 def add_data_args(parser: argparse.ArgumentParser):
@@ -25,7 +22,6 @@ def add_data_args(parser: argparse.ArgumentParser):
     group.add_argument("--num-out-domain", type=int)
     group.add_argument("--out-domain-data-name", type=str, default=None)
     group.add_argument("--out-domain-data-dir", type=str, default=None)
-    group.add_argument("--num-workers", type=int, default=1)
     return parser
 
 def add_generation_args(parser: argparse.ArgumentParser):
@@ -61,10 +57,6 @@ def get_args():
     args, unknown = parser.parse_known_args()
     
     assert all(["--" not in x for x in unknown]), unknown
-    
-    args.local_rank = int(os.getenv("LOCAL_RANK", "0"))
-        
-    args.n_gpu = args.n_gpu * args.n_nodes
     
     if args.model_name is not None:
         if args.num_out_domain == 0:

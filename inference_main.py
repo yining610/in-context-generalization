@@ -5,8 +5,7 @@ from transformers import (
 
 import os
 import random
-import nltk
-nltk.download("punkt")
+import time
 
 import torch
 import torch.nn as nn
@@ -15,9 +14,7 @@ from torch.utils.data import DataLoader, DistributedSampler
 from tqdm import tqdm
 import numpy as np
 import json
-from utils import print_rank, save_rank
-
-from metric import compute_metrics
+from utils import print_rank
 
 torch.set_num_threads(4)
 
@@ -25,13 +22,9 @@ torch.set_num_threads(4)
 def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     
     collate_fn = dataset.collate
-    
-    dp_world_size = dist.get_world_size()
-    dp_rank = dist.get_rank()
-    
-    sampler = DistributedSampler(dataset, shuffle=False, drop_last=False, rank=dp_rank, num_replicas=dp_world_size)
+        
     dataloader = DataLoader(
-        dataset, shuffle=False, sampler=sampler, batch_size=args.batch_size, num_workers=args.num_workers, collate_fn=collate_fn)
+        dataset, shuffle=False, batch_size=args.batch_size, collate_fn=collate_fn)
     model.eval()
     
     all_query_ids = []
@@ -77,7 +70,8 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
 
 
 def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
-        
+    start_time = time.time()
+
     query_ids, response_ids, output_ids = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
@@ -90,7 +84,6 @@ def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
     all_preds = [[]]
     for q, r in zip(query_strs, response_strs):
         all_preds[0].append((q, q + r))
-    # torch.save(all_preds, os.path.join(args.save, "preds.pt"))
 
     all_responses = []
 
@@ -108,10 +101,9 @@ def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
             all_responses.append(r.replace("<n>", "\n").strip())
 
     all_answers = [x if isinstance(x, list) else [x] for x in answer_strs]
-    gen_res = compute_metrics(all_responses, all_answers)
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 
-    log_str = f"name: {args.data_name} | {gen_res} | avg. gen lenth: {mean_gen_length}"
+    end_time = time.time()
+    log_str = f"name: {args.data_name} | avg. gen lenth: {mean_gen_length} | time: {end_time - start_time}s"
     print_rank(log_str)
-    save_rank(log_str, os.path.join(args.save, "log.txt"))

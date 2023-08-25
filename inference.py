@@ -4,18 +4,17 @@ import os
 
 import torch
 import torch.distributed as dist
-
+import deepspeed
 import json
 
 from transformers import (
     AutoModelForCausalLM,
-    AutoTokenizer)
+    AutoTokenizer,
+    AutoConfig,)
 
 from args import get_args
 
-from utils import initialize, print_args
-from utils import print_rank
-from utils import save_rank
+from utils import initialize, print_args, print_rank
 
 from data_utils.prompt_datasets import PromptDataset
 from inference_main import inference_main
@@ -33,9 +32,17 @@ def get_tokenizer(args):
 def setup_model(args):
     # get the model
     model = AutoModelForCausalLM.from_pretrained(args.model_path)
+    
+    kwargs = dict(replace_with_kernel_inject=True)
+    model = deepspeed.init_inference(
+        model,
+        mp_size=args.world_size,
+        dtype=torch.float16,
+        checkpoint=None,
+        **kwargs,
+    )
 
-    # get the memory usage
-    print_rank("Model mem\n", torch.cuda.memory_summary())
+    model = model.module
     return model
 
 def main():
@@ -50,9 +57,6 @@ def main():
             json.dump(vars(args), f)
     
     device = torch.cuda.current_device()
-    cur_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    save_rank("\n\n" + "="*30 + f" EXP at {cur_time} " + "="*30, os.path.join(args.save, "log.txt"))
-    
     # get the tokenizer
     if args.is_opensource:
         tokenizer = get_tokenizer(args)
