@@ -7,9 +7,11 @@ def add_model_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('model', 'model configuration')
     group.add_argument('--model-name', type=str)
     group.add_argument("--model-type", type=str)
-    group.add_argument("--model-path", type=str)
+    group.add_argument("--model-path", type=str, default="/scratch/ylu130/model")
+    group.add_argument("--model-hf-name", type=str, default=None)
     group.add_argument("--is-opensource", action="store_true")
     group.add_argument("--local_rank", required=False, type=int, help="used by dist launchers")
+    
     return parser
 
 def add_data_args(parser: argparse.ArgumentParser):

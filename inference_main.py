@@ -1,10 +1,7 @@
 from data_utils.prompt_datasets import PromptDataset
-from transformers import (
-    GenerationConfig
-    )
-
 import os
 import time
+from transformers import GenerationConfig
 
 import torch
 import torch.nn as nn
@@ -14,8 +11,6 @@ from tqdm import tqdm
 import numpy as np
 import json
 from utils import print_rank
-
-torch.set_num_threads(4)
 
 
 def run_model(args, tokenizer, model, dataset: PromptDataset):
@@ -30,7 +25,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset):
     all_response_ids = []
     all_answer = []
     
-    generation_config = GenerationConfig (
+    generation_config = GenerationConfig(
         do_sample=args.do_sample,
         top_p=args.top_p,
         top_k=args.top_k,

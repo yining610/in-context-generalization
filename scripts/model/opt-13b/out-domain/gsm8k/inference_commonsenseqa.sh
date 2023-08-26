@@ -4,9 +4,9 @@ INCLUDE="localhost:1,2,3,4"
 DEEPSPEED_CONFIG="--include $INCLUDE"
 # model
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
-MODEL_NAME="llama2-7b"
-MODEL_TYPE="llama"
-MODEL_HF_NAME="meta-llama/Llama-2-7b-hf"
+MODEL_NAME="opt-13b"
+MODEL_TYPE="opt"
+MODEL_HF_NAME="facebook/opt-13b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
@@ -14,7 +14,7 @@ NUM_EVL=40
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
-BATCH_SIZE=1
+BATCH_SIZE=10
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
@@ -60,7 +60,6 @@ do
             fi
             OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
             CMD="deepspeed ${DEEPSPEED_CONFIG} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
-            echo ${CMD}
             ${CMD}
         done
     done

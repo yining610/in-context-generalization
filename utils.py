@@ -45,9 +45,9 @@ def set_random_seed(seed):
         torch.manual_seed(seed)
 
 def init_distributed(args):
-    args.rank = int(os.getenv("RANK", "0")) # this is the rank of the current node
-    args.world_size = int(os.getenv("WORLD_SIZE", "1")) # this is the number of GPUs
-    args.local_rank = int(os.getenv("LOCAL_RANK", "0")) # this is the rank of the current GPU within the node
+    args.rank = int(os.getenv("RANK", -1)) # this is the rank of the current node
+    args.world_size = int(os.getenv("WORLD_SIZE", -1)) # this is the number of GPUs
+    args.local_rank = int(os.getenv("LOCAL_RANK", -1)) # this is the rank of the current GPU within the node
 
     if args.rank == 0:
         print(f"using world size: {args.world_size}")

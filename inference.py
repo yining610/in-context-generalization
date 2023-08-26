@@ -8,7 +8,6 @@ import deepspeed
 import json
 
 from transformers import (
-    LlamaForCausalLM,
     AutoModelForCausalLM,
     AutoTokenizer,
     )
@@ -25,24 +24,22 @@ torch.set_num_threads(4)
 
 
 def get_tokenizer(args):
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path, padding_side="left")
+    tokenizer = AutoTokenizer.from_pretrained(args.model_hf_name, 
+                                              cache_dir=args.model_path, 
+                                              padding_side="left")
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.pad_token_id = tokenizer.eos_token_id
     return tokenizer
 
 def setup_model(args):
-    if args.model_type == "llama":
-        model = LlamaForCausalLM.from_pretrained(args.model_path)
-        model.bfloat16()
-    else:
-        model = AutoModelForCausalLM.from_pretrained(args.model_path)
+    model = AutoModelForCausalLM.from_pretrained(args.model_hf_name, 
+                                                 cache_dir=args.model_path)
     
-    kwargs = dict(replace_with_kernel_inject=True)
     model = deepspeed.init_inference(
         model,
         mp_size=args.world_size,
         dtype=torch.float16,
-        **kwargs,
+        replace_with_kernel_inject=True
     )
 
     model = model.module

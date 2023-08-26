@@ -47,7 +47,7 @@ class PromptDataset(Dataset):
             lines = f.readlines()
         data_origin = [json.loads(line) for line in lines]
         data = []
-        for d in tqdm(data_origin, disable=(get_rank() != 0)):
+        for d in tqdm(data_origin, disable=(get_rank() != 0), desc="Loading data"):
             data.append({
                 "prompt": d["prompt"].replace("<n>", "\n"),
                 "output": d["output"]
