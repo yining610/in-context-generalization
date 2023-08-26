@@ -69,7 +69,10 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
             all_query_ids.extend(query_ids)
             all_response_ids.extend(response_ids)
-            all_answer.extend(answer_batch)
+            if isinstance(answer_batch[0], list):
+                all_answer.append(x for x in answer_batch)
+            else:
+                all_answer.extend(answer_batch)
 
     return (
         all_query_ids,
@@ -80,7 +83,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
 def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
     start_time = time.time()
 
-    query_ids, response_ids, answer_strs = run_model(args, tokenizer, model, dataset, device)
+    query_ids, response_ids, answers = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
 
@@ -95,7 +98,7 @@ def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
     all_responses = []
 
     with open(os.path.join(args.save, "answers.jsonl"), "a") as f:    
-        for p, a in zip(all_preds[0], answer_strs):
+        for p, a in zip(all_preds[0], answers):
             q, r = p
             r = r[len(q):]
             idx = r.find("<|endoftext|>")

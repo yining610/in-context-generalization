@@ -13,13 +13,13 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
-MODEL_NAME="gptj"
-MODEL_TYPE="gptj"
+MODEL_NAME="llama2-13b"
+MODEL_TYPE="llama"
 MODEL_PATH="/scratch/ylu130/model-hf"
-MODEL_HF_NAME="EleutherAI/gpt-j-6b"
+MODEL_HF_NAME="meta-llama/Llama-2-13b-hf"
 # data
-DATA_NAMES="commonsenseqa"
-DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
+DATA_NAMES="nq"
+DATA_DIR="/scratch/ylu130/data/adam"
 NUM_EVL=20
 NUM_WORKERS=0
 # generation
@@ -27,7 +27,6 @@ SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
 BATCH_SIZE=5
-OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
 # model
@@ -44,7 +43,7 @@ OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
 OPTS+=" --num-workers ${NUM_WORKERS}"
 OPTS+=" --num-in-domain 0"
-OPTS+=" --out-domain-data-name ${OUT_DOMAIN_TASK_NAME}"
+OPTS+=" --num-out-domain 0"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
 OPTS+=" --do-sample"
@@ -62,28 +61,15 @@ export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
 export CUDA_VISIBLE_DEVICES=2,3,4,5
 
-NUM_OUTDOMAIN_LIST=${1-"21"}
-RATIONALE_LIST=${2-"False"}
-MAX_PROMPT_LENGTH=${3-2048}
+INDEX=${1-"0 4 9"}
+MAX_PROMPT_LENGTH=2048
 
-for SEED in 1 10 20 30 40 50 60
-do 
-    for RATIONALE in $RATIONALE_LIST
-    do
-        for NUM_OUTDOMAIN in $NUM_OUTDOMAIN_LIST
-        do  
-            OPTS_BACKUP=${OPTS}
-            OPTS_BACKUP+=" --data-dir ${DATA_DIR}/out-domain/o${NUM_OUTDOMAIN}-t${OUT_DOMAIN_TASK_NAME}-s${SEED}-r${RATIONALE}"
-            OPTS_BACKUP+=" --seed ${SEED}"
-            OPTS_BACKUP+=" --max-prompt-length ${MAX_PROMPT_LENGTH}"
-            if [ ${RATIONALE} == "True" ]
-            then
-                OPTS_BACKUP+=" --rationales"
-            fi
-            OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
-            CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
-            echo ${CMD}
-            ${CMD}
-        done
-    done
+for NUM in $INDEX
+do  
+    OPTS_BACKUP=${OPTS}
+    OPTS_BACKUP+=" --data-dir ${DATA_DIR}/nq-test-10_total_documents_gold_at_${NUM}-llama-predictions-scored.jsonl"
+    OPTS_BACKUP+=" --max-prompt-length ${MAX_PROMPT_LENGTH}"
+    CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+    echo ${CMD}
+    ${CMD}
 done

@@ -17,19 +17,9 @@ class PromptDataset(Dataset):
         self.max_prompt_length = args.max_prompt_length
 
         self.data = self.load_data_json(data_path)
-        
-        if os.path.exists(os.path.join(data_path, f"{self.args.data_name}.jsonl")):
-            with open(os.path.join(data_path, f"{self.args.data_name}.jsonl")) as f:
-                self.raw = [json.loads(line) for line in f.readlines()]
-                self.answers = [x["output"] if isinstance(x["output"], list) else [x["output"]] for x in self.raw]
-        else:
-            print_rank("WARNING: No answers exist")
-        
+                
         if num > 0:
             self.data = self.data[:num]
-            self.answers = self.answers[:num]
-            
-        self.label_map = {tokenizer.encode(x[0], add_special_tokens=False)[0]: x[0] for x in self.answers}
             
         self.num = min(num, len(self.data)) if num > 0 else len(self.data)
         print_rank(f"Num instances: {len(self.data)}")
@@ -48,14 +38,15 @@ class PromptDataset(Dataset):
         data_origin = [json.loads(line) for line in lines]
         data = []
         for d in tqdm(data_origin, disable=(get_rank() != 0), desc="Loading data"):
+            # data.append({
+            #     "prompt": d["prompt"].replace("<n>", "\n"),
+            #     "output": d["output"]
+            # })
             data.append({
-                "prompt": d["prompt"].replace("<n>", "\n"),
-                "output": d["output"]
+                "prompt": d["model_prompt"].replace("<n>", "\n"),
+                "output": d["answers"]
             })
         return data
-
-    def verbalizer(self):
-        return self.label_map
 
     def __getitem__(self, index: int):
         data = self.data[index]

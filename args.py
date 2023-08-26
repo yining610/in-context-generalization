@@ -20,7 +20,7 @@ def add_data_args(parser: argparse.ArgumentParser):
     group.add_argument("--data-name", type=str)
     group.add_argument("--data-dir", type=str)
     group.add_argument("--processed-data-dir", type=str)
-    group.add_argument("--num-eval", type=int)
+    group.add_argument("--num-eval", type=int, default=-1)
     group.add_argument("--num-in-domain", type=int)
     group.add_argument("--num-out-domain", type=int)
     group.add_argument("--out-domain-data-name", type=str, default=None)
