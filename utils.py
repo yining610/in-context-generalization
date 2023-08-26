@@ -45,20 +45,20 @@ def set_random_seed(seed):
         torch.manual_seed(seed)
 
 def init_distributed(args):
-    args.rank = int(os.getenv("RANK", -1)) # this is the rank of the current node
-    args.world_size = int(os.getenv("WORLD_SIZE", -1)) # this is the number of GPUs
-    args.local_rank = int(os.getenv("LOCAL_RANK", -1)) # this is the rank of the current GPU within the node
+    args.rank = int(os.getenv("RANK", "0"))
+    args.world_size = int(os.getenv("WORLD_SIZE", "1"))
+    args.local_rank = int(os.getenv("LOCAL_RANK", "0"))
 
     if args.rank == 0:
         print(f"using world size: {args.world_size}")
 
-    # # Manually set the device ids.
-    # device = args.rank % torch.cuda.device_count()
-    # if args.local_rank is not None:
-    #     device = args.local_rank
-    # torch.cuda.set_device(device)
+    # Manually set the device ids.
+    device = args.rank % torch.cuda.device_count()
+    if args.local_rank is not None:
+        device = args.local_rank
+    torch.cuda.set_device(device)
 
-    deepspeed.init_distributed("nccl")
+    deepspeed.init_distributed(timeout=timedelta(minutes=300))
 
 def initialize(args):
     

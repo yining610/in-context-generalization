@@ -1,5 +1,6 @@
 import argparse
 import os
+import deepspeed
 
 def add_model_args(parser: argparse.ArgumentParser):
     """Model arguments"""
@@ -7,7 +8,7 @@ def add_model_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group('model', 'model configuration')
     group.add_argument('--model-name', type=str)
     group.add_argument("--model-type", type=str)
-    group.add_argument("--model-path", type=str, default="/scratch/ylu130/model")
+    group.add_argument("--model-path", type=str)
     group.add_argument("--model-hf-name", type=str, default=None)
     group.add_argument("--is-opensource", action="store_true")
     group.add_argument("--local_rank", required=False, type=int, help="used by dist launchers")
@@ -55,6 +56,7 @@ def get_args():
     parser = add_data_args(parser)
     parser = add_generation_args(parser)
     parser = add_hp_args(parser)
+    parser = deepspeed.add_config_arguments(parser)
     
     args, unknown = parser.parse_known_args()
     
