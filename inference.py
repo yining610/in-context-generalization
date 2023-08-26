@@ -4,7 +4,6 @@ import os
 
 import torch
 import torch.distributed as dist
-import deepspeed
 
 import json
 
@@ -12,11 +11,7 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     AutoConfig,
-    mpu,
-    ParallelOPTForCausalLM,
-    ParallelLlamaForCausalLM,
-    ParallelGPTJForCausalLM,
-    ParallelGPT2LMHeadModel,)
+    )
 
 parallel_model_map = {
     "opt": ParallelOPTForCausalLM,
@@ -66,25 +61,12 @@ def get_model(args, device):
     return model
 
 
-def setup_model_and_optimizer(args, ds_config, device):
+def setup_model_and_optimizer(args, device):
     # get the model
     model = get_model(args, device)
-
-    optimizer, lr_scheduler = None, None
-        
-    model, _, _, _ = deepspeed.initialize(
-        model=model,
-        optimizer=optimizer,
-        args=args,
-        lr_scheduler=lr_scheduler,
-        mpu=mpu if args.model_parallel else None,
-        config_params=ds_config
-    )
-    
     # get the memory usage
     print_rank("Model mem\n", torch.cuda.memory_summary())
     return model
-
 
 def main():
     torch.backends.cudnn.enabled = False
@@ -100,15 +82,6 @@ def main():
     device = torch.cuda.current_device()
     cur_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     save_rank("\n\n" + "="*30 + f" EXP at {cur_time} " + "="*30, os.path.join(args.save, "log.txt"))
-
-    with open(args.deepspeed_config, "r") as f:
-        ds_config = json.load(f)
-
-    ds_config["gradient_accumulation_steps"] = args.gradient_accumulation_steps
-    ds_config["train_micro_batch_size_per_gpu"] = args.batch_size
-    ds_config["gradient_clipping"] = args.clip_grad
-    ds_config["steps_per_print"] = args.gradient_accumulation_steps
-    ds_config["zero_optimization"]["stage"] = 0
     
     # get the tokenizer
     if args.is_opensource:
@@ -118,7 +91,7 @@ def main():
         # TODO: prepare dataset for OpenAI Models
         pass
 
-    model = setup_model_and_optimizer(args, ds_config, device)
+    model = setup_model_and_optimizer(args, device)
     
     evaluate_main(args, tokenizer, model, dataset["test"], device)
 
