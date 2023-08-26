@@ -16,7 +16,7 @@ class PromptDataset(Dataset):
         self.pad_id = self.tokenizer.eos_token_id
         self.max_prompt_length = args.max_prompt_length
 
-        self.data, _ = self.load_data_json(data_path)
+        self.data = self.load_data_json(data_path)
         
         if os.path.exists(os.path.join(data_path, f"{self.args.data_name}.jsonl")):
             with open(os.path.join(data_path, f"{self.args.data_name}.jsonl")) as f:
@@ -47,24 +47,12 @@ class PromptDataset(Dataset):
             lines = f.readlines()
         data_origin = [json.loads(line) for line in lines]
         data = []
-        print_rank("Loading Data")
-        # TODO: count the token number
-        for d in tqdm(data_origin, disable=(get_rank() != 0)):
-            prompt = d["prompt"].replace("<n>", "\n")
-            prompt_ids = self.tokenizer.encode(prompt)
-            output_ids = None
-            if "output" in d:
-                if isinstance(d["output"], list):
-                    output_ids = self.tokenizer.encode(d["output"][0])
-                else:
-                    output_ids = self.tokenizer.encode(d["output"])
+        for d in tqdm(data_origin, disable=(get_rank() != 0), desc="Loading data"):
             data.append({
-                "prompt_ids": prompt_ids,
-                "output_ids": output_ids
+                "prompt": d["prompt"].replace("<n>", "\n"),
+                "output": d["output"]
             })
-        print_rank("Load End")
-        return data, data_origin
-
+        return data
 
     def verbalizer(self):
         return self.label_map
@@ -72,46 +60,25 @@ class PromptDataset(Dataset):
     def __getitem__(self, index: int):
         data = self.data[index]
 
-        output_ids = data["output_ids"]
-        data = data["prompt_ids"]
+        output = data["output"]
+        prompt = data["prompt"]
         
-        prompt_length = self.max_prompt_length
-
-        prompt = data[:prompt_length]
-        rest = output_ids  
-
-        return index, prompt, rest
+        return index, prompt, output
     
-    def collate(self, samples):
-        bs = len(samples)
+    def collate(self, samples):     
+        prompt_batch = [sample[1] for sample in samples]
+        prompt_ids = self.tokenizer.batch_encode_plus(prompt_batch, 
+                                                 return_tensors="pt", 
+                                                 max_length=self.max_prompt_length, 
+                                                 truncation=True, 
+                                                 padding='max_length',
+                                                 return_token_type_ids=False,)
         
-        max_prompt_length = self.max_prompt_length
-        max_rest_length = max([len(samp[2]) for samp in samples])
+        answer_batch = [sample[2] for sample in samples]
         
-        model_batch = {
-            "input_ids": torch.ones(bs, max_prompt_length, dtype=torch.long) * self.pad_id,
-            "attention_mask": torch.zeros(bs, max_prompt_length, dtype=torch.long),
-        }
-        
-        no_model_batch = {
-            "idx": torch.zeros(bs, dtype=torch.long),
-            "rest_ids": torch.ones(bs, max_rest_length, dtype=torch.long) * self.pad_id
-        }
-        
-        for i, (idx, prompt, rest) in enumerate(samples):
-            # left padding
-            model_batch["input_ids"][i][-len(prompt):] = torch.tensor(prompt, dtype=torch.long)
-            model_batch["attention_mask"][i][-len(prompt):] = 1
-            no_model_batch["idx"][i] = idx
-            no_model_batch["rest_ids"][i][:len(rest)] = torch.tensor(rest, dtype=torch.long)
-        
+        return prompt_ids, answer_batch
 
-        return model_batch, no_model_batch
-
-    def move_to_device(self, model_batch, no_model_batch, device):
-        for k in model_batch:
-            model_batch[k] = model_batch[k].to(device)        
-        for k in no_model_batch:
-            no_model_batch[k] = no_model_batch[k].to(device)    
-        
-        return model_batch, no_model_batch
+    def move_to_device(self, prompt_ids, device):
+        for t in prompt_ids:
+            if torch.is_tensor(prompt_ids[t]):
+                prompt_ids[t] = prompt_ids[t].to(device)

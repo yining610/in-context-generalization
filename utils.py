@@ -3,13 +3,10 @@ from typing import Dict
 import numpy as np
 import os
 import torch.distributed as dist
-from torch.distributed import get_rank
 import torch.nn as nn
 import random
 import torch
 from datetime import timedelta
-import deepspeed
-import transformers.mpu as mpu
 
 
 def print_args(args):
@@ -19,13 +16,6 @@ def print_args(args):
     for arg in vars(args):
         dots = '.' * (29 - len(arg))
         print('  {} {} {}'.format(arg, dots, getattr(args, arg)), flush=True)
-
-
-def save_rank(log_str, save_path, rank=0):
-    if not dist.is_initialized() or dist.get_rank() == rank:
-        with open(save_path, "a") as f:
-            f.write(log_str + "\n")
-
 
 def print_rank(*args, rank=0, **kwargs):
     if not dist.is_initialized() or dist.get_rank() == rank:
@@ -44,16 +34,13 @@ def all_gather(t, dim=0, world_size=None, group=None, op="cat"):
     return all_t
 
 
-def set_random_seed(seed, mp=False):
+def set_random_seed(seed):
     """Set random seed for reproducability."""
     seed = dist.get_rank() + seed
     if seed is not None and seed > 0:
         random.seed(seed)
         np.random.seed(seed)
         torch.manual_seed(seed)
-        if mp:
-            mpu.model_parallel_cuda_manual_seed(seed)
-
 
 def init_distributed(args):
     args.rank = int(os.getenv("RANK", "0"))             # this is the rank of the current GPU
@@ -69,20 +56,13 @@ def init_distributed(args):
         device = args.local_rank
     torch.cuda.set_device(device)
 
-    if args.deepspeed:
-        deepspeed.init_distributed(timeout=timedelta(minutes=300))
-    else:
-        dist.init_process_group(backend="nccl", timeout=timedelta(minutes=300))
+    dist.init_process_group(backend="nccl", timeout=timedelta(minutes=300))
 
 def initialize(args):
     
     init_distributed(args)
 
-    if args.model_parallel:
-        assert dist.get_world_size() % args.model_parallel_size == 0 
-        mpu.initialize_model_parallel(args.model_parallel_size)
-
-    set_random_seed(args.seed, args.model_parallel)
+    set_random_seed(args.seed)
     # init save folder
     if args.save != None:
         os.makedirs(args.save, exist_ok=True)
@@ -93,35 +73,3 @@ def initialize(args):
     if os.path.exists(os.path.join(args.save, "answers.jsonl")):
         os.remove(os.path.join(args.save, "answers.jsonl"))
 
-
-def get_optimizer_params(args, model: nn.Module):
-    # taken from https://github.com/facebookresearch/SpanBERT/blob/0670d8b6a38f6714b85ea7a033f16bd8cc162676/code/run_tacred.py
-    param_optimizer = list(model.named_parameters())
-    no_decay = ['bias', 'ln_f.weight', 'ln_1.weight', 'ln_2.weight', 'ln_cross_attn']
-    optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer
-                    if not any(nd in n for nd in no_decay)]},
-        {'params': [p for n, p in param_optimizer
-                    if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
-    ]
-
-    return optimizer_grouped_parameters
-
-
-def load_parallel(model, load_dir):
-    mp_rank = mpu.get_model_parallel_rank()
-    assert mpu.get_model_parallel_world_size() != 1
-    checkpoint_name = os.path.join(load_dir, f"mp{mpu.get_model_parallel_world_size()}", f"pytorch_model_{mp_rank}.bin")
-    assert os.path.exists(checkpoint_name), f"{checkpoint_name} does not exist."
-    sd = torch.load(checkpoint_name, map_location="cpu")
-    model.load_state_dict(sd, strict=True)
-    dist.barrier()
-    print(f"Rank {get_rank()}: {checkpoint_name} loaded.")
-
-
-def save_parallel(model, save_dir):
-    mp_rank = mpu.get_model_parallel_rank()
-    os.makedirs(os.path.join(save_dir, f"mp{mpu.get_model_parallel_world_size()}"), exist_ok=True)
-    checkpoint_name = os.path.join(save_dir, f"mp{mpu.get_model_parallel_world_size()}", f"pytorch_model_{mp_rank}.bin")
-    torch.save(model.state_dict(), checkpoint_name)
-    print(f"Rank {get_rank()}: {checkpoint_name} saved.")

@@ -1,6 +1,5 @@
 import argparse
 import os
-import deepspeed
 
 def add_model_args(parser: argparse.ArgumentParser):
     """Model arguments"""
@@ -9,11 +8,10 @@ def add_model_args(parser: argparse.ArgumentParser):
     group.add_argument('--model-name', type=str)
     group.add_argument("--model-type", type=str)
     group.add_argument("--model-path", type=str)
+    group.add_argument("--model-hf-name", type=str)
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
-    group.add_argument("--model-parallel", action="store_true")
-    group.add_argument("--model-parallel-size", type=int, default=None)
     return parser
 
 def add_data_args(parser: argparse.ArgumentParser):
@@ -47,11 +45,8 @@ def add_generation_args(parser: argparse.ArgumentParser):
 
 def add_hp_args(parser: argparse.ArgumentParser):
     group = parser.add_argument_group("hp", "hyper parameter configurations")
-    group.add_argument("--gradient-accumulation-steps", type=int, default=1)
     group.add_argument('--batch-size', type=int, default=32,
                        help='Data Loader batch size')
-    group.add_argument('--clip-grad', type=float, default=1.0,
-                       help='gradient clipping')
     group.add_argument("--seed", type=int, default=42)
     
     return parser
@@ -62,7 +57,6 @@ def get_args():
     parser = add_data_args(parser)
     parser = add_generation_args(parser)
     parser = add_hp_args(parser)
-    parser = deepspeed.add_config_arguments(parser)
     
     args, unknown = parser.parse_known_args()
     

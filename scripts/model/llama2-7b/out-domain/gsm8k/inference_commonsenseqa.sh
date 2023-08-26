@@ -15,11 +15,12 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
 MODEL_NAME="llama2-7b"
 MODEL_TYPE="llama"
-MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
+MODEL_PATH="/scratch/ylu130/model-hf"
+MODEL_HF_NAME="meta-llama/Llama-2-7b-hf"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=1000
+NUM_EVL=20
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
@@ -33,6 +34,7 @@ OPTS=""
 OPTS+=" --model-name ${MODEL_NAME}"
 OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
+OPTS+=" --model-hf-name ${MODEL_HF_NAME}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
 # OPTS+=" --model-parallel"
@@ -49,9 +51,6 @@ OPTS+=" --do-sample"
 OPTS+=" --top-k 50"
 OPTS+=" --top-p 1"
 OPTS+=" --temperature 1"
-# deepspeed
-OPTS+=" --deepspeed"
-OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
 # hp
 OPTS+=" --batch-size ${BATCH_SIZE}"
 
@@ -61,9 +60,7 @@ export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
 export CUDA_VISIBLE_DEVICES=2,3,4,5
 
-echo "PYTHONPATH=${PYTHONPATH}"
-
-NUM_OUTDOMAIN_LIST=${1-"10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25"}
+NUM_OUTDOMAIN_LIST=${1-"21"}
 RATIONALE_LIST=${2-"False"}
 MAX_PROMPT_LENGTH=${3-2048}
 
