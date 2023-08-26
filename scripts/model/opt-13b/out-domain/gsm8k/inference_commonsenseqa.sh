@@ -13,10 +13,10 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 
 # model
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
-MODEL_NAME="llama2-7b"
-MODEL_TYPE="llama"
+MODEL_NAME="opt-13b"
+MODEL_TYPE="opt"
 MODEL_PATH="/scratch/ylu130/model-hf"
-MODEL_HF_NAME="meta-llama/Llama-2-7b-hf"
+MODEL_HF_NAME="facebook/opt-13b"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"

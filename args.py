@@ -1,5 +1,6 @@
 import argparse
 import os
+import deepspeed
 
 def add_model_args(parser: argparse.ArgumentParser):
     """Model arguments"""
@@ -57,6 +58,7 @@ def get_args():
     parser = add_data_args(parser)
     parser = add_generation_args(parser)
     parser = add_hp_args(parser)
+    parser = deepspeed.add_config_arguments(parser)
     
     args, unknown = parser.parse_known_args()
     

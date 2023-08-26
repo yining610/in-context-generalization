@@ -158,3 +158,4 @@ print(data[1]["prompt"])
 # # save model
 # model.save_pretrained("/scratch/ylu130/model/opt-1.3b")
 # tokenizer.save_pretrained("/scratch/ylu130/model/opt-1.3b")
+
