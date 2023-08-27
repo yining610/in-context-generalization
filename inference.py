@@ -25,7 +25,10 @@ torch.set_num_threads(4)
 
 
 def get_tokenizer(args):
-    tokenizer = AutoTokenizer.from_pretrained(args.model_hf_name, cache_dir=args.model_path)
+    if args.model_hf_name is not None:
+        tokenizer = AutoTokenizer.from_pretrained(args.model_hf_name, cache_dir=args.model_path)
+    else:
+        tokenizer = AutoTokenizer.from_pretrained(args.model_path)
     if args.model_type in ["gpt2", "opt", "llama", "gptj", "mpt"]:
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
@@ -34,10 +37,15 @@ def get_tokenizer(args):
 
 def setup_model(args, ds_config, device):
     # get the model
-    model = AutoModelForCausalLM.from_pretrained(args.model_hf_name, 
-                                                 cache_dir=args.model_path,
-                                                 device_map={"": device}, 
-                                                 torch_dtype=torch.float16)
+    if args.model_hf_name is not None:
+        model = AutoModelForCausalLM.from_pretrained(args.model_hf_name, 
+                                                     cache_dir=args.model_path,
+                                                     device_map={"": device}, 
+                                                     torch_dtype=torch.float16)
+    else:
+        model = AutoModelForCausalLM.from_pretrained(args.model_path, 
+                                                     device_map={"": device}, 
+                                                     torch_dtype=torch.float16)
     if dist.get_rank() == 0:
         print(' > number of parameters: {}'.format(
             sum([p.nelement() for p in model.parameters()])), flush=True)

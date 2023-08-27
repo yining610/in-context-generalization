@@ -9,7 +9,7 @@ def add_model_args(parser: argparse.ArgumentParser):
     group.add_argument('--model-name', type=str)
     group.add_argument("--model-type", type=str)
     group.add_argument("--model-path", type=str)
-    group.add_argument("--model-hf-name", type=str)
+    group.add_argument("--model-hf-name", type=str, default=None)
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
