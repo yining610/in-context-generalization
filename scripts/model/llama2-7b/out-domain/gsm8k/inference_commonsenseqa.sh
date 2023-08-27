@@ -20,13 +20,12 @@ MODEL_HF_NAME="meta-llama/Llama-2-7b-hf"
 # data
 DATA_NAMES="commonsenseqa"
 DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
-NUM_EVL=20
+NUM_EVL=1000
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
-TEMPERATURE=1
 # hp
-BATCH_SIZE=5
+BATCH_SIZE=4
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
@@ -37,8 +36,6 @@ OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --model-hf-name ${MODEL_HF_NAME}"
 OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
-# OPTS+=" --model-parallel"
-# OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
 # data
 OPTS+=" --data-name ${DATA_NAMES}"
 OPTS+=" --num-eval ${NUM_EVL}"
@@ -62,11 +59,11 @@ export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
 export CUDA_VISIBLE_DEVICES=6,7,8,9
 
-NUM_OUTDOMAIN_LIST=${1-"10"}
+NUM_OUTDOMAIN_LIST=${1-"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25"}
 RATIONALE_LIST=${2-"False"}
-MAX_PROMPT_LENGTH=${3-2048}
+MAX_PROMPT_LENGTH=${3-4096}
 
-for SEED in 1 10 20 30 40 50 60
+for SEED in 1 10 20 30
 do 
     for RATIONALE in $RATIONALE_LIST
     do
