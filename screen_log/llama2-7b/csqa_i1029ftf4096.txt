@@ -1,52 +1,0 @@
-PYTHONPATH=/home/ylu130/workspace/in-context-generalization
-torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 2113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --n-gpu 4 --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-out-domain 0 --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --batch-size 4 --data-dir /scratch/ylu130/processed_data/commonsenseqa/in-domain/i0-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-in-domain 0
-WARNING:torch.distributed.run:
-*****************************************
-Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
-*****************************************
-[2023-08-27 13:24:03,633] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[2023-08-27 13:24:03,637] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[2023-08-27 13:24:03,664] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-[2023-08-27 13:24:03,667] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 4
-arguments:
-  model_name ................... llama2-7b
-  model_type ................... llama
-  model_path ................... /scratch/ylu130/model-hf
-  model_hf_name ................ meta-llama/Llama-2-7b-hf
-  n_gpu ........................ 4
-  n_nodes ...................... 1
-  is_opensource ................ True
-  data_name .................... commonsenseqa
-  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/in-domain/i0-s1-rTrue
-  processed_data_dir ........... None
-  num_eval ..................... 1000
-  num_in_domain ................ 0
-  num_out_domain ............... 0
-  out_domain_data_name ......... None
-  out_domain_data_dir .......... None
-  num_workers .................. 0
-  max_prompt_length ............ 4096
-  max_length ................... 512
-  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/in-domain/i0-s1-rTrue-m4096
-  rationales ................... True
-  top_k ........................ 50
-  top_p ........................ 1.0
-  do_sample .................... True
-  num_beams .................... 1
-  temperature .................. 1.0
-  no_repeat_ngram_size ......... 6
-  repetition_penalty ........... None
-  batch_size ................... 4
-  seed ......................... 1
-  deepspeed .................... True
-  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
-  deepscale .................... False
-  deepscale_config ............. None
-  deepspeed_mpi ................ False
-  local_rank ................... 0
-  rank ......................... 0
-  world_size ................... 4
-Loading data:   0%|                                                       | 0/9741 [00:00<?, ?it/s]Loading data: 100%|███████████████████████████████████████| 9741/9741 [00:00<00:00, 1349653.65it/s]
-Num instances: 1000
-Loading checkpoint shards:   0%|                                             | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                             | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                             | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                             | 0/2 [00:00<?, ?it/s]
