@@ -66,8 +66,9 @@ class PromptDataset(Dataset):
                                                  return_token_type_ids=False,)
         
         answer_batch = [sample[2] for sample in samples]
+        indices = [sample[0] for sample in samples]
         
-        return prompt_ids, answer_batch
+        return indices, prompt_ids, answer_batch
 
     def move_to_device(self, prompt_ids, device):
         for t in prompt_ids:

@@ -20,13 +20,12 @@ MODEL_HF_NAME="meta-llama/Llama-2-13b-hf"
 # data
 DATA_NAMES="nq"
 DATA_DIR="/scratch/ylu130/data/adam"
-NUM_EVL=20
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 TEMPERATURE=1
 # hp
-BATCH_SIZE=5
+BATCH_SIZE=2
 
 OPTS=""
 # model
@@ -40,9 +39,7 @@ OPTS+=" --is-opensource"
 # OPTS+=" --model-parallel-size ${GPUS_PER_NODE}"
 # data
 OPTS+=" --data-name ${DATA_NAMES}"
-OPTS+=" --num-eval ${NUM_EVL}"
 OPTS+=" --num-workers ${NUM_WORKERS}"
-OPTS+=" --num-in-domain 0"
 OPTS+=" --num-out-domain 0"
 # generation
 OPTS+=" --save ${SAVE_PATH}"
@@ -62,12 +59,13 @@ export PYTHONPATH=${BASE_PATH}
 export CUDA_VISIBLE_DEVICES=2,3,4,5
 
 INDEX=${1-"0 4 9"}
-MAX_PROMPT_LENGTH=2048
+MAX_PROMPT_LENGTH=4096
 
 for NUM in $INDEX
 do  
     OPTS_BACKUP=${OPTS}
     OPTS_BACKUP+=" --data-dir ${DATA_DIR}/nq-test-10_total_documents_gold_at_${NUM}-llama-predictions-scored.jsonl"
+    OPTS_BACKUP+=" --num-in-domain ${NUM}"
     OPTS_BACKUP+=" --max-prompt-length ${MAX_PROMPT_LENGTH}"
     CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
     echo ${CMD}

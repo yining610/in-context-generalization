@@ -35,6 +35,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     all_query_ids = []
     all_response_ids = []
     all_answer = []
+    all_indices = []
     
     generation_config = GenerationConfig (
         do_sample=args.do_sample,
@@ -53,7 +54,7 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
     )
 
     with torch.no_grad():
-        for it, (prompt_ids, answer_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))): 
+        for it, (indices, prompt_ids, answer_batch) in enumerate(tqdm(dataloader, desc=f"Evaluating {args.data_name} ", disable=(dist.get_rank() != 0))): 
             if it == 0:
                 print_rank("############### Example ###############")
                 print_rank(tokenizer.decode(prompt_ids["input_ids"][0], skip_special_tokens=True))
@@ -69,21 +70,24 @@ def run_model(args, tokenizer, model, dataset: PromptDataset, device):
             response_ids = full_ids[:, query_ids.size(1):] # remove prompt (may include start token)
             all_query_ids.extend(query_ids)
             all_response_ids.extend(response_ids)
+            all_indices.extend(indices)
             if isinstance(answer_batch[0], list):
-                all_answer.append(x for x in answer_batch)
+                for a in answer_batch:
+                    all_answer.append(a)
             else:
                 all_answer.extend(answer_batch)
 
     return (
         all_query_ids,
         all_response_ids,
-        all_answer)
+        all_answer,
+        all_indices)
 
 
 def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
     start_time = time.time()
 
-    query_ids, response_ids, answers = run_model(args, tokenizer, model, dataset, device)
+    query_ids, response_ids, answers, indices = run_model(args, tokenizer, model, dataset, device)
     query_strs = tokenizer.batch_decode(query_ids, skip_special_tokens=True)
     response_strs = tokenizer.batch_decode(response_ids, skip_special_tokens=True)
 
@@ -95,20 +99,19 @@ def inference_main(args, tokenizer, model, dataset: PromptDataset, device):
     for q, r in zip(query_strs, response_strs):
         all_preds[0].append((q, q + r))
 
-    all_responses = []
-
     with open(os.path.join(args.save, "answers.jsonl"), "a") as f:    
-        for p, a in zip(all_preds[0], answers):
+        for p, a, i in zip(all_preds[0], answers, indices):
             q, r = p
             r = r[len(q):]
             idx = r.find("<|endoftext|>")
             if idx >= 0:
                 r = r[:idx]
             f.write(json.dumps({
+                "idx": i+1,
                 "text": r.replace("<n>", "\n").strip(),
                 "answer": a
             }) + "\n")
-            all_responses.append(r.replace("<n>", "\n").strip())
+
 
     mean_gen_length = np.mean([len(tokenizer.encode(s)) for s in response_strs])
 
