@@ -67,9 +67,8 @@ def initialize(args):
     if args.save != None:
         os.makedirs(args.save, exist_ok=True)
 
-    # remove previous results
-    if os.path.exists(os.path.join(args.save, "preds.txt")):
-        os.remove(os.path.join(args.save, "preds.txt"))
+    # finish the program if the following files exist
     if os.path.exists(os.path.join(args.save, "answers.jsonl")):
-        os.remove(os.path.join(args.save, "answers.jsonl"))
+        print("Answers already exist, exiting...")
+        exit()
 
