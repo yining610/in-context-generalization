@@ -71,7 +71,10 @@ def main():
         with open(os.path.join(args.save, "args.json"), "w") as f:
             json.dump(vars(args), f)
     
-    device = torch.cuda.current_device()
+    if args.is_slurm:
+        device = torch.device("cuda", args.local_rank)
+    else:
+        device = torch.cuda.current_device()
 
     with open(args.deepspeed_config, "r") as f:
         ds_config = json.load(f)

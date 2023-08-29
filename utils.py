@@ -43,9 +43,15 @@ def set_random_seed(seed):
         torch.manual_seed(seed)
 
 def init_distributed(args):
-    args.rank = int(os.getenv("RANK", "0"))             # this is the rank of the current GPU
-    args.world_size = int(os.getenv("WORLD_SIZE", "1")) # this is the number of GPUs
-    args.local_rank = int(os.getenv("LOCAL_RANK", "0")) # this is the rank of the current GPU within the node
+    if args.is_slurm:
+        args.rank = int(os.environ["SLURM_PROCID"])
+        args.gpus_per_node = int(os.environ["SLURM_GPUS_ON_NODE"])
+        args.local_rank = args.rank - args.gpus_per_node * (args.rank // args.gpus_per_node)
+        args.word_size = int(os.environ["WORLD_SIZE"], "1")
+    else:
+        args.rank = int(os.getenv("RANK", "0"))             # this is the rank of the current GPU
+        args.world_size = int(os.getenv("WORLD_SIZE", "1")) # this is the number of GPUs
+        args.local_rank = int(os.getenv("LOCAL_RANK", "0")) # this is the rank of the current GPU within the node
 
     if args.rank == 0:
         print(f"using world size: {args.world_size}")
@@ -56,7 +62,7 @@ def init_distributed(args):
         device = args.local_rank
     torch.cuda.set_device(device)
 
-    dist.init_process_group(backend="nccl", timeout=timedelta(minutes=300))
+    dist.init_process_group("nccl", rank=args.rank, world_size=args.world_size, timeout=timedelta(seconds=30))
 
 def initialize(args):
     

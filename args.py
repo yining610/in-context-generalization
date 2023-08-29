@@ -13,6 +13,7 @@ def add_model_args(parser: argparse.ArgumentParser):
     group.add_argument("--n-gpu", type=int, default=1)
     group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
+    group.add_argument("--is-slurm", action="store_true")
     return parser
 
 def add_data_args(parser: argparse.ArgumentParser):
@@ -49,7 +50,6 @@ def add_hp_args(parser: argparse.ArgumentParser):
     group.add_argument('--batch-size', type=int, default=32,
                        help='Data Loader batch size')
     group.add_argument("--seed", type=int, default=42)
-    
     return parser
 
 def get_args():
