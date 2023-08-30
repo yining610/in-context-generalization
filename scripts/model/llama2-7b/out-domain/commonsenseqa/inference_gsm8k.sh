@@ -1,9 +1,9 @@
 #! /bin/bash
 MASTER_ADDR=localhost
-MASTER_PORT=2113
+MASTER_PORT=12355
 NNODES=1
 NODE_RANK=0
-GPUS_PER_NODE=4
+GPUS_PER_NODE=2
 
 DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
                   --nnodes $NNODES \
@@ -15,7 +15,8 @@ DISTRIBUTED_ARGS="--nproc_per_node $GPUS_PER_NODE \
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
 MODEL_NAME="llama2-7b"
 MODEL_TYPE="llama"
-MODEL_PATH="/scratch/ylu130/model/llama-2-7b"
+MODEL_PATH="/scratch/ylu130/model-hf"
+MODEL_HF_NAME="meta-llama/Llama-2-7b-hf"
 # data
 DATA_NAMES="gsm8k"
 DATA_DIR="/scratch/ylu130/processed_data/gsm8k"
@@ -23,7 +24,6 @@ NUM_EVL=1000
 NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
-TEMPERATURE=1
 # hp
 BATCH_SIZE=5
 OUT_DOMAIN_TASK_NAME="commonsenseqa"
@@ -33,6 +33,7 @@ OPTS=""
 OPTS+=" --model-name ${MODEL_NAME}"
 OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
+OPTS+=" --model-hf-name ${MODEL_HF_NAME}"
 OPTS+=" --is-opensource"
 # data
 OPTS+=" --data-name ${DATA_NAMES}"
@@ -46,25 +47,23 @@ OPTS+=" --do-sample"
 OPTS+=" --top-k 50"
 OPTS+=" --top-p 1"
 OPTS+=" --temperature 1"
+OPTS+=" --batch-size ${BATCH_SIZE}"
 # deepspeed
 OPTS+=" --deepspeed"
 OPTS+=" --deepspeed_config ${BASE_PATH}/configs/deepspeed/ds_config.json"
-# hp
-OPTS+=" --batch-size ${BATCH_SIZE}"
 
 export NCCL_DEBUG=""
 export TOKENIZERS_PARALLELISM=false
 export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
-export CUDA_VISIBLE_DEVICES=2,3,4,5
+export CUDA_VISIBLE_DEVICES=0,1
 
-echo "PYTHONPATH=${PYTHONPATH}"
+NUM_OUTDOMAIN_LIST=${1-"1 2 4 8 16"}
+RATIONALE_LIST=${2-"False"}
+MAX_PROMPT_LENGTH=${3-4096}
 
-NUM_OUTDOMAIN_LIST=${1-"1 2 3 4 5 6 7 8 9"}
-RATIONALE_LIST=${2-"True False"}
-MAX_PROMPT_LENGTH=${3-2048}
 
-for SEED in 1 10 20 30 40 50 60
+for SEED in 1 10 20 30
 do 
     for RATIONALE in $RATIONALE_LIST
     do

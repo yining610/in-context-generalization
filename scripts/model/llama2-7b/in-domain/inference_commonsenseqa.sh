@@ -25,7 +25,7 @@ NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 # hp
-BATCH_SIZE=4
+BATCH_SIZE=5
 
 OPTS=""
 # model
@@ -57,11 +57,10 @@ export PYTHONIOENCODING=utf-8
 export PYTHONPATH=${BASE_PATH}
 export CUDA_VISIBLE_DEVICES=2,3,4,5
 
-echo "PYTHONPATH=${PYTHONPATH}"
-
 NUM_INDOMAIN_LIST=${1-"0 1 2 3 4 5 6 7 8 9"}
 RATIONALE_LIST=${2-"True False"}
 MAX_PROMPT_LENGTH=${3-4096}
+
 
 for SEED in 1 10 20 30
 do 
