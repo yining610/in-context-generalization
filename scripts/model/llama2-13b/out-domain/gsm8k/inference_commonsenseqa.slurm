@@ -2,13 +2,13 @@
 #SBATCH -A danielk_gpu
 #SBATCH --partition a100
 #SBATCH --qos=qos_gpu
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:4
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=4
 #SBATCH --time=60:00:00
 #SBATCH --job-name="llama2-13b-ood-csqa-gsm8k-f-m4096"
 #SBATCH --output="./screen_log/llama2-13b/csqa_gsm8k_ood1-25_f_4096.txt"
-#SBATCH --mem=32G
+#SBATCH --mem=40G
 #SBATCH --mail-user=ylu130@jh.edu
 #SBATCH --mail-type=ALL
 

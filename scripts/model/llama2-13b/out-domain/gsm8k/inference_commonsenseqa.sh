@@ -24,7 +24,7 @@ NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 # hp
-BATCH_SIZE=5
+BATCH_SIZE=1
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
