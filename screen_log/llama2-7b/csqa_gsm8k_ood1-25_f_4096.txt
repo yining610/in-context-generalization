@@ -753,4 +753,1761 @@ Input:The sanctions against the school were a punishing blow, and they seemed to
 Output:
 ############### End ###############
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o13-tgsm8k-s10-rFalse-m4096
-Evaluating commonsenseqa :   2%|▎             | 1/50 [01:50<1:30:34, 110.91s/it]Evaluating commonsenseqa :   4%|▌             | 2/50 [03:38<1:27:16, 109.09s/it]Evaluating commonsenseqa :   6%|▊             | 3/50 [05:27<1:25:23, 109.00s/it]Evaluating commonsenseqa :   8%|█             | 4/50 [07:17<1:23:45, 109.24s/it]Evaluating commonsenseqa :  10%|█▍            | 5/50 [09:06<1:21:50, 109.13s/it]Evaluating commonsenseqa :  12%|█▋            | 6/50 [10:54<1:19:54, 108.97s/it]Evaluating commonsenseqa :  14%|█▉            | 7/50 [12:43<1:18:01, 108.87s/it]Evaluating commonsenseqa :  16%|██▏           | 8/50 [14:32<1:16:20, 109.07s/it]
+Evaluating commonsenseqa :   2%|▎             | 1/50 [01:50<1:30:34, 110.91s/it]Evaluating commonsenseqa :   4%|▌             | 2/50 [03:38<1:27:16, 109.09s/it]Evaluating commonsenseqa :   6%|▊             | 3/50 [05:27<1:25:23, 109.00s/it]Evaluating commonsenseqa :   8%|█             | 4/50 [07:17<1:23:45, 109.24s/it]Evaluating commonsenseqa :  10%|█▍            | 5/50 [09:06<1:21:50, 109.13s/it]Evaluating commonsenseqa :  12%|█▋            | 6/50 [10:54<1:19:54, 108.97s/it]Evaluating commonsenseqa :  14%|█▉            | 7/50 [12:43<1:18:01, 108.87s/it]Evaluating commonsenseqa :  16%|██▏           | 8/50 [14:32<1:16:20, 109.07s/it]Evaluating commonsenseqa :  18%|██▌           | 9/50 [16:12<1:12:29, 106.08s/it]Evaluating commonsenseqa :  20%|██▌          | 10/50 [17:59<1:10:52, 106.31s/it]Evaluating commonsenseqa :  22%|██▊          | 11/50 [19:47<1:09:30, 106.93s/it]Evaluating commonsenseqa :  24%|███          | 12/50 [21:35<1:07:52, 107.16s/it]Evaluating commonsenseqa :  26%|███▍         | 13/50 [23:23<1:06:13, 107.38s/it]Evaluating commonsenseqa :  28%|███▋         | 14/50 [25:12<1:04:43, 107.87s/it]Evaluating commonsenseqa :  30%|███▉         | 15/50 [27:01<1:03:10, 108.29s/it]Evaluating commonsenseqa :  32%|████▏        | 16/50 [28:42<1:00:03, 105.99s/it]Evaluating commonsenseqa :  34%|█████          | 17/50 [30:32<59:04, 107.40s/it]Evaluating commonsenseqa :  36%|█████▍         | 18/50 [32:22<57:41, 108.18s/it]Evaluating commonsenseqa :  38%|█████▋         | 19/50 [34:13<56:14, 108.84s/it]Evaluating commonsenseqa :  40%|██████         | 20/50 [36:00<54:15, 108.52s/it]Evaluating commonsenseqa :  42%|██████▎        | 21/50 [37:49<52:25, 108.48s/it]Evaluating commonsenseqa :  44%|██████▌        | 22/50 [39:36<50:29, 108.18s/it]Evaluating commonsenseqa :  46%|██████▉        | 23/50 [41:24<48:33, 107.91s/it]Evaluating commonsenseqa :  48%|███████▏       | 24/50 [43:12<46:47, 107.98s/it]Evaluating commonsenseqa :  50%|████████        | 25/50 [44:07<38:22, 92.09s/it]Evaluating commonsenseqa :  52%|████████▎       | 26/50 [45:56<38:53, 97.21s/it]Evaluating commonsenseqa :  54%|████████       | 27/50 [47:44<38:30, 100.47s/it]Evaluating commonsenseqa :  56%|████████▍      | 28/50 [49:33<37:45, 102.97s/it]Evaluating commonsenseqa :  58%|████████▋      | 29/50 [51:22<36:38, 104.70s/it]Evaluating commonsenseqa :  60%|█████████      | 30/50 [53:11<35:21, 106.06s/it]Evaluating commonsenseqa :  62%|█████████▎     | 31/50 [54:59<33:46, 106.68s/it]Evaluating commonsenseqa :  64%|█████████▌     | 32/50 [56:48<32:11, 107.32s/it]Evaluating commonsenseqa :  66%|██████████▌     | 33/50 [58:06<27:54, 98.53s/it]Evaluating commonsenseqa :  68%|██████████▏    | 34/50 [59:53<26:59, 101.22s/it]Evaluating commonsenseqa :  70%|█████████    | 35/50 [1:01:46<26:09, 104.66s/it]Evaluating commonsenseqa :  72%|█████████▎   | 36/50 [1:03:34<24:41, 105.82s/it]Evaluating commonsenseqa :  74%|██████████▎   | 37/50 [1:04:44<20:33, 94.90s/it]Evaluating commonsenseqa :  76%|██████████▋   | 38/50 [1:05:29<16:00, 80.04s/it]Evaluating commonsenseqa :  78%|██████████▉   | 39/50 [1:07:20<16:20, 89.10s/it]Evaluating commonsenseqa :  80%|███████████▏  | 40/50 [1:09:09<15:51, 95.20s/it]Evaluating commonsenseqa :  82%|███████████▍  | 41/50 [1:10:56<14:49, 98.80s/it]Evaluating commonsenseqa :  84%|██████████▉  | 42/50 [1:12:45<13:33, 101.74s/it]Evaluating commonsenseqa :  86%|███████████▏ | 43/50 [1:14:33<12:05, 103.71s/it]Evaluating commonsenseqa :  88%|███████████▍ | 44/50 [1:16:20<10:27, 104.65s/it]Evaluating commonsenseqa :  90%|████████████▌ | 45/50 [1:17:24<07:41, 92.34s/it]Evaluating commonsenseqa :  92%|████████████▉ | 46/50 [1:18:58<06:12, 93.06s/it]Evaluating commonsenseqa :  94%|█████████████▏| 47/50 [1:20:47<04:53, 97.87s/it]Evaluating commonsenseqa :  96%|████████████▍| 48/50 [1:22:38<03:23, 101.86s/it]Evaluating commonsenseqa :  98%|████████████▋| 49/50 [1:24:25<01:43, 103.10s/it]Evaluating commonsenseqa : 100%|█████████████| 50/50 [1:26:13<00:00, 104.87s/it]Evaluating commonsenseqa : 100%|█████████████| 50/50 [1:26:13<00:00, 103.48s/it]
+name: commonsenseqa | avg. gen lenth: 282.8 | time: 5174.3274874687195s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o14-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 14
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 01:45:36,813] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 01:45:36,815] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 01:45:36,833] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 01:45:36,849] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o14-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 14
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o14-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 567572.62it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.60s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.29s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.33s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  3.89s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.30s/it]
+[2023-08-30 01:45:46,811] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards:  50%|█████████         | 1/2 [00:09<00:09,  9.28s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.43s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.86s/it]
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.44s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.87s/it]
+[2023-08-30 01:45:47,943] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 01:45:48,009] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:11<00:00,  4.97s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:11<00:00,  5.62s/it]
+ > number of parameters: 6738415616
+[2023-08-30 01:45:49,500] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 01:45:50,008] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 01:45:50,010] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f03743c5300>
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 01:45:50,010] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 01:45:50,011] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 01:45:50,012] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 01:45:50,012] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o14-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎                | 1/50 [01:09<57:04, 69.88s/it]Evaluating commonsenseqa :   4%|▌              | 2/50 [02:55<1:12:39, 90.82s/it]Evaluating commonsenseqa :   6%|▉              | 3/50 [04:43<1:17:24, 98.81s/it]Evaluating commonsenseqa :   8%|█             | 4/50 [06:29<1:17:50, 101.53s/it]Evaluating commonsenseqa :  10%|█▍            | 5/50 [08:15<1:17:25, 103.23s/it]Evaluating commonsenseqa :  12%|█▋            | 6/50 [10:01<1:16:22, 104.15s/it]Evaluating commonsenseqa :  14%|██             | 7/50 [11:04<1:05:04, 90.80s/it]Evaluating commonsenseqa :  16%|██▍            | 8/50 [12:51<1:06:58, 95.68s/it]Evaluating commonsenseqa :  18%|██▋            | 9/50 [14:35<1:07:18, 98.49s/it]Evaluating commonsenseqa :  20%|██▌          | 10/50 [16:21<1:07:10, 100.77s/it]Evaluating commonsenseqa :  22%|██▊          | 11/50 [18:09<1:06:57, 103.02s/it]Evaluating commonsenseqa :  24%|███▊            | 12/50 [18:52<53:35, 84.63s/it]Evaluating commonsenseqa :  26%|████▏           | 13/50 [20:39<56:21, 91.40s/it]Evaluating commonsenseqa :  28%|████▍           | 14/50 [22:25<57:34, 95.97s/it]Evaluating commonsenseqa :  30%|████▊           | 15/50 [24:10<57:28, 98.53s/it]Evaluating commonsenseqa :  32%|████▊          | 16/50 [25:54<56:53, 100.39s/it]Evaluating commonsenseqa :  34%|█████          | 17/50 [27:41<56:12, 102.21s/it]Evaluating commonsenseqa :  36%|█████▊          | 18/50 [29:11<52:32, 98.52s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [30:48<50:38, 98.01s/it]Evaluating commonsenseqa :  40%|██████         | 20/50 [32:32<50:01, 100.05s/it]Evaluating commonsenseqa :  42%|██████▎        | 21/50 [34:18<49:06, 101.62s/it]Evaluating commonsenseqa :  44%|██████▌        | 22/50 [36:01<47:40, 102.17s/it]Evaluating commonsenseqa :  46%|██████▉        | 23/50 [37:45<46:12, 102.70s/it]Evaluating commonsenseqa :  48%|███████▏       | 24/50 [39:30<44:44, 103.25s/it]Evaluating commonsenseqa :  50%|███████▌       | 25/50 [41:15<43:18, 103.95s/it]Evaluating commonsenseqa :  52%|███████▊       | 26/50 [42:59<41:34, 103.95s/it]Evaluating commonsenseqa :  54%|████████       | 27/50 [44:45<40:05, 104.58s/it]Evaluating commonsenseqa :  56%|████████▍      | 28/50 [46:30<38:18, 104.50s/it]Evaluating commonsenseqa :  58%|████████▋      | 29/50 [48:16<36:49, 105.21s/it]Evaluating commonsenseqa :  60%|█████████      | 30/50 [50:01<35:03, 105.17s/it]Evaluating commonsenseqa :  62%|█████████▎     | 31/50 [51:46<33:12, 104.86s/it]Evaluating commonsenseqa :  64%|█████████▌     | 32/50 [53:31<31:30, 105.04s/it]Evaluating commonsenseqa :  66%|██████████▌     | 33/50 [54:36<26:23, 93.16s/it]Evaluating commonsenseqa :  68%|██████████▉     | 34/50 [56:24<25:59, 97.49s/it]Evaluating commonsenseqa :  70%|███████████▏    | 35/50 [58:09<24:54, 99.62s/it]Evaluating commonsenseqa :  72%|██████████▊    | 36/50 [59:52<23:29, 100.65s/it]Evaluating commonsenseqa :  74%|█████████▌   | 37/50 [1:01:39<22:12, 102.53s/it]Evaluating commonsenseqa :  76%|█████████▉   | 38/50 [1:03:24<20:40, 103.40s/it]Evaluating commonsenseqa :  78%|██████████▏  | 39/50 [1:05:11<19:08, 104.44s/it]Evaluating commonsenseqa :  80%|██████████▍  | 40/50 [1:06:58<17:33, 105.34s/it]Evaluating commonsenseqa :  82%|██████████▋  | 41/50 [1:08:43<15:47, 105.24s/it]Evaluating commonsenseqa :  84%|██████████▉  | 42/50 [1:10:29<14:03, 105.46s/it]Evaluating commonsenseqa :  86%|███████████▏ | 43/50 [1:12:17<12:21, 105.99s/it]Evaluating commonsenseqa :  88%|███████████▍ | 44/50 [1:14:02<10:34, 105.79s/it]Evaluating commonsenseqa :  90%|███████████▋ | 45/50 [1:15:48<08:49, 105.98s/it]Evaluating commonsenseqa :  92%|███████████▉ | 46/50 [1:17:29<06:57, 104.42s/it]Evaluating commonsenseqa :  94%|█████████████▏| 47/50 [1:18:16<04:21, 87.11s/it]Evaluating commonsenseqa :  96%|█████████████▍| 48/50 [1:20:00<03:04, 92.19s/it]Evaluating commonsenseqa :  98%|█████████████▋| 49/50 [1:21:09<01:25, 85.17s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:22:56<00:00, 91.93s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:22:56<00:00, 99.54s/it]
+name: commonsenseqa | avg. gen lenth: 289.06 | time: 4977.256418228149s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o15-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 15
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 03:13:04,570] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 03:13:04,574] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 03:13:04,600] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 03:13:04,628] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o15-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 15
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o15-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 554914.84it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.41s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.43s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.49s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.52s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.25s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.73s/it]
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.25s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.73s/it]
+[2023-08-30 03:13:15,401] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+ > number of parameters: 6738415616
+[2023-08-30 03:13:15,414] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.36s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.83s/it]
+[2023-08-30 03:13:15,594] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.44s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.90s/it]
+[2023-08-30 03:13:15,747] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 03:13:16,336] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 03:13:16,337] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 03:13:16,337] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 03:13:16,337] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 03:13:16,337] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 03:13:16,337] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f5330fd1300>
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 03:13:16,338] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 03:13:16,339] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 03:13:16,339] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input: A merchant bought 15 keyboards and 25 printers for a total of $2050. If a keyboard costs $20, how much does a printer cost?
+Output: 70
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o15-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎             | 1/50 [01:47<1:27:29, 107.14s/it]Evaluating commonsenseqa :   4%|▌             | 2/50 [03:31<1:24:17, 105.36s/it]Evaluating commonsenseqa :   6%|▊             | 3/50 [05:13<1:21:21, 103.85s/it]Evaluating commonsenseqa :   8%|█             | 4/50 [06:58<1:19:57, 104.29s/it]Evaluating commonsenseqa :  10%|█▌             | 5/50 [08:06<1:08:32, 91.38s/it]Evaluating commonsenseqa :  12%|█▊             | 6/50 [09:52<1:10:28, 96.10s/it]Evaluating commonsenseqa :  14%|██             | 7/50 [11:38<1:11:12, 99.37s/it]Evaluating commonsenseqa :  16%|██▍            | 8/50 [13:14<1:08:52, 98.39s/it]Evaluating commonsenseqa :  18%|██▋            | 9/50 [14:57<1:08:15, 99.89s/it]Evaluating commonsenseqa :  20%|██▌          | 10/50 [16:42<1:07:35, 101.38s/it]Evaluating commonsenseqa :  22%|██▊          | 11/50 [18:25<1:06:18, 102.02s/it]Evaluating commonsenseqa :  24%|███          | 12/50 [20:07<1:04:34, 101.95s/it]Evaluating commonsenseqa :  26%|███▍         | 13/50 [21:51<1:03:18, 102.66s/it]Evaluating commonsenseqa :  28%|███▋         | 14/50 [23:37<1:02:07, 103.54s/it]Evaluating commonsenseqa :  30%|████▌          | 15/50 [25:11<58:40, 100.60s/it]Evaluating commonsenseqa :  32%|████▊          | 16/50 [26:54<57:30, 101.49s/it]Evaluating commonsenseqa :  34%|█████          | 17/50 [28:38<56:14, 102.27s/it]Evaluating commonsenseqa :  36%|█████▍         | 18/50 [30:23<54:57, 103.04s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [31:16<45:28, 88.01s/it]Evaluating commonsenseqa :  40%|██████▍         | 20/50 [33:02<46:39, 93.30s/it]Evaluating commonsenseqa :  42%|██████▋         | 21/50 [34:30<44:20, 91.76s/it]Evaluating commonsenseqa :  44%|███████         | 22/50 [36:13<44:26, 95.22s/it]Evaluating commonsenseqa :  46%|███████▎        | 23/50 [37:58<44:05, 97.99s/it]Evaluating commonsenseqa :  48%|███████▏       | 24/50 [39:43<43:25, 100.20s/it]Evaluating commonsenseqa :  50%|███████▌       | 25/50 [41:28<42:20, 101.60s/it]Evaluating commonsenseqa :  52%|███████▊       | 26/50 [43:15<41:19, 103.30s/it]Evaluating commonsenseqa :  54%|████████       | 27/50 [44:58<39:33, 103.18s/it]Evaluating commonsenseqa :  56%|████████▍      | 28/50 [46:44<38:08, 104.04s/it]Evaluating commonsenseqa :  58%|█████████▎      | 29/50 [47:44<31:48, 90.89s/it]Evaluating commonsenseqa :  60%|█████████▌      | 30/50 [49:28<31:31, 94.59s/it]Evaluating commonsenseqa :  62%|█████████▉      | 31/50 [51:11<30:46, 97.18s/it]Evaluating commonsenseqa :  64%|█████████▌     | 32/50 [52:58<30:02, 100.12s/it]Evaluating commonsenseqa :  66%|█████████▉     | 33/50 [54:43<28:50, 101.78s/it]Evaluating commonsenseqa :  68%|██████████▏    | 34/50 [56:29<27:25, 102.86s/it]Evaluating commonsenseqa :  70%|███████████▏    | 35/50 [58:00<24:51, 99.45s/it]Evaluating commonsenseqa :  72%|██████████▊    | 36/50 [59:47<23:40, 101.47s/it]Evaluating commonsenseqa :  74%|█████████▌   | 37/50 [1:01:31<22:10, 102.34s/it]Evaluating commonsenseqa :  76%|█████████▉   | 38/50 [1:03:14<20:30, 102.57s/it]Evaluating commonsenseqa :  78%|██████████▏  | 39/50 [1:04:58<18:52, 102.99s/it]Evaluating commonsenseqa :  80%|██████████▍  | 40/50 [1:06:41<17:09, 102.99s/it]Evaluating commonsenseqa :  82%|██████████▋  | 41/50 [1:08:26<15:32, 103.59s/it]Evaluating commonsenseqa :  84%|██████████▉  | 42/50 [1:10:10<13:48, 103.59s/it]Evaluating commonsenseqa :  86%|███████████▏ | 43/50 [1:11:53<12:05, 103.63s/it]Evaluating commonsenseqa :  88%|████████████▎ | 44/50 [1:13:09<09:32, 95.39s/it]Evaluating commonsenseqa :  90%|████████████▌ | 45/50 [1:14:54<08:10, 98.13s/it]Evaluating commonsenseqa :  92%|████████████▉ | 46/50 [1:16:38<06:39, 99.95s/it]Evaluating commonsenseqa :  94%|████████████▏| 47/50 [1:18:24<05:05, 101.86s/it]Evaluating commonsenseqa :  96%|████████████▍| 48/50 [1:20:08<03:24, 102.48s/it]Evaluating commonsenseqa :  98%|████████████▋| 49/50 [1:21:52<01:42, 102.79s/it]Evaluating commonsenseqa : 100%|█████████████| 50/50 [1:23:33<00:00, 102.32s/it]Evaluating commonsenseqa : 100%|█████████████| 50/50 [1:23:33<00:00, 100.27s/it]
+name: commonsenseqa | avg. gen lenth: 277.084 | time: 5013.974562168121s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o16-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 16
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 04:39:06,715] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 04:39:07,208] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 04:39:07,216] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 04:39:07,265] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o16-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 16
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o16-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 536107.01it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.10s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.19s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:08<00:08,  8.31s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:08<00:08,  8.68s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.15s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.59s/it]
+ > number of parameters: 6738415616
+[2023-08-30 04:39:17,844] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.29s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.72s/it]
+[2023-08-30 04:39:18,104] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:10<00:00,  4.62s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:10<00:00,  5.17s/it]
+[2023-08-30 04:39:18,979] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:10<00:00,  4.74s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:10<00:00,  5.33s/it]
+[2023-08-30 04:39:19,305] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 04:39:19,892] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 04:39:19,894] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f982dfc9300>
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 04:39:19,894] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 04:39:19,895] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 04:39:19,895] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input: A merchant bought 15 keyboards and 25 printers for a total of $2050. If a keyboard costs $20, how much does a printer cost?
+Output: 70
+
+Input: Gina has two bank accounts. Each account has a quarter of the balance in Betty's account. If Betty's account balance is $3,456, what is the combined balance of both Gina's accounts?
+Output: 1728
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o16-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎             | 1/50 [01:45<1:26:19, 105.70s/it]Evaluating commonsenseqa :   4%|▌             | 2/50 [03:28<1:23:03, 103.83s/it]Evaluating commonsenseqa :   6%|▊             | 3/50 [05:10<1:20:44, 103.08s/it]Evaluating commonsenseqa :   8%|█             | 4/50 [06:52<1:18:50, 102.85s/it]Evaluating commonsenseqa :  10%|█▍            | 5/50 [08:37<1:17:37, 103.50s/it]Evaluating commonsenseqa :  12%|█▋            | 6/50 [10:21<1:15:57, 103.58s/it]Evaluating commonsenseqa :  14%|█▉            | 7/50 [11:56<1:12:17, 100.88s/it]Evaluating commonsenseqa :  16%|██▏           | 8/50 [13:39<1:10:57, 101.38s/it]Evaluating commonsenseqa :  18%|██▌           | 9/50 [15:20<1:09:12, 101.28s/it]Evaluating commonsenseqa :  20%|██▌          | 10/50 [17:02<1:07:46, 101.66s/it]Evaluating commonsenseqa :  22%|██▊          | 11/50 [18:44<1:06:12, 101.85s/it]Evaluating commonsenseqa :  24%|███          | 12/50 [20:26<1:04:31, 101.87s/it]Evaluating commonsenseqa :  26%|███▍         | 13/50 [22:08<1:02:42, 101.68s/it]Evaluating commonsenseqa :  28%|███▋         | 14/50 [23:49<1:00:57, 101.60s/it]Evaluating commonsenseqa :  30%|████▌          | 15/50 [25:30<59:10, 101.45s/it]Evaluating commonsenseqa :  32%|████▊          | 16/50 [27:12<57:37, 101.69s/it]Evaluating commonsenseqa :  34%|█████▍          | 17/50 [28:48<54:52, 99.77s/it]Evaluating commonsenseqa :  36%|█████▍         | 18/50 [30:30<53:36, 100.52s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [31:57<49:50, 96.48s/it]Evaluating commonsenseqa :  40%|██████▍         | 20/50 [33:38<48:57, 97.92s/it]Evaluating commonsenseqa :  42%|██████▋         | 21/50 [35:17<47:31, 98.32s/it]Evaluating commonsenseqa :  44%|██████▌        | 22/50 [37:02<46:41, 100.04s/it]Evaluating commonsenseqa :  46%|██████▉        | 23/50 [38:42<45:04, 100.15s/it]Evaluating commonsenseqa :  48%|███████▏       | 24/50 [40:23<43:32, 100.49s/it]Evaluating commonsenseqa :  50%|███████▌       | 25/50 [42:04<41:53, 100.53s/it]Evaluating commonsenseqa :  52%|███████▊       | 26/50 [43:46<40:27, 101.13s/it]Evaluating commonsenseqa :  54%|████████       | 27/50 [45:28<38:46, 101.15s/it]Evaluating commonsenseqa :  56%|████████▍      | 28/50 [47:10<37:14, 101.55s/it]Evaluating commonsenseqa :  58%|████████▋      | 29/50 [48:51<35:31, 101.51s/it]Evaluating commonsenseqa :  60%|█████████      | 30/50 [50:33<33:51, 101.59s/it]Evaluating commonsenseqa :  62%|█████████▎     | 31/50 [52:14<32:03, 101.22s/it]Evaluating commonsenseqa :  64%|█████████▌     | 32/50 [53:56<30:27, 101.55s/it]Evaluating commonsenseqa :  66%|█████████▉     | 33/50 [55:39<28:54, 102.02s/it]Evaluating commonsenseqa :  68%|██████████▏    | 34/50 [57:20<27:09, 101.82s/it]Evaluating commonsenseqa :  70%|██████████▌    | 35/50 [59:01<25:21, 101.46s/it]Evaluating commonsenseqa :  72%|█████████▎   | 36/50 [1:00:41<23:36, 101.15s/it]Evaluating commonsenseqa :  74%|█████████▌   | 37/50 [1:02:23<21:54, 101.14s/it]Evaluating commonsenseqa :  76%|█████████▉   | 38/50 [1:04:04<20:14, 101.25s/it]Evaluating commonsenseqa :  78%|██████████▏  | 39/50 [1:05:47<18:38, 101.70s/it]Evaluating commonsenseqa :  80%|██████████▍  | 40/50 [1:07:31<17:05, 102.50s/it]Evaluating commonsenseqa :  82%|███████████▍  | 41/50 [1:08:00<12:04, 80.45s/it]Evaluating commonsenseqa :  84%|███████████▊  | 42/50 [1:09:37<11:23, 85.46s/it]Evaluating commonsenseqa :  86%|████████████  | 43/50 [1:11:19<10:32, 90.41s/it]Evaluating commonsenseqa :  88%|████████████▎ | 44/50 [1:13:03<09:25, 94.29s/it]Evaluating commonsenseqa :  90%|████████████▌ | 45/50 [1:14:44<08:01, 96.27s/it]Evaluating commonsenseqa :  92%|████████████▉ | 46/50 [1:16:23<06:29, 97.27s/it]Evaluating commonsenseqa :  94%|█████████████▏| 47/50 [1:18:08<04:58, 99.46s/it]Evaluating commonsenseqa :  96%|████████████▍| 48/50 [1:19:52<03:21, 100.84s/it]Evaluating commonsenseqa :  98%|████████████▋| 49/50 [1:21:32<01:40, 100.77s/it]Evaluating commonsenseqa : 100%|█████████████| 50/50 [1:23:13<00:00, 100.75s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:23:13<00:00, 99.87s/it]
+name: commonsenseqa | avg. gen lenth: 312.712 | time: 4993.9518048763275s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o17-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 17
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 06:02:39,220] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 06:02:39,730] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 06:02:39,767] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 06:02:39,776] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o17-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 17
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o17-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 523904.79it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.44s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.09s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.25s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.47s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  3.83s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.23s/it]
+ > number of parameters: 6738415616
+[2023-08-30 06:02:49,461] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.13s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.57s/it]
+[2023-08-30 06:02:50,160] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.26s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.71s/it]
+[2023-08-30 06:02:50,458] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.33s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.80s/it]
+[2023-08-30 06:02:50,584] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 06:02:51,180] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 06:02:51,181] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fc186cc9300>
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 06:02:51,182] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 06:02:51,183] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 06:02:51,183] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input: A merchant bought 15 keyboards and 25 printers for a total of $2050. If a keyboard costs $20, how much does a printer cost?
+Output: 70
+
+Input: Gina has two bank accounts. Each account has a quarter of the balance in Betty's account. If Betty's account balance is $3,456, what is the combined balance of both Gina's accounts?
+Output: 1728
+
+Input: Zain has 10 more of each coin than Emerie. If Emerie has six quarters, seven dimes, and five nickels, how many coins does Zain have?
+Output: 48
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o17-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎             | 1/50 [01:44<1:25:17, 104.44s/it]Evaluating commonsenseqa :   4%|▌             | 2/50 [03:25<1:22:02, 102.55s/it]Evaluating commonsenseqa :   6%|▉              | 3/50 [04:44<1:12:00, 91.93s/it]Evaluating commonsenseqa :   8%|█▏             | 4/50 [06:25<1:13:04, 95.31s/it]Evaluating commonsenseqa :  10%|█▌             | 5/50 [07:48<1:08:09, 90.87s/it]Evaluating commonsenseqa :  12%|█▊             | 6/50 [09:30<1:09:26, 94.70s/it]Evaluating commonsenseqa :  14%|██             | 7/50 [11:10<1:09:05, 96.41s/it]Evaluating commonsenseqa :  16%|██▋              | 8/50 [11:40<52:46, 75.39s/it]Evaluating commonsenseqa :  18%|███              | 9/50 [12:58<51:55, 75.99s/it]Evaluating commonsenseqa :  20%|███▏            | 10/50 [14:39<55:50, 83.75s/it]Evaluating commonsenseqa :  22%|███▌            | 11/50 [15:56<53:07, 81.74s/it]Evaluating commonsenseqa :  24%|███▊            | 12/50 [17:35<54:59, 86.84s/it]Evaluating commonsenseqa :  26%|████▏           | 13/50 [19:16<56:22, 91.43s/it]Evaluating commonsenseqa :  28%|████▍           | 14/50 [20:58<56:42, 94.52s/it]Evaluating commonsenseqa :  30%|████▊           | 15/50 [22:38<56:08, 96.24s/it]Evaluating commonsenseqa :  32%|█████           | 16/50 [24:18<55:07, 97.27s/it]Evaluating commonsenseqa :  34%|█████▍          | 17/50 [25:38<50:34, 91.94s/it]Evaluating commonsenseqa :  36%|█████▊          | 18/50 [26:24<41:45, 78.28s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [28:06<44:02, 85.25s/it]Evaluating commonsenseqa :  40%|██████▍         | 20/50 [29:48<45:12, 90.41s/it]Evaluating commonsenseqa :  42%|██████▋         | 21/50 [31:30<45:26, 94.03s/it]Evaluating commonsenseqa :  44%|███████         | 22/50 [33:11<44:47, 96.00s/it]Evaluating commonsenseqa :  46%|███████▎        | 23/50 [34:52<43:50, 97.43s/it]Evaluating commonsenseqa :  48%|███████▋        | 24/50 [36:30<42:22, 97.77s/it]Evaluating commonsenseqa :  50%|████████        | 25/50 [38:11<41:02, 98.50s/it]Evaluating commonsenseqa :  52%|████████▎       | 26/50 [39:25<36:32, 91.36s/it]Evaluating commonsenseqa :  54%|████████▋       | 27/50 [41:06<36:04, 94.12s/it]Evaluating commonsenseqa :  56%|████████▉       | 28/50 [42:46<35:08, 95.85s/it]Evaluating commonsenseqa :  58%|█████████▎      | 29/50 [44:27<34:04, 97.36s/it]Evaluating commonsenseqa :  60%|█████████▌      | 30/50 [46:07<32:47, 98.40s/it]Evaluating commonsenseqa :  62%|█████████▉      | 31/50 [47:38<30:24, 96.02s/it]Evaluating commonsenseqa :  64%|██████████▏     | 32/50 [49:18<29:12, 97.37s/it]Evaluating commonsenseqa :  66%|██████████▌     | 33/50 [50:34<25:42, 90.75s/it]Evaluating commonsenseqa :  68%|██████████▉     | 34/50 [51:17<20:24, 76.50s/it]Evaluating commonsenseqa :  70%|███████████▏    | 35/50 [53:01<21:12, 84.82s/it]Evaluating commonsenseqa :  72%|███████████▌    | 36/50 [54:40<20:47, 89.12s/it]Evaluating commonsenseqa :  74%|███████████▊    | 37/50 [56:20<19:59, 92.26s/it]Evaluating commonsenseqa :  76%|████████████▏   | 38/50 [58:00<18:53, 94.46s/it]Evaluating commonsenseqa :  78%|████████████▍   | 39/50 [59:42<17:45, 96.83s/it]Evaluating commonsenseqa :  80%|███████████▏  | 40/50 [1:01:22<16:17, 97.80s/it]Evaluating commonsenseqa :  82%|███████████▍  | 41/50 [1:03:03<14:48, 98.72s/it]Evaluating commonsenseqa :  84%|███████████▊  | 42/50 [1:04:44<13:16, 99.51s/it]Evaluating commonsenseqa :  86%|████████████  | 43/50 [1:06:25<11:39, 99.90s/it]Evaluating commonsenseqa :  88%|███████████▍ | 44/50 [1:08:06<10:02, 100.37s/it]Evaluating commonsenseqa :  90%|███████████▋ | 45/50 [1:09:46<08:21, 100.23s/it]Evaluating commonsenseqa :  92%|███████████▉ | 46/50 [1:11:26<06:40, 100.04s/it]Evaluating commonsenseqa :  94%|████████████▏| 47/50 [1:13:07<05:00, 100.29s/it]Evaluating commonsenseqa :  96%|█████████████▍| 48/50 [1:14:46<03:19, 99.97s/it]Evaluating commonsenseqa :  98%|████████████▋| 49/50 [1:16:27<01:40, 100.22s/it]Evaluating commonsenseqa : 100%|█████████████| 50/50 [1:18:07<00:00, 100.26s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:18:07<00:00, 93.75s/it]
+name: commonsenseqa | avg. gen lenth: 282.888 | time: 4688.085840702057s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o18-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 18
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 07:25:17,191] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 07:25:17,214] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 07:25:17,242] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 07:25:17,253] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o18-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 18
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o18-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 495142.89it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.01s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.25s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.31s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.46s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.11s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.54s/it]
+[2023-08-30 07:25:27,805] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.29s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.73s/it]
+[2023-08-30 07:25:28,186] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.41s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.85s/it]
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.44s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.89s/it]
+ > number of parameters: 6738415616
+[2023-08-30 07:25:28,475] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 07:25:28,586] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 07:25:29,134] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 07:25:29,136] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f0ad70bd300>
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 07:25:29,136] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 07:25:29,137] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 07:25:29,137] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input: A merchant bought 15 keyboards and 25 printers for a total of $2050. If a keyboard costs $20, how much does a printer cost?
+Output: 70
+
+Input: Gina has two bank accounts. Each account has a quarter of the balance in Betty's account. If Betty's account balance is $3,456, what is the combined balance of both Gina's accounts?
+Output: 1728
+
+Input: Zain has 10 more of each coin than Emerie. If Emerie has six quarters, seven dimes, and five nickels, how many coins does Zain have?
+Output: 48
+
+Input: Adonis is playing a prank on his dad by replacing his shampoo with hot sauce. Every day, after his dad showers, Adonis replaces the shampoo with 1/2 an ounce of hot sauce. He knows his dad uses 1 oz of shampoo a day from a new 10 oz bottle that no one else uses. After 4 days, what percentage of the liquid in the bottle is hot sauce?
+Output: 25
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o18-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎                | 1/50 [00:36<29:33, 36.19s/it]Evaluating commonsenseqa :   4%|▋                | 2/50 [02:15<58:41, 73.36s/it]Evaluating commonsenseqa :   6%|▉              | 3/50 [03:54<1:06:26, 84.82s/it]Evaluating commonsenseqa :   8%|█▏             | 4/50 [05:32<1:09:12, 90.26s/it]Evaluating commonsenseqa :  10%|█▋               | 5/50 [06:25<57:37, 76.84s/it]Evaluating commonsenseqa :  12%|█▊             | 6/50 [08:01<1:00:58, 83.15s/it]Evaluating commonsenseqa :  14%|██             | 7/50 [09:39<1:03:07, 88.08s/it]Evaluating commonsenseqa :  16%|██▍            | 8/50 [11:17<1:04:00, 91.43s/it]Evaluating commonsenseqa :  18%|██▋            | 9/50 [12:56<1:03:54, 93.53s/it]Evaluating commonsenseqa :  20%|██▊           | 10/50 [14:35<1:03:37, 95.43s/it]Evaluating commonsenseqa :  22%|███           | 11/50 [16:14<1:02:36, 96.32s/it]Evaluating commonsenseqa :  24%|███▊            | 12/50 [17:36<58:16, 92.02s/it]Evaluating commonsenseqa :  26%|████▏           | 13/50 [19:11<57:21, 93.01s/it]Evaluating commonsenseqa :  28%|████▍           | 14/50 [20:47<56:22, 93.96s/it]Evaluating commonsenseqa :  30%|████▊           | 15/50 [22:23<55:06, 94.46s/it]Evaluating commonsenseqa :  32%|█████           | 16/50 [24:01<54:12, 95.67s/it]Evaluating commonsenseqa :  34%|█████▍          | 17/50 [25:41<53:19, 96.96s/it]Evaluating commonsenseqa :  36%|█████▊          | 18/50 [26:53<47:43, 89.48s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [28:33<47:48, 92.54s/it]Evaluating commonsenseqa :  40%|██████▍         | 20/50 [30:11<47:03, 94.12s/it]Evaluating commonsenseqa :  42%|██████▋         | 21/50 [31:48<45:54, 94.98s/it]Evaluating commonsenseqa :  44%|███████         | 22/50 [33:27<44:53, 96.18s/it]Evaluating commonsenseqa :  46%|███████▎        | 23/50 [35:05<43:35, 96.87s/it]Evaluating commonsenseqa :  48%|███████▋        | 24/50 [36:41<41:46, 96.40s/it]Evaluating commonsenseqa :  50%|████████        | 25/50 [38:17<40:09, 96.36s/it]Evaluating commonsenseqa :  52%|████████▎       | 26/50 [39:58<39:04, 97.69s/it]Evaluating commonsenseqa :  54%|████████▋       | 27/50 [41:36<37:28, 97.76s/it]Evaluating commonsenseqa :  56%|████████▉       | 28/50 [43:12<35:39, 97.25s/it]Evaluating commonsenseqa :  58%|█████████▎      | 29/50 [44:49<34:04, 97.34s/it]Evaluating commonsenseqa :  60%|█████████▌      | 30/50 [46:15<31:16, 93.82s/it]Evaluating commonsenseqa :  62%|█████████▉      | 31/50 [47:52<30:00, 94.75s/it]Evaluating commonsenseqa :  64%|██████████▏     | 32/50 [49:30<28:47, 95.96s/it]Evaluating commonsenseqa :  66%|██████████▌     | 33/50 [50:34<24:25, 86.22s/it]Evaluating commonsenseqa :  68%|██████████▉     | 34/50 [52:11<23:53, 89.60s/it]Evaluating commonsenseqa :  70%|███████████▏    | 35/50 [53:52<23:13, 92.92s/it]Evaluating commonsenseqa :  72%|███████████▌    | 36/50 [55:29<21:59, 94.23s/it]Evaluating commonsenseqa :  74%|███████████▊    | 37/50 [57:09<20:44, 95.76s/it]Evaluating commonsenseqa :  76%|████████████▏   | 38/50 [58:47<19:18, 96.56s/it]Evaluating commonsenseqa :  78%|██████████▉   | 39/50 [1:00:24<17:43, 96.69s/it]Evaluating commonsenseqa :  80%|███████████▏  | 40/50 [1:01:49<15:31, 93.18s/it]Evaluating commonsenseqa :  82%|███████████▍  | 41/50 [1:03:27<14:12, 94.67s/it]Evaluating commonsenseqa :  84%|███████████▊  | 42/50 [1:05:07<12:48, 96.09s/it]Evaluating commonsenseqa :  86%|████████████  | 43/50 [1:06:07<09:56, 85.28s/it]Evaluating commonsenseqa :  88%|████████████▎ | 44/50 [1:07:46<08:56, 89.37s/it]Evaluating commonsenseqa :  90%|████████████▌ | 45/50 [1:09:22<07:36, 91.38s/it]Evaluating commonsenseqa :  92%|████████████▉ | 46/50 [1:11:00<06:13, 93.31s/it]Evaluating commonsenseqa :  94%|█████████████▏| 47/50 [1:12:37<04:44, 94.67s/it]Evaluating commonsenseqa :  96%|█████████████▍| 48/50 [1:14:15<03:11, 95.63s/it]Evaluating commonsenseqa :  98%|█████████████▋| 49/50 [1:15:53<01:36, 96.26s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:17:31<00:00, 96.66s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:17:31<00:00, 93.02s/it]
+name: commonsenseqa | avg. gen lenth: 268.04 | time: 4651.450844049454s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o19-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 19
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 08:43:34,416] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 08:43:34,423] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 08:43:34,441] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 08:43:34,454] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o19-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 19
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o19-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 470314.78it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.63s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.48s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.39s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  3.94s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.34s/it]
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  3.91s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.29s/it]
+ > number of parameters: 6738415616
+[2023-08-30 08:43:44,436] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 08:43:44,472] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards:  50%|█████████         | 1/2 [00:09<00:09,  9.28s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.44s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.89s/it]
+[2023-08-30 08:43:45,534] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:11<00:00,  4.94s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:11<00:00,  5.59s/it]
+[2023-08-30 08:43:47,082] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 08:43:47,713] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 08:43:47,715] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 08:43:47,715] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 08:43:47,715] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 08:43:47,715] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 08:43:47,715] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7ff08d2d12d0>
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 08:43:47,716] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 08:43:47,717] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 08:43:47,717] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input: A merchant bought 15 keyboards and 25 printers for a total of $2050. If a keyboard costs $20, how much does a printer cost?
+Output: 70
+
+Input: Gina has two bank accounts. Each account has a quarter of the balance in Betty's account. If Betty's account balance is $3,456, what is the combined balance of both Gina's accounts?
+Output: 1728
+
+Input: Zain has 10 more of each coin than Emerie. If Emerie has six quarters, seven dimes, and five nickels, how many coins does Zain have?
+Output: 48
+
+Input: Adonis is playing a prank on his dad by replacing his shampoo with hot sauce. Every day, after his dad showers, Adonis replaces the shampoo with 1/2 an ounce of hot sauce. He knows his dad uses 1 oz of shampoo a day from a new 10 oz bottle that no one else uses. After 4 days, what percentage of the liquid in the bottle is hot sauce?
+Output: 25
+
+Input: Lana and Mike are taking their dog and renting a cabin in the mountains for 2 weeks.  The daily rate is $125.00  There is a $100.00 pet fee.  There is also a 20% service/cleaning fee for the rental.  They need to pay 50% of the entire bill as a security deposit.  How much is their security deposit?
+Output: 1110
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o19-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎              | 1/50 [01:36<1:18:26, 96.06s/it]Evaluating commonsenseqa :   4%|▌              | 2/50 [03:11<1:16:32, 95.69s/it]Evaluating commonsenseqa :   6%|▉              | 3/50 [04:46<1:14:39, 95.32s/it]Evaluating commonsenseqa :   8%|█▏             | 4/50 [06:11<1:10:06, 91.45s/it]Evaluating commonsenseqa :  10%|█▌             | 5/50 [07:47<1:09:39, 92.87s/it]Evaluating commonsenseqa :  12%|█▊             | 6/50 [09:21<1:08:30, 93.42s/it]Evaluating commonsenseqa :  14%|██             | 7/50 [10:56<1:07:09, 93.72s/it]Evaluating commonsenseqa :  16%|██▍            | 8/50 [12:29<1:05:37, 93.74s/it]Evaluating commonsenseqa :  18%|██▋            | 9/50 [14:01<1:03:35, 93.05s/it]Evaluating commonsenseqa :  20%|██▊           | 10/50 [15:37<1:02:39, 93.99s/it]Evaluating commonsenseqa :  22%|███           | 11/50 [17:14<1:01:36, 94.77s/it]Evaluating commonsenseqa :  24%|███▊            | 12/50 [18:47<59:47, 94.42s/it]Evaluating commonsenseqa :  26%|████▏           | 13/50 [20:23<58:32, 94.94s/it]Evaluating commonsenseqa :  28%|████▍           | 14/50 [21:58<56:54, 94.86s/it]Evaluating commonsenseqa :  30%|████▊           | 15/50 [23:24<53:45, 92.16s/it]Evaluating commonsenseqa :  32%|█████           | 16/50 [24:59<52:45, 93.12s/it]Evaluating commonsenseqa :  34%|█████▍          | 17/50 [26:33<51:24, 93.46s/it]Evaluating commonsenseqa :  36%|█████▊          | 18/50 [28:08<49:56, 93.63s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [29:13<44:01, 85.21s/it]Evaluating commonsenseqa :  40%|██████▍         | 20/50 [30:47<43:58, 87.95s/it]Evaluating commonsenseqa :  42%|██████▋         | 21/50 [32:23<43:33, 90.12s/it]Evaluating commonsenseqa :  44%|███████         | 22/50 [33:58<42:44, 91.58s/it]Evaluating commonsenseqa :  46%|███████▎        | 23/50 [35:33<41:41, 92.65s/it]Evaluating commonsenseqa :  48%|███████▋        | 24/50 [37:08<40:32, 93.56s/it]Evaluating commonsenseqa :  50%|████████        | 25/50 [38:44<39:17, 94.30s/it]Evaluating commonsenseqa :  52%|████████▎       | 26/50 [40:18<37:36, 94.03s/it]Evaluating commonsenseqa :  54%|████████▋       | 27/50 [41:53<36:08, 94.27s/it]Evaluating commonsenseqa :  56%|████████▉       | 28/50 [43:26<34:29, 94.08s/it]Evaluating commonsenseqa :  58%|█████████▎      | 29/50 [45:04<33:15, 95.03s/it]Evaluating commonsenseqa :  60%|█████████▌      | 30/50 [46:38<31:39, 94.97s/it]Evaluating commonsenseqa :  62%|█████████▉      | 31/50 [48:11<29:48, 94.15s/it]Evaluating commonsenseqa :  64%|██████████▏     | 32/50 [49:45<28:15, 94.20s/it]Evaluating commonsenseqa :  66%|██████████▌     | 33/50 [51:20<26:47, 94.58s/it]Evaluating commonsenseqa :  68%|██████████▉     | 34/50 [52:54<25:10, 94.39s/it]Evaluating commonsenseqa :  70%|███████████▏    | 35/50 [54:00<21:25, 85.69s/it]Evaluating commonsenseqa :  72%|███████████▌    | 36/50 [55:03<18:25, 78.93s/it]Evaluating commonsenseqa :  74%|███████████▊    | 37/50 [56:37<18:07, 83.62s/it]Evaluating commonsenseqa :  76%|████████████▏   | 38/50 [58:14<17:29, 87.42s/it]Evaluating commonsenseqa :  78%|████████████▍   | 39/50 [59:31<15:27, 84.32s/it]Evaluating commonsenseqa :  80%|███████████▏  | 40/50 [1:01:07<14:39, 87.95s/it]Evaluating commonsenseqa :  82%|███████████▍  | 41/50 [1:02:43<13:32, 90.26s/it]Evaluating commonsenseqa :  84%|███████████▊  | 42/50 [1:04:18<12:13, 91.66s/it]Evaluating commonsenseqa :  86%|████████████  | 43/50 [1:05:51<10:45, 92.17s/it]Evaluating commonsenseqa :  88%|████████████▎ | 44/50 [1:06:56<08:22, 83.82s/it]Evaluating commonsenseqa :  90%|████████████▌ | 45/50 [1:08:33<07:19, 87.85s/it]Evaluating commonsenseqa :  92%|████████████▉ | 46/50 [1:10:07<05:59, 89.79s/it]Evaluating commonsenseqa :  94%|█████████████▏| 47/50 [1:11:44<04:35, 91.86s/it]Evaluating commonsenseqa :  96%|█████████████▍| 48/50 [1:13:07<02:58, 89.24s/it]Evaluating commonsenseqa :  98%|█████████████▋| 49/50 [1:14:41<01:30, 90.65s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:16:16<00:00, 91.95s/it]Evaluating commonsenseqa : 100%|██████████████| 50/50 [1:16:16<00:00, 91.53s/it]
+name: commonsenseqa | avg. gen lenth: 277.592 | time: 4576.751673460007s
+torchrun --nproc_per_node 4 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 29501 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o20-tgsm8k-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 20
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 10:00:11,011] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 10:00:11,479] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 10:00:11,509] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 10:00:11,527] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 4
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o20-tgsm8k-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 20
+  out_domain_data_name ......... gsm8k
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o20-tgsm8k-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 4
+Loading data:   0%|                                    | 0/9741 [00:00<?, ?it/s]Loading data: 100%|█████████████████████| 9741/9741 [00:00<00:00, 666406.49it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.68s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.67s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:06<00:06,  6.94s/it]Loading checkpoint shards:  50%|█████████         | 1/2 [00:07<00:07,  7.04s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.00s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.40s/it]
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  3.99s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.39s/it]
+ > number of parameters: 6738415616
+[2023-08-30 10:00:21,478] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 10:00:21,523] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.05s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:08<00:00,  4.48s/it]
+Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.07s/it]Loading checkpoint shards: 100%|██████████████████| 2/2 [00:09<00:00,  4.52s/it]
+[2023-08-30 10:00:21,788] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 10:00:21,886] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 10:00:22,466] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 10:00:22,467] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f9d675c92d0>
+[2023-08-30 10:00:22,467] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   train_batch_size ............. 4
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   world_size ................... 4
+[2023-08-30 10:00:22,468] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 10:00:22,469] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 10:00:22,469] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 10:00:22,469] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 10:00:22,469] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 10:00:22,469] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|                         | 0/50 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: Adam bought 3 kilograms of nuts and 2.5 kilograms of dried fruits at a store. One kilogram of nuts costs $12 and one kilogram of dried fruit costs $8. How much did his purchases cost?
+Output: 56
+
+Input: Johns goes to the gym 3 times a week.  He spends 1 hour each day lifting weight. Additionally, he also spends a third of his weightlifting time warming up and doing cardio each day.  How many hours does he spend at the gym a week?
+Output: 4
+
+Input: James has to refuel his plane.  It used to cost $200 to refill the tank.  He got an extra tank to double fuel capacity.  Fuel prices also went up by 20%.  How much does he pay now for fuel?
+Output: 480
+
+Input: The number of goals scored in a game against Barca by exactly two players last season accounts for 20% of all goals scored in the league. If the players scored an equal number of goals, and the total number of goals scored in the league against Barca that season is 300, calculate the number of goals each of the two players scored.
+Output: 30
+
+Input: Every day Tom drinks 5 12-oz cans of soda plus 64 ounces of water. How many ounces of fluid does he drink a week?
+Output: 868
+
+Input: Stella and Twinkle are filling up a truck with a capacity of 6000 stone blocks at the rate of 250 blocks per hour per person. They work for four hours and are then joined by 6 other people who also work at the same rate. How many hours did filling the truck take?
+Output: 6
+
+Input: Elijah drank 8.5 pints of coffee yesterday. Emilio drank 9.5 pints of water yesterday. How many cups of liquid did the two boys drink yesterday?
+Output: 36
+
+Input: Doris works at the Widget Factory in the packing department. She puts 3 widgets in each carton, which are 4 inches wide, 4 inches long, and 5 inches tall. She then packs those cartons into a shipping box before sending it to the loading bay. The shipping boxes are 20 inches wide, 20 inches long, and 20 inches high. How many widgets get shipped in each shipping box?
+Output: 300
+
+Input: Queenie earns $150 a day as a part-time clerk. She earns an additional $5 per hour as overtime pay. How much will Queenie receive for working 5 days with 4 hours overtime?
+Output: 770
+
+Input: Jodi starts off walking 1 mile a day for 6 days a week.  On the second week, she walks 2 miles a day, 6 days a week.  On the third week, she walks 3 miles a day, 6 days a week. Finally on the fourth week, she walks 4 miles a day, 6 days a week.  How many miles has she walked in 4 weeks?
+Output: 60
+
+Input: A club is going to get additional members so that they will have 5 more than twice their current number of their members. If the club has 10 members now, how many additional members do they need?
+Output: 15
+
+Input: Andrea buys herself a pony for her 30th birthday. She pays $500/month to rent a pasture for it, $10 a day for food, and $60/lesson for two lessons a week. How much does she spend on her pony in a year?
+Output: 15890
+
+Input: A pet shop has 2 puppies and some kittens. A puppy costs $20, and a kitten costs $15. If the stock is worth $100, how many kittens does the pet shop have?
+Output: 4
+
+Input: Noah, who loves his Grammy, calls her every week to talk about his day. If each call lasts 30 minutes and he is charged $0.05 per call minute, how much would he be billed if he makes the calls for a year?
+Output: 78
+
+Input: A merchant bought 15 keyboards and 25 printers for a total of $2050. If a keyboard costs $20, how much does a printer cost?
+Output: 70
+
+Input: Gina has two bank accounts. Each account has a quarter of the balance in Betty's account. If Betty's account balance is $3,456, what is the combined balance of both Gina's accounts?
+Output: 1728
+
+Input: Zain has 10 more of each coin than Emerie. If Emerie has six quarters, seven dimes, and five nickels, how many coins does Zain have?
+Output: 48
+
+Input: Adonis is playing a prank on his dad by replacing his shampoo with hot sauce. Every day, after his dad showers, Adonis replaces the shampoo with 1/2 an ounce of hot sauce. He knows his dad uses 1 oz of shampoo a day from a new 10 oz bottle that no one else uses. After 4 days, what percentage of the liquid in the bottle is hot sauce?
+Output: 25
+
+Input: Lana and Mike are taking their dog and renting a cabin in the mountains for 2 weeks.  The daily rate is $125.00  There is a $100.00 pet fee.  There is also a 20% service/cleaning fee for the rental.  They need to pay 50% of the entire bill as a security deposit.  How much is their security deposit?
+Output: 1110
+
+Input: Abigail is trying a new recipe for a cold drink. It uses 1/4 of a cup of iced tea and 1 and 1/4 of a cup of lemonade to make one drink. If she fills a pitcher with 18 total cups of this drink, how many cups of lemonade are in the pitcher?
+Output: 15
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/o20-tgsm8k-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|▎              | 1/50 [01:34<1:17:26, 94.82s/it]Evaluating commonsenseqa :   4%|▌              | 2/50 [03:08<1:15:05, 93.86s/it]Evaluating commonsenseqa :   6%|▉              | 3/50 [04:41<1:13:22, 93.68s/it]Evaluating commonsenseqa :   8%|█▏             | 4/50 [06:15<1:12:00, 93.92s/it]Evaluating commonsenseqa :  10%|█▌             | 5/50 [07:48<1:10:07, 93.50s/it]Evaluating commonsenseqa :  12%|█▊             | 6/50 [09:21<1:08:24, 93.29s/it]Evaluating commonsenseqa :  14%|██             | 7/50 [10:52<1:06:25, 92.69s/it]Evaluating commonsenseqa :  16%|██▍            | 8/50 [12:24<1:04:34, 92.24s/it]Evaluating commonsenseqa :  18%|██▋            | 9/50 [13:56<1:03:07, 92.38s/it]Evaluating commonsenseqa :  20%|██▊           | 10/50 [15:29<1:01:38, 92.46s/it]Evaluating commonsenseqa :  22%|███           | 11/50 [17:02<1:00:14, 92.68s/it]Evaluating commonsenseqa :  24%|███▊            | 12/50 [18:36<58:49, 92.89s/it]Evaluating commonsenseqa :  26%|████▏           | 13/50 [20:07<57:03, 92.52s/it]Evaluating commonsenseqa :  28%|████▍           | 14/50 [21:40<55:30, 92.50s/it]Evaluating commonsenseqa :  30%|████▊           | 15/50 [23:12<53:56, 92.47s/it]Evaluating commonsenseqa :  32%|█████           | 16/50 [24:45<52:25, 92.52s/it]Evaluating commonsenseqa :  34%|█████▍          | 17/50 [26:16<50:41, 92.18s/it]Evaluating commonsenseqa :  36%|█████▊          | 18/50 [27:48<49:03, 91.98s/it]Evaluating commonsenseqa :  38%|██████          | 19/50 [29:03<44:55, 86.95s/it]Evaluating commonsenseqa :  40%|██████▍         | 20/50 [30:33<43:59, 87.99s/it]Evaluating commonsenseqa :  42%|██████▋         | 21/50 [32:07<43:19, 89.63s/it]Evaluating commonsenseqa :  44%|███████         | 22/50 [33:39<42:14, 90.53s/it]Evaluating commonsenseqa :  46%|███████▎        | 23/50 [35:13<41:12, 91.56s/it]Evaluating commonsenseqa :  48%|███████▋        | 24/50 [36:45<39:40, 91.54s/it]Evaluating commonsenseqa :  50%|████████        | 25/50 [37:46<34:23, 82.56s/it]Evaluating commonsenseqa :  52%|████████▎       | 26/50 [39:20<34:17, 85.74s/it]Evaluating commonsenseqa :  54%|████████▋       | 27/50 [40:52<33:40, 87.85s/it]Evaluating commonsenseqa :  56%|████████▉       | 28/50 [42:24<32:38, 89.02s/it]Evaluating commonsenseqa :  58%|█████████▎      | 29/50 [43:54<31:17, 89.42s/it]Evaluating commonsenseqa :  60%|█████████▌      | 30/50 [45:26<29:59, 89.96s/it]Evaluating commonsenseqa :  62%|█████████▉      | 31/50 [46:57<28:39, 90.48s/it]Evaluating commonsenseqa :  64%|██████████▏     | 32/50 [48:29<27:16, 90.93s/it]Evaluating commonsenseqa :  66%|██████████▌     | 33/50 [50:03<25:59, 91.73s/it]Evaluating commonsenseqa :  68%|██████████▉     | 34/50 [51:34<24:25, 91.60s/it]Evaluating commonsenseqa :  70%|███████████▏    | 35/50 [53:06<22:54, 91.62s/it]Evaluating commonsenseqa :  72%|███████████▌    | 36/50 [54:41<21:36, 92.62s/it]Evaluating commonsenseqa :  74%|███████████▊    | 37/50 [56:14<20:07, 92.86s/it]Evaluating commonsenseqa :  76%|████████████▏   | 38/50 [57:34<17:48, 89.00s/it]Evaluating commonsenseqa :  78%|████████████▍   | 39/50 [59:06<16:29, 89.93s/it]Evaluating commonsenseqa :  80%|███████████▏  | 40/50 [1:00:40<15:11, 91.19s/it]Evaluating commonsenseqa :  82%|███████████▍  | 41/50 [1:02:13<13:43, 91.48s/it]Evaluating commonsenseqa :  84%|███████████▊  | 42/50 [1:03:46<12:16, 92.11s/it]
