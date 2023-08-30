@@ -710,3 +710,4 @@ Input:The sanctions against the school were a punishing blow, and they seemed to
 Output:
 ############### End ###############
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/in-domain/i8-s10-rFalse-m4096
+Evaluating commonsenseqa :   2%|█▍                                                                    | 1/50 [02:08<1:44:44, 128.25s/it]
