@@ -47,7 +47,7 @@ def init_distributed(args):
         args.rank = int(os.environ["SLURM_PROCID"])
         args.gpus_per_node = int(os.environ["SLURM_GPUS_ON_NODE"])
         args.local_rank = args.rank - args.gpus_per_node * (args.rank // args.gpus_per_node)
-        args.word_size = int(os.environ["WORLD_SIZE"], "1")
+        args.word_size = int(os.getenv["WORLD_SIZE"], "1")
     else:
         args.rank = int(os.getenv("RANK", "0"))             # this is the rank of the current GPU
         args.world_size = int(os.getenv("WORLD_SIZE", "1")) # this is the number of GPUs

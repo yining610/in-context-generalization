@@ -2,9 +2,9 @@
 #SBATCH -A danielk_gpu
 #SBATCH --partition a100
 #SBATCH --qos=qos_gpu
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:1
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-node=1
 #SBATCH --time=60:00:00
 #SBATCH --job-name="llama2-13b-ood-csqa-gsm8k-f-m4096"
 #SBATCH --output="./screen_log/llama2-13b/csqa_gsm8k_ood1-25_f_4096.txt"
@@ -25,6 +25,6 @@ module load anaconda
 
 conda activate ood # open the Python environment
 
-bash 
+bash /home/ylu130/workspace/in-context-generalization/scripts/model/llama2-13b/out-domain/gsm8k/inference_commonsenseqa.sh
 
 

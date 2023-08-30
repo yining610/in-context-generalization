@@ -33,7 +33,6 @@ OPTS+=" --model-name ${MODEL_NAME}"
 OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --model-hf-name ${MODEL_HF_NAME}"
-OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
 # data
 OPTS+=" --data-name ${DATA_NAMES}"

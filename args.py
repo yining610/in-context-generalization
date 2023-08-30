@@ -10,8 +10,6 @@ def add_model_args(parser: argparse.ArgumentParser):
     group.add_argument("--model-type", type=str)
     group.add_argument("--model-path", type=str)
     group.add_argument("--model-hf-name", type=str, default=None)
-    group.add_argument("--n-gpu", type=int, default=1)
-    group.add_argument("--n-nodes", type=int, default=1)
     group.add_argument("--is-opensource", action="store_true")
     group.add_argument("--is-slurm", action="store_true")
     return parser
@@ -65,8 +63,6 @@ def get_args():
     assert all(["--" not in x for x in unknown]), unknown
     
     args.local_rank = int(os.getenv("LOCAL_RANK", "0"))
-        
-    args.n_gpu = args.n_gpu * args.n_nodes
     
     if args.model_name is not None:
         if args.num_out_domain == 0:

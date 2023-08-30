@@ -24,7 +24,7 @@ NUM_WORKERS=0
 # generation
 SAVE_PATH="${BASE_PATH}/results"
 # hp
-BATCH_SIZE=4
+BATCH_SIZE=5
 OUT_DOMAIN_TASK_NAME="gsm8k"
 
 OPTS=""
@@ -33,7 +33,6 @@ OPTS+=" --model-name ${MODEL_NAME}"
 OPTS+=" --model-type ${MODEL_TYPE}"
 OPTS+=" --model-path ${MODEL_PATH}"
 OPTS+=" --model-hf-name ${MODEL_HF_NAME}"
-OPTS+=" --n-gpu ${GPUS_PER_NODE}"
 OPTS+=" --is-opensource"
 OPTS+=" --is-slurm"
 # data
