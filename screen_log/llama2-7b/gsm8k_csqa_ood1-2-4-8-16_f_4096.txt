@@ -817,4 +817,713 @@ Input:Natalia sold clips to 48 of her friends in April, and then she sold half a
 Output:
 ############### End ###############
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o8-tcommonsenseqa-s1-rFalse-m4096
-Evaluating gsm8k :   1%|▍                                           | 1/100 [02:07<3:31:08, 127.96s/it]Evaluating gsm8k :   2%|▉                                           | 2/100 [04:13<3:26:50, 126.63s/it]Evaluating gsm8k :   3%|█▎                                          | 3/100 [06:18<3:23:41, 125.99s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [08:04<3:08:40, 117.92s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [09:32<2:49:52, 107.29s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [11:27<2:51:45, 109.63s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [13:04<2:43:36, 105.56s/it]Evaluating gsm8k :   8%|███▌                                        | 8/100 [15:09<2:51:29, 111.84s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [17:15<2:56:09, 116.15s/it]Evaluating gsm8k :  10%|████▎                                      | 10/100 [19:21<2:58:48, 119.21s/it]Evaluating gsm8k :  11%|████▋                                      | 11/100 [20:49<2:42:45, 109.73s/it]Evaluating gsm8k :  12%|█████▏                                     | 12/100 [22:51<2:46:34, 113.57s/it]Evaluating gsm8k :  13%|█████▋                                      | 13/100 [23:56<2:23:23, 98.89s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [26:03<2:33:39, 107.20s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [27:51<2:32:29, 107.64s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [29:58<2:38:35, 113.28s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [32:02<2:41:23, 116.67s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [34:07<2:42:44, 119.07s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [36:14<2:43:57, 121.46s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [38:04<2:37:28, 118.11s/it]Evaluating gsm8k :  21%|█████████                                  | 21/100 [40:09<2:38:05, 120.07s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [42:15<2:38:33, 121.97s/it]Evaluating gsm8k :  23%|█████████▉                                 | 23/100 [43:52<2:26:53, 114.47s/it]Evaluating gsm8k :  24%|██████████▎                                | 24/100 [45:57<2:28:57, 117.59s/it]Evaluating gsm8k :  25%|██████████▊                                | 25/100 [47:59<2:28:36, 118.89s/it]Evaluating gsm8k :  26%|███████████▏                               | 26/100 [50:07<2:29:45, 121.43s/it]Evaluating gsm8k :  27%|███████████▌                               | 27/100 [52:12<2:29:17, 122.70s/it]Evaluating gsm8k :  28%|████████████                               | 28/100 [54:14<2:26:54, 122.43s/it]Evaluating gsm8k :  29%|████████████▍                              | 29/100 [56:17<2:25:08, 122.65s/it]Evaluating gsm8k :  30%|████████████▉                              | 30/100 [58:23<2:24:15, 123.65s/it]Evaluating gsm8k :  31%|████████████▋                            | 31/100 [1:00:28<2:22:31, 123.93s/it]Evaluating gsm8k :  32%|█████████████                            | 32/100 [1:02:25<2:18:19, 122.05s/it]Evaluating gsm8k :  33%|█████████████▌                           | 33/100 [1:03:48<2:03:09, 110.30s/it]Evaluating gsm8k :  34%|█████████████▉                           | 34/100 [1:05:55<2:06:41, 115.17s/it]Evaluating gsm8k :  35%|██████████████▋                           | 35/100 [1:06:38<1:41:17, 93.51s/it]Evaluating gsm8k :  36%|██████████████▊                          | 36/100 [1:08:44<1:50:06, 103.23s/it]Evaluating gsm8k :  37%|███████████████▏                         | 37/100 [1:10:52<1:56:10, 110.65s/it]Evaluating gsm8k :  38%|███████████████▌                         | 38/100 [1:12:59<1:59:38, 115.78s/it]Evaluating gsm8k :  39%|███████████████▉                         | 39/100 [1:15:03<2:00:07, 118.15s/it]Evaluating gsm8k :  40%|████████████████▍                        | 40/100 [1:16:51<1:55:05, 115.10s/it]Evaluating gsm8k :  41%|████████████████▊                        | 41/100 [1:18:37<1:50:33, 112.44s/it]Evaluating gsm8k :  42%|█████████████████▏                       | 42/100 [1:20:16<1:44:47, 108.40s/it]Evaluating gsm8k :  43%|█████████████████▋                       | 43/100 [1:22:22<1:48:01, 113.70s/it]Evaluating gsm8k :  44%|██████████████████                       | 44/100 [1:24:26<1:49:00, 116.80s/it]Evaluating gsm8k :  45%|██████████████████▍                      | 45/100 [1:26:31<1:49:10, 119.10s/it]Evaluating gsm8k :  46%|██████████████████▊                      | 46/100 [1:28:37<1:49:04, 121.19s/it]Evaluating gsm8k :  47%|███████████████████▎                     | 47/100 [1:30:41<1:47:51, 122.11s/it]Evaluating gsm8k :  48%|███████████████████▋                     | 48/100 [1:32:48<1:47:08, 123.62s/it]Evaluating gsm8k :  49%|████████████████████                     | 49/100 [1:34:53<1:45:14, 123.81s/it]Evaluating gsm8k :  50%|████████████████████▌                    | 50/100 [1:36:58<1:43:33, 124.28s/it]Evaluating gsm8k :  51%|████████████████████▉                    | 51/100 [1:37:53<1:24:32, 103.52s/it]Evaluating gsm8k :  52%|█████████████████████▎                   | 52/100 [1:39:59<1:28:07, 110.16s/it]Evaluating gsm8k :  53%|█████████████████████▋                   | 53/100 [1:42:07<1:30:27, 115.47s/it]Evaluating gsm8k :  54%|██████████████████████▏                  | 54/100 [1:44:11<1:30:32, 118.09s/it]Evaluating gsm8k :  55%|██████████████████████▌                  | 55/100 [1:46:17<1:30:24, 120.54s/it]Evaluating gsm8k :  56%|██████████████████████▉                  | 56/100 [1:47:53<1:23:05, 113.31s/it]Evaluating gsm8k :  57%|███████████████████████▎                 | 57/100 [1:50:00<1:24:05, 117.33s/it]Evaluating gsm8k :  58%|███████████████████████▊                 | 58/100 [1:52:04<1:23:31, 119.33s/it]Evaluating gsm8k :  59%|████████████████████████▊                 | 59/100 [1:52:51<1:06:38, 97.54s/it]Evaluating gsm8k :  60%|████████████████████████▌                | 60/100 [1:54:56<1:10:31, 105.79s/it]Evaluating gsm8k :  61%|█████████████████████████                | 61/100 [1:57:02<1:12:49, 112.03s/it]Evaluating gsm8k :  62%|█████████████████████████▍               | 62/100 [1:59:06<1:13:12, 115.58s/it]Evaluating gsm8k :  63%|█████████████████████████▊               | 63/100 [2:01:14<1:13:27, 119.13s/it]Evaluating gsm8k :  64%|██████████████████████████▏              | 64/100 [2:03:18<1:12:26, 120.74s/it]Evaluating gsm8k :  65%|██████████████████████████▋              | 65/100 [2:05:24<1:11:16, 122.18s/it]Evaluating gsm8k :  66%|███████████████████████████              | 66/100 [2:07:30<1:09:55, 123.39s/it]Evaluating gsm8k :  67%|███████████████████████████▍             | 67/100 [2:09:39<1:08:52, 125.21s/it]Evaluating gsm8k :  68%|███████████████████████████▉             | 68/100 [2:11:45<1:06:45, 125.16s/it]Evaluating gsm8k :  69%|████████████████████████████▎            | 69/100 [2:13:50<1:04:42, 125.24s/it]Evaluating gsm8k :  70%|████████████████████████████▋            | 70/100 [2:15:58<1:03:01, 126.06s/it]Evaluating gsm8k :  71%|███████████████████████████████▏            | 71/100 [2:16:33<47:45, 98.83s/it]Evaluating gsm8k :  72%|███████████████████████████████▋            | 72/100 [2:17:56<43:51, 93.97s/it]Evaluating gsm8k :  73%|████████████████████████████████            | 73/100 [2:19:15<40:21, 89.68s/it]Evaluating gsm8k :  74%|███████████████████████████████▊           | 74/100 [2:21:24<43:56, 101.40s/it]Evaluating gsm8k :  75%|████████████████████████████████▎          | 75/100 [2:23:34<45:48, 109.95s/it]Evaluating gsm8k :  76%|█████████████████████████████████▍          | 76/100 [2:24:08<34:52, 87.19s/it]Evaluating gsm8k :  77%|█████████████████████████████████▉          | 77/100 [2:26:11<37:33, 97.99s/it]Evaluating gsm8k :  78%|██████████████████████████████████▎         | 78/100 [2:27:34<34:13, 93.33s/it]Evaluating gsm8k :  79%|█████████████████████████████████▉         | 79/100 [2:29:40<36:03, 103.04s/it]Evaluating gsm8k :  80%|██████████████████████████████████▍        | 80/100 [2:31:43<36:20, 109.02s/it]Evaluating gsm8k :  81%|██████████████████████████████████▊        | 81/100 [2:33:48<36:06, 114.03s/it]Evaluating gsm8k :  82%|███████████████████████████████████▎       | 82/100 [2:35:54<35:13, 117.41s/it]Evaluating gsm8k :  83%|███████████████████████████████████▋       | 83/100 [2:38:02<34:12, 120.75s/it]Evaluating gsm8k :  84%|████████████████████████████████████       | 84/100 [2:40:10<32:48, 123.01s/it]Evaluating gsm8k :  85%|████████████████████████████████████▌      | 85/100 [2:41:37<28:03, 112.20s/it]Evaluating gsm8k :  86%|████████████████████████████████████▉      | 86/100 [2:43:07<24:34, 105.31s/it]Evaluating gsm8k :  87%|█████████████████████████████████████▍     | 87/100 [2:45:16<24:23, 112.58s/it]Evaluating gsm8k :  88%|█████████████████████████████████████▊     | 88/100 [2:47:23<23:20, 116.75s/it]Evaluating gsm8k :  89%|██████████████████████████████████████▎    | 89/100 [2:49:32<22:05, 120.50s/it]Evaluating gsm8k :  90%|██████████████████████████████████████▋    | 90/100 [2:51:37<20:18, 121.86s/it]Evaluating gsm8k :  91%|███████████████████████████████████████▏   | 91/100 [2:53:41<18:22, 122.51s/it]Evaluating gsm8k :  92%|███████████████████████████████████████▌   | 92/100 [2:55:18<15:18, 114.86s/it]
+Evaluating gsm8k :   1%|▍                                           | 1/100 [02:07<3:31:08, 127.96s/it]Evaluating gsm8k :   2%|▉                                           | 2/100 [04:13<3:26:50, 126.63s/it]Evaluating gsm8k :   3%|█▎                                          | 3/100 [06:18<3:23:41, 125.99s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [08:04<3:08:40, 117.92s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [09:32<2:49:52, 107.29s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [11:27<2:51:45, 109.63s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [13:04<2:43:36, 105.56s/it]Evaluating gsm8k :   8%|███▌                                        | 8/100 [15:09<2:51:29, 111.84s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [17:15<2:56:09, 116.15s/it]Evaluating gsm8k :  10%|████▎                                      | 10/100 [19:21<2:58:48, 119.21s/it]Evaluating gsm8k :  11%|████▋                                      | 11/100 [20:49<2:42:45, 109.73s/it]Evaluating gsm8k :  12%|█████▏                                     | 12/100 [22:51<2:46:34, 113.57s/it]Evaluating gsm8k :  13%|█████▋                                      | 13/100 [23:56<2:23:23, 98.89s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [26:03<2:33:39, 107.20s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [27:51<2:32:29, 107.64s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [29:58<2:38:35, 113.28s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [32:02<2:41:23, 116.67s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [34:07<2:42:44, 119.07s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [36:14<2:43:57, 121.46s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [38:04<2:37:28, 118.11s/it]Evaluating gsm8k :  21%|█████████                                  | 21/100 [40:09<2:38:05, 120.07s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [42:15<2:38:33, 121.97s/it]Evaluating gsm8k :  23%|█████████▉                                 | 23/100 [43:52<2:26:53, 114.47s/it]Evaluating gsm8k :  24%|██████████▎                                | 24/100 [45:57<2:28:57, 117.59s/it]Evaluating gsm8k :  25%|██████████▊                                | 25/100 [47:59<2:28:36, 118.89s/it]Evaluating gsm8k :  26%|███████████▏                               | 26/100 [50:07<2:29:45, 121.43s/it]Evaluating gsm8k :  27%|███████████▌                               | 27/100 [52:12<2:29:17, 122.70s/it]Evaluating gsm8k :  28%|████████████                               | 28/100 [54:14<2:26:54, 122.43s/it]Evaluating gsm8k :  29%|████████████▍                              | 29/100 [56:17<2:25:08, 122.65s/it]Evaluating gsm8k :  30%|████████████▉                              | 30/100 [58:23<2:24:15, 123.65s/it]Evaluating gsm8k :  31%|████████████▋                            | 31/100 [1:00:28<2:22:31, 123.93s/it]Evaluating gsm8k :  32%|█████████████                            | 32/100 [1:02:25<2:18:19, 122.05s/it]Evaluating gsm8k :  33%|█████████████▌                           | 33/100 [1:03:48<2:03:09, 110.30s/it]Evaluating gsm8k :  34%|█████████████▉                           | 34/100 [1:05:55<2:06:41, 115.17s/it]Evaluating gsm8k :  35%|██████████████▋                           | 35/100 [1:06:38<1:41:17, 93.51s/it]Evaluating gsm8k :  36%|██████████████▊                          | 36/100 [1:08:44<1:50:06, 103.23s/it]Evaluating gsm8k :  37%|███████████████▏                         | 37/100 [1:10:52<1:56:10, 110.65s/it]Evaluating gsm8k :  38%|███████████████▌                         | 38/100 [1:12:59<1:59:38, 115.78s/it]Evaluating gsm8k :  39%|███████████████▉                         | 39/100 [1:15:03<2:00:07, 118.15s/it]Evaluating gsm8k :  40%|████████████████▍                        | 40/100 [1:16:51<1:55:05, 115.10s/it]Evaluating gsm8k :  41%|████████████████▊                        | 41/100 [1:18:37<1:50:33, 112.44s/it]Evaluating gsm8k :  42%|█████████████████▏                       | 42/100 [1:20:16<1:44:47, 108.40s/it]Evaluating gsm8k :  43%|█████████████████▋                       | 43/100 [1:22:22<1:48:01, 113.70s/it]Evaluating gsm8k :  44%|██████████████████                       | 44/100 [1:24:26<1:49:00, 116.80s/it]Evaluating gsm8k :  45%|██████████████████▍                      | 45/100 [1:26:31<1:49:10, 119.10s/it]Evaluating gsm8k :  46%|██████████████████▊                      | 46/100 [1:28:37<1:49:04, 121.19s/it]Evaluating gsm8k :  47%|███████████████████▎                     | 47/100 [1:30:41<1:47:51, 122.11s/it]Evaluating gsm8k :  48%|███████████████████▋                     | 48/100 [1:32:48<1:47:08, 123.62s/it]Evaluating gsm8k :  49%|████████████████████                     | 49/100 [1:34:53<1:45:14, 123.81s/it]Evaluating gsm8k :  50%|████████████████████▌                    | 50/100 [1:36:58<1:43:33, 124.28s/it]Evaluating gsm8k :  51%|████████████████████▉                    | 51/100 [1:37:53<1:24:32, 103.52s/it]Evaluating gsm8k :  52%|█████████████████████▎                   | 52/100 [1:39:59<1:28:07, 110.16s/it]Evaluating gsm8k :  53%|█████████████████████▋                   | 53/100 [1:42:07<1:30:27, 115.47s/it]Evaluating gsm8k :  54%|██████████████████████▏                  | 54/100 [1:44:11<1:30:32, 118.09s/it]Evaluating gsm8k :  55%|██████████████████████▌                  | 55/100 [1:46:17<1:30:24, 120.54s/it]Evaluating gsm8k :  56%|██████████████████████▉                  | 56/100 [1:47:53<1:23:05, 113.31s/it]Evaluating gsm8k :  57%|███████████████████████▎                 | 57/100 [1:50:00<1:24:05, 117.33s/it]Evaluating gsm8k :  58%|███████████████████████▊                 | 58/100 [1:52:04<1:23:31, 119.33s/it]Evaluating gsm8k :  59%|████████████████████████▊                 | 59/100 [1:52:51<1:06:38, 97.54s/it]Evaluating gsm8k :  60%|████████████████████████▌                | 60/100 [1:54:56<1:10:31, 105.79s/it]Evaluating gsm8k :  61%|█████████████████████████                | 61/100 [1:57:02<1:12:49, 112.03s/it]Evaluating gsm8k :  62%|█████████████████████████▍               | 62/100 [1:59:06<1:13:12, 115.58s/it]Evaluating gsm8k :  63%|█████████████████████████▊               | 63/100 [2:01:14<1:13:27, 119.13s/it]Evaluating gsm8k :  64%|██████████████████████████▏              | 64/100 [2:03:18<1:12:26, 120.74s/it]Evaluating gsm8k :  65%|██████████████████████████▋              | 65/100 [2:05:24<1:11:16, 122.18s/it]Evaluating gsm8k :  66%|███████████████████████████              | 66/100 [2:07:30<1:09:55, 123.39s/it]Evaluating gsm8k :  67%|███████████████████████████▍             | 67/100 [2:09:39<1:08:52, 125.21s/it]Evaluating gsm8k :  68%|███████████████████████████▉             | 68/100 [2:11:45<1:06:45, 125.16s/it]Evaluating gsm8k :  69%|████████████████████████████▎            | 69/100 [2:13:50<1:04:42, 125.24s/it]Evaluating gsm8k :  70%|████████████████████████████▋            | 70/100 [2:15:58<1:03:01, 126.06s/it]Evaluating gsm8k :  71%|███████████████████████████████▏            | 71/100 [2:16:33<47:45, 98.83s/it]Evaluating gsm8k :  72%|███████████████████████████████▋            | 72/100 [2:17:56<43:51, 93.97s/it]Evaluating gsm8k :  73%|████████████████████████████████            | 73/100 [2:19:15<40:21, 89.68s/it]Evaluating gsm8k :  74%|███████████████████████████████▊           | 74/100 [2:21:24<43:56, 101.40s/it]Evaluating gsm8k :  75%|████████████████████████████████▎          | 75/100 [2:23:34<45:48, 109.95s/it]Evaluating gsm8k :  76%|█████████████████████████████████▍          | 76/100 [2:24:08<34:52, 87.19s/it]Evaluating gsm8k :  77%|█████████████████████████████████▉          | 77/100 [2:26:11<37:33, 97.99s/it]Evaluating gsm8k :  78%|██████████████████████████████████▎         | 78/100 [2:27:34<34:13, 93.33s/it]Evaluating gsm8k :  79%|█████████████████████████████████▉         | 79/100 [2:29:40<36:03, 103.04s/it]Evaluating gsm8k :  80%|██████████████████████████████████▍        | 80/100 [2:31:43<36:20, 109.02s/it]Evaluating gsm8k :  81%|██████████████████████████████████▊        | 81/100 [2:33:48<36:06, 114.03s/it]Evaluating gsm8k :  82%|███████████████████████████████████▎       | 82/100 [2:35:54<35:13, 117.41s/it]Evaluating gsm8k :  83%|███████████████████████████████████▋       | 83/100 [2:38:02<34:12, 120.75s/it]Evaluating gsm8k :  84%|████████████████████████████████████       | 84/100 [2:40:10<32:48, 123.01s/it]Evaluating gsm8k :  85%|████████████████████████████████████▌      | 85/100 [2:41:37<28:03, 112.20s/it]Evaluating gsm8k :  86%|████████████████████████████████████▉      | 86/100 [2:43:07<24:34, 105.31s/it]Evaluating gsm8k :  87%|█████████████████████████████████████▍     | 87/100 [2:45:16<24:23, 112.58s/it]Evaluating gsm8k :  88%|█████████████████████████████████████▊     | 88/100 [2:47:23<23:20, 116.75s/it]Evaluating gsm8k :  89%|██████████████████████████████████████▎    | 89/100 [2:49:32<22:05, 120.50s/it]Evaluating gsm8k :  90%|██████████████████████████████████████▋    | 90/100 [2:51:37<20:18, 121.86s/it]Evaluating gsm8k :  91%|███████████████████████████████████████▏   | 91/100 [2:53:41<18:22, 122.51s/it]Evaluating gsm8k :  92%|███████████████████████████████████████▌   | 92/100 [2:55:18<15:18, 114.86s/it]Evaluating gsm8k :  93%|███████████████████████████████████████▉   | 93/100 [2:57:23<13:45, 117.93s/it]Evaluating gsm8k :  94%|████████████████████████████████████████▍  | 94/100 [2:59:30<12:03, 120.60s/it]Evaluating gsm8k :  95%|████████████████████████████████████████▊  | 95/100 [3:01:32<10:05, 121.16s/it]Evaluating gsm8k :  96%|█████████████████████████████████████████▎ | 96/100 [3:03:39<08:10, 122.73s/it]Evaluating gsm8k :  97%|█████████████████████████████████████████▋ | 97/100 [3:05:45<06:11, 123.90s/it]Evaluating gsm8k :  98%|██████████████████████████████████████████▏| 98/100 [3:07:54<04:10, 125.40s/it]Evaluating gsm8k :  99%|██████████████████████████████████████████▌| 99/100 [3:09:58<02:04, 124.82s/it]Evaluating gsm8k : 100%|██████████████████████████████████████████| 100/100 [3:12:02<00:00, 124.60s/it]Evaluating gsm8k : 100%|██████████████████████████████████████████| 100/100 [3:12:02<00:00, 115.22s/it]
+name: gsm8k | avg. gen lenth: 239.4 | time: 11522.839025497437s
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 12355 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name gsm8k --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name commonsenseqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/gsm8k/out-domain/o16-tcommonsenseqa-s1-rFalse --seed 1 --max-prompt-length 4096 --num-out-domain 16
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 14:20:27,909] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 2
+[2023-08-30 14:20:28,418] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... gsm8k
+  data_dir ..................... /scratch/ylu130/processed_data/gsm8k/out-domain/o16-tcommonsenseqa-s1-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 16
+  out_domain_data_name ......... commonsenseqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o16-tcommonsenseqa-s1-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 1
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+WARNING: /scratch/ylu130/processed_data/gsm8k/out-domain/o16-tcommonsenseqa-s1-rFalse/gsm8k.jsonl does not exist
+Traceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 97, in <module>
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 87, in main
+    dataset = prepare_dataset_main(args, tokenizer)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 21, in prepare_dataset_main
+    return PromptDataset(args, tokenizer, args.data_dir, args.num_eval)
+  File "/home/ylu130/workspace/in-context-generalization/data_utils/prompt_datasets.py", line 19, in __init__
+    self.data = self.load_data_json(data_path)
+  File "/home/ylu130/workspace/in-context-generalization/data_utils/prompt_datasets.py", line 36, in load_data_json
+    with open(data_path) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/ylu130/processed_data/gsm8k/out-domain/o16-tcommonsenseqa-s1-rFalse'
+Traceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 97, in <module>
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 87, in main
+    dataset = prepare_dataset_main(args, tokenizer)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 21, in prepare_dataset_main
+    return PromptDataset(args, tokenizer, args.data_dir, args.num_eval)
+  File "/home/ylu130/workspace/in-context-generalization/data_utils/prompt_datasets.py", line 19, in __init__
+    self.data = self.load_data_json(data_path)
+  File "/home/ylu130/workspace/in-context-generalization/data_utils/prompt_datasets.py", line 36, in load_data_json
+    with open(data_path) as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/ylu130/processed_data/gsm8k/out-domain/o16-tcommonsenseqa-s1-rFalse'
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 884913) of binary: /home/ylu130/.conda/envs/ood/bin/python
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/ood/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/home/ylu130/workspace/in-context-generalization/inference.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2023-08-30_14:20:31
+  host      : ia1.wse.jhu.edu
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 884914)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-08-30_14:20:31
+  host      : ia1.wse.jhu.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 884913)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 12355 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name gsm8k --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name commonsenseqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/gsm8k/out-domain/o1-tcommonsenseqa-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 1
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 14:20:34,837] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 2
+[2023-08-30 14:20:35,398] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... gsm8k
+  data_dir ..................... /scratch/ylu130/processed_data/gsm8k/out-domain/o1-tcommonsenseqa-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 1
+  out_domain_data_name ......... commonsenseqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o1-tcommonsenseqa-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+Loading data:   0%|                                                           | 0/7473 [00:00<?, ?it/s]Loading data: 100%|███████████████████████████████████████████| 7473/7473 [00:00<00:00, 1187723.90it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                                                 | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                 | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|████████████████████▌                    | 1/2 [00:06<00:06,  6.89s/it]Loading checkpoint shards:  50%|████████████████████▌                    | 1/2 [00:06<00:06,  6.80s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  3.99s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  4.43s/it]
+Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  3.98s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  4.40s/it]
+ > number of parameters: 6738415616
+[2023-08-30 14:20:45,367] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 14:20:45,482] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 14:20:45,926] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 14:20:45,927] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f7095bc52a0>
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 14:20:45,927] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   train_batch_size ............. 2
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   world_size ................... 2
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 14:20:45,928] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 14:20:45,929] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 14:20:45,929] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 14:20:45,929] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 14:20:45,929] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating gsm8k :   0%|                                                       | 0/100 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following grade math question.
+
+Input: Fabric is cut to order at what type of seller? Choices:  A: curtains B: tailor shop C: clothing store D: sewing room E: hardware store
+Output: B: tailor shop
+
+Input:Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o1-tcommonsenseqa-s10-rFalse-m4096
+Evaluating gsm8k :   1%|▍                                           | 1/100 [02:23<3:57:29, 143.93s/it]Evaluating gsm8k :   2%|▉                                           | 2/100 [03:38<2:48:24, 103.11s/it]Evaluating gsm8k :   3%|█▎                                           | 3/100 [05:03<2:33:29, 94.94s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [07:25<3:01:49, 113.64s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [09:46<3:15:29, 123.47s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [12:07<3:22:44, 129.41s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [14:26<3:25:06, 132.33s/it]Evaluating gsm8k :   8%|███▌                                        | 8/100 [16:47<3:27:10, 135.11s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [19:09<3:28:32, 137.49s/it]Evaluating gsm8k :  10%|████▎                                      | 10/100 [21:33<3:29:04, 139.39s/it]Evaluating gsm8k :  11%|████▋                                      | 11/100 [23:51<3:26:02, 138.90s/it]Evaluating gsm8k :  12%|█████▏                                     | 12/100 [25:15<2:59:07, 122.13s/it]Evaluating gsm8k :  13%|█████▌                                     | 13/100 [26:51<2:45:42, 114.28s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [29:15<2:56:34, 123.19s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [31:34<3:01:24, 128.06s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [33:55<3:04:44, 131.95s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [35:32<2:47:48, 121.31s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [37:53<2:54:04, 127.37s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [40:16<2:58:15, 132.05s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [42:38<3:00:07, 135.09s/it]Evaluating gsm8k :  21%|█████████                                  | 21/100 [44:27<2:47:35, 127.29s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [45:29<2:19:53, 107.61s/it]Evaluating gsm8k :  23%|█████████▉                                 | 23/100 [47:48<2:30:12, 117.04s/it]Evaluating gsm8k :  24%|██████████▎                                | 24/100 [50:09<2:37:26, 124.29s/it]Evaluating gsm8k :  25%|██████████▊                                | 25/100 [52:30<2:41:32, 129.23s/it]Evaluating gsm8k :  26%|███████████▏                               | 26/100 [54:50<2:43:21, 132.45s/it]Evaluating gsm8k :  27%|███████████▌                               | 27/100 [56:16<2:24:19, 118.63s/it]Evaluating gsm8k :  28%|████████████                               | 28/100 [58:35<2:29:27, 124.55s/it]Evaluating gsm8k :  29%|███████████▉                             | 29/100 [1:00:54<2:32:46, 129.10s/it]Evaluating gsm8k :  30%|████████████▎                            | 30/100 [1:03:12<2:33:36, 131.67s/it]Evaluating gsm8k :  31%|████████████▋                            | 31/100 [1:05:33<2:34:35, 134.43s/it]Evaluating gsm8k :  32%|█████████████                            | 32/100 [1:07:53<2:34:12, 136.07s/it]Evaluating gsm8k :  33%|█████████████▌                           | 33/100 [1:10:15<2:34:06, 138.01s/it]Evaluating gsm8k :  34%|█████████████▉                           | 34/100 [1:12:37<2:32:54, 139.01s/it]Evaluating gsm8k :  35%|██████████████▎                          | 35/100 [1:14:59<2:31:34, 139.92s/it]Evaluating gsm8k :  36%|██████████████▊                          | 36/100 [1:17:17<2:28:33, 139.28s/it]Evaluating gsm8k :  37%|███████████████▏                         | 37/100 [1:19:38<2:26:47, 139.80s/it]Evaluating gsm8k :  38%|███████████████▌                         | 38/100 [1:21:58<2:24:40, 140.00s/it]Evaluating gsm8k :  39%|███████████████▉                         | 39/100 [1:24:01<2:17:14, 134.99s/it]Evaluating gsm8k :  40%|████████████████▍                        | 40/100 [1:25:42<2:04:36, 124.61s/it]Evaluating gsm8k :  41%|█████████████████▏                        | 41/100 [1:26:23<1:37:50, 99.50s/it]Evaluating gsm8k :  42%|█████████████████▏                       | 42/100 [1:28:44<1:48:21, 112.10s/it]Evaluating gsm8k :  43%|█████████████████▋                       | 43/100 [1:31:04<1:54:20, 120.36s/it]Evaluating gsm8k :  44%|██████████████████                       | 44/100 [1:33:25<1:58:17, 126.75s/it]Evaluating gsm8k :  45%|██████████████████▍                      | 45/100 [1:35:44<1:59:34, 130.44s/it]Evaluating gsm8k :  46%|██████████████████▊                      | 46/100 [1:37:39<1:53:10, 125.76s/it]Evaluating gsm8k :  47%|███████████████████▎                     | 47/100 [1:39:59<1:54:50, 130.00s/it]Evaluating gsm8k :  48%|███████████████████▋                     | 48/100 [1:42:19<1:55:11, 132.91s/it]Evaluating gsm8k :  49%|████████████████████                     | 49/100 [1:44:28<1:52:01, 131.79s/it]Evaluating gsm8k :  50%|████████████████████▌                    | 50/100 [1:46:49<1:52:03, 134.47s/it]Evaluating gsm8k :  51%|████████████████████▉                    | 51/100 [1:49:09<1:51:09, 136.12s/it]Evaluating gsm8k :  52%|█████████████████████▎                   | 52/100 [1:51:28<1:49:39, 137.08s/it]Evaluating gsm8k :  53%|█████████████████████▋                   | 53/100 [1:51:51<1:20:37, 102.93s/it]Evaluating gsm8k :  54%|██████████████████████▏                  | 54/100 [1:54:13<1:27:52, 114.61s/it]Evaluating gsm8k :  55%|██████████████████████▌                  | 55/100 [1:56:25<1:29:47, 119.73s/it]Evaluating gsm8k :  56%|██████████████████████▉                  | 56/100 [1:58:46<1:32:34, 126.23s/it]Evaluating gsm8k :  57%|███████████████████████▎                 | 57/100 [2:00:32<1:26:07, 120.18s/it]Evaluating gsm8k :  58%|███████████████████████▊                 | 58/100 [2:02:49<1:27:33, 125.07s/it]Evaluating gsm8k :  59%|████████████████████████▏                | 59/100 [2:05:06<1:27:58, 128.74s/it]Evaluating gsm8k :  60%|████████████████████████▌                | 60/100 [2:07:28<1:28:32, 132.80s/it]Evaluating gsm8k :  61%|█████████████████████████                | 61/100 [2:08:44<1:15:08, 115.61s/it]Evaluating gsm8k :  62%|█████████████████████████▍               | 62/100 [2:11:03<1:17:43, 122.72s/it]Evaluating gsm8k :  63%|█████████████████████████▊               | 63/100 [2:13:26<1:19:23, 128.75s/it]Evaluating gsm8k :  64%|██████████████████████████▏              | 64/100 [2:15:45<1:19:01, 131.70s/it]Evaluating gsm8k :  65%|██████████████████████████▋              | 65/100 [2:18:04<1:18:06, 133.91s/it]Evaluating gsm8k :  66%|███████████████████████████              | 66/100 [2:20:24<1:16:55, 135.76s/it]Evaluating gsm8k :  67%|███████████████████████████▍             | 67/100 [2:22:28<1:12:44, 132.25s/it]Evaluating gsm8k :  68%|███████████████████████████▉             | 68/100 [2:24:48<1:11:45, 134.53s/it]Evaluating gsm8k :  69%|████████████████████████████▎            | 69/100 [2:27:10<1:10:41, 136.84s/it]Evaluating gsm8k :  70%|████████████████████████████▋            | 70/100 [2:29:32<1:09:14, 138.49s/it]Evaluating gsm8k :  71%|█████████████████████████████            | 71/100 [2:31:21<1:02:36, 129.54s/it]Evaluating gsm8k :  72%|█████████████████████████████▌           | 72/100 [2:33:41<1:01:58, 132.82s/it]Evaluating gsm8k :  73%|███████████████████████████████▍           | 73/100 [2:34:32<48:43, 108.27s/it]Evaluating gsm8k :  74%|███████████████████████████████▊           | 74/100 [2:36:55<51:25, 118.68s/it]Evaluating gsm8k :  75%|████████████████████████████████▎          | 75/100 [2:39:18<52:26, 125.87s/it]Evaluating gsm8k :  76%|████████████████████████████████▋          | 76/100 [2:41:39<52:11, 130.48s/it]Evaluating gsm8k :  77%|█████████████████████████████████          | 77/100 [2:44:01<51:20, 133.93s/it]Evaluating gsm8k :  78%|█████████████████████████████████▌         | 78/100 [2:46:21<49:45, 135.72s/it]Evaluating gsm8k :  79%|█████████████████████████████████▉         | 79/100 [2:47:14<38:50, 110.97s/it]Evaluating gsm8k :  80%|██████████████████████████████████▍        | 80/100 [2:49:18<38:18, 114.90s/it]Evaluating gsm8k :  81%|██████████████████████████████████▊        | 81/100 [2:51:38<38:42, 122.21s/it]Evaluating gsm8k :  82%|███████████████████████████████████▎       | 82/100 [2:53:57<38:11, 127.31s/it]Evaluating gsm8k :  83%|███████████████████████████████████▋       | 83/100 [2:56:15<37:01, 130.68s/it]Evaluating gsm8k :  84%|████████████████████████████████████       | 84/100 [2:57:43<31:23, 117.73s/it]Evaluating gsm8k :  85%|████████████████████████████████████▌      | 85/100 [3:00:01<30:56, 123.76s/it]Evaluating gsm8k :  86%|████████████████████████████████████▉      | 86/100 [3:02:22<30:04, 128.88s/it]Evaluating gsm8k :  87%|█████████████████████████████████████▍     | 87/100 [3:04:42<28:41, 132.45s/it]Evaluating gsm8k :  88%|█████████████████████████████████████▊     | 88/100 [3:07:01<26:51, 134.28s/it]Evaluating gsm8k :  89%|██████████████████████████████████████▎    | 89/100 [3:09:23<25:03, 136.68s/it]Evaluating gsm8k :  90%|██████████████████████████████████████▋    | 90/100 [3:11:44<22:59, 137.93s/it]Evaluating gsm8k :  91%|███████████████████████████████████████▏   | 91/100 [3:13:33<19:22, 129.21s/it]Evaluating gsm8k :  92%|███████████████████████████████████████▌   | 92/100 [3:15:54<17:42, 132.76s/it]Evaluating gsm8k :  93%|███████████████████████████████████████▉   | 93/100 [3:18:14<15:45, 135.03s/it]Evaluating gsm8k :  94%|████████████████████████████████████████▍  | 94/100 [3:20:30<13:31, 135.22s/it]Evaluating gsm8k :  95%|████████████████████████████████████████▊  | 95/100 [3:22:52<11:25, 137.14s/it]Evaluating gsm8k :  96%|█████████████████████████████████████████▎ | 96/100 [3:25:14<09:14, 138.74s/it]Evaluating gsm8k :  97%|█████████████████████████████████████████▋ | 97/100 [3:27:38<07:00, 140.19s/it]Evaluating gsm8k :  98%|██████████████████████████████████████████▏| 98/100 [3:30:01<04:42, 141.04s/it]Evaluating gsm8k :  99%|██████████████████████████████████████████▌| 99/100 [3:31:53<02:12, 132.52s/it]Evaluating gsm8k : 100%|██████████████████████████████████████████| 100/100 [3:34:01<00:00, 131.08s/it]Evaluating gsm8k : 100%|██████████████████████████████████████████| 100/100 [3:34:01<00:00, 128.41s/it]
+name: gsm8k | avg. gen lenth: 243.364 | time: 12841.9228682518s
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 12355 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name gsm8k --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name commonsenseqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/gsm8k/out-domain/o2-tcommonsenseqa-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 2
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 17:54:55,897] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-08-30 17:54:55,920] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 2
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... gsm8k
+  data_dir ..................... /scratch/ylu130/processed_data/gsm8k/out-domain/o2-tcommonsenseqa-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 2
+  out_domain_data_name ......... commonsenseqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o2-tcommonsenseqa-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+Loading data:   0%|                                                           | 0/7473 [00:00<?, ?it/s]Loading data: 100%|███████████████████████████████████████████| 7473/7473 [00:00<00:00, 1115128.57it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                                                 | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                 | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|████████████████████▌                    | 1/2 [00:06<00:06,  6.77s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  3.90s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  4.33s/it]
+[2023-08-30 17:55:05,787] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+Loading checkpoint shards:  50%|████████████████████▌                    | 1/2 [00:11<00:11, 11.53s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:13<00:00,  5.99s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:13<00:00,  6.82s/it]
+ > number of parameters: 6738415616
+[2023-08-30 17:55:10,741] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 17:55:11,186] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 17:55:11,187] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f094c4c92d0>
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 17:55:11,188] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   train_batch_size ............. 2
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   world_size ................... 2
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 17:55:11,189] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 17:55:11,189] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating gsm8k :   0%|                                                       | 0/100 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following grade math question.
+
+Input: Fabric is cut to order at what type of seller? Choices:  A: curtains B: tailor shop C: clothing store D: sewing room E: hardware store
+Output: B: tailor shop
+
+Input: Where are you if your reading magazines while waiting for a vehicle on rails? Choices:  A: vegetables B: market C: doctor D: train station E: bookstore
+Output: D: train station
+
+Input:Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o2-tcommonsenseqa-s10-rFalse-m4096
+Evaluating gsm8k :   1%|▍                                           | 1/100 [02:22<3:54:50, 142.33s/it]Evaluating gsm8k :   2%|▉                                           | 2/100 [04:00<3:10:19, 116.53s/it]Evaluating gsm8k :   3%|█▎                                          | 3/100 [06:21<3:26:20, 127.64s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [08:42<3:32:31, 132.83s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [11:01<3:33:54, 135.10s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [12:28<3:06:12, 118.86s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [14:48<3:14:46, 125.66s/it]Evaluating gsm8k :   8%|███▌                                         | 8/100 [15:26<2:30:00, 97.83s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [17:48<2:49:12, 111.56s/it]Evaluating gsm8k :  10%|████▍                                       | 10/100 [18:56<2:26:57, 97.97s/it]Evaluating gsm8k :  11%|████▊                                       | 11/100 [20:03<2:11:13, 88.46s/it]Evaluating gsm8k :  12%|█████▎                                      | 12/100 [21:48<2:17:32, 93.77s/it]Evaluating gsm8k :  13%|█████▌                                     | 13/100 [24:09<2:36:41, 108.06s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [25:53<2:33:10, 106.87s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [27:38<2:30:25, 106.18s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [29:56<2:42:09, 115.82s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [31:14<2:24:30, 104.46s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [33:33<2:36:59, 114.87s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [35:37<2:38:45, 117.59s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [37:55<2:44:44, 123.55s/it]Evaluating gsm8k :  21%|█████████                                  | 21/100 [40:12<2:48:07, 127.69s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [42:29<2:49:38, 130.50s/it]Evaluating gsm8k :  23%|█████████▉                                 | 23/100 [44:48<2:50:32, 132.89s/it]Evaluating gsm8k :  24%|██████████▎                                | 24/100 [47:08<2:50:59, 134.99s/it]Evaluating gsm8k :  25%|██████████▊                                | 25/100 [49:26<2:49:59, 135.99s/it]Evaluating gsm8k :  26%|███████████▏                               | 26/100 [51:37<2:45:55, 134.54s/it]Evaluating gsm8k :  27%|███████████▌                               | 27/100 [53:54<2:44:43, 135.39s/it]Evaluating gsm8k :  28%|████████████                               | 28/100 [55:35<2:29:53, 124.90s/it]Evaluating gsm8k :  29%|████████████▍                              | 29/100 [57:39<2:27:32, 124.69s/it]Evaluating gsm8k :  30%|████████████▉                              | 30/100 [58:29<1:59:12, 102.18s/it]Evaluating gsm8k :  31%|████████████▋                            | 31/100 [1:00:22<2:01:30, 105.67s/it]Evaluating gsm8k :  32%|█████████████                            | 32/100 [1:02:40<2:10:42, 115.33s/it]Evaluating gsm8k :  33%|█████████████▌                           | 33/100 [1:04:55<2:15:19, 121.19s/it]Evaluating gsm8k :  34%|█████████████▉                           | 34/100 [1:07:11<2:17:58, 125.43s/it]Evaluating gsm8k :  35%|██████████████▎                          | 35/100 [1:09:29<2:20:12, 129.42s/it]Evaluating gsm8k :  36%|██████████████▊                          | 36/100 [1:11:44<2:19:49, 131.08s/it]Evaluating gsm8k :  37%|███████████████▏                         | 37/100 [1:14:00<2:19:04, 132.46s/it]Evaluating gsm8k :  38%|███████████████▌                         | 38/100 [1:16:21<2:19:28, 134.98s/it]Evaluating gsm8k :  39%|███████████████▉                         | 39/100 [1:17:42<2:00:49, 118.85s/it]Evaluating gsm8k :  40%|████████████████▍                        | 40/100 [1:19:59<2:04:24, 124.40s/it]Evaluating gsm8k :  41%|████████████████▊                        | 41/100 [1:22:16<2:06:00, 128.14s/it]Evaluating gsm8k :  42%|█████████████████▏                       | 42/100 [1:24:34<2:06:37, 130.99s/it]Evaluating gsm8k :  43%|█████████████████▋                       | 43/100 [1:26:51<2:06:20, 132.99s/it]Evaluating gsm8k :  44%|██████████████████                       | 44/100 [1:28:12<1:49:20, 117.16s/it]Evaluating gsm8k :  45%|██████████████████▍                      | 45/100 [1:30:29<1:52:56, 123.21s/it]Evaluating gsm8k :  46%|██████████████████▊                      | 46/100 [1:32:48<1:55:08, 127.94s/it]Evaluating gsm8k :  47%|███████████████████▎                     | 47/100 [1:33:56<1:37:14, 110.09s/it]Evaluating gsm8k :  48%|███████████████████▋                     | 48/100 [1:36:14<1:42:33, 118.34s/it]Evaluating gsm8k :  49%|████████████████████                     | 49/100 [1:38:35<1:46:21, 125.12s/it]Evaluating gsm8k :  50%|████████████████████▌                    | 50/100 [1:40:53<1:47:26, 128.93s/it]Evaluating gsm8k :  51%|████████████████████▉                    | 51/100 [1:42:53<1:43:11, 126.36s/it]Evaluating gsm8k :  52%|█████████████████████▎                   | 52/100 [1:45:10<1:43:39, 129.58s/it]Evaluating gsm8k :  53%|█████████████████████▋                   | 53/100 [1:46:58<1:36:20, 122.99s/it]Evaluating gsm8k :  54%|██████████████████████▏                  | 54/100 [1:49:15<1:37:32, 127.23s/it]Evaluating gsm8k :  55%|██████████████████████▌                  | 55/100 [1:51:34<1:38:02, 130.71s/it]Evaluating gsm8k :  56%|██████████████████████▉                  | 56/100 [1:53:56<1:38:22, 134.15s/it]Evaluating gsm8k :  57%|███████████████████████▎                 | 57/100 [1:56:12<1:36:29, 134.63s/it]Evaluating gsm8k :  58%|███████████████████████▊                 | 58/100 [1:58:29<1:34:43, 135.31s/it]Evaluating gsm8k :  59%|████████████████████████▏                | 59/100 [1:59:57<1:22:51, 121.25s/it]Evaluating gsm8k :  60%|████████████████████████▌                | 60/100 [2:02:15<1:24:07, 126.18s/it]Evaluating gsm8k :  61%|█████████████████████████                | 61/100 [2:03:43<1:14:33, 114.71s/it]Evaluating gsm8k :  62%|█████████████████████████▍               | 62/100 [2:06:02<1:17:17, 122.03s/it]Evaluating gsm8k :  63%|███████████████████████████▋                | 63/100 [2:06:38<59:19, 96.20s/it]Evaluating gsm8k :  64%|██████████████████████████▏              | 64/100 [2:08:55<1:05:02, 108.40s/it]Evaluating gsm8k :  65%|██████████████████████████▋              | 65/100 [2:11:14<1:08:39, 117.70s/it]Evaluating gsm8k :  66%|███████████████████████████              | 66/100 [2:13:34<1:10:27, 124.34s/it]Evaluating gsm8k :  67%|███████████████████████████▍             | 67/100 [2:15:27<1:06:35, 121.06s/it]Evaluating gsm8k :  68%|███████████████████████████▉             | 68/100 [2:17:44<1:07:05, 125.79s/it]Evaluating gsm8k :  69%|████████████████████████████▎            | 69/100 [2:20:01<1:06:46, 129.24s/it]Evaluating gsm8k :  70%|████████████████████████████▋            | 70/100 [2:22:15<1:05:13, 130.46s/it]Evaluating gsm8k :  71%|█████████████████████████████            | 71/100 [2:24:35<1:04:28, 133.39s/it]Evaluating gsm8k :  72%|█████████████████████████████▌           | 72/100 [2:26:54<1:03:01, 135.05s/it]Evaluating gsm8k :  73%|███████████████████████████████▍           | 73/100 [2:28:56<59:04, 131.27s/it]Evaluating gsm8k :  74%|███████████████████████████████▊           | 74/100 [2:31:15<57:52, 133.57s/it]Evaluating gsm8k :  75%|████████████████████████████████▎          | 75/100 [2:33:00<52:04, 125.00s/it]Evaluating gsm8k :  76%|████████████████████████████████▋          | 76/100 [2:35:19<51:40, 129.20s/it]Evaluating gsm8k :  77%|█████████████████████████████████          | 77/100 [2:37:38<50:36, 132.04s/it]Evaluating gsm8k :  78%|█████████████████████████████████▌         | 78/100 [2:39:54<48:51, 133.23s/it]Evaluating gsm8k :  79%|█████████████████████████████████▉         | 79/100 [2:42:11<47:04, 134.48s/it]Evaluating gsm8k :  80%|██████████████████████████████████▍        | 80/100 [2:44:31<45:22, 136.13s/it]Evaluating gsm8k :  81%|██████████████████████████████████▊        | 81/100 [2:44:59<32:48, 103.63s/it]Evaluating gsm8k :  82%|███████████████████████████████████▎       | 82/100 [2:47:15<33:57, 113.21s/it]Evaluating gsm8k :  83%|███████████████████████████████████▋       | 83/100 [2:49:32<34:07, 120.45s/it]Evaluating gsm8k :  84%|████████████████████████████████████       | 84/100 [2:51:53<33:45, 126.59s/it]Evaluating gsm8k :  85%|████████████████████████████████████▌      | 85/100 [2:54:10<32:26, 129.77s/it]Evaluating gsm8k :  86%|████████████████████████████████████▉      | 86/100 [2:56:28<30:51, 132.26s/it]Evaluating gsm8k :  87%|█████████████████████████████████████▍     | 87/100 [2:58:49<29:11, 134.76s/it]Evaluating gsm8k :  88%|█████████████████████████████████████▊     | 88/100 [2:59:31<21:23, 106.97s/it]Evaluating gsm8k :  89%|██████████████████████████████████████▎    | 89/100 [3:01:31<20:20, 110.92s/it]Evaluating gsm8k :  90%|██████████████████████████████████████▋    | 90/100 [3:03:46<19:42, 118.20s/it]Evaluating gsm8k :  91%|███████████████████████████████████████▏   | 91/100 [3:06:06<18:42, 124.70s/it]Evaluating gsm8k :  92%|███████████████████████████████████████▌   | 92/100 [3:08:24<17:09, 128.69s/it]Evaluating gsm8k :  93%|███████████████████████████████████████▉   | 93/100 [3:10:43<15:21, 131.62s/it]Evaluating gsm8k :  94%|████████████████████████████████████████▍  | 94/100 [3:12:00<11:32, 115.36s/it]Evaluating gsm8k :  95%|████████████████████████████████████████▊  | 95/100 [3:14:17<10:09, 121.92s/it]Evaluating gsm8k :  96%|█████████████████████████████████████████▎ | 96/100 [3:16:38<08:30, 127.72s/it]Evaluating gsm8k :  97%|█████████████████████████████████████████▋ | 97/100 [3:18:58<06:33, 131.15s/it]Evaluating gsm8k :  98%|██████████████████████████████████████████▏| 98/100 [3:20:20<03:53, 116.57s/it]Evaluating gsm8k :  99%|██████████████████████████████████████████▌| 99/100 [3:22:37<02:02, 122.57s/it]Evaluating gsm8k : 100%|██████████████████████████████████████████| 100/100 [3:24:55<00:00, 127.17s/it]Evaluating gsm8k : 100%|██████████████████████████████████████████| 100/100 [3:24:55<00:00, 122.95s/it]
+name: gsm8k | avg. gen lenth: 222.75 | time: 12295.547491073608s
+torchrun --nproc_per_node 2 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 12355 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --data-name gsm8k --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name commonsenseqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/gsm8k/out-domain/o4-tcommonsenseqa-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 4
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[2023-08-30 21:22:30,699] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 2
+[2023-08-30 21:22:31,201] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... False
+  data_name .................... gsm8k
+  data_dir ..................... /scratch/ylu130/processed_data/gsm8k/out-domain/o4-tcommonsenseqa-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 4
+  out_domain_data_name ......... commonsenseqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o4-tcommonsenseqa-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  world_size ................... 2
+Loading data:   0%|                                                           | 0/7473 [00:00<?, ?it/s]Loading data: 100%|████████████████████████████████████████████| 7473/7473 [00:00<00:00, 978034.00it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|                                                 | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|                                                 | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|████████████████████▌                    | 1/2 [00:06<00:06,  6.74s/it]Loading checkpoint shards:  50%|████████████████████▌                    | 1/2 [00:06<00:06,  6.82s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  3.98s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  4.39s/it]
+Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  3.99s/it]Loading checkpoint shards: 100%|█████████████████████████████████████████| 2/2 [00:08<00:00,  4.41s/it]
+ > number of parameters: 6738415616
+[2023-08-30 21:22:41,068] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 21:22:41,089] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.0, git-hash=unknown, git-branch=unknown
+[2023-08-30 21:22:41,534] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-08-30 21:22:41,536] [INFO] [config.py:960:print] DeepSpeedEngine configuration:
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   amp_enabled .................. False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   amp_params ................... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   bfloat16_enabled ............. False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   checkpoint_parallel_write_pipeline  False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   checkpoint_tag_validation_enabled  True
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   checkpoint_tag_validation_fail  False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f4cbd8bd2d0>
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   communication_data_type ...... None
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   curriculum_enabled_legacy .... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   curriculum_params_legacy ..... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   data_efficiency_enabled ...... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   dataloader_drop_last ......... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   disable_allgather ............ False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   dump_state ................... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   eigenvalue_enabled ........... False
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   eigenvalue_gas_boundary_resolution  1
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   eigenvalue_layer_num ......... 0
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   eigenvalue_max_iter .......... 100
+[2023-08-30 21:22:41,536] [INFO] [config.py:964:print]   eigenvalue_stability ......... 1e-06
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   eigenvalue_tol ............... 0.01
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   eigenvalue_verbose ........... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   elasticity_enabled ........... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   fp16_auto_cast ............... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   fp16_enabled ................. True
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   fp16_master_weights_and_gradients  False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   global_rank .................. 0
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   grad_accum_dtype ............. None
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   gradient_accumulation_steps .. 1
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   gradient_clipping ............ 0.0
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   gradient_predivide_factor .... 1.0
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   initial_dynamic_scale ........ 2048
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   load_universal_checkpoint .... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   loss_scale ................... 0
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   memory_breakdown ............. False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   mics_hierarchial_params_gather  False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   mics_shard_size .............. -1
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   optimizer_legacy_fusion ...... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   optimizer_name ............... None
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   optimizer_params ............. None
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   pld_enabled .................. False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   pld_params ................... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   prescale_gradients ........... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   scheduler_name ............... None
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   scheduler_params ............. None
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   sparse_attention ............. None
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   sparse_gradients_enabled ..... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   steps_per_print .............. 10
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   train_batch_size ............. 2
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   train_micro_batch_size_per_gpu  1
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   use_node_local_storage ....... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   wall_clock_breakdown ......... False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   world_size ................... 2
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   zero_allow_untested_optimizer  True
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   zero_enabled ................. False
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   zero_force_ds_cpu_optimizer .. True
+[2023-08-30 21:22:41,537] [INFO] [config.py:964:print]   zero_optimization_stage ...... 0
+[2023-08-30 21:22:41,537] [INFO] [config.py:950:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating gsm8k :   0%|                                                       | 0/100 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following grade math question.
+
+Input: Fabric is cut to order at what type of seller? Choices:  A: curtains B: tailor shop C: clothing store D: sewing room E: hardware store
+Output: B: tailor shop
+
+Input: Where are you if your reading magazines while waiting for a vehicle on rails? Choices:  A: vegetables B: market C: doctor D: train station E: bookstore
+Output: D: train station
+
+Input: What would need oil to be used? Choices:  A: ground B: human  body C: repair shop D: combustion engines E: service station
+Output: D: combustion engines
+
+Input: What is person probably feeling that plans on stopping being married to their spouse? Choices:  A: detachment B: bankruptcy C: sad D: fights E: wrong
+Output: A: detachment
+
+Input:Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o4-tcommonsenseqa-s10-rFalse-m4096
+Evaluating gsm8k :   1%|▍                                           | 1/100 [02:15<3:43:19, 135.34s/it]Evaluating gsm8k :   2%|▉                                            | 2/100 [02:51<2:05:59, 77.14s/it]Evaluating gsm8k :   3%|█▎                                          | 3/100 [05:06<2:47:27, 103.58s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [07:19<3:04:16, 115.17s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [09:08<2:58:26, 112.70s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [11:21<3:07:33, 119.72s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [13:37<3:13:56, 125.12s/it]Evaluating gsm8k :   8%|███▌                                        | 8/100 [15:51<3:15:57, 127.80s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [18:05<3:16:50, 129.78s/it]Evaluating gsm8k :  10%|████▎                                      | 10/100 [20:19<3:16:47, 131.20s/it]Evaluating gsm8k :  11%|████▋                                      | 11/100 [22:37<3:17:25, 133.09s/it]Evaluating gsm8k :  12%|█████▏                                     | 12/100 [23:48<2:47:47, 114.41s/it]Evaluating gsm8k :  13%|█████▌                                     | 13/100 [25:21<2:36:23, 107.86s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [27:36<2:46:25, 116.10s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [29:52<2:52:55, 122.06s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [32:07<2:56:21, 125.98s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [33:39<2:40:10, 115.79s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [35:55<2:46:20, 121.72s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [36:49<2:17:06, 101.56s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [38:34<2:16:32, 102.40s/it]Evaluating gsm8k :  21%|█████████▏                                  | 21/100 [39:26<1:55:11, 87.49s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [41:41<2:11:56, 101.49s/it]
