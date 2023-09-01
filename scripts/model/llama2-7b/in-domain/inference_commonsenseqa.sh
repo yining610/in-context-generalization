@@ -68,7 +68,7 @@ do
     do
         for NUM_INDOMAIN in $NUM_INDOMAIN_LIST
         do  
-            if { [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]; } || { [ ${NUM_INDOMAIN} == 0 ] && [ ${SEED} != 1 ]; };
+            if [ ${NUM_INDOMAIN} == 0 ] && [ ${RATIONALE} == "False" ]
             then
                 continue
             fi
