@@ -5,7 +5,6 @@ python -m pip install deepspeed==0.10.0
 python -m pip install torchvision==0.15.2
 python -m pip install nltk
 python -m pip install numerize
-python -m pip install rouge-score
 python -m pip install torchtyping
 python -m pip install rich
 python -m pip install accelerate

@@ -21,7 +21,7 @@ def get_results(result_path: str, model_path: str, data_path: str, data_name: st
 
     results = {"num_demonstrations": [], "seed": [], "rationales": [], "tokens":[], "acc": [], "max_prompt_len": []}
     
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, cache_dir="/scratch/ylu130/model-hf/")
     for folder in folders:
         results["num_demonstrations"].append(int(folder.split("-")[0][1:]))
         results["seed"].append(int(folder.split("-s")[-1].split("-")[0]))
@@ -111,8 +111,7 @@ def token_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
 
 base_path = "./results/llama2-7b"
 base_path_2 = "/scratch/ylu130/processed_data"
-model_path = "/scratch/ylu130/model/llama-2-7b/"
-
+model_path = "meta-llama/Llama-2-7b-hf"
 # CommonsenseQA out-domain results
 acc_results1 = get_results(result_path=os.path.join(base_path, "commonsenseqa/out-domain"), 
                            model_path=model_path, 
