@@ -109,6 +109,8 @@ def token_plot(results: pd.DataFrame, title: str, y_label="Accuracy"):
     ax.set_ylabel(y_label)
     plt.show()
 
+# TODO: ADD 0 demonstration results to without rationales
+
 base_path = "./results/llama2-7b"
 base_path_2 = "/scratch/ylu130/processed_data"
 model_path = "meta-llama/Llama-2-7b-hf"
