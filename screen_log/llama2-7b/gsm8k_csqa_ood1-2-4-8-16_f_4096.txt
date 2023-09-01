@@ -3174,4 +3174,235 @@ Input:Natalia sold clips to 48 of her friends in April, and then she sold half a
 Output:
 ############### End ###############
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/gsm8k/out-domain/o2-tcommonsenseqa-s30-rFalse-m4096
-Evaluating gsm8k :   1%|▍                                           | 1/100 [01:42<2:49:36, 102.79s/it]Evaluating gsm8k :   2%|▉                                           | 2/100 [03:58<3:19:58, 122.43s/it]Evaluating gsm8k :   3%|█▎                                          | 3/100 [06:13<3:26:58, 128.03s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [08:31<3:30:54, 131.82s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [09:58<3:03:06, 115.65s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [12:14<3:12:07, 122.63s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [13:19<2:40:48, 103.75s/it]Evaluating gsm8k :   8%|███▌                                        | 8/100 [15:34<2:54:15, 113.65s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [17:52<3:04:16, 121.50s/it]Evaluating gsm8k :  10%|████▍                                       | 10/100 [18:39<2:27:29, 98.33s/it]Evaluating gsm8k :  11%|████▊                                       | 11/100 [19:16<1:57:51, 79.45s/it]Evaluating gsm8k :  12%|█████▎                                      | 12/100 [21:36<2:23:37, 97.92s/it]Evaluating gsm8k :  13%|█████▌                                     | 13/100 [23:54<2:39:49, 110.22s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [26:11<2:49:25, 118.21s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [28:26<2:54:43, 123.34s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [30:45<2:59:20, 128.10s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [33:02<3:00:51, 130.74s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [35:22<3:02:28, 133.52s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [37:40<3:02:01, 134.83s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [39:36<2:52:07, 129.09s/it]Evaluating gsm8k :  21%|█████████                                  | 21/100 [41:56<2:54:34, 132.58s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [44:14<2:54:06, 133.93s/it]Evaluating gsm8k :  23%|█████████▉                                 | 23/100 [46:30<2:52:46, 134.62s/it]Evaluating gsm8k :  24%|██████████▎                                | 24/100 [48:43<2:50:07, 134.31s/it]Evaluating gsm8k :  25%|██████████▊                                | 25/100 [50:59<2:48:28, 134.78s/it]Evaluating gsm8k :  26%|███████████▏                               | 26/100 [53:14<2:46:22, 134.90s/it]Evaluating gsm8k :  27%|███████████▌                               | 27/100 [54:45<2:27:56, 121.59s/it]Evaluating gsm8k :  28%|████████████                               | 28/100 [57:04<2:32:07, 126.77s/it]Evaluating gsm8k :  29%|████████████▍                              | 29/100 [57:42<1:58:39, 100.27s/it]Evaluating gsm8k :  30%|████████████▎                            | 30/100 [1:00:02<2:10:50, 112.14s/it]Evaluating gsm8k :  31%|████████████▋                            | 31/100 [1:02:19<2:17:33, 119.62s/it]Evaluating gsm8k :  32%|█████████████                            | 32/100 [1:04:37<2:21:47, 125.10s/it]Evaluating gsm8k :  33%|█████████████▌                           | 33/100 [1:06:55<2:23:50, 128.81s/it]Evaluating gsm8k :  34%|█████████████▉                           | 34/100 [1:09:09<2:23:32, 130.49s/it]Evaluating gsm8k :  35%|██████████████▎                          | 35/100 [1:11:27<2:23:44, 132.68s/it]Evaluating gsm8k :  36%|██████████████▊                          | 36/100 [1:13:45<2:23:12, 134.25s/it]Evaluating gsm8k :  37%|███████████████▏                         | 37/100 [1:16:02<2:22:01, 135.25s/it]Evaluating gsm8k :  38%|███████████████▌                         | 38/100 [1:18:18<2:19:48, 135.30s/it]Evaluating gsm8k :  39%|███████████████▉                         | 39/100 [1:20:34<2:17:51, 135.60s/it]Evaluating gsm8k :  40%|████████████████▍                        | 40/100 [1:22:50<2:15:36, 135.61s/it]Evaluating gsm8k :  41%|████████████████▊                        | 41/100 [1:25:08<2:14:05, 136.37s/it]Evaluating gsm8k :  42%|█████████████████▏                       | 42/100 [1:27:27<2:12:47, 137.38s/it]Evaluating gsm8k :  43%|█████████████████▋                       | 43/100 [1:29:43<2:09:51, 136.69s/it]
+Evaluating gsm8k :   1%|▍                                           | 1/100 [01:42<2:49:36, 102.79s/it]Evaluating gsm8k :   2%|▉                                           | 2/100 [03:58<3:19:58, 122.43s/it]Evaluating gsm8k :   3%|█▎                                          | 3/100 [06:13<3:26:58, 128.03s/it]Evaluating gsm8k :   4%|█▊                                          | 4/100 [08:31<3:30:54, 131.82s/it]Evaluating gsm8k :   5%|██▏                                         | 5/100 [09:58<3:03:06, 115.65s/it]Evaluating gsm8k :   6%|██▋                                         | 6/100 [12:14<3:12:07, 122.63s/it]Evaluating gsm8k :   7%|███                                         | 7/100 [13:19<2:40:48, 103.75s/it]Evaluating gsm8k :   8%|███▌                                        | 8/100 [15:34<2:54:15, 113.65s/it]Evaluating gsm8k :   9%|███▉                                        | 9/100 [17:52<3:04:16, 121.50s/it]Evaluating gsm8k :  10%|████▍                                       | 10/100 [18:39<2:27:29, 98.33s/it]Evaluating gsm8k :  11%|████▊                                       | 11/100 [19:16<1:57:51, 79.45s/it]Evaluating gsm8k :  12%|█████▎                                      | 12/100 [21:36<2:23:37, 97.92s/it]Evaluating gsm8k :  13%|█████▌                                     | 13/100 [23:54<2:39:49, 110.22s/it]Evaluating gsm8k :  14%|██████                                     | 14/100 [26:11<2:49:25, 118.21s/it]Evaluating gsm8k :  15%|██████▍                                    | 15/100 [28:26<2:54:43, 123.34s/it]Evaluating gsm8k :  16%|██████▉                                    | 16/100 [30:45<2:59:20, 128.10s/it]Evaluating gsm8k :  17%|███████▎                                   | 17/100 [33:02<3:00:51, 130.74s/it]Evaluating gsm8k :  18%|███████▋                                   | 18/100 [35:22<3:02:28, 133.52s/it]Evaluating gsm8k :  19%|████████▏                                  | 19/100 [37:40<3:02:01, 134.83s/it]Evaluating gsm8k :  20%|████████▌                                  | 20/100 [39:36<2:52:07, 129.09s/it]Evaluating gsm8k :  21%|█████████                                  | 21/100 [41:56<2:54:34, 132.58s/it]Evaluating gsm8k :  22%|█████████▍                                 | 22/100 [44:14<2:54:06, 133.93s/it]Evaluating gsm8k :  23%|█████████▉                                 | 23/100 [46:30<2:52:46, 134.62s/it]Evaluating gsm8k :  24%|██████████▎                                | 24/100 [48:43<2:50:07, 134.31s/it]Evaluating gsm8k :  25%|██████████▊                                | 25/100 [50:59<2:48:28, 134.78s/it]Evaluating gsm8k :  26%|███████████▏                               | 26/100 [53:14<2:46:22, 134.90s/it]Evaluating gsm8k :  27%|███████████▌                               | 27/100 [54:45<2:27:56, 121.59s/it]Evaluating gsm8k :  28%|████████████                               | 28/100 [57:04<2:32:07, 126.77s/it]Evaluating gsm8k :  29%|████████████▍                              | 29/100 [57:42<1:58:39, 100.27s/it]Evaluating gsm8k :  30%|████████████▎                            | 30/100 [1:00:02<2:10:50, 112.14s/it]Evaluating gsm8k :  31%|████████████▋                            | 31/100 [1:02:19<2:17:33, 119.62s/it]Evaluating gsm8k :  32%|█████████████                            | 32/100 [1:04:37<2:21:47, 125.10s/it]Evaluating gsm8k :  33%|█████████████▌                           | 33/100 [1:06:55<2:23:50, 128.81s/it]Evaluating gsm8k :  34%|█████████████▉                           | 34/100 [1:09:09<2:23:32, 130.49s/it]Evaluating gsm8k :  35%|██████████████▎                          | 35/100 [1:11:27<2:23:44, 132.68s/it]Evaluating gsm8k :  36%|██████████████▊                          | 36/100 [1:13:45<2:23:12, 134.25s/it]Evaluating gsm8k :  37%|███████████████▏                         | 37/100 [1:16:02<2:22:01, 135.25s/it]Evaluating gsm8k :  38%|███████████████▌                         | 38/100 [1:18:18<2:19:48, 135.30s/it]Evaluating gsm8k :  39%|███████████████▉                         | 39/100 [1:20:34<2:17:51, 135.60s/it]Evaluating gsm8k :  40%|████████████████▍                        | 40/100 [1:22:50<2:15:36, 135.61s/it]Evaluating gsm8k :  41%|████████████████▊                        | 41/100 [1:25:08<2:14:05, 136.37s/it]Evaluating gsm8k :  42%|█████████████████▏                       | 42/100 [1:27:27<2:12:47, 137.38s/it]Evaluating gsm8k :  43%|█████████████████▋                       | 43/100 [1:29:43<2:09:51, 136.69s/it]Evaluating gsm8k :  44%|██████████████████                       | 44/100 [1:31:56<2:06:33, 135.60s/it]^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ vim tree.pyls[Kcd /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/treelib/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ python[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pcd ..[3Plscd ..pythoncd /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/treelib/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ ls[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim tree.py[Kscreen -ls
+[?2004lThere are screens on:
+	639400.pts-0.ia1	(08/30/2023 12:31:13 AM)	(Attached)
+	624355.pts-0.ia1	(08/30/2023 12:26:53 AM)	(Detached)
+	604043.pts-4.ia1	(08/30/2023 12:13:48 AM)	(Detached)
+3 Sockets in /run/screen/S-ylu130.
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -r 639400
+[?2004lThere is a screen on:
+	639400.pts-0.ia1	(08/30/2023 12:31:13 AM)	(Attached)
+There is no screen to be resumed matching 639400.
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -r 639400-639400d639400 639400
+[?2004lAttaching from inside of screen?
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -r -d 639400[3P639400ls[Kvim tree.py[1Pscreen -ls
+[?2004lThere are screens on:
+	639400.pts-0.ia1	(08/30/2023 12:31:13 AM)	(Attached)
+	624355.pts-0.ia1	(08/30/2023 12:26:53 AM)	(Detached)
+	604043.pts-4.ia1	(08/30/2023 12:13:48 AM)	(Detached)
+3 Sockets in /run/screen/S-ylu130.
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -lsr -d 639400[1P 639400[1P 639400[1P639400D 639400
+[?2004lAttaching from inside of screen?
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -rD 639400[C[1P 639400d 639400
+[?2004lAttaching from inside of screen?
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -rd 639400[C[1P 639400[1P 639400x 639400
+[?2004lAttaching from inside of screen?
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -x 639400[1@rd[C[C[C[C[C[C[CD[C[C[C[C[C[C[Cls[Kr -d 639400ls[K
+[?2004lThere are screens on:
+	639400.pts-0.ia1	(08/30/2023 12:31:13 AM)	(Attached)
+	624355.pts-0.ia1	(08/30/2023 12:26:53 AM)	(Detached)
+	604043.pts-4.ia1	(08/30/2023 12:13:48 AM)	(Detached)
+3 Sockets in /run/screen/S-ylu130.
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -lsx 639400[1@rd[C[C[C[C[C[C[CD[C[C[C[C[C[C[Cd[C[C[C[C[C[C[C[1Px[C[C[C[C[C[C[Cls[K[Kscreen -lsx 639400ls[K[Knvidiat[K s[K[K-smi
+[?2004lThu Aug 31 22:29:59 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.54.03              Driver Version: 535.54.03    CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA RTX A6000               Off | 00000000:14:00.0 Off |                  Off |
+| 30%   57C    P2             163W / 300W |  46298MiB / 49140MiB |     41%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA RTX A6000               Off | 00000000:24:00.0 Off |                  Off |
+| 30%   49C    P2             144W / 300W |  46298MiB / 49140MiB |     34%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA RTX A6000               Off | 00000000:27:00.0 Off |                  Off |
+| 30%   57C    P2             164W / 300W |  46268MiB / 49140MiB |     29%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA RTX A6000               Off | 00000000:2A:00.0 Off |                  Off |
+| 30%   59C    P2             146W / 300W |  46292MiB / 49140MiB |     13%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   4  NVIDIA RTX A6000               Off | 00000000:2B:00.0 Off |                  Off |
+| 30%   59C    P2             152W / 300W |  46266MiB / 49140MiB |     23%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   5  NVIDIA RTX A6000               Off | 00000000:88:00.0 Off |                  Off |
+| 30%   53C    P2             156W / 300W |  46242MiB / 49140MiB |     15%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   6  NVIDIA RTX A6000               Off | 00000000:98:00.0 Off |                  Off |
+| 34%   63C    P2             202W / 300W |  46174MiB / 49140MiB |     40%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   7  NVIDIA RTX A6000               Off | 00000000:9B:00.0 Off |                  Off |
+| 39%   68C    P2             204W / 300W |  46182MiB / 49140MiB |     39%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   8  NVIDIA RTX A6000               Off | 00000000:9E:00.0 Off |                  Off |
+| 30%   58C    P2             196W / 300W |  46184MiB / 49140MiB |     40%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   9  NVIDIA RTX A6000               Off | 00000000:9F:00.0 Off |                  Off |
+| 38%   68C    P2             212W / 300W |  46146MiB / 49140MiB |     57%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A   1393519      C   ...e/ylu130/.conda/envs/ood/bin/python    46290MiB |
+|    1   N/A  N/A   1393520      C   ...e/ylu130/.conda/envs/ood/bin/python    46290MiB |
+|    2   N/A  N/A   1399462      C   ...e/ylu130/.conda/envs/ood/bin/python    46260MiB |
+|    3   N/A  N/A   1399463      C   ...e/ylu130/.conda/envs/ood/bin/python    46284MiB |
+|    4   N/A  N/A   1399464      C   ...e/ylu130/.conda/envs/ood/bin/python    46258MiB |
+|    5   N/A  N/A   1399465      C   ...e/ylu130/.conda/envs/ood/bin/python    46234MiB |
+|    6   N/A  N/A   1418749      C   ...e/ylu130/.conda/envs/ood/bin/python    46166MiB |
+|    7   N/A  N/A   1418750      C   ...e/ylu130/.conda/envs/ood/bin/python    46174MiB |
+|    8   N/A  N/A   1418751      C   ...e/ylu130/.conda/envs/ood/bin/python    46176MiB |
+|    9   N/A  N/A   1418752      C   ...e/ylu130/.conda/envs/ood/bin/python    46138MiB |
++---------------------------------------------------------------------------------------+
+Evaluating gsm8k :  45%|██████████████████▍                      | 45/100 [1:34:11<2:04:22, 135.68s/it]^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ nvidia-smiscreen -lsx 639400[1@rd[C[C[C[C[C[C[CD[C[C[C[C[C[C[Cls[Kr -d 639400[3P639400ls[Kvim tree.pyls[Kcd /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/treelib/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ python[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pcd ..[3Plscd lib/ls[Kcd ..[3Plscd bin[4Plscd ..[3Plscd lib[4Plscd /home/ylu130/.conda/envs/got[13Pecho $CONDA_PREFIXls[K[Kcd ~[2Plscd lib[4Plscd /usr/ls[Kconda activate gotpython visualize.py [2Pconda activate gotpython -m pip install treelib[10P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pconda activate gotls /scratch/ylu130/data/entailment_trees_emnlp2021_data_v3/dataset/task_1/[C[C[C[C[C[C[C[C[C[Kdataset/task_1/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [32Pconda activate got
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpip install treelib[10@ython -m p[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pconda activate gotpython visualize.py [2Pconda activate gotls[Kcd /usr/ls[Kcd lib[4Plscd ~l[Ksecho $CONDA_PREFIXcd /home/ylu130/.conda/envs/gotls[Kcd lib[4Plscd ..[3Plscd lib[4Plscd /home/ylu130/.conda/envs/got[13Pecho $CONDA_PREFIXls[K[Kcd ~[2Plscd lib[4Plscd /usr/ls[Kconda activate gotpython visualize.py [2Pconda activate gotpython -m pip install treelib[10P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pconda activate gotls /scratch/ylu130/data/entailment_trees_emnlp2021_data_v3/dataset/task_1/[C[C[C[C[C[C[C[C[C[K[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmodel-hf/[Kconda activate gotpwd[KPWDconda activate got[10Pgit pushcommit -m "update"add .[K.ls[Kcd GraphReasoning/[9Pgit add .,[4Pcd ..git commit -m "Revert to 9d7fa437f09eb7dc74623c81c057ef79bb306af1"[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [C[C[C[C[23Preset --soft "HEAD@{1}"
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Khard 9d7fa437f09eb7dc74623c81c057ef79bb306af1[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [32Pconda activate got
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pgit pullconda activate ood[8Pscreen -lsconda activate gotls[K /scratch/ylu130/data/entailment_trees_emnlp2021_data_v3/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pconda activate got[4Penv list[4Pscreen -ls[2Pgit pullscreen -lsnvidia-smiscreen -L -Logfile ./screen_log/llama2-7b/gsm8k_csqa_ood1-2-4-8-16_f_4096.txt bash ./scripts/model/llama2-7b/out-domain/commonsenseqa/inference_gsm8k.sh [Anvidia-smi[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cividia-smiscreen -L -Logfile ./screen_log/llama2-7b/csqa_id0-9_tf_4096.txt bash ./scripts/model/llama2-7b/in-domain/inference_commonsenseqa.sh [A[7Pconda activate /home/ylu130/.conda/envs/ood
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cood[Kvim /home/ylu130/.bashrcconda activate /home/ylu130/.conda/envs/oodpowershell[Kactivate ood[8Pinitactivate /home/ylu130/.conda/envs/oodood[K[4Penv listinit bashactivate ood[2Pscreen -r 620936conda activate ood[3Pinit bash[1Penv listactivate ood/home/ylu130/.conda/envs/oodinit[Kactivate ood[2Ppowershellactivate /home/ylu130/.conda/envs/ood[19Pvim /home/ylu130/.bashrc[6Pconda activate ood/home/ylu130/.conda/envs/oodscreen -L -Logfile ./screen_log/llama2-7b/csqa_id0-9_tf_4096.txt bash ./scripts/model/llama2-7b/in-domain/inference_commonsenseqa.sh [Anividia-smi[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pvidia-smiscreen -L -Logfile ./screen_log/llama2-7b/gsm8k_csqa_ood1-2-4-8-16_f_4096.txt bash ./scripts/model/llama2-7b/out-domain/commonsenseqa/inference_gsm8k.sh [Anvidia-smi[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscreen -ls[2Pgit pullscreen -lsconda env listactivate gotls /scratch/ylu130/data/entailment_trees_emnlp2021_data_v3/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cconda activate got[8Pscreen -lsconda activate ood[10Pgit pullconda activate gotgit reset --hard 9d7fa437f09eb7dc74623c81c057ef79bb306af1[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[24Psoft "HEAD@{1}
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C"commit -m "Revert to 9d7fa437f09eb7dc74623c81c057ef79bb306af1"[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ cd ..[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit add ,.cd GraphReasoning/ls[Kgit add ..[Kcommit -m "update"push[Kconda activate gotPWD[Kpwdconda activate gotls[K /scratch/ylu130/model-hf/[4Pdata/entailment_trees_emnlp2021_data_v3/dataset/task_1/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ [32Pconda activate got
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpip install treelib[10@ython -m p[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pconda activate gotpython visualize.py [2Pconda activate gotls[Kcd /usr/ls[Kcd lib[4Plscd ~l[Ksecho $CONDA_PREFIXcd /home/ylu130/.conda/envs/gotls[Kcd lib[4Plscd ..[3Plscd bin[4Plscd ..[3Plscd lib/ls[Kcd ..pythoncd /home/ylu130/.conda/envs/got/lib/python3.9/site-packages/treelib/[A(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ ls[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvim tree.py[1Pscreen -lsr 639400-d 639400ls[KrD 639400d[C[C[C[C[C[C[C[1Px[C[C[C[C[C[C[Cls[Knvidia-smi[Knvidia-smiscreen -ls
+[?2004lThere are screens on:
+	639400.pts-0.ia1	(08/30/2023 12:31:14 AM)	(Attached)
+	624355.pts-0.ia1	(08/30/2023 12:26:54 AM)	(Detached)
+	604043.pts-4.ia1	(08/30/2023 12:13:49 AM)	(Detached)
+3 Sockets in /run/screen/S-ylu130.
+[?2004h(base) [01;32mylu130@ia1[00m:[01;34m~/workspace/in-context-generalization[00m$ screen -X -S SCREENID kill[1P kill[1P kill[1P kill[1P kill[1P kill[1P kill[1P kill[1P kill639400 kill[C
+[?2004l^CTraceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 97, in <module>
+Evaluating gsm8k :  45%|██████████████████▍                      | 45/100 [1:35:25<1:56:38, 127.24s/it]
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 94, in main
+    inference_main(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 90, in inference_main
+Traceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 97, in <module>
+    query_ids, response_ids, answers, indices = run_model(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 65, in run_model
+    gen_out = model.generate(
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 1454, in generate
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 94, in main
+    inference_main(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 90, in inference_main
+    query_ids, response_ids, answers, indices = run_model(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 65, in run_model
+    gen_out = model.generate(
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 1454, in generate
+WARNING:torch.distributed.elastic.agent.server.api:Received 2 death signal, shutting down workers
+    return self.sample(
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 2509, in sample
+    return self.sample(
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 2509, in sample
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 1393519 closing signal SIGINT
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 92, in __call__
+    next_token_scores = logits_processor(input_ids, next_token_logits)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 92, in __call__
+    scores = processor(input_ids, scores)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 487, in __call__
+    scores = processor(input_ids, scores)
+WARNING:torch.distributed.elastic.multiprocessing.api:Sending process 1393520 closing signal SIGINT
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 487, in __call__
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 460, in _calc_banned_ngram_tokens
+    banned_batch_tokens = _calc_banned_ngram_tokens(self.ngram_size, input_ids, num_batch_hypotheses, cur_len)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 460, in _calc_banned_ngram_tokens
+        generated_ngrams = _get_ngrams(ngram_size, prev_input_ids, num_hypos)generated_ngrams = _get_ngrams(ngram_size, prev_input_ids, num_hypos)
+
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 441, in _get_ngrams
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/logits_process.py", line 441, in _get_ngrams
+        generated_ngram[prev_ngram_tuple] = generated_ngram.get(prev_ngram_tuple, []) + [ngram[-1]]generated_ngram[prev_ngram_tuple] = generated_ngram.get(prev_ngram_tuple, []) + [ngram[-1]]
+
+KeyboardInterrupt
+KeyboardInterrupt
+^CWARNING:torch.distributed.elastic.multiprocessing.api:Sending process 1393520 closing signal SIGTERM
+^CTraceback (most recent call last):
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 723, in run
+    result = self._invoke_run(role)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 864, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1393443 got signal: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 730, in run
+    self._shutdown(e.sigval)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/local_elastic_agent.py", line 289, in _shutdown
+    self._pcontext.close(death_sig)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 331, in close
+    self._close(death_sig=death_sig, timeout=timeout)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 708, in _close
+    handler.proc.wait(time_to_wait)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/subprocess.py", line 1953, in _wait
+    time.sleep(delay)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1393443 got signal: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/ood/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 241, in launch_agent
+    result = agent.run()
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 129, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 735, in run
+    self._shutdown()
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/local_elastic_agent.py", line 289, in _shutdown
+    self._pcontext.close(death_sig)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 331, in close
+    self._close(death_sig=death_sig, timeout=timeout)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 708, in _close
+    handler.proc.wait(time_to_wait)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/subprocess.py", line 1953, in _wait
+    time.sleep(delay)
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 1393443 got signal: 2
+^C
