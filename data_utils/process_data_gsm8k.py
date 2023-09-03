@@ -46,8 +46,12 @@ def main():
         args.processed_data_dir = os.path.join(args.processed_data_dir,
                                                "mixed-domain",
                                                (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"))
+    
+    if os.path.exists(os.path.join(args.processed_data_dir, "gsm8k.jsonl")):
+        print("File already exists, exiting...")
+        exit()
 
-    os.makedirs(args.processed_data_dir, exist_ok=True)
+    os.makedirs(args.processed_data_dir)
 
     # load gsm8k data
     with open(os.path.join(args.data_dir, "train.jsonl"), "r") as f:

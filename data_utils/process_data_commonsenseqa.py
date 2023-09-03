@@ -47,7 +47,11 @@ def main():
                                                "mixed-domain",
                                                (f"i{args.num_in_domain}-o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"))
 
-    os.makedirs(args.processed_data_dir, exist_ok=True)
+    if os.path.exists(os.path.join(args.processed_data_dir, "commonsenseqa.jsonl")):
+        print("File already exists, exiting...")
+        exit()
+
+    os.makedirs(args.processed_data_dir)
 
     # load commonsensenqa data
     with open(os.path.join(args.data_dir, "train.jsonl"), "r") as f:
