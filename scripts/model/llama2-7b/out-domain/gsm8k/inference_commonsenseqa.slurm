@@ -1,15 +1,15 @@
 #!/bin/bash
 #SBATCH -A danielk_gpu
-#SBATCH --partition a100
+#SBATCH --partition ica100
 #SBATCH --qos=qos_gpu
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=24:00:00
-#SBATCH --job-name="llama2-7b-ood-csqa-gsm8k-f-m4096"
-#SBATCH --output="./screen_log/llama2-7b/csqa_gsm8k_ood1-25_f_4096.txt"
-#SBATCH --mem=40G
-# #SBATCH --array=0-1 # job array index
+#SBATCH --time=36:00:00
+#SBATCH --job-name="ood11-20-csqa-gsm8k-t-m4096"
+#SBATCH --output="./screen_log/llama2-7b/csqa_gsm8k_ood11-20_t_4096.txt"
+#SBATCH --mem=80G
+#SBATCH --array=0-1 # job array index
 #SBATCH --mail-user=ylu130@jh.edu
 #SBATCH --mail-type=ALL
 
@@ -28,5 +28,4 @@ conda activate ood # open the Python environment
 
 cd /home/ylu130/workspace/in-context-generalization/scripts/model/llama2-7b/out-domain/gsm8k
 
-# bash ./inference_commonsenseqa.sh "$(($SLURM_ARRAY_TASK_ID*5+1)) $(($SLURM_ARRAY_TASK_ID*5+2)) $(($SLURM_ARRAY_TASK_ID*5+3)) $(($SLURM_ARRAY_TASK_ID*5+4)) $(($SLURM_ARRAY_TASK_ID*5+5))" "True" "4096" "4"
-bash ./inference_commonsenseqa.sh "21 22 23 24 25" "False" "4096" "4"
+bash ./inference_commonsenseqa.sh "$(($SLURM_ARRAY_TASK_ID*5+11)) $(($SLURM_ARRAY_TASK_ID*5+12)) $(($SLURM_ARRAY_TASK_ID*5+13)) $(($SLURM_ARRAY_TASK_ID*5+14)) $(($SLURM_ARRAY_TASK_ID*5+15))" "True" "4096" "10"
