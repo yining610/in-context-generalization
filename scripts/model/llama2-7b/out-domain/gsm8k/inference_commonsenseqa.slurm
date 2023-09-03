@@ -8,7 +8,7 @@
 #SBATCH --time=36:00:00
 #SBATCH --job-name="ood11-20-csqa-gsm8k-t-m4096"
 #SBATCH --output="./screen_log/llama2-7b/csqa_gsm8k_ood11-20_t_4096.txt"
-#SBATCH --mem=80G
+#SBATCH --mem=70G
 #SBATCH --array=0-1 # job array index
 #SBATCH --mail-user=ylu130@jh.edu
 #SBATCH --mail-type=ALL
