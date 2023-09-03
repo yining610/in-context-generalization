@@ -15,7 +15,6 @@ def get_folders(path):
             folders.append(folder)
     return folders
 
-
 def get_results(result_path: str, model_path: str, data_path: str, data_name: str, metric_fn: callable) -> pd.DataFrame:
     folders = get_folders(result_path)
 
@@ -156,7 +155,6 @@ acc_results3 = get_results(result_path=os.path.join(base_path, "gsm8k/out-domain
 
 demo_plot(acc_results3, "Out-domain GSM8K Accuracy", limits=9)
 token_plot(acc_results3, "Out-domain GSM8K Accuracy")
-
 
 # LLAMA2-13B
 base_path = "./results/llama2-13b"
