@@ -1,6 +1,6 @@
-BASE_PATH=${2-"/home/ylu130/workspace/in-context-generalization"}
-DATA_PATH=${3-"/scratch/ylu130"}
-OUT_DOMAIN_NAME=${4-"commonsenseqa"}
+BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
+DATA_PATH=${2-"/scratch/ylu130"}
+OUT_DOMAIN_NAME=${3-"commonsenseqa"}
 
 for seed in 1 10 20 30 40 50 60
 do

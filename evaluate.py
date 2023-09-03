@@ -134,6 +134,7 @@ token_plot(acc_results2, "In-domain Commonsenseqa Accuracy")
 
 # CommonsenseQA overall results
 acc_results1['num_demonstrations'] = acc_results1['num_demonstrations'].apply(lambda x: -x)
+acc_results1['tokens'] = acc_results1['tokens'].apply(lambda x: -x)
 acc_results = pd.concat([acc_results1, acc_results2], ignore_index=True)
 
 zero_demo_temp = acc_results[acc_results['num_demonstrations'] == 0].copy()
@@ -141,6 +142,7 @@ zero_demo_temp['rationales'] = "Without Rationales"
 acc_results = pd.concat([acc_results, zero_demo_temp], ignore_index=True)
 
 demo_plot(acc_results, "Commonsenseqa Overall Accuracy", limits=9, show_tokens=False)
+token_plot(acc_results, "Commonsenseqa Overall Accuracy")
 
 # GSM8K out-domain results
 acc_results3 = get_results(result_path=os.path.join(base_path, "gsm8k/out-domain"),
@@ -154,3 +156,18 @@ acc_results3 = get_results(result_path=os.path.join(base_path, "gsm8k/out-domain
 
 demo_plot(acc_results3, "Out-domain GSM8K Accuracy", limits=9)
 token_plot(acc_results3, "Out-domain GSM8K Accuracy")
+
+
+# LLAMA2-13B
+base_path = "./results/llama2-13b"
+base_path_2 = "/scratch/ylu130/processed_data"
+model_path = "meta-llama/Llama-2-13b-hf"
+# CommonsenseQA out-domain results
+acc_results4 = get_results(result_path=os.path.join(base_path, "commonsenseqa/out-domain"), 
+                           model_path=model_path, 
+                           data_path=os.path.join(base_path_2, "commonsenseqa/out-domain"), 
+                           data_name="commonsenseqa", 
+                           metric_fn=compute_mc_acc)
+
+demo_plot(acc_results4, "Out-domain Commonsenseqa Accuracy", limits=9)
+token_plot(acc_results4, "Out-domain Commonsenseqa Accuracy")

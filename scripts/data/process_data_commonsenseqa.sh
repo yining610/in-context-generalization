@@ -1,10 +1,10 @@
-BASE_PATH=${2-"/home/ylu130/workspace/in-context-generalization"}
-DATA_PATH=${3-"/scratch/ylu130"}
-OUT_DOMAIN_NAME=${4-"gsm8k"}
+BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
+DATA_PATH=${2-"/scratch/ylu130"}
+OUT_DOMAIN_NAME=${3-"gsm8k"}
 
-for seed in 1 10 20 30 40 50 60
+for seed in 1 10 20 30
 do
-    for indomain in 0 1 2 3 4 5 6 7 8 9 
+    for indomain in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
     do  
         for outdomain in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
         do  
