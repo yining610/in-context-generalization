@@ -5,11 +5,11 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=4:00:00
+#SBATCH --time=48:00:00
 #SBATCH --job-name="ood1-20-csqa-mathqa-b-m4096"
 #SBATCH --output="./screen_log/llama2-7b/csqa_mathqa_ood1-20_b_4096.txt"
 #SBATCH --mem=80G
-#SBATCH --array=0-3
+#SBATCH --array=0-4
 #SBATCH --mail-user=ylu130@jh.edu
 #SBATCH --mail-type=ALL
 
@@ -28,4 +28,4 @@ conda activate ood # open the Python environment
 
 cd /home/ylu130/workspace/in-context-generalization/scripts/model/llama2-7b/out-domain/mathqa
 
-bash ./inference_commonsenseqa.sh "$(($SLURM_ARRAY_TASK_ID*5+1)) $(($SLURM_ARRAY_TASK_ID*5+2)) $(($SLURM_ARRAY_TASK_ID*5+3)) $(($SLURM_ARRAY_TASK_ID*5+4)) $(($SLURM_ARRAY_TASK_ID*5+5))" "True False" "4096" "10"
+bash ./inference_commonsenseqa.sh "$(($SLURM_ARRAY_TASK_ID*4+1)) $(($SLURM_ARRAY_TASK_ID*4+3))" "True False" "4096" "10"
