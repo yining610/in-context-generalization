@@ -33,7 +33,7 @@ bash ./scripts/model/[MODELNAME]/in-domain/inference_[DATASETNAME].sh [NUM_INDOM
 - [ ] ```in-domain: GSM8K / out-domain: CommonsenseQA / seed: [1 10 20 30] / test: [-9,-1] / With rationale / max prompt token: 4096 ```
 
 - [ ] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: [1 10 20 30] / test: [-10,-1] / With rationale / max prompt token: 4096 ```
-- [x] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: [1 10 20 30] / test: [-20,-11] / With rationale / max prompt token: 4096 ```
+- [ ] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: [1 10 20 30] / test: [-20,-11] / With rationale / max prompt token: 4096 ```
 
 #### LLama2-13b
 - [ ] ```in-domain: CommonsenseQA / out-domain: GSM8K / seed: [1 10 20 30] / test: [-25,-1] / Without rationale / max prompt token: 4096 ```
