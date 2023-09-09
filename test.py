@@ -72,12 +72,12 @@
 # print(tokenizer.decode(outputs[0])) 
 
 
-# import json
+import json
 
-# with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s1-rTrue/commonsenseqa.jsonl", "r") as f:
-#     data = [json.loads(line) for line in f.readlines()]
+with open("/scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tmathqa-s1-rTrue/commonsenseqa.jsonl", "r") as f:
+    data = [json.loads(line) for line in f.readlines()]
 
-# print(data[1]["prompt"])
+print(data[1]["prompt"])
 
 
 # # count tokens
@@ -159,63 +159,63 @@
 # model.save_pretrained("/scratch/ylu130/model/opt-1.3b")
 # tokenizer.save_pretrained("/scratch/ylu130/model/opt-1.3b")
 
-from huggingface_hub import hf_hub_download
+# from huggingface_hub import hf_hub_download
 
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="model-00002-of-00002.safetensors", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="model.safetensors.index.json", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="pytorch_model-00001-of-00003.bin", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="pytorch_model-00002-of-00003.bin", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="pytorch_model-00003-of-00003.bin", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="pytorch_model.bin.index.json", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="special_tokens_map.json", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="tokenizer.json", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="tokenizer.model", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="tokenizer_config.json", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="model-00002-of-00002.safetensors", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="model.safetensors.index.json", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="pytorch_model-00001-of-00003.bin", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="pytorch_model-00002-of-00003.bin", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="pytorch_model-00003-of-00003.bin", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="pytorch_model.bin.index.json", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="special_tokens_map.json", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="tokenizer.json", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="tokenizer.model", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="tokenizer_config.json", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
 
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename=".gitattributes", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="LICENSE.txt", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="USE_POLICY.md", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
-hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
-                filename="README.md", 
-                revision="637a748546bb9abca62b0684183cc362bc1ece6d",
-                cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename=".gitattributes", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="LICENSE.txt", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="USE_POLICY.md", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
+# hf_hub_download(repo_id="meta-llama/Llama-2-7b-hf", 
+#                 filename="README.md", 
+#                 revision="637a748546bb9abca62b0684183cc362bc1ece6d",
+#                 cache_dir="/scratch/ylu130/model-hf")
 

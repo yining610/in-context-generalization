@@ -118,7 +118,7 @@ acc_results1 = get_results(result_path=os.path.join(base_path, "commonsenseqa/ou
                            data_name="commonsenseqa", 
                            metric_fn=compute_mc_acc)
 
-demo_plot(acc_results1, "Out-domain Commonsenseqa Accuracy", limits=9)
+demo_plot(acc_results1, "Out-domain Commonsenseqa Accuracy", limits=17)
 token_plot(acc_results1, "Out-domain Commonsenseqa Accuracy")
 
 # CommonsenseQA in-domain results
@@ -128,7 +128,7 @@ acc_results2 = get_results(result_path=os.path.join(base_path, "commonsenseqa/in
                            data_name="commonsenseqa", 
                            metric_fn=compute_mc_acc)
 
-demo_plot(acc_results2, "In-domain Commonsenseqa Accuracy", limits=9)
+demo_plot(acc_results2, "In-domain Commonsenseqa Accuracy", limits=17)
 token_plot(acc_results2, "In-domain Commonsenseqa Accuracy")
 
 # CommonsenseQA overall results
@@ -140,7 +140,7 @@ zero_demo_temp = acc_results[acc_results['num_demonstrations'] == 0].copy()
 zero_demo_temp['rationales'] = "Without Rationales"
 acc_results = pd.concat([acc_results, zero_demo_temp], ignore_index=True)
 
-demo_plot(acc_results, "Commonsenseqa Overall Accuracy", limits=9, show_tokens=False)
+demo_plot(acc_results, "Commonsenseqa Overall Accuracy", limits=17, show_tokens=False)
 token_plot(acc_results, "Commonsenseqa Overall Accuracy")
 
 # GSM8K out-domain results

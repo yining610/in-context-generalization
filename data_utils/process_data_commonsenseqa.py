@@ -57,9 +57,13 @@ def main():
     with open(os.path.join(args.data_dir, "train.jsonl"), "r") as f:
         data = [json.loads(line) for line in f.readlines()]
     
-    with open(os.path.join(args.out_domain_data_dir, "train.jsonl"), "r") as f:
-        out_domain_data = [json.loads(line) for line in f.readlines()]
-
+    if os.path.exists(os.path.join(args.out_domain_data_dir, "train.jsonl")):
+        with open(os.path.join(args.out_domain_data_dir, "train.jsonl"), "r") as f:
+            out_domain_data = [json.loads(line) for line in f.readlines()]
+    elif os.path.exists(os.path.join(args.out_domain_data_dir, "train.json")):
+        with open(os.path.join(args.out_domain_data_dir, "train.json"), "r") as f:
+            out_domain_data = json.load(f)
+        
     # template = (
     #     "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n"
     #     "### Instruction:{instruction}\n\n### Demonstration:\n{demonstration}\n\n### Input:{input}\n\n### Response:"

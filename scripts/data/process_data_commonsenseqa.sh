@@ -1,13 +1,17 @@
-BASE_PATH=${1-"/home/ylu130/workspace/in-context-generalization"}
-DATA_PATH=${2-"/scratch/ylu130"}
-OUT_DOMAIN_NAME=${3-"gsm8k"}
+BASE_PATH="/home/ylu130/workspace/in-context-generalization"
+DATA_PATH="/scratch/ylu130"
+OUT_DOMAIN_NAME=${1-"gsm8k"}
+
+# In-domain rationales only need to be processed once
+NUM_INDOMAIN_LIST=${2-"0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18"}
+NUM_OUTDOMAIN_LIST=${3-"0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25"}
 
 for seed in 1 10 20 30
 do
-    for indomain in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+    for indomain in $NUM_INDOMAIN_LIST
     do  
-        for outdomain in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
-        do  
+        for outdomain in $NUM_OUTDOMAIN_LIST
+        do 
             if [ ${indomain} -ne 0 ] && [ ${outdomain} -ne 0 ]
             then
                 continue

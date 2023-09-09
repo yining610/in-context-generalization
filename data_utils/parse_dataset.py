@@ -11,5 +11,10 @@ def parse(data_name, line):
         gold_answer = line["answer"].split("####")[1]
         question_with_answer = question + " The answer is " + gold_answer
         rationales = line["answer"].split("####")[0]
+    elif data_name == "mathqa":
+        question = line['Problem'] + " " + line['options']
+        gold_answer = line['correct']
+        question_with_answer = question + " The answer is " + gold_answer
+        rationales = line['Rationale']
     
     return question, gold_answer, question_with_answer, rationales
