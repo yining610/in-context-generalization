@@ -79,6 +79,7 @@ def get_args():
                 (f"{args.model_name}"),
                 (f"{args.data_name}"),
                 "out-domain",
+                "args.out_domain_data_name",
                 (f"o{args.num_out_domain}-t{args.out_domain_data_name}-s{args.seed}-r{args.rationales}"),
             )
         else:
