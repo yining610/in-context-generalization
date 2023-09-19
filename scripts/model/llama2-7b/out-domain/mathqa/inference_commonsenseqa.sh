@@ -14,11 +14,11 @@ DISTRIBUTED_ARGS="--nproc_per_node $SLURM_NTASKS_PER_NODE \
 BASE_PATH="/home/ylu130/workspace/in-context-generalization"
 MODEL_NAME="llama2-7b"
 MODEL_TYPE="llama"
-MODEL_PATH="/scratch4/danielk/ylu130/model-hf"
+MODEL_PATH="/scratch/ylu130/model-hf"
 MODEL_HF_NAME="meta-llama/Llama-2-7b-hf"
 # data
 DATA_NAMES="commonsenseqa"
-DATA_DIR="/scratch4/danielk/ylu130/processed_data/commonsenseqa"
+DATA_DIR="/scratch/ylu130/processed_data/commonsenseqa"
 NUM_EVL=1000
 NUM_WORKERS=0
 # generation
@@ -77,7 +77,7 @@ do
                 OPTS_BACKUP+=" --rationales"
             fi
             OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
-            CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+            CMD="python -m torch.distributed.launch --use-env ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
             echo ${CMD}
             ${CMD}
         done

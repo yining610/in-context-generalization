@@ -28,8 +28,6 @@ unset __conda_setup
 
 conda activate ood
 
-echo $CONDA_PREFIX
-
 export MASTER_PORT=$(expr 10000 + $(echo -n $SLURM_JOBID | tail -c 4))
 export WORLD_SIZE=$(($SLURM_NNODES * $SLURM_NTASKS_PER_NODE))
 echo "WORLD_SIZE="$WORLD_SIZE
