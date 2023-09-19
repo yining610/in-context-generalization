@@ -20,8 +20,12 @@ master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
 echo "MASTER_ADDR="$MASTER_ADDR
 
-module purge
-module load anaconda
+# module purge
+# module load anaconda
+conda activate ood
+
+# source ~/anaconda3/etc/profile.d/conda.sh
+# conda activate my_env
 
 cd /home/ylu130/workspace/in-context-generalization/scripts/model/llama2-7b/out-domain/gsm8k
 
