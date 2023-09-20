@@ -1,7 +1,6 @@
-/home/ylu130/.conda/envs/ood
 WORLD_SIZE=1
 MASTER_ADDR=ia1
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 1 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 1 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -11,10 +10,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:32:43,091] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:03:44,503] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 2 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 2 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -24,10 +23,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:32:49,599] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:03:51,061] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 3 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 3 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -37,10 +36,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:32:56,101] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:03:57,523] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 4 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 4 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -50,10 +49,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:33:02,599] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:04:04,014] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 5 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tgsm8k-s1-rTrue --seed 1 --max-prompt-length 4096 --rationales --num-out-domain 5 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -63,10 +62,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:33:09,086] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:04:10,518] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 1 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 1 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -76,10 +75,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:33:15,564] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:04:17,043] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 2 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 2 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -89,10 +88,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:33:22,019] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:04:23,580] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 3 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 3 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -102,10 +101,10 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:33:28,552] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2023-09-20 00:04:30,102] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
 using world size: 1
 Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 4 1 2 3 4 5 True 4096 4
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10141 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 4 1 2 3 4 5 True 4096 5
 /home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
 and will be removed in future. Use torchrun.
 Note that --use-env is set by default in torchrun.
@@ -115,576 +114,3 @@ https://pytorch.org/docs/stable/distributed.html#launch-utility for
 further instructions
 
   warnings.warn(
-[2023-09-19 14:33:35,066] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tgsm8k-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 5 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:33:41,575] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s20-rTrue --seed 20 --max-prompt-length 4096 --rationales --num-out-domain 1 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:33:48,108] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s20-rTrue --seed 20 --max-prompt-length 4096 --rationales --num-out-domain 2 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:33:54,572] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s20-rTrue --seed 20 --max-prompt-length 4096 --rationales --num-out-domain 3 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:01,088] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s20-rTrue --seed 20 --max-prompt-length 4096 --rationales --num-out-domain 4 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:07,612] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tgsm8k-s20-rTrue --seed 20 --max-prompt-length 4096 --rationales --num-out-domain 5 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:14,109] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o1-tgsm8k-s30-rTrue --seed 30 --max-prompt-length 4096 --rationales --num-out-domain 1 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:20,573] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o2-tgsm8k-s30-rTrue --seed 30 --max-prompt-length 4096 --rationales --num-out-domain 2 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:27,045] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o3-tgsm8k-s30-rTrue --seed 30 --max-prompt-length 4096 --rationales --num-out-domain 3 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:33,543] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-Answers already exist, exiting...
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s30-rTrue --seed 30 --max-prompt-length 4096 --rationales --num-out-domain 4 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 14:34:40,076] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-arguments:
-  model_name ................... llama2-7b
-  model_type ................... llama
-  model_path ................... /scratch/ylu130/model-hf
-  model_hf_name ................ meta-llama/Llama-2-7b-hf
-  is_opensource ................ True
-  is_slurm ..................... True
-  data_name .................... commonsenseqa
-  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o4-tgsm8k-s30-rTrue
-  processed_data_dir ........... None
-  num_eval ..................... 1000
-  num_in_domain ................ 0
-  num_out_domain ............... 4
-  out_domain_data_name ......... gsm8k
-  out_domain_data_dir .......... None
-  num_workers .................. 0
-  max_prompt_length ............ 4096
-  max_length ................... 512
-  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/gsm8k/o4-tgsm8k-s30-rTrue-m4096
-  rationales ................... True
-  top_k ........................ 50
-  top_p ........................ 1.0
-  do_sample .................... True
-  num_beams .................... 1
-  temperature .................. 1.0
-  no_repeat_ngram_size ......... 6
-  repetition_penalty ........... None
-  batch_size ................... 4
-  seed ......................... 30
-  deepspeed .................... True
-  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
-  deepscale .................... False
-  deepscale_config ............. None
-  deepspeed_mpi ................ False
-  local_rank ................... 0
-  rank ......................... 0
-  gpus_per_node ................ 1
-  world_size ................... 1
-Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 807237.57it/s]
-Num instances: 1000
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.38s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.48s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.92s/it]
- > number of parameters: 6738415616
-[2023-09-19 14:34:52,825] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
-[2023-09-19 14:34:52,825] [INFO] [comm.py:637:init_distributed] cdb=None
-[2023-09-19 14:34:53,133] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
-[2023-09-19 14:34:53,134] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   activation_checkpointing_config  {
-    "partition_activations": false, 
-    "contiguous_memory_optimization": false, 
-    "cpu_checkpointing": false, 
-    "number_checkpoints": null, 
-    "synchronize_checkpoint_boundary": false, 
-    "profile": false
-}
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   amp_enabled .................. False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   amp_params ................... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   autotuning_config ............ {
-    "enabled": false, 
-    "start_step": null, 
-    "end_step": null, 
-    "metric_path": null, 
-    "arg_mappings": null, 
-    "metric": "throughput", 
-    "model_info": null, 
-    "results_dir": "autotuning_results", 
-    "exps_dir": "autotuning_exps", 
-    "overwrite": true, 
-    "fast": true, 
-    "start_profile_step": 3, 
-    "end_profile_step": 5, 
-    "tuner_type": "gridsearch", 
-    "tuner_early_stopping": 5, 
-    "tuner_num_trials": 50, 
-    "model_info_path": null, 
-    "mp_size": 1, 
-    "max_train_batch_size": null, 
-    "min_train_batch_size": 1, 
-    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
-    "min_train_micro_batch_size_per_gpu": 1, 
-    "num_tuning_micro_batch_sizes": 3
-}
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fd67cc0ad70>
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   communication_data_type ...... None
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   disable_allgather ............ False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   dump_state ................... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
-[2023-09-19 14:34:53,135] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   elasticity_enabled ........... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   flops_profiler_config ........ {
-    "enabled": false, 
-    "recompute_fwd_factor": 0.0, 
-    "profile_step": 1, 
-    "module_depth": -1, 
-    "top_modules": 1, 
-    "detailed": true, 
-    "output_file": null
-}
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   fp16_enabled ................. True
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   global_rank .................. 0
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   loss_scale ................... 0
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   memory_breakdown ............. False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   mics_shard_size .............. -1
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   nebula_config ................ {
-    "enabled": false, 
-    "persistent_storage_path": null, 
-    "persistent_time_interval": 100, 
-    "num_of_version_in_retention": 2, 
-    "enable_nebula_load": true, 
-    "load_path": null
-}
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   optimizer_name ............... None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   optimizer_params ............. None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   pld_enabled .................. False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   pld_params ................... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   prescale_gradients ........... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   scheduler_name ............... None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   scheduler_params ............. None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   sparse_attention ............. None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   steps_per_print .............. 10
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   train_batch_size ............. 1
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   use_node_local_storage ....... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   weight_quantization_config ... None
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   world_size ................... 1
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   zero_enabled ................. False
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
-[2023-09-19 14:34:53,136] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
-[2023-09-19 14:34:53,136] [INFO] [config.py:957:print_user_config]   json = {
-    "train_micro_batch_size_per_gpu": 1, 
-    "gradient_accumulation_steps": 1, 
-    "zero_optimization": {
-        "stage": 0
-    }, 
-    "zero_allow_untested_optimizer": true, 
-    "fp16": {
-        "enabled": true, 
-        "loss_scale": 0, 
-        "initial_scale_power": 11, 
-        "loss_scale_window": 2.000000e+03, 
-        "hysteresis": 4
-    }, 
-    "wall_clock_breakdown": false
-}
-Evaluating commonsenseqa :   0%|          | 0/250 [00:00<?, ?it/s]############### Example ###############
-### Instruction:Answer the following multiple choice question.
-
-Input: The car-rental agency charges $30/day for a car, or $190 for the first week for a rental that lasts an entire week or longer. Jennie rented a car for 11 days. How much, in dollars, did she pay for the rental?
-Output: The first 7 days were $190.
-There were 11-7=<<11-7=4>>4 days left.
-The additional 4 days were 4*30=<<4*30=120>>120.
-And 190+120=<<190+120=310>>310.
-So the final answer is 310
-
-Input: A hurricane is approaching the southern coast of Texas, and a rancher is planning to move 400 head of cattle 60 miles to higher ground to protect them from possible inland flooding that might occur.  His animal transport truck holds 20 head of cattle.  Traveling at 60 miles per hour, what is the total driving time, in hours, it will take to transport all of his cattle to higher ground?
-Output: Given the limited capacity of his transport vehicle (20 head of cattle), the 400 head of cattle will require 400/20=<<400/20=20>>20 trips using his transport vehicle.
-Traveling to the site at 60 mph for 60 miles it will take 60/60=<<60/60=1>>1 hour to travel one-way.
-Since each trip requires driving to and returning from the relocation site, each complete round trip will take 2*1=<<2*1=2>>2 hours.
-Thus, 20 complete trips will take 20*2=<<20*2=40>>40 hours of driving time.
-So the final answer is 40
-
-Input: Jason has a carriage house that he rents out.  He’s charging $50.00 per day or $500.00 for 14 days.  Eric wants to rent the house for 20 days.  How much will it cost him?
-Output: He wants to rent for 20 days and there is a deal if you rent for 14 days so that leaves 20-14 = <<20-14=6>>6 individual days
-Each individual day is $50.00 and he will have 6 individual days for a total of 50*6 = $<<50*6=300.00>>300.00
-14 days costs $500.00 and 6 days costs $300.00 for a total of 500+300 = $800.00
-So the final answer is 800
-
-Input: Melissa works on a poultry farm. She drives to town twice each month to buy supplies. If it takes her 3 hours to drive to town and back, how many hours does Melissa spend driving in a year?
-Output: Melissa spends 2x3=<<2*3=6>>6 hours driving each month.
-Since there are 12 months in a year, she spends 6x12=<<6*12=72>>72 hours driving each year.
-So the final answer is 72
-
-Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
-Output:
-############### End ###############
-Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/gsm8k/o4-tgsm8k-s30-rTrue-m4096
-Evaluating commonsenseqa :   0%|          | 1/250 [01:33<6:26:19, 93.09s/it]Evaluating commonsenseqa :   1%|          | 2/250 [03:08<6:30:35, 94.50s/it]Evaluating commonsenseqa :   1%|          | 3/250 [04:40<6:24:32, 93.41s/it]Evaluating commonsenseqa :   2%|▏         | 4/250 [06:11<6:19:31, 92.57s/it]Evaluating commonsenseqa :   2%|▏         | 5/250 [07:43<6:16:25, 92.19s/it]Evaluating commonsenseqa :   2%|▏         | 6/250 [09:17<6:17:36, 92.86s/it]Evaluating commonsenseqa :   3%|▎         | 7/250 [10:49<6:14:43, 92.53s/it]Evaluating commonsenseqa :   3%|▎         | 8/250 [12:20<6:11:51, 92.19s/it]Evaluating commonsenseqa :   4%|▎         | 9/250 [13:51<6:08:12, 91.67s/it]Evaluating commonsenseqa :   4%|▍         | 10/250 [15:24<6:08:26, 92.11s/it]Evaluating commonsenseqa :   4%|▍         | 11/250 [16:55<6:05:18, 91.71s/it]Evaluating commonsenseqa :   5%|▍         | 12/250 [18:08<5:41:40, 86.14s/it]Evaluating commonsenseqa :   5%|▌         | 13/250 [19:42<5:49:12, 88.41s/it]Evaluating commonsenseqa :   6%|▌         | 14/250 [21:14<5:51:54, 89.47s/it]Evaluating commonsenseqa :   6%|▌         | 15/250 [22:46<5:54:12, 90.44s/it]Evaluating commonsenseqa :   6%|▋         | 16/250 [24:19<5:55:18, 91.10s/it]Evaluating commonsenseqa :   7%|▋         | 17/250 [25:50<5:54:00, 91.16s/it]Evaluating commonsenseqa :   7%|▋         | 18/250 [27:21<5:51:23, 90.88s/it]Evaluating commonsenseqa :   8%|▊         | 19/250 [28:52<5:49:54, 90.88s/it]Evaluating commonsenseqa :   8%|▊         | 20/250 [29:29<4:47:20, 74.96s/it]Evaluating commonsenseqa :   8%|▊         | 21/250 [31:01<5:05:23, 80.02s/it]Evaluating commonsenseqa :   9%|▉         | 22/250 [32:31<5:15:30, 83.03s/it]Evaluating commonsenseqa :   9%|▉         | 23/250 [34:02<5:23:25, 85.49s/it]Evaluating commonsenseqa :  10%|▉         | 24/250 [35:33<5:27:11, 86.87s/it]Evaluating commonsenseqa :  10%|█         | 25/250 [37:06<5:33:33, 88.95s/it]Evaluating commonsenseqa :  10%|█         | 26/250 [38:39<5:36:26, 90.12s/it]Evaluating commonsenseqa :  11%|█         | 27/250 [40:10<5:35:20, 90.22s/it]Evaluating commonsenseqa :  11%|█         | 28/250 [41:39<5:32:59, 90.00s/it]Evaluating commonsenseqa :  12%|█▏        | 29/250 [43:09<5:31:36, 90.03s/it]Evaluating commonsenseqa :  12%|█▏        | 30/250 [44:40<5:31:01, 90.28s/it]Evaluating commonsenseqa :  12%|█▏        | 31/250 [46:11<5:30:08, 90.45s/it]Evaluating commonsenseqa :  13%|█▎        | 32/250 [47:43<5:30:14, 90.89s/it]Evaluating commonsenseqa :  13%|█▎        | 33/250 [48:44<4:56:35, 82.01s/it]Evaluating commonsenseqa :  14%|█▎        | 34/250 [50:17<5:07:04, 85.30s/it]Evaluating commonsenseqa :  14%|█▍        | 35/250 [51:49<5:12:21, 87.17s/it]Evaluating commonsenseqa :  14%|█▍        | 36/250 [53:05<4:59:27, 83.96s/it]Evaluating commonsenseqa :  15%|█▍        | 37/250 [54:35<5:04:50, 85.87s/it]Evaluating commonsenseqa :  15%|█▌        | 38/250 [56:08<5:10:35, 87.91s/it]Evaluating commonsenseqa :  16%|█▌        | 39/250 [57:40<5:13:47, 89.23s/it]Evaluating commonsenseqa :  16%|█▌        | 40/250 [59:13<5:15:32, 90.16s/it]Evaluating commonsenseqa :  16%|█▋        | 41/250 [1:00:45<5:16:31, 90.87s/it]Evaluating commonsenseqa :  17%|█▋        | 42/250 [1:02:18<5:16:52, 91.41s/it]Evaluating commonsenseqa :  17%|█▋        | 43/250 [1:03:51<5:17:09, 91.93s/it]Evaluating commonsenseqa :  18%|█▊        | 44/250 [1:05:23<5:15:09, 91.79s/it]Evaluating commonsenseqa :  18%|█▊        | 45/250 [1:06:56<5:15:31, 92.35s/it]Evaluating commonsenseqa :  18%|█▊        | 46/250 [1:08:30<5:15:03, 92.67s/it]Evaluating commonsenseqa :  19%|█▉        | 47/250 [1:10:04<5:15:24, 93.22s/it]Evaluating commonsenseqa :  19%|█▉        | 48/250 [1:11:36<5:12:52, 92.93s/it]Evaluating commonsenseqa :  20%|█▉        | 49/250 [1:13:10<5:11:51, 93.09s/it]Evaluating commonsenseqa :  20%|██        | 50/250 [1:14:44<5:11:09, 93.35s/it]Evaluating commonsenseqa :  20%|██        | 51/250 [1:15:33<4:26:00, 80.20s/it]Evaluating commonsenseqa :  21%|██        | 52/250 [1:16:21<3:52:00, 70.31s/it]Evaluating commonsenseqa :  21%|██        | 53/250 [1:17:46<4:05:45, 74.85s/it]Evaluating commonsenseqa :  22%|██▏       | 54/250 [1:19:18<4:21:21, 80.01s/it]Evaluating commonsenseqa :  22%|██▏       | 55/250 [1:20:50<4:31:18, 83.48s/it]Evaluating commonsenseqa :  22%|██▏       | 56/250 [1:22:15<4:31:46, 84.05s/it]Evaluating commonsenseqa :  23%|██▎       | 57/250 [1:23:49<4:39:58, 87.04s/it]Evaluating commonsenseqa :  23%|██▎       | 58/250 [1:25:22<4:44:37, 88.95s/it]Evaluating commonsenseqa :  24%|██▎       | 59/250 [1:26:56<4:47:06, 90.19s/it]Evaluating commonsenseqa :  24%|██▍       | 60/250 [1:28:27<4:46:42, 90.54s/it]Evaluating commonsenseqa :  24%|██▍       | 61/250 [1:30:00<4:47:45, 91.35s/it]Evaluating commonsenseqa :  25%|██▍       | 62/250 [1:31:17<4:32:38, 87.01s/it]Evaluating commonsenseqa :  25%|██▌       | 63/250 [1:32:54<4:40:38, 90.04s/it]Evaluating commonsenseqa :  26%|██▌       | 64/250 [1:34:25<4:40:03, 90.34s/it]Evaluating commonsenseqa :  26%|██▌       | 65/250 [1:35:58<4:40:37, 91.02s/it]Evaluating commonsenseqa :  26%|██▋       | 66/250 [1:37:18<4:28:51, 87.67s/it]Evaluating commonsenseqa :  27%|██▋       | 67/250 [1:38:47<4:28:38, 88.08s/it]Evaluating commonsenseqa :  27%|██▋       | 68/250 [1:40:17<4:29:36, 88.88s/it]Evaluating commonsenseqa :  28%|██▊       | 69/250 [1:41:49<4:30:24, 89.64s/it]Evaluating commonsenseqa :  28%|██▊       | 70/250 [1:43:23<4:32:38, 90.88s/it]Evaluating commonsenseqa :  28%|██▊       | 71/250 [1:44:57<4:33:48, 91.78s/it]Evaluating commonsenseqa :  29%|██▉       | 72/250 [1:46:31<4:34:31, 92.54s/it]Evaluating commonsenseqa :  29%|██▉       | 73/250 [1:48:02<4:31:30, 92.03s/it]Evaluating commonsenseqa :  30%|██▉       | 74/250 [1:49:35<4:31:08, 92.44s/it]Evaluating commonsenseqa :  30%|███       | 75/250 [1:51:05<4:27:15, 91.63s/it]Evaluating commonsenseqa :  30%|███       | 76/250 [1:52:37<4:26:36, 91.93s/it]Evaluating commonsenseqa :  31%|███       | 77/250 [1:54:08<4:23:38, 91.44s/it]Evaluating commonsenseqa :  31%|███       | 78/250 [1:55:39<4:22:11, 91.46s/it]Evaluating commonsenseqa :  32%|███▏      | 79/250 [1:57:18<4:27:15, 93.77s/it]Evaluating commonsenseqa :  32%|███▏      | 80/250 [1:59:00<4:32:00, 96.00s/it]Evaluating commonsenseqa :  32%|███▏      | 81/250 [2:00:37<4:31:56, 96.55s/it]Evaluating commonsenseqa :  33%|███▎      | 82/250 [2:02:18<4:34:07, 97.90s/it]Evaluating commonsenseqa :  33%|███▎      | 83/250 [2:03:56<4:31:58, 97.72s/it]Evaluating commonsenseqa :  34%|███▎      | 84/250 [2:05:34<4:30:47, 97.88s/it]Evaluating commonsenseqa :  34%|███▍      | 85/250 [2:07:15<4:32:02, 98.92s/it]Evaluating commonsenseqa :  34%|███▍      | 86/250 [2:08:54<4:29:46, 98.70s/it]Evaluating commonsenseqa :  35%|███▍      | 87/250 [2:10:34<4:29:10, 99.08s/it]Evaluating commonsenseqa :  35%|███▌      | 88/250 [2:12:14<4:28:20, 99.39s/it]Evaluating commonsenseqa :  36%|███▌      | 89/250 [2:13:53<4:26:38, 99.37s/it]Evaluating commonsenseqa :  36%|███▌      | 90/250 [2:15:34<4:26:37, 99.98s/it]Evaluating commonsenseqa :  36%|███▋      | 91/250 [2:17:14<4:24:52, 99.95s/it]Evaluating commonsenseqa :  37%|███▋      | 92/250 [2:18:53<4:22:00, 99.49s/it]Evaluating commonsenseqa :  37%|███▋      | 93/250 [2:20:33<4:21:17, 99.85s/it]Evaluating commonsenseqa :  38%|███▊      | 94/250 [2:22:13<4:19:45, 99.91s/it]Evaluating commonsenseqa :  38%|███▊      | 95/250 [2:23:53<4:17:47, 99.79s/it]Evaluating commonsenseqa :  38%|███▊      | 96/250 [2:25:34<4:16:56, 100.11s/it]Evaluating commonsenseqa :  39%|███▉      | 97/250 [2:27:15<4:15:44, 100.29s/it]Evaluating commonsenseqa :  39%|███▉      | 98/250 [2:28:53<4:12:49, 99.80s/it] Evaluating commonsenseqa :  40%|███▉      | 99/250 [2:30:35<4:12:21, 100.28s/it]Evaluating commonsenseqa :  40%|████      | 100/250 [2:32:13<4:09:36, 99.84s/it]Evaluating commonsenseqa :  40%|████      | 101/250 [2:33:56<4:09:49, 100.60s/it]Evaluating commonsenseqa :  41%|████      | 102/250 [2:35:33<4:05:57, 99.71s/it] Evaluating commonsenseqa :  41%|████      | 103/250 [2:37:13<4:04:07, 99.64s/it]Evaluating commonsenseqa :  42%|████▏     | 104/250 [2:38:52<4:02:16, 99.57s/it]Evaluating commonsenseqa :  42%|████▏     | 105/250 [2:40:31<4:00:12, 99.40s/it]Evaluating commonsenseqa :  42%|████▏     | 106/250 [2:42:12<3:59:34, 99.82s/it]Evaluating commonsenseqa :  43%|████▎     | 107/250 [2:43:52<3:58:08, 99.92s/it]Evaluating commonsenseqa :  43%|████▎     | 108/250 [2:45:31<3:55:40, 99.58s/it]Evaluating commonsenseqa :  44%|████▎     | 109/250 [2:47:10<3:53:20, 99.29s/it]Evaluating commonsenseqa :  44%|████▍     | 110/250 [2:48:47<3:50:24, 98.75s/it]Evaluating commonsenseqa :  44%|████▍     | 111/250 [2:50:26<3:49:06, 98.90s/it]Evaluating commonsenseqa :  45%|████▍     | 112/250 [2:52:08<3:49:19, 99.70s/it]Evaluating commonsenseqa :  45%|████▌     | 113/250 [2:53:47<3:47:14, 99.52s/it]Evaluating commonsenseqa :  46%|████▌     | 114/250 [2:55:30<3:48:14, 100.69s/it]Evaluating commonsenseqa :  46%|████▌     | 115/250 [2:57:11<3:46:47, 100.79s/it]Evaluating commonsenseqa :  46%|████▋     | 116/250 [2:58:52<3:45:13, 100.85s/it]Evaluating commonsenseqa :  47%|████▋     | 117/250 [2:59:56<3:18:57, 89.76s/it] Evaluating commonsenseqa :  47%|████▋     | 118/250 [3:01:05<3:03:24, 83.37s/it]Evaluating commonsenseqa :  48%|████▊     | 119/250 [3:02:36<3:07:23, 85.83s/it]Evaluating commonsenseqa :  48%|████▊     | 120/250 [3:04:11<3:11:27, 88.37s/it]Evaluating commonsenseqa :  48%|████▊     | 121/250 [3:05:43<3:12:38, 89.60s/it]Evaluating commonsenseqa :  49%|████▉     | 122/250 [3:07:13<3:11:36, 89.82s/it]Evaluating commonsenseqa :  49%|████▉     | 123/250 [3:08:47<3:12:21, 90.87s/it]Evaluating commonsenseqa :  50%|████▉     | 124/250 [3:10:19<3:11:38, 91.25s/it]Evaluating commonsenseqa :  50%|█████     | 125/250 [3:11:50<3:09:52, 91.14s/it]Evaluating commonsenseqa :  50%|█████     | 126/250 [3:13:21<3:08:07, 91.03s/it]Evaluating commonsenseqa :  51%|█████     | 127/250 [3:14:53<3:07:15, 91.34s/it]Evaluating commonsenseqa :  51%|█████     | 128/250 [3:16:23<3:04:59, 90.98s/it]Evaluating commonsenseqa :  52%|█████▏    | 129/250 [3:17:54<3:03:31, 91.00s/it]Evaluating commonsenseqa :  52%|█████▏    | 130/250 [3:19:26<3:02:53, 91.45s/it]Evaluating commonsenseqa :  52%|█████▏    | 131/250 [3:20:57<3:00:44, 91.13s/it]Evaluating commonsenseqa :  53%|█████▎    | 132/250 [3:22:27<2:58:48, 90.92s/it]Evaluating commonsenseqa :  53%|█████▎    | 133/250 [3:23:58<2:57:31, 91.04s/it]Evaluating commonsenseqa :  54%|█████▎    | 134/250 [3:25:31<2:56:48, 91.45s/it]Evaluating commonsenseqa :  54%|█████▍    | 135/250 [3:27:04<2:56:17, 91.97s/it]Evaluating commonsenseqa :  54%|█████▍    | 136/250 [3:28:36<2:54:31, 91.85s/it]Evaluating commonsenseqa :  55%|█████▍    | 137/250 [3:30:05<2:51:50, 91.25s/it]Evaluating commonsenseqa :  55%|█████▌    | 138/250 [3:31:38<2:50:46, 91.48s/it]Evaluating commonsenseqa :  56%|█████▌    | 139/250 [3:33:09<2:49:19, 91.53s/it]Evaluating commonsenseqa :  56%|█████▌    | 140/250 [3:34:43<2:48:59, 92.18s/it]Evaluating commonsenseqa :  56%|█████▋    | 141/250 [3:36:15<2:47:24, 92.15s/it]Evaluating commonsenseqa :  57%|█████▋    | 142/250 [3:37:46<2:45:28, 91.93s/it]Evaluating commonsenseqa :  57%|█████▋    | 143/250 [3:39:17<2:43:28, 91.66s/it]Evaluating commonsenseqa :  58%|█████▊    | 144/250 [3:40:52<2:43:15, 92.41s/it]Evaluating commonsenseqa :  58%|█████▊    | 145/250 [3:42:22<2:40:35, 91.77s/it]Evaluating commonsenseqa :  58%|█████▊    | 146/250 [3:43:55<2:39:46, 92.18s/it]Evaluating commonsenseqa :  59%|█████▉    | 147/250 [3:45:27<2:38:15, 92.19s/it]Evaluating commonsenseqa :  59%|█████▉    | 148/250 [3:46:58<2:36:04, 91.81s/it]Evaluating commonsenseqa :  60%|█████▉    | 149/250 [3:48:29<2:34:13, 91.62s/it]Evaluating commonsenseqa :  60%|██████    | 150/250 [3:50:01<2:32:31, 91.52s/it]Evaluating commonsenseqa :  60%|██████    | 151/250 [3:51:30<2:30:06, 90.97s/it]Evaluating commonsenseqa :  61%|██████    | 152/250 [3:52:25<2:11:02, 80.23s/it]Evaluating commonsenseqa :  61%|██████    | 153/250 [3:53:57<2:15:13, 83.65s/it]Evaluating commonsenseqa :  62%|██████▏   | 154/250 [3:55:27<2:16:41, 85.43s/it]Evaluating commonsenseqa :  62%|██████▏   | 155/250 [3:56:59<2:18:40, 87.58s/it]Evaluating commonsenseqa :  62%|██████▏   | 156/250 [3:58:32<2:19:50, 89.26s/it]Evaluating commonsenseqa :  63%|██████▎   | 157/250 [4:00:05<2:19:45, 90.17s/it]Evaluating commonsenseqa :  63%|██████▎   | 158/250 [4:01:35<2:18:26, 90.29s/it]Evaluating commonsenseqa :  64%|██████▎   | 159/250 [4:03:08<2:18:12, 91.12s/it]Evaluating commonsenseqa :  64%|██████▍   | 160/250 [4:04:38<2:15:59, 90.66s/it]Evaluating commonsenseqa :  64%|██████▍   | 161/250 [4:06:10<2:14:55, 90.96s/it]Evaluating commonsenseqa :  65%|██████▍   | 162/250 [4:07:41<2:13:26, 90.98s/it]Evaluating commonsenseqa :  65%|██████▌   | 163/250 [4:09:18<2:14:30, 92.77s/it]Evaluating commonsenseqa :  66%|██████▌   | 164/250 [4:10:56<2:15:22, 94.44s/it]Evaluating commonsenseqa :  66%|██████▌   | 165/250 [4:12:34<2:15:29, 95.64s/it]Evaluating commonsenseqa :  66%|██████▋   | 166/250 [4:14:14<2:15:28, 96.77s/it]Evaluating commonsenseqa :  67%|██████▋   | 167/250 [4:15:55<2:15:43, 98.12s/it]Evaluating commonsenseqa :  67%|██████▋   | 168/250 [4:16:51<1:56:54, 85.54s/it]Evaluating commonsenseqa :  68%|██████▊   | 169/250 [4:18:31<2:01:15, 89.82s/it]Evaluating commonsenseqa :  68%|██████▊   | 170/250 [4:20:13<2:04:29, 93.37s/it]Evaluating commonsenseqa :  68%|██████▊   | 171/250 [4:20:41<1:37:05, 73.74s/it]Evaluating commonsenseqa :  69%|██████▉   | 172/250 [4:22:19<1:45:29, 81.15s/it]Evaluating commonsenseqa :  69%|██████▉   | 173/250 [4:23:59<1:51:13, 86.67s/it]Evaluating commonsenseqa :  70%|██████▉   | 174/250 [4:25:39<1:54:57, 90.75s/it]Evaluating commonsenseqa :  70%|███████   | 175/250 [4:27:18<1:56:42, 93.36s/it]Evaluating commonsenseqa :  70%|███████   | 176/250 [4:29:00<1:58:03, 95.72s/it]Evaluating commonsenseqa :  71%|███████   | 177/250 [4:30:38<1:57:35, 96.65s/it]Evaluating commonsenseqa :  71%|███████   | 178/250 [4:31:55<1:48:45, 90.63s/it]Evaluating commonsenseqa :  72%|███████▏  | 179/250 [4:33:36<1:50:57, 93.77s/it]Evaluating commonsenseqa :  72%|███████▏  | 180/250 [4:35:15<1:51:22, 95.46s/it]Evaluating commonsenseqa :  72%|███████▏  | 181/250 [4:36:57<1:51:56, 97.34s/it]Evaluating commonsenseqa :  73%|███████▎  | 182/250 [4:38:10<1:41:58, 89.97s/it]Evaluating commonsenseqa :  73%|███████▎  | 183/250 [4:39:49<1:43:30, 92.69s/it]Evaluating commonsenseqa :  74%|███████▎  | 184/250 [4:41:30<1:44:33, 95.05s/it]Evaluating commonsenseqa :  74%|███████▍  | 185/250 [4:43:11<1:45:09, 97.07s/it]Evaluating commonsenseqa :  74%|███████▍  | 186/250 [4:44:53<1:44:58, 98.41s/it]Evaluating commonsenseqa :  75%|███████▍  | 187/250 [4:46:31<1:43:15, 98.34s/it]Evaluating commonsenseqa :  75%|███████▌  | 188/250 [4:48:10<1:41:53, 98.60s/it]Evaluating commonsenseqa :  76%|███████▌  | 189/250 [4:49:50<1:40:40, 99.02s/it]Evaluating commonsenseqa :  76%|███████▌  | 190/250 [4:51:33<1:40:15, 100.25s/it]Evaluating commonsenseqa :  76%|███████▋  | 191/250 [4:53:14<1:38:49, 100.50s/it]Evaluating commonsenseqa :  77%|███████▋  | 192/250 [4:54:54<1:36:53, 100.23s/it]Evaluating commonsenseqa :  77%|███████▋  | 193/250 [4:56:32<1:34:36, 99.59s/it] Evaluating commonsenseqa :  78%|███████▊  | 194/250 [4:58:13<1:33:19, 100.00s/it]Evaluating commonsenseqa :  78%|███████▊  | 195/250 [4:59:41<1:28:14, 96.26s/it] Evaluating commonsenseqa :  78%|███████▊  | 196/250 [5:01:22<1:27:58, 97.76s/it]Evaluating commonsenseqa :  79%|███████▉  | 197/250 [5:03:01<1:26:37, 98.07s/it]Evaluating commonsenseqa :  79%|███████▉  | 198/250 [5:04:40<1:25:22, 98.52s/it]Evaluating commonsenseqa :  80%|███████▉  | 199/250 [5:06:21<1:24:16, 99.15s/it]Evaluating commonsenseqa :  80%|████████  | 200/250 [5:08:00<1:22:44, 99.29s/it]Evaluating commonsenseqa :  80%|████████  | 201/250 [5:09:40<1:21:14, 99.48s/it]Evaluating commonsenseqa :  81%|████████  | 202/250 [5:11:19<1:19:16, 99.10s/it]Evaluating commonsenseqa :  81%|████████  | 203/250 [5:12:51<1:15:56, 96.95s/it]Evaluating commonsenseqa :  82%|████████▏ | 204/250 [5:14:21<1:12:46, 94.92s/it]Evaluating commonsenseqa :  82%|████████▏ | 205/250 [5:15:55<1:11:07, 94.84s/it]Evaluating commonsenseqa :  82%|████████▏ | 206/250 [5:17:29<1:09:14, 94.43s/it]Evaluating commonsenseqa :  83%|████████▎ | 207/250 [5:19:02<1:07:25, 94.08s/it]Evaluating commonsenseqa :  83%|████████▎ | 208/250 [5:20:35<1:05:35, 93.70s/it]Evaluating commonsenseqa :  84%|████████▎ | 209/250 [5:22:07<1:03:44, 93.27s/it]Evaluating commonsenseqa :  84%|████████▍ | 210/250 [5:23:40<1:02:11, 93.29s/it]Evaluating commonsenseqa :  84%|████████▍ | 211/250 [5:25:15<1:00:50, 93.60s/it]Evaluating commonsenseqa :  85%|████████▍ | 212/250 [5:26:47<59:04, 93.28s/it]  Evaluating commonsenseqa :  85%|████████▌ | 213/250 [5:28:22<57:49, 93.78s/it]Evaluating commonsenseqa :  86%|████████▌ | 214/250 [5:29:54<55:50, 93.08s/it]Evaluating commonsenseqa :  86%|████████▌ | 215/250 [5:31:25<54:00, 92.59s/it]Evaluating commonsenseqa :  86%|████████▋ | 216/250 [5:33:00<52:49, 93.22s/it]Evaluating commonsenseqa :  87%|████████▋ | 217/250 [5:34:23<49:32, 90.09s/it]Evaluating commonsenseqa :  87%|████████▋ | 218/250 [5:35:55<48:25, 90.80s/it]Evaluating commonsenseqa :  88%|████████▊ | 219/250 [5:37:26<46:51, 90.71s/it]Evaluating commonsenseqa :  88%|████████▊ | 220/250 [5:38:58<45:36, 91.22s/it]Evaluating commonsenseqa :  88%|████████▊ | 221/250 [5:40:31<44:20, 91.72s/it]Evaluating commonsenseqa :  89%|████████▉ | 222/250 [5:42:05<43:11, 92.56s/it]Evaluating commonsenseqa :  89%|████████▉ | 223/250 [5:43:40<41:56, 93.20s/it]Evaluating commonsenseqa :  90%|████████▉ | 224/250 [5:45:15<40:36, 93.73s/it]Evaluating commonsenseqa :  90%|█████████ | 225/250 [5:46:47<38:49, 93.19s/it]Evaluating commonsenseqa :  90%|█████████ | 226/250 [5:48:21<37:21, 93.39s/it]Evaluating commonsenseqa :  91%|█████████ | 227/250 [5:49:53<35:37, 92.95s/it]Evaluating commonsenseqa :  91%|█████████ | 228/250 [5:51:27<34:11, 93.23s/it]Evaluating commonsenseqa :  92%|█████████▏| 229/250 [5:51:50<25:18, 72.29s/it]Evaluating commonsenseqa :  92%|█████████▏| 230/250 [5:53:23<26:09, 78.47s/it]Evaluating commonsenseqa :  92%|█████████▏| 231/250 [5:54:54<26:02, 82.24s/it]Evaluating commonsenseqa :  93%|█████████▎| 232/250 [5:56:26<25:33, 85.21s/it]Evaluating commonsenseqa :  93%|█████████▎| 233/250 [5:57:57<24:38, 86.98s/it]Evaluating commonsenseqa :  94%|█████████▎| 234/250 [5:58:52<20:37, 77.34s/it]Evaluating commonsenseqa :  94%|█████████▍| 235/250 [5:59:58<18:29, 73.97s/it]Evaluating commonsenseqa :  94%|█████████▍| 236/250 [6:01:29<18:24, 78.88s/it]Evaluating commonsenseqa :  95%|█████████▍| 237/250 [6:02:59<17:51, 82.39s/it]Evaluating commonsenseqa :  95%|█████████▌| 238/250 [6:03:30<13:22, 66.87s/it]Evaluating commonsenseqa :  96%|█████████▌| 239/250 [6:05:02<13:39, 74.54s/it]Evaluating commonsenseqa :  96%|█████████▌| 240/250 [6:06:37<13:24, 80.45s/it]Evaluating commonsenseqa :  96%|█████████▋| 241/250 [6:08:09<12:35, 83.94s/it]Evaluating commonsenseqa :  97%|█████████▋| 242/250 [6:09:41<11:32, 86.59s/it]Evaluating commonsenseqa :  97%|█████████▋| 243/250 [6:11:15<10:20, 88.66s/it]Evaluating commonsenseqa :  98%|█████████▊| 244/250 [6:12:48<09:00, 90.12s/it]Evaluating commonsenseqa :  98%|█████████▊| 245/250 [6:14:21<07:34, 90.81s/it]Evaluating commonsenseqa :  98%|█████████▊| 246/250 [6:15:54<06:05, 91.45s/it]Evaluating commonsenseqa :  99%|█████████▉| 247/250 [6:16:59<04:10, 83.65s/it]Evaluating commonsenseqa :  99%|█████████▉| 248/250 [6:18:32<02:52, 86.42s/it]Evaluating commonsenseqa : 100%|█████████▉| 249/250 [6:20:05<01:28, 88.38s/it]Evaluating commonsenseqa : 100%|██████████| 250/250 [6:21:39<00:00, 90.09s/it]Evaluating commonsenseqa : 100%|██████████| 250/250 [6:21:39<00:00, 91.60s/it]
-name: commonsenseqa | avg. gen lenth: 318.027 | time: 22901.033052921295s
-python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10113 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name gsm8k --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 4 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tgsm8k-s30-rTrue --seed 30 --max-prompt-length 4096 --rationales --num-out-domain 5 1 2 3 4 5 True 4096 4
-/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
-and will be removed in future. Use torchrun.
-Note that --use-env is set by default in torchrun.
-If your script expects `--local-rank` argument to be set, please
-change it to read from `os.environ['LOCAL_RANK']` instead. See 
-https://pytorch.org/docs/stable/distributed.html#launch-utility for 
-further instructions
-
-  warnings.warn(
-[2023-09-19 20:56:42,398] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-using world size: 1
-arguments:
-  model_name ................... llama2-7b
-  model_type ................... llama
-  model_path ................... /scratch/ylu130/model-hf
-  model_hf_name ................ meta-llama/Llama-2-7b-hf
-  is_opensource ................ True
-  is_slurm ..................... True
-  data_name .................... commonsenseqa
-  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tgsm8k-s30-rTrue
-  processed_data_dir ........... None
-  num_eval ..................... 1000
-  num_in_domain ................ 0
-  num_out_domain ............... 5
-  out_domain_data_name ......... gsm8k
-  out_domain_data_dir .......... None
-  num_workers .................. 0
-  max_prompt_length ............ 4096
-  max_length ................... 512
-  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/gsm8k/o5-tgsm8k-s30-rTrue-m4096
-  rationales ................... True
-  top_k ........................ 50
-  top_p ........................ 1.0
-  do_sample .................... True
-  num_beams .................... 1
-  temperature .................. 1.0
-  no_repeat_ngram_size ......... 6
-  repetition_penalty ........... None
-  batch_size ................... 4
-  seed ......................... 30
-  deepspeed .................... True
-  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
-  deepscale .................... False
-  deepscale_config ............. None
-  deepspeed_mpi ................ False
-  local_rank ................... 0
-  rank ......................... 0
-  gpus_per_node ................ 1
-  world_size ................... 1
-Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 693191.64it/s]
-Num instances: 1000
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.46s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  4.60s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  5.03s/it]
- > number of parameters: 6738415616
-[2023-09-19 20:56:55,321] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
-[2023-09-19 20:56:55,322] [INFO] [comm.py:637:init_distributed] cdb=None
-[2023-09-19 20:56:55,633] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
-[2023-09-19 20:56:55,635] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
-[2023-09-19 20:56:55,635] [INFO] [config.py:971:print]   activation_checkpointing_config  {
-    "partition_activations": false, 
-    "contiguous_memory_optimization": false, 
-    "cpu_checkpointing": false, 
-    "number_checkpoints": null, 
-    "synchronize_checkpoint_boundary": false, 
-    "profile": false
-}
-[2023-09-19 20:56:55,635] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
-[2023-09-19 20:56:55,635] [INFO] [config.py:971:print]   amp_enabled .................. False
-[2023-09-19 20:56:55,635] [INFO] [config.py:971:print]   amp_params ................... False
-[2023-09-19 20:56:55,635] [INFO] [config.py:971:print]   autotuning_config ............ {
-    "enabled": false, 
-    "start_step": null, 
-    "end_step": null, 
-    "metric_path": null, 
-    "arg_mappings": null, 
-    "metric": "throughput", 
-    "model_info": null, 
-    "results_dir": "autotuning_results", 
-    "exps_dir": "autotuning_exps", 
-    "overwrite": true, 
-    "fast": true, 
-    "start_profile_step": 3, 
-    "end_profile_step": 5, 
-    "tuner_type": "gridsearch", 
-    "tuner_early_stopping": 5, 
-    "tuner_num_trials": 50, 
-    "model_info_path": null, 
-    "mp_size": 1, 
-    "max_train_batch_size": null, 
-    "min_train_batch_size": 1, 
-    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
-    "min_train_micro_batch_size_per_gpu": 1, 
-    "num_tuning_micro_batch_sizes": 3
-}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f86fa222dd0>
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   communication_data_type ...... None
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   disable_allgather ............ False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   dump_state ................... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   elasticity_enabled ........... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   flops_profiler_config ........ {
-    "enabled": false, 
-    "recompute_fwd_factor": 0.0, 
-    "profile_step": 1, 
-    "module_depth": -1, 
-    "top_modules": 1, 
-    "detailed": true, 
-    "output_file": null
-}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   fp16_enabled ................. True
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   global_rank .................. 0
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   loss_scale ................... 0
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   memory_breakdown ............. False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   mics_shard_size .............. -1
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   nebula_config ................ {
-    "enabled": false, 
-    "persistent_storage_path": null, 
-    "persistent_time_interval": 100, 
-    "num_of_version_in_retention": 2, 
-    "enable_nebula_load": true, 
-    "load_path": null
-}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   optimizer_name ............... None
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   optimizer_params ............. None
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   pld_enabled .................. False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   pld_params ................... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   prescale_gradients ........... False
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   scheduler_name ............... None
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   scheduler_params ............. None
-[2023-09-19 20:56:55,636] [INFO] [config.py:971:print]   sparse_attention ............. None
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   steps_per_print .............. 10
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   train_batch_size ............. 1
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   use_node_local_storage ....... False
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   weight_quantization_config ... None
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   world_size ................... 1
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   zero_enabled ................. False
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
-[2023-09-19 20:56:55,637] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
-[2023-09-19 20:56:55,637] [INFO] [config.py:957:print_user_config]   json = {
-    "train_micro_batch_size_per_gpu": 1, 
-    "gradient_accumulation_steps": 1, 
-    "zero_optimization": {
-        "stage": 0
-    }, 
-    "zero_allow_untested_optimizer": true, 
-    "fp16": {
-        "enabled": true, 
-        "loss_scale": 0, 
-        "initial_scale_power": 11, 
-        "loss_scale_window": 2.000000e+03, 
-        "hysteresis": 4
-    }, 
-    "wall_clock_breakdown": false
-}
-Evaluating commonsenseqa :   0%|          | 0/250 [00:00<?, ?it/s]############### Example ###############
-### Instruction:Answer the following multiple choice question.
-
-Input: The car-rental agency charges $30/day for a car, or $190 for the first week for a rental that lasts an entire week or longer. Jennie rented a car for 11 days. How much, in dollars, did she pay for the rental?
-Output: The first 7 days were $190.
-There were 11-7=<<11-7=4>>4 days left.
-The additional 4 days were 4*30=<<4*30=120>>120.
-And 190+120=<<190+120=310>>310.
-So the final answer is 310
-
-Input: A hurricane is approaching the southern coast of Texas, and a rancher is planning to move 400 head of cattle 60 miles to higher ground to protect them from possible inland flooding that might occur.  His animal transport truck holds 20 head of cattle.  Traveling at 60 miles per hour, what is the total driving time, in hours, it will take to transport all of his cattle to higher ground?
-Output: Given the limited capacity of his transport vehicle (20 head of cattle), the 400 head of cattle will require 400/20=<<400/20=20>>20 trips using his transport vehicle.
-Traveling to the site at 60 mph for 60 miles it will take 60/60=<<60/60=1>>1 hour to travel one-way.
-Since each trip requires driving to and returning from the relocation site, each complete round trip will take 2*1=<<2*1=2>>2 hours.
-Thus, 20 complete trips will take 20*2=<<20*2=40>>40 hours of driving time.
-So the final answer is 40
-
-Input: Jason has a carriage house that he rents out.  He’s charging $50.00 per day or $500.00 for 14 days.  Eric wants to rent the house for 20 days.  How much will it cost him?
-Output: He wants to rent for 20 days and there is a deal if you rent for 14 days so that leaves 20-14 = <<20-14=6>>6 individual days
-Each individual day is $50.00 and he will have 6 individual days for a total of 50*6 = $<<50*6=300.00>>300.00
-14 days costs $500.00 and 6 days costs $300.00 for a total of 500+300 = $800.00
-So the final answer is 800
-
-Input: Melissa works on a poultry farm. She drives to town twice each month to buy supplies. If it takes her 3 hours to drive to town and back, how many hours does Melissa spend driving in a year?
-Output: Melissa spends 2x3=<<2*3=6>>6 hours driving each month.
-Since there are 12 months in a year, she spends 6x12=<<6*12=72>>72 hours driving each year.
-So the final answer is 72
-
-Input: The ratio of boys to girls in a family is 5:7. The total number of children in the family is 180. If the boys are given $3900 to share, how much money does each boy receive?
-Output: The total ratio representing the number of children in the family is 5+7 = <<5+7=12>>12
-From the total ratio of children in the family, 5/12 represent the number of boys, meaning that the number of boys in the family is 5/12*180 = <<5/12*180=75>>75
-If the boys are given $3900 to share, each boy receives $3900/75 = $<<3900/75=52>>52
-So the final answer is 52
-
-Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
-Output:
-############### End ###############
-Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/gsm8k/o5-tgsm8k-s30-rTrue-m4096
-Evaluating commonsenseqa :   0%|          | 1/250 [01:28<6:07:41, 88.60s/it]Evaluating commonsenseqa :   1%|          | 2/250 [02:58<6:08:53, 89.25s/it]Evaluating commonsenseqa :   1%|          | 3/250 [04:25<6:04:08, 88.46s/it]Evaluating commonsenseqa :   2%|▏         | 4/250 [05:54<6:03:02, 88.55s/it]Evaluating commonsenseqa :   2%|▏         | 5/250 [07:21<5:58:57, 87.91s/it]Evaluating commonsenseqa :   2%|▏         | 6/250 [08:50<5:59:16, 88.35s/it]Evaluating commonsenseqa :   3%|▎         | 7/250 [10:18<5:57:16, 88.22s/it]Evaluating commonsenseqa :   3%|▎         | 8/250 [11:44<5:53:18, 87.60s/it]Evaluating commonsenseqa :   4%|▎         | 9/250 [13:12<5:52:02, 87.65s/it]Evaluating commonsenseqa :   4%|▍         | 10/250 [14:40<5:51:33, 87.89s/it]Evaluating commonsenseqa :   4%|▍         | 11/250 [16:07<5:48:01, 87.37s/it]Evaluating commonsenseqa :   5%|▍         | 12/250 [17:34<5:46:09, 87.27s/it]Evaluating commonsenseqa :   5%|▌         | 13/250 [19:01<5:44:33, 87.23s/it]Evaluating commonsenseqa :   6%|▌         | 14/250 [20:02<5:12:20, 79.41s/it]Evaluating commonsenseqa :   6%|▌         | 15/250 [21:27<5:16:59, 80.93s/it]Evaluating commonsenseqa :   6%|▋         | 16/250 [22:53<5:22:13, 82.62s/it]Evaluating commonsenseqa :   7%|▋         | 17/250 [24:22<5:28:40, 84.64s/it]Evaluating commonsenseqa :   7%|▋         | 18/250 [25:50<5:30:13, 85.40s/it]Evaluating commonsenseqa :   8%|▊         | 19/250 [27:16<5:30:11, 85.76s/it]Evaluating commonsenseqa :   8%|▊         | 20/250 [28:43<5:29:33, 85.97s/it]Evaluating commonsenseqa :   8%|▊         | 21/250 [30:09<5:28:09, 85.98s/it]Evaluating commonsenseqa :   9%|▉         | 22/250 [31:38<5:30:00, 86.84s/it]Evaluating commonsenseqa :   9%|▉         | 23/250 [33:07<5:31:00, 87.49s/it]Evaluating commonsenseqa :  10%|▉         | 24/250 [34:35<5:30:25, 87.72s/it]Evaluating commonsenseqa :  10%|█         | 25/250 [36:02<5:28:02, 87.48s/it]
