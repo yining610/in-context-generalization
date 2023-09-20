@@ -38,6 +38,8 @@ def match_multiplechoice_answer(answer, text):
         text_label = "c"
     elif text_label == "choice4":
         text_label = "d"
+    elif text_label == "choice5":
+        text_label = "e"
     elif text_label == "1":
         text_label = "a"
     elif text_label == "2":
@@ -46,6 +48,8 @@ def match_multiplechoice_answer(answer, text):
         text_label = "c"
     elif text_label == "4":
         text_label = "d"
+    elif text_label == "5":
+        text_label = "e"
     
     if answer_label == text_label:
         return True
