@@ -4998,4 +4998,1292 @@ Input:The sanctions against the school were a punishing blow, and they seemed to
 Output:
 ############### End ###############
 Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o9-tmathqa-s30-rTrue-m4096
-Evaluating commonsenseqa :  59%|█████▉    | 118/200 [3:20:33<2:19:56, 102.39s/it]Evaluating commonsenseqa :  40%|███▉      | 79/200 [2:14:37<3:50:10, 114.14s/it]Evaluating commonsenseqa :  88%|████████▊ | 177/200 [3:12:51<25:13, 65.82s/it]Evaluating commonsenseqa :   0%|          | 1/200 [01:35<5:16:30, 95.43s/it]Evaluating commonsenseqa :  60%|█████▉    | 119/200 [3:22:15<2:18:00, 102.23s/it]Evaluating commonsenseqa :  18%|█▊        | 37/200 [1:22:27<6:21:23, 140.39s/it]Evaluating commonsenseqa :  89%|████████▉ | 178/200 [3:13:56<24:07, 65.77s/it]Evaluating commonsenseqa :  40%|████      | 80/200 [2:16:32<3:48:43, 114.37s/it]Evaluating commonsenseqa :  90%|████████▉ | 179/200 [3:15:03<23:04, 65.92s/it]Evaluating commonsenseqa :   1%|          | 2/200 [03:10<5:14:19, 95.25s/it]Evaluating commonsenseqa :  60%|██████    | 120/200 [3:23:57<2:16:21, 102.27s/it]Evaluating commonsenseqa :  19%|█▉        | 38/200 [1:24:48<6:19:13, 140.45s/it]Evaluating commonsenseqa :  90%|█████████ | 180/200 [3:16:09<21:58, 65.91s/it]Evaluating commonsenseqa :  40%|████      | 81/200 [2:18:12<3:38:16, 110.05s/it]Evaluating commonsenseqa :   2%|▏         | 3/200 [04:44<5:10:51, 94.68s/it]Evaluating commonsenseqa :  60%|██████    | 121/200 [3:25:39<2:14:26, 102.11s/it]Evaluating commonsenseqa :  90%|█████████ | 181/200 [3:17:14<20:51, 65.89s/it]Evaluating commonsenseqa :  41%|████      | 82/200 [2:19:57<3:33:33, 108.59s/it]Evaluating commonsenseqa :   2%|▏         | 4/200 [06:18<5:08:29, 94.43s/it]Evaluating commonsenseqa :  91%|█████████ | 182/200 [3:18:20<19:45, 65.86s/it]Evaluating commonsenseqa :  20%|█▉        | 39/200 [1:27:06<6:15:01, 139.76s/it]Evaluating commonsenseqa :  61%|██████    | 122/200 [3:27:21<2:12:58, 102.29s/it]Evaluating commonsenseqa :  42%|████▏     | 83/200 [2:21:15<3:13:47, 99.38s/it] Evaluating commonsenseqa :  92%|█████████▏| 183/200 [3:19:26<18:38, 65.80s/it]Evaluating commonsenseqa :   2%|▎         | 5/200 [07:52<5:06:37, 94.34s/it]Evaluating commonsenseqa :  62%|██████▏   | 123/200 [3:29:05<2:11:45, 102.67s/it]Evaluating commonsenseqa :  92%|█████████▏| 184/200 [3:20:33<17:37, 66.10s/it]Evaluating commonsenseqa :  20%|██        | 40/200 [1:29:25<6:12:24, 139.66s/it]Evaluating commonsenseqa :  42%|████▏     | 84/200 [2:23:07<3:19:44, 103.32s/it]Evaluating commonsenseqa :   3%|▎         | 6/200 [09:28<5:06:51, 94.91s/it]Evaluating commonsenseqa :  92%|█████████▎| 185/200 [3:21:40<16:36, 66.44s/it]Evaluating commonsenseqa :  42%|████▎     | 85/200 [2:23:57<2:47:03, 87.16s/it] 
+Evaluating commonsenseqa :  59%|█████▉    | 118/200 [3:20:33<2:19:56, 102.39s/it]Evaluating commonsenseqa :  40%|███▉      | 79/200 [2:14:37<3:50:10, 114.14s/it]Evaluating commonsenseqa :  88%|████████▊ | 177/200 [3:12:51<25:13, 65.82s/it]Evaluating commonsenseqa :   0%|          | 1/200 [01:35<5:16:30, 95.43s/it]Evaluating commonsenseqa :  60%|█████▉    | 119/200 [3:22:15<2:18:00, 102.23s/it]Evaluating commonsenseqa :  18%|█▊        | 37/200 [1:22:27<6:21:23, 140.39s/it]Evaluating commonsenseqa :  89%|████████▉ | 178/200 [3:13:56<24:07, 65.77s/it]Evaluating commonsenseqa :  40%|████      | 80/200 [2:16:32<3:48:43, 114.37s/it]Evaluating commonsenseqa :  90%|████████▉ | 179/200 [3:15:03<23:04, 65.92s/it]Evaluating commonsenseqa :   1%|          | 2/200 [03:10<5:14:19, 95.25s/it]Evaluating commonsenseqa :  60%|██████    | 120/200 [3:23:57<2:16:21, 102.27s/it]Evaluating commonsenseqa :  19%|█▉        | 38/200 [1:24:48<6:19:13, 140.45s/it]Evaluating commonsenseqa :  90%|█████████ | 180/200 [3:16:09<21:58, 65.91s/it]Evaluating commonsenseqa :  40%|████      | 81/200 [2:18:12<3:38:16, 110.05s/it]Evaluating commonsenseqa :   2%|▏         | 3/200 [04:44<5:10:51, 94.68s/it]Evaluating commonsenseqa :  60%|██████    | 121/200 [3:25:39<2:14:26, 102.11s/it]Evaluating commonsenseqa :  90%|█████████ | 181/200 [3:17:14<20:51, 65.89s/it]Evaluating commonsenseqa :  41%|████      | 82/200 [2:19:57<3:33:33, 108.59s/it]Evaluating commonsenseqa :   2%|▏         | 4/200 [06:18<5:08:29, 94.43s/it]Evaluating commonsenseqa :  91%|█████████ | 182/200 [3:18:20<19:45, 65.86s/it]Evaluating commonsenseqa :  20%|█▉        | 39/200 [1:27:06<6:15:01, 139.76s/it]Evaluating commonsenseqa :  61%|██████    | 122/200 [3:27:21<2:12:58, 102.29s/it]Evaluating commonsenseqa :  42%|████▏     | 83/200 [2:21:15<3:13:47, 99.38s/it] Evaluating commonsenseqa :  92%|█████████▏| 183/200 [3:19:26<18:38, 65.80s/it]Evaluating commonsenseqa :   2%|▎         | 5/200 [07:52<5:06:37, 94.34s/it]Evaluating commonsenseqa :  62%|██████▏   | 123/200 [3:29:05<2:11:45, 102.67s/it]Evaluating commonsenseqa :  92%|█████████▏| 184/200 [3:20:33<17:37, 66.10s/it]Evaluating commonsenseqa :  20%|██        | 40/200 [1:29:25<6:12:24, 139.66s/it]Evaluating commonsenseqa :  42%|████▏     | 84/200 [2:23:07<3:19:44, 103.32s/it]Evaluating commonsenseqa :   3%|▎         | 6/200 [09:28<5:06:51, 94.91s/it]Evaluating commonsenseqa :  92%|█████████▎| 185/200 [3:21:40<16:36, 66.44s/it]Evaluating commonsenseqa :  42%|████▎     | 85/200 [2:23:57<2:47:03, 87.16s/it] Evaluating commonsenseqa :  62%|██████▏   | 124/200 [3:30:48<2:10:04, 102.69s/it]Evaluating commonsenseqa :  93%|█████████▎| 186/200 [3:22:46<15:27, 66.24s/it]Evaluating commonsenseqa :  20%|██        | 41/200 [1:31:45<6:10:15, 139.72s/it]Evaluating commonsenseqa :   4%|▎         | 7/200 [11:03<5:05:19, 94.92s/it]Evaluating commonsenseqa :  94%|█████████▎| 187/200 [3:23:49<14:07, 65.21s/it]Evaluating commonsenseqa :  62%|██████▎   | 125/200 [3:32:29<2:07:55, 102.34s/it]Evaluating commonsenseqa :  43%|████▎     | 86/200 [2:25:49<3:00:05, 94.79s/it]Evaluating commonsenseqa :   4%|▍         | 8/200 [12:40<5:05:25, 95.45s/it]Evaluating commonsenseqa :  94%|█████████▍| 188/200 [3:24:54<13:04, 65.34s/it]Evaluating commonsenseqa :  21%|██        | 42/200 [1:34:07<6:09:34, 140.34s/it]Evaluating commonsenseqa :  63%|██████▎   | 126/200 [3:34:10<2:05:44, 101.95s/it]Evaluating commonsenseqa :  44%|████▎     | 87/200 [2:27:45<3:10:17, 101.04s/it]Evaluating commonsenseqa :  94%|█████████▍| 189/200 [3:25:59<11:58, 65.32s/it]Evaluating commonsenseqa :   4%|▍         | 9/200 [14:16<5:04:27, 95.64s/it]Evaluating commonsenseqa :  95%|█████████▌| 190/200 [3:27:05<10:53, 65.35s/it]Evaluating commonsenseqa :  64%|██████▎   | 127/200 [3:35:53<2:04:11, 102.08s/it]Evaluating commonsenseqa :  44%|████▍     | 88/200 [2:29:24<3:07:20, 100.36s/it]Evaluating commonsenseqa :  22%|██▏       | 43/200 [1:36:27<6:07:03, 140.28s/it]Evaluating commonsenseqa :   5%|▌         | 10/200 [15:51<5:02:21, 95.48s/it]Evaluating commonsenseqa :  96%|█████████▌| 191/200 [3:28:10<09:47, 65.27s/it]Evaluating commonsenseqa :  64%|██████▍   | 128/200 [3:37:34<2:02:16, 101.89s/it]Evaluating commonsenseqa :  96%|█████████▌| 192/200 [3:29:16<08:44, 65.62s/it]Evaluating commonsenseqa :  44%|████▍     | 89/200 [2:31:16<3:12:12, 103.89s/it]Evaluating commonsenseqa :   6%|▌         | 11/200 [17:27<5:01:22, 95.68s/it]Evaluating commonsenseqa :  22%|██▏       | 44/200 [1:38:45<6:03:01, 139.63s/it]Evaluating commonsenseqa :  96%|█████████▋| 193/200 [3:30:23<07:41, 65.90s/it]Evaluating commonsenseqa :  64%|██████▍   | 129/200 [3:39:16<2:00:35, 101.91s/it]Evaluating commonsenseqa :   6%|▌         | 12/200 [19:02<4:58:51, 95.38s/it]Evaluating commonsenseqa :  45%|████▌     | 90/200 [2:33:08<3:15:07, 106.43s/it]Evaluating commonsenseqa :  97%|█████████▋| 194/200 [3:31:28<06:34, 65.70s/it]Evaluating commonsenseqa :  22%|██▎       | 45/200 [1:41:03<5:59:02, 138.98s/it]Evaluating commonsenseqa :  65%|██████▌   | 130/200 [3:40:59<1:59:15, 102.22s/it]Evaluating commonsenseqa :  98%|█████████▊| 195/200 [3:32:34<05:28, 65.65s/it]Evaluating commonsenseqa :   6%|▋         | 13/200 [20:38<4:57:36, 95.49s/it]Evaluating commonsenseqa :  46%|████▌     | 91/200 [2:34:48<3:09:43, 104.43s/it]Evaluating commonsenseqa :  98%|█████████▊| 196/200 [3:33:39<04:22, 65.65s/it]Evaluating commonsenseqa :   7%|▋         | 14/200 [22:11<4:54:05, 94.87s/it]Evaluating commonsenseqa :  66%|██████▌   | 131/200 [3:42:44<1:58:31, 103.07s/it]Evaluating commonsenseqa :  23%|██▎       | 46/200 [1:43:24<5:58:14, 139.57s/it]Evaluating commonsenseqa :  98%|█████████▊| 197/200 [3:34:45<03:16, 65.54s/it]Evaluating commonsenseqa :  46%|████▌     | 92/200 [2:36:43<3:13:31, 107.51s/it]Evaluating commonsenseqa :   8%|▊         | 15/200 [23:47<4:53:39, 95.24s/it]Evaluating commonsenseqa :  99%|█████████▉| 198/200 [3:35:51<02:11, 65.93s/it]Evaluating commonsenseqa :  66%|██████▌   | 132/200 [3:44:28<1:57:07, 103.35s/it]Evaluating commonsenseqa :  46%|████▋     | 93/200 [2:38:36<3:14:43, 109.19s/it]Evaluating commonsenseqa :  24%|██▎       | 47/200 [1:45:40<5:53:18, 138.55s/it]Evaluating commonsenseqa : 100%|█████████▉| 199/200 [3:36:58<01:05, 65.99s/it]Evaluating commonsenseqa :   8%|▊         | 16/200 [25:23<4:52:22, 95.34s/it]Evaluating commonsenseqa :  66%|██████▋   | 133/200 [3:46:12<1:55:38, 103.56s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [3:38:03<00:00, 65.87s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [3:38:03<00:00, 65.42s/it]
+name: commonsenseqa | avg. gen lenth: 371.451 | time: 13086.170297384262s
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10136 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name mathqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o19-tmathqa-s10-rTrue --seed 10 --max-prompt-length 4096 --rationales --num-out-domain 19 17 19 True False 4096 5
+/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+[2023-09-20 11:26:43,087] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... True
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o19-tmathqa-s10-rTrue
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 19
+  out_domain_data_name ......... mathqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o19-tmathqa-s10-rTrue-m4096
+  rationales ................... True
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  gpus_per_node ................ 1
+  world_size ................... 1
+Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 224206.57it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.44s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  4.57s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  5.00s/it]
+ > number of parameters: 6738415616
+[2023-09-20 11:26:56,115] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-09-20 11:26:56,115] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-09-20 11:26:56,425] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-20 11:26:56,427] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fb3eda22d70>
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-20 11:26:56,427] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   fp16_enabled ................. True
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   loss_scale ................... 0
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   optimizer_name ............... None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   optimizer_params ............. None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   scheduler_name ............... None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   scheduler_params ............. None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   steps_per_print .............. 10
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   train_batch_size ............. 1
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   world_size ................... 1
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   zero_enabled ................. False
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-20 11:26:56,428] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
+[2023-09-20 11:26:56,428] [INFO] [config.py:957:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|          | 0/200 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: in a recent head - to - head run - off election, 12000 absentee ballets were cast. 1 / 6 of the absentee ballets were thrown out and 3 / 5 of the remaining absentee ballets were cast for candidate a. how many absentee votes did candidate b receive? a ) 2,000, b ) 3,000, c ) 4,000, d ) 8,000, e ) 9,000
+Output: 5 / 6 * 2 / 5 ( total absentee votes ) = 1 / 3 ( total votes ) = 1 / 3 * 12000 = 4000 answer is c
+So the final answer is c
+
+Input: the total age of a and b is 11 years more than the total age of b and c. c is how many years younger than a.? a ) 16, b ) 12, c ) 11, d ) 20, e ) 10
+Output: "( a + b ) - ( b - c ) = 11 a - c = 11 answer is c"
+So the final answer is c
+
+Input: the scoring system in a certain football competition goes as follows : 3 points for victory, 1 point for a draw, and 0 points for defeat. each team plays 20 matches. if a team scored 14 points after 5 games, what is the least number of the remaining matches it has to win to reach the 40 - point mark by the end of the tournament? a ) 6, b ) 7, c ) 8, d ) 9, e ) 10
+Output: "to get 40 points as end of season we need another 26 points or more from remaining 15 matches : option a = 6 * 3 + 9 * 1 = 27 hence option a - 6"
+So the final answer is a
+
+Input: how much water should be added to 10 liters of a 20 % - solution of alcohol to reduce the concentration of alcohol in the solution by 75 %? a ) 25 liters, b ) 27 liters, c ) 30 liters, d ) 32 liters, e ) 35 liters
+Output: "let x ltr water to be added 2 ltr alcohol to be represented as ( 20 ( 1 - 3 / 4 ( new soln. = 10 + x ) ) ) 2 = 5 % * ( 10 + x ) - - - - - - - - > x = 30 answer : c"
+So the final answer is c
+
+Input: a goods train runs at the speed of 72 kmph and crosses a 250 m long platform in 36 seconds. what is the length of the goods train? a ) 470 m, b ) 240 m, c ) 260 m, d ) 270 m, e ) none of these
+Output: "explanation : speed = [ 72 x ( 5 / 18 ) ] m / sec = 20 m / sec. time = 36 sec. let the length of the train be x metres. then, [ ( x + 250 ) / 36 ] = 20 = > x + 250 = 720 = > x = 470. answer : a"
+So the final answer is a
+
+Input: the volume of a cube is 1728 cc. find its surface. a ) 864, b ) 556, c ) 255, d ) 287, e ) 267
+Output: "a 3 = 1728 = > a = 12 6 a 2 = 6 * 12 * 12 = 864 answer : a"
+So the final answer is a
+
+Input: a certain drink of type a is prepared by mixing 4 parts milk with 3 parts fruit juice. another drink of type b is prepared by mixing 4 parts of fruit juice and 3 parts of milk. how many liters of fruit juice must be added to 63 liters of drink a to convert it to drink b? a ) 7, b ) 14, c ) 21, d ) 28, e ) 35
+Output: "in 63 liters of drink a, there are 36 liters of milk and 27 liters of juice. with 36 liters of milk, we need a total of 48 liters of juice to make drink b. we need to add 21 liters of juice. the answer is c."
+So the final answer is c
+
+Input: last week john spent 10 percent of his wages on recreation. this week, his wages are 10 percent less than last week ʼ s wages and he spent 40 percent of his wages on recreation. the amount he spends on recreation this week is what percent of the amount he spent on recreation last week a ) 180 %, b ) 360 %, c ) 200 %, d ) 220 %, e ) 250 %
+Output: "say john's wages last week were $ 100, so he spent 0.10 * 100 = $ 10 on recreation ; this week's wages is 0.90 * 100 = $ 90, so he spends 0.4 * 90 = $ 36 on recreation ; 36 / 10 = 3.60, hence the amount he spends on recreation this week is 360 % of the amount he spent on recreation last week : 10 * 3.6 = 36 answer : b"
+So the final answer is b
+
+Input: the salary of a person was reduced by 15 %. by what percent should his reduced salary be raised so as to bring it at par with his original salary? a ) 10 %, b ) 17.6 %, c ) 13.7 %, d ) 15.1 %, e ) 12.3 %
+Output: "let the original salary be $ 100 new salary = $ 85 increase on 85 = 15 increase on 100 = 15 / 85 * 100 = 17.6 % answer is b"
+So the final answer is b
+
+Input: if 20 men can build a water fountain 56 metres long in 7 days, what length of a similar water fountain can be built by 35 men in 3 days? a ) 40 m, b ) 42 m, c ) 47 m, d ) 49 m, e ) 50 m
+Output: "explanation : let the required length be x metres more men, more length built ( direct proportion ) less days, less length built ( direct proportion ) men 20 : 35 days 7 : 3 : : 56 : x therefore ( 20 x 7 x x ) = ( 35 x 3 x 56 ) x = ( 35 x 3 x 56 ) / 140 = 42 hence, the required length is 42 m. answer : b"
+So the final answer is b
+
+Input: 12 men complete a work in 9 days. after they have worked for 6 days, 6 more men join them. how many days will they take to complete the remaining work? a ) 2 days, b ) 7 days, c ) 8 days, d ) 9 days, e ) 45 days
+Output: 1 man's 1 day work = 1 / 108 12 men's 6 day's work = 1 / 9 * 6 = 2 / 3 remaining work = 1 - 2 / 3 = 1 / 3 18 men's 1 day work = 1 / 108 * 18 = 1 / 6 1 / 6 work is done by them in 1 day. 1 / 3 work is done by them in 6 * 1 / 3 = 2 days. answer : a
+So the final answer is a
+
+Input: a cheese factory sells its cheese in rectangular blocks. a normal block has a volume of 5 cubic feet. if a large block has twice the width, twice the depth, and the same length of a normal block, what is the volume of cheese in a large block in cubic feet? a ) 15, b ) 30, c ) 20, d ) 18, e ) 25
+Output: "volume of cube = lbh = 5 new cube l, b, h are increases of l, 2 b, 2 h new volume of cube = l * 2 b * 2 h = 4 * lbh = 4 * 5 = 20 answer : c"
+So the final answer is c
+
+Input: two trains, one from howrah to patna and the other from patna to howrah, start simultaneously. after they meet, the trains reach their destinations after 64 hours and 25 hours respectively. the ratio of their speeds is? a ) 4 : 9, b ) 4 : 3, c ) 4 : 5, d ) 5 : 8, e ) 4 : 2
+Output: "let us name the trains a and b. then, ( a's speed ) : ( b's speed ) = √ b : √ a = √ 25 : √ 64 = 5 : 8 answer : d"
+So the final answer is d
+
+Input: john had a stock of 1400 books in his bookshop. he sold 62 on monday, 62 on tuesday, 60 on wednesday, 48 on thursday and 40 on friday. what percentage of the books were not sold? a ) 81.57 %, b ) 36.5 %, c ) 80.67 %, d ) 56.5 %, e ) 80.57 %
+Output: "let n be the total number of books sold. hence n = 62 + 62 + 60 + 48 + 40 = 272 let m be the books not sold m = 1400 - n = 1400 - 272 = 1128 percentage books not sold / total number of books = 1128 / 1200 = 0.81 = 80.57 % correct answer e"
+So the final answer is e
+
+Input: a and b can do a piece of work in 18 days ; band c can do it in 24 days a and c can do it in 36 days. in how many days will a, band c finish it together? a ) 15 days, b ) 12 days, c ) 8 days, d ) 16 days, e ) 9 days
+Output: sol. ( a + b )'s 1 day's work = ( 1 / 18 ) ( b + c )'s 1 day's work = ( 1 / 24 ) and ( a + c )'s 1 day's work = ( 1 / 36 ) adding, we get : 2 ( a + b + c )'s 1 day's work = ¬ ( 1 / 18 + 1 / 24 + 1 / 36 ) = 9 / 72 = 1 / 8 ( a + b + c )'s 1 day's work = 1 / 16 thus, a, band c together can finish the work in 16 days. ans : d
+So the final answer is d
+
+Input: p, q and r have $ 9000 among themselves. r has two - thirds of the total amount with p and q. find the amount with r? a ) 2400, b ) 3600, c ) 3998, d ) 2539, e ) 1930
+Output: "b 3600 let the amount with r be $ r r = 2 / 3 ( total amount with p and q ) r = 2 / 3 ( 9000 - r ) = > 3 r = 18000 - 2 r = > 5 r = 18000 = > r = 3600."
+So the final answer is b
+
+Input: the cost of the paint is rs. 40 per kg. if 1 kg of paint covers 20 sq. ft, how much will it cost to paint outside of a cube having 30 feet each side a ) rs. 962, b ) rs. 672, c ) rs. 546, d ) rs. 10800, e ) none of these
+Output: "explanation : surface area of a cube = 6 x 30 ^ 2 = 5400 sq. ft quantity of paint required = ( 5400 / 20 ) = 270 kg cost of painting = 40 x 270 = rs. 10800 answer : d"
+So the final answer is d
+
+Input: a salesman's income consists of a commission and a base salary of $ 370 per week. over the past 5 weeks, his weekly income totals have been $ 406, $ 413, $ 420, $ 436 and $ 395. what must his average ( arithmetic mean ) commission be per week over the next two weeks so that his average weekly income is $ 500 over the 7 - week period? a ) $ 150, b ) $ 345, c ) $ 365, d ) $ 715, e ) $ 730
+Output: "total weekly income over 5 weeks = $ 406 + $ 413 + $ 420 + $ 436 + $ 395 = $ 2070 for avg weekly income to be $ 500 over 7 weeks, we need total weekly income over 7 weeks = $ 3500 now, $ 3500 - $ 2070 = $ 1430 from this, we subtract base salary for 2 weeks i. e $ 370 * 2 = $ 740 therefore, commission = $ 1430 - $ 740 = $ 690 for 2 weeks avg weekly commission = $ 345 answer b"
+So the final answer is b
+
+Input: a 230 m long train running at the speed of 120 km / hr crosses another train running in opposite direction at the speed of 80 km / hr in 9 sec. what is the length of the other train? a ) 230, b ) 270, c ) 260, d ) 256, e ) 298
+Output: "relative speed = 120 + 80 = 200 km / hr. = 200 * 5 / 18 = 500 / 9 m / sec. let the length of the other train be x m. then, ( x + 2340 ) / 9 = 500 / 9 = > x = 270. answer : b"
+So the final answer is b
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o19-tmathqa-s10-rTrue-m4096
+Evaluating commonsenseqa :   0%|          | 0/200 [00:07<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 97, in <module>
+    main()
+  File "/home/ylu130/workspace/in-context-generalization/inference.py", line 94, in main
+    inference_main(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 90, in inference_main
+    query_ids, response_ids, answers, indices = run_model(args, tokenizer, model, dataset, device)
+  File "/home/ylu130/workspace/in-context-generalization/inference_main.py", line 65, in run_model
+    gen_out = model.generate(
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 1454, in generate
+    return self.sample(
+  File "/home/ylu130/workspace/in-context-generalization/transformers/src/transformers/generation/utils.py", line 2568, in sample
+    next_tokens = torch.multinomial(probs, num_samples=1).squeeze(1)
+RuntimeError: probability tensor contains either `inf`, `nan` or element < 0
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 2154471) of binary: /home/ylu130/.conda/envs/ood/bin/python
+Traceback (most recent call last):
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ylu130/.conda/envs/ood/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py", line 196, in <module>
+    main()
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py", line 192, in main
+    launch(args)
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py", line 177, in launch
+    run(args)
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/home/ylu130/workspace/in-context-generalization/inference.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-09-20_11:27:06
+  host      : ia1.wse.jhu.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2154471)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10136 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name mathqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o17-tmathqa-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 17 17 19 True False 4096 5
+Evaluating commonsenseqa :  47%|████▋     | 94/200 [2:40:27<3:14:01, 109.83s/it]/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+[2023-09-20 11:27:09,572] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... True
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o17-tmathqa-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 17
+  out_domain_data_name ......... mathqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o17-tmathqa-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  gpus_per_node ................ 1
+  world_size ................... 1
+Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 280995.29it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.45s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  4.59s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:10<00:00,  5.02s/it]
+ > number of parameters: 6738415616
+[2023-09-20 11:27:22,464] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-09-20 11:27:22,464] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-09-20 11:27:22,787] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-20 11:27:22,788] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-09-20 11:27:22,788] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-20 11:27:22,788] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-20 11:27:22,788] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-09-20 11:27:22,788] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fa396222ef0>
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   fp16_enabled ................. True
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   loss_scale ................... 0
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-09-20 11:27:22,789] [INFO] [config.py:971:print]   optimizer_name ............... None
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   optimizer_params ............. None
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   scheduler_name ............... None
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   scheduler_params ............. None
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   steps_per_print .............. 10
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   train_batch_size ............. 1
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   world_size ................... 1
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   zero_enabled ................. False
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-20 11:27:22,790] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
+[2023-09-20 11:27:22,790] [INFO] [config.py:957:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|          | 0/200 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: in a recent head - to - head run - off election, 12000 absentee ballets were cast. 1 / 6 of the absentee ballets were thrown out and 3 / 5 of the remaining absentee ballets were cast for candidate a. how many absentee votes did candidate b receive? a ) 2,000, b ) 3,000, c ) 4,000, d ) 8,000, e ) 9,000
+Output: c
+
+Input: the total age of a and b is 11 years more than the total age of b and c. c is how many years younger than a.? a ) 16, b ) 12, c ) 11, d ) 20, e ) 10
+Output: c
+
+Input: the scoring system in a certain football competition goes as follows : 3 points for victory, 1 point for a draw, and 0 points for defeat. each team plays 20 matches. if a team scored 14 points after 5 games, what is the least number of the remaining matches it has to win to reach the 40 - point mark by the end of the tournament? a ) 6, b ) 7, c ) 8, d ) 9, e ) 10
+Output: a
+
+Input: how much water should be added to 10 liters of a 20 % - solution of alcohol to reduce the concentration of alcohol in the solution by 75 %? a ) 25 liters, b ) 27 liters, c ) 30 liters, d ) 32 liters, e ) 35 liters
+Output: c
+
+Input: a goods train runs at the speed of 72 kmph and crosses a 250 m long platform in 36 seconds. what is the length of the goods train? a ) 470 m, b ) 240 m, c ) 260 m, d ) 270 m, e ) none of these
+Output: a
+
+Input: the volume of a cube is 1728 cc. find its surface. a ) 864, b ) 556, c ) 255, d ) 287, e ) 267
+Output: a
+
+Input: a certain drink of type a is prepared by mixing 4 parts milk with 3 parts fruit juice. another drink of type b is prepared by mixing 4 parts of fruit juice and 3 parts of milk. how many liters of fruit juice must be added to 63 liters of drink a to convert it to drink b? a ) 7, b ) 14, c ) 21, d ) 28, e ) 35
+Output: c
+
+Input: last week john spent 10 percent of his wages on recreation. this week, his wages are 10 percent less than last week ʼ s wages and he spent 40 percent of his wages on recreation. the amount he spends on recreation this week is what percent of the amount he spent on recreation last week a ) 180 %, b ) 360 %, c ) 200 %, d ) 220 %, e ) 250 %
+Output: b
+
+Input: the salary of a person was reduced by 15 %. by what percent should his reduced salary be raised so as to bring it at par with his original salary? a ) 10 %, b ) 17.6 %, c ) 13.7 %, d ) 15.1 %, e ) 12.3 %
+Output: b
+
+Input: if 20 men can build a water fountain 56 metres long in 7 days, what length of a similar water fountain can be built by 35 men in 3 days? a ) 40 m, b ) 42 m, c ) 47 m, d ) 49 m, e ) 50 m
+Output: b
+
+Input: 12 men complete a work in 9 days. after they have worked for 6 days, 6 more men join them. how many days will they take to complete the remaining work? a ) 2 days, b ) 7 days, c ) 8 days, d ) 9 days, e ) 45 days
+Output: a
+
+Input: a cheese factory sells its cheese in rectangular blocks. a normal block has a volume of 5 cubic feet. if a large block has twice the width, twice the depth, and the same length of a normal block, what is the volume of cheese in a large block in cubic feet? a ) 15, b ) 30, c ) 20, d ) 18, e ) 25
+Output: c
+
+Input: two trains, one from howrah to patna and the other from patna to howrah, start simultaneously. after they meet, the trains reach their destinations after 64 hours and 25 hours respectively. the ratio of their speeds is? a ) 4 : 9, b ) 4 : 3, c ) 4 : 5, d ) 5 : 8, e ) 4 : 2
+Output: d
+
+Input: john had a stock of 1400 books in his bookshop. he sold 62 on monday, 62 on tuesday, 60 on wednesday, 48 on thursday and 40 on friday. what percentage of the books were not sold? a ) 81.57 %, b ) 36.5 %, c ) 80.67 %, d ) 56.5 %, e ) 80.57 %
+Output: e
+
+Input: a and b can do a piece of work in 18 days ; band c can do it in 24 days a and c can do it in 36 days. in how many days will a, band c finish it together? a ) 15 days, b ) 12 days, c ) 8 days, d ) 16 days, e ) 9 days
+Output: d
+
+Input: p, q and r have $ 9000 among themselves. r has two - thirds of the total amount with p and q. find the amount with r? a ) 2400, b ) 3600, c ) 3998, d ) 2539, e ) 1930
+Output: b
+
+Input: the cost of the paint is rs. 40 per kg. if 1 kg of paint covers 20 sq. ft, how much will it cost to paint outside of a cube having 30 feet each side a ) rs. 962, b ) rs. 672, c ) rs. 546, d ) rs. 10800, e ) none of these
+Output: d
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o17-tmathqa-s10-rFalse-m4096
+Evaluating commonsenseqa :   8%|▊         | 17/200 [26:58<4:50:25, 95.22s/it]Evaluating commonsenseqa :  24%|██▍       | 48/200 [1:47:59<5:51:49, 138.88s/it]Evaluating commonsenseqa :  67%|██████▋   | 134/200 [3:47:53<1:53:01, 102.75s/it]Evaluating commonsenseqa :   0%|          | 1/200 [01:32<5:06:22, 92.37s/it]Evaluating commonsenseqa :  48%|████▊     | 95/200 [2:42:19<3:13:08, 110.37s/it]Evaluating commonsenseqa :   9%|▉         | 18/200 [28:32<4:47:45, 94.86s/it]Evaluating commonsenseqa :  68%|██████▊   | 135/200 [3:49:35<1:51:03, 102.52s/it]Evaluating commonsenseqa :  10%|▉         | 19/200 [29:19<4:02:51, 80.51s/it]Evaluating commonsenseqa :  24%|██▍       | 49/200 [1:50:16<5:48:04, 138.31s/it]Evaluating commonsenseqa :   1%|          | 2/200 [03:04<5:04:13, 92.19s/it]Evaluating commonsenseqa :  48%|████▊     | 96/200 [2:44:11<3:12:08, 110.85s/it]Evaluating commonsenseqa :  68%|██████▊   | 136/200 [3:51:18<1:49:31, 102.67s/it]Evaluating commonsenseqa :  10%|█         | 20/200 [30:54<4:15:05, 85.03s/it]Evaluating commonsenseqa :  48%|████▊     | 97/200 [2:45:09<2:43:03, 94.98s/it] Evaluating commonsenseqa :   2%|▏         | 3/200 [04:35<5:00:50, 91.63s/it]Evaluating commonsenseqa :  25%|██▌       | 50/200 [1:52:33<5:44:23, 137.76s/it]Evaluating commonsenseqa :  68%|██████▊   | 137/200 [3:53:01<1:47:50, 102.71s/it]Evaluating commonsenseqa :  10%|█         | 21/200 [32:29<4:22:47, 88.09s/it]Evaluating commonsenseqa :   2%|▏         | 4/200 [06:06<4:58:56, 91.51s/it]Evaluating commonsenseqa :  49%|████▉     | 98/200 [2:47:01<2:50:31, 100.31s/it]Evaluating commonsenseqa :  50%|████▉     | 99/200 [2:47:42<2:18:43, 82.41s/it] Evaluating commonsenseqa :  11%|█         | 22/200 [34:00<4:23:34, 88.84s/it]Evaluating commonsenseqa :  69%|██████▉   | 138/200 [3:54:43<1:45:56, 102.53s/it]Evaluating commonsenseqa :  26%|██▌       | 51/200 [1:54:54<5:44:57, 138.91s/it]Evaluating commonsenseqa :   2%|▎         | 5/200 [07:37<4:56:55, 91.36s/it]Evaluating commonsenseqa :  50%|█████     | 100/200 [2:48:50<2:10:17, 78.18s/it]Evaluating commonsenseqa :  12%|█▏        | 23/200 [35:35<4:27:07, 90.55s/it]Evaluating commonsenseqa :  70%|██████▉   | 139/200 [3:56:22<1:43:14, 101.55s/it]Evaluating commonsenseqa :   3%|▎         | 6/200 [09:09<4:55:44, 91.46s/it]Evaluating commonsenseqa :  26%|██▌       | 52/200 [1:57:12<5:41:20, 138.38s/it]Evaluating commonsenseqa :  50%|█████     | 101/200 [2:50:43<2:26:14, 88.63s/it]Evaluating commonsenseqa :   4%|▎         | 7/200 [10:07<4:19:01, 80.52s/it]Evaluating commonsenseqa :  12%|█▏        | 24/200 [37:10<4:30:01, 92.05s/it]Evaluating commonsenseqa :  51%|█████     | 102/200 [2:51:06<1:52:37, 68.95s/it]Evaluating commonsenseqa :  70%|███████   | 140/200 [3:58:06<1:42:19, 102.32s/it]Evaluating commonsenseqa :   4%|▍         | 8/200 [10:55<3:44:45, 70.24s/it]Evaluating commonsenseqa :  26%|██▋       | 53/200 [1:59:29<5:38:08, 138.02s/it]Evaluating commonsenseqa :  12%|█▎        | 25/200 [38:46<4:32:10, 93.31s/it]Evaluating commonsenseqa :  52%|█████▏    | 103/200 [2:52:56<2:11:19, 81.23s/it]Evaluating commonsenseqa :   4%|▍         | 9/200 [12:26<4:03:44, 76.57s/it]Evaluating commonsenseqa :  70%|███████   | 141/200 [3:59:49<1:40:51, 102.57s/it]Evaluating commonsenseqa :  13%|█▎        | 26/200 [40:21<4:31:50, 93.74s/it]Evaluating commonsenseqa :   5%|▌         | 10/200 [13:56<4:15:55, 80.82s/it]Evaluating commonsenseqa :  52%|█████▏    | 104/200 [2:54:45<2:23:08, 89.46s/it]Evaluating commonsenseqa :  71%|███████   | 142/200 [4:01:32<1:39:17, 102.71s/it]Evaluating commonsenseqa :  27%|██▋       | 54/200 [2:01:46<5:35:21, 137.82s/it]Evaluating commonsenseqa :  14%|█▎        | 27/200 [41:56<4:31:04, 94.02s/it]Evaluating commonsenseqa :   6%|▌         | 11/200 [15:26<4:23:45, 83.73s/it]Evaluating commonsenseqa :  72%|███████▏  | 143/200 [4:03:08<1:35:41, 100.72s/it]Evaluating commonsenseqa :  52%|█████▎    | 105/200 [2:56:34<2:31:03, 95.40s/it]Evaluating commonsenseqa :   6%|▌         | 12/200 [16:20<3:53:37, 74.56s/it]Evaluating commonsenseqa :  28%|██▊       | 55/200 [2:04:03<5:32:15, 137.48s/it]Evaluating commonsenseqa :  14%|█▍        | 28/200 [43:30<4:29:33, 94.03s/it]Evaluating commonsenseqa :   6%|▋         | 13/200 [16:48<3:08:52, 60.60s/it]Evaluating commonsenseqa :   7%|▋         | 14/200 [17:28<2:48:03, 54.21s/it]Evaluating commonsenseqa :  72%|███████▏  | 144/200 [4:04:51<1:34:33, 101.31s/it]Evaluating commonsenseqa :  53%|█████▎    | 106/200 [2:58:27<2:37:34, 100.58s/it]Evaluating commonsenseqa :  14%|█▍        | 29/200 [45:04<4:27:55, 94.01s/it]Evaluating commonsenseqa :  28%|██▊       | 56/200 [2:06:17<5:27:54, 136.63s/it]Evaluating commonsenseqa :   8%|▊         | 15/200 [18:59<3:21:26, 65.33s/it]Evaluating commonsenseqa :  72%|███████▎  | 145/200 [4:06:32<1:32:46, 101.20s/it]Evaluating commonsenseqa :  54%|█████▎    | 107/200 [3:00:19<2:41:13, 104.02s/it]Evaluating commonsenseqa :  15%|█▌        | 30/200 [46:40<4:28:07, 94.63s/it]Evaluating commonsenseqa :   8%|▊         | 16/200 [20:23<3:37:42, 70.99s/it]Evaluating commonsenseqa :  28%|██▊       | 57/200 [2:08:24<5:18:15, 133.54s/it]Evaluating commonsenseqa :  73%|███████▎  | 146/200 [4:08:14<1:31:17, 101.44s/it]Evaluating commonsenseqa :  16%|█▌        | 31/200 [48:13<4:25:28, 94.25s/it]Evaluating commonsenseqa :  54%|█████▍    | 108/200 [3:02:11<2:43:20, 106.53s/it]Evaluating commonsenseqa :   8%|▊         | 17/200 [21:41<3:42:44, 73.03s/it]Evaluating commonsenseqa :  55%|█████▍    | 109/200 [3:03:14<2:21:39, 93.40s/it] Evaluating commonsenseqa :  74%|███████▎  | 147/200 [4:09:55<1:29:27, 101.28s/it]Evaluating commonsenseqa :  16%|█▌        | 32/200 [49:47<4:23:18, 94.04s/it]Evaluating commonsenseqa :  29%|██▉       | 58/200 [2:10:41<5:18:38, 134.63s/it]Evaluating commonsenseqa :   9%|▉         | 18/200 [23:12<3:57:57, 78.45s/it]Evaluating commonsenseqa :  74%|███████▍  | 148/200 [4:11:35<1:27:26, 100.90s/it]Evaluating commonsenseqa :  55%|█████▌    | 110/200 [3:05:04<2:27:36, 98.41s/it]Evaluating commonsenseqa :  16%|█▋        | 33/200 [51:23<4:23:10, 94.56s/it]Evaluating commonsenseqa :  10%|▉         | 19/200 [24:41<4:06:26, 81.69s/it]Evaluating commonsenseqa :  56%|█████▌    | 111/200 [3:05:45<2:00:28, 81.22s/it]Evaluating commonsenseqa :  30%|██▉       | 59/200 [2:13:01<5:19:51, 136.11s/it]Evaluating commonsenseqa :  74%|███████▍  | 149/200 [4:12:55<1:20:29, 94.69s/it] Evaluating commonsenseqa :  17%|█▋        | 34/200 [52:57<4:21:04, 94.37s/it]Evaluating commonsenseqa :  10%|█         | 20/200 [26:12<4:12:50, 84.28s/it]Evaluating commonsenseqa :  56%|█████▌    | 112/200 [3:07:37<2:12:35, 90.40s/it]Evaluating commonsenseqa :  75%|███████▌  | 150/200 [4:14:39<1:21:09, 97.39s/it]Evaluating commonsenseqa :  10%|█         | 21/200 [27:41<4:15:47, 85.74s/it]Evaluating commonsenseqa :  18%|█▊        | 35/200 [54:32<4:20:31, 94.74s/it]Evaluating commonsenseqa :  30%|███       | 60/200 [2:15:16<5:17:19, 136.00s/it]Evaluating commonsenseqa :  56%|█████▋    | 113/200 [3:09:28<2:19:58, 96.54s/it]Evaluating commonsenseqa :  76%|███████▌  | 151/200 [4:16:21<1:20:44, 98.87s/it]Evaluating commonsenseqa :  11%|█         | 22/200 [29:13<4:20:09, 87.69s/it]Evaluating commonsenseqa :  18%|█▊        | 36/200 [56:08<4:19:28, 94.93s/it]Evaluating commonsenseqa :  30%|███       | 61/200 [2:17:35<5:17:03, 136.86s/it]Evaluating commonsenseqa :  57%|█████▋    | 114/200 [3:11:19<2:24:37, 100.90s/it]Evaluating commonsenseqa :  76%|███████▌  | 152/200 [4:18:03<1:19:44, 99.67s/it]Evaluating commonsenseqa :  12%|█▏        | 23/200 [30:43<4:20:52, 88.43s/it]Evaluating commonsenseqa :  18%|█▊        | 37/200 [57:41<4:16:31, 94.43s/it]Evaluating commonsenseqa :  31%|███       | 62/200 [2:18:28<4:16:44, 111.63s/it]Evaluating commonsenseqa :  57%|█████▊    | 115/200 [3:12:13<2:02:46, 86.66s/it] Evaluating commonsenseqa :  76%|███████▋  | 153/200 [4:19:32<1:15:31, 96.41s/it]Evaluating commonsenseqa :  12%|█▏        | 24/200 [32:14<4:21:32, 89.16s/it]Evaluating commonsenseqa :  19%|█▉        | 38/200 [59:16<4:15:14, 94.53s/it]Evaluating commonsenseqa :  32%|███▏      | 63/200 [2:20:45<4:32:17, 119.25s/it]Evaluating commonsenseqa :  58%|█████▊    | 116/200 [3:14:07<2:13:07, 95.09s/it]Evaluating commonsenseqa :  12%|█▎        | 25/200 [33:44<4:21:17, 89.59s/it]Evaluating commonsenseqa :  77%|███████▋  | 154/200 [4:21:16<1:15:40, 98.70s/it]Evaluating commonsenseqa :  20%|█▉        | 39/200 [1:00:49<4:12:29, 94.10s/it]Evaluating commonsenseqa :  13%|█▎        | 26/200 [35:18<4:22:47, 90.62s/it]Evaluating commonsenseqa :  58%|█████▊    | 117/200 [3:16:02<2:19:36, 100.92s/it]Evaluating commonsenseqa :  32%|███▏      | 64/200 [2:23:01<4:41:46, 124.31s/it]Evaluating commonsenseqa :  20%|██        | 40/200 [1:02:24<4:12:03, 94.52s/it]Evaluating commonsenseqa :  78%|███████▊  | 155/200 [4:22:59<1:15:08, 100.18s/it]Evaluating commonsenseqa :  14%|█▎        | 27/200 [36:49<4:22:11, 90.93s/it]Evaluating commonsenseqa :  59%|█████▉    | 118/200 [3:17:52<2:21:40, 103.67s/it]Evaluating commonsenseqa :  20%|██        | 41/200 [1:03:59<4:11:07, 94.76s/it]Evaluating commonsenseqa :  78%|███████▊  | 156/200 [4:24:40<1:13:30, 100.24s/it]Evaluating commonsenseqa :  32%|███▎      | 65/200 [2:25:19<4:48:37, 128.28s/it]Evaluating commonsenseqa :  14%|█▍        | 28/200 [38:11<4:13:12, 88.33s/it]Evaluating commonsenseqa :  21%|██        | 42/200 [1:05:15<3:54:37, 89.10s/it]Evaluating commonsenseqa :  78%|███████▊  | 157/200 [4:26:22<1:12:21, 100.96s/it]Evaluating commonsenseqa :  60%|█████▉    | 119/200 [3:19:45<2:23:44, 106.48s/it]Evaluating commonsenseqa :  14%|█▍        | 29/200 [39:06<3:42:29, 78.07s/it]Evaluating commonsenseqa :  22%|██▏       | 43/200 [1:06:22<3:35:18, 82.28s/it]Evaluating commonsenseqa :  33%|███▎      | 66/200 [2:27:34<4:51:29, 130.52s/it]Evaluating commonsenseqa :  15%|█▌        | 30/200 [40:16<3:34:34, 75.73s/it]Evaluating commonsenseqa :  79%|███████▉  | 158/200 [4:28:07<1:11:21, 101.95s/it]Evaluating commonsenseqa :  60%|██████    | 120/200 [3:21:35<2:23:13, 107.42s/it]Evaluating commonsenseqa :  22%|██▏       | 44/200 [1:07:56<3:43:08, 85.82s/it]Evaluating commonsenseqa :  22%|██▎       | 45/200 [1:08:15<2:49:59, 65.80s/it]Evaluating commonsenseqa :  16%|█▌        | 31/200 [41:25<3:27:24, 73.63s/it]Evaluating commonsenseqa :  60%|██████    | 121/200 [3:22:42<2:05:35, 95.39s/it] Evaluating commonsenseqa :  34%|███▎      | 67/200 [2:29:50<4:52:32, 131.97s/it]Evaluating commonsenseqa :  80%|███████▉  | 159/200 [4:29:49<1:09:50, 102.21s/it]Evaluating commonsenseqa :  16%|█▌        | 32/200 [42:55<3:40:14, 78.66s/it]Evaluating commonsenseqa :  23%|██▎       | 46/200 [1:09:52<3:12:42, 75.08s/it]Evaluating commonsenseqa :  61%|██████    | 122/200 [3:24:32<2:09:43, 99.79s/it]Evaluating commonsenseqa :  80%|████████  | 160/200 [4:31:32<1:08:10, 102.26s/it]Evaluating commonsenseqa :  16%|█▋        | 33/200 [44:25<3:48:28, 82.09s/it]Evaluating commonsenseqa :  34%|███▍      | 68/200 [2:32:06<4:53:18, 133.32s/it]Evaluating commonsenseqa :  24%|██▎       | 47/200 [1:11:25<3:25:37, 80.64s/it]Evaluating commonsenseqa :  62%|██████▏   | 123/200 [3:26:23<2:12:34, 103.31s/it]Evaluating commonsenseqa :  80%|████████  | 161/200 [4:33:12<1:06:05, 101.68s/it]Evaluating commonsenseqa :  17%|█▋        | 34/200 [45:55<3:54:02, 84.59s/it]Evaluating commonsenseqa :  24%|██▍       | 48/200 [1:13:01<3:35:55, 85.23s/it]Evaluating commonsenseqa :  34%|███▍      | 69/200 [2:34:25<4:54:38, 134.95s/it]Evaluating commonsenseqa :  18%|█▊        | 35/200 [47:28<3:59:12, 86.98s/it]Evaluating commonsenseqa :  62%|██████▏   | 124/200 [3:28:16<2:14:13, 105.97s/it]Evaluating commonsenseqa :  81%|████████  | 162/200 [4:34:56<1:04:52, 102.43s/it]Evaluating commonsenseqa :  24%|██▍       | 49/200 [1:14:37<3:42:38, 88.46s/it]Evaluating commonsenseqa :  35%|███▌      | 70/200 [2:35:55<4:23:00, 121.38s/it]Evaluating commonsenseqa :  18%|█▊        | 36/200 [48:57<3:59:41, 87.69s/it]Evaluating commonsenseqa :  82%|████████▏ | 163/200 [4:36:39<1:03:15, 102.58s/it]Evaluating commonsenseqa :  25%|██▌       | 50/200 [1:16:09<3:43:32, 89.42s/it]Evaluating commonsenseqa :  62%|██████▎   | 125/200 [3:30:07<2:14:29, 107.59s/it]Evaluating commonsenseqa :  18%|█▊        | 37/200 [50:30<4:01:52, 89.03s/it]Evaluating commonsenseqa :  36%|███▌      | 71/200 [2:38:11<4:30:55, 126.01s/it]Evaluating commonsenseqa :  26%|██▌       | 51/200 [1:17:44<3:46:24, 91.17s/it]Evaluating commonsenseqa :  82%|████████▏ | 164/200 [4:38:21<1:01:28, 102.45s/it]Evaluating commonsenseqa :  63%|██████▎   | 126/200 [3:31:50<2:10:58, 106.20s/it]Evaluating commonsenseqa :  19%|█▉        | 38/200 [52:01<4:02:22, 89.77s/it]Evaluating commonsenseqa :  26%|██▌       | 52/200 [1:19:19<3:47:51, 92.37s/it]Evaluating commonsenseqa :  82%|████████▎ | 165/200 [4:40:05<59:55, 102.73s/it]  Evaluating commonsenseqa :  36%|███▌      | 72/200 [2:40:29<4:36:16, 129.50s/it]Evaluating commonsenseqa :  64%|██████▎   | 127/200 [3:33:43<2:11:54, 108.41s/it]Evaluating commonsenseqa :  20%|█▉        | 39/200 [53:32<4:01:34, 90.03s/it]Evaluating commonsenseqa :  26%|██▋       | 53/200 [1:20:56<3:49:38, 93.73s/it]Evaluating commonsenseqa :  83%|████████▎ | 166/200 [4:41:47<58:09, 102.62s/it]Evaluating commonsenseqa :  64%|██████▍   | 128/200 [3:35:12<2:02:59, 102.50s/it]Evaluating commonsenseqa :  20%|██        | 40/200 [55:04<4:01:38, 90.62s/it]Evaluating commonsenseqa :  36%|███▋      | 73/200 [2:42:49<4:40:44, 132.63s/it]Evaluating commonsenseqa :  27%|██▋       | 54/200 [1:22:32<3:49:35, 94.35s/it]Evaluating commonsenseqa :  64%|██████▍   | 129/200 [3:36:42<1:56:51, 98.75s/it] Evaluating commonsenseqa :  84%|████████▎ | 167/200 [4:43:31<56:43, 103.13s/it]Evaluating commonsenseqa :  20%|██        | 41/200 [56:28<3:55:31, 88.88s/it]Evaluating commonsenseqa :  28%|██▊       | 55/200 [1:23:57<3:40:57, 91.43s/it]Evaluating commonsenseqa :  37%|███▋      | 74/200 [2:45:09<4:42:55, 134.73s/it]Evaluating commonsenseqa :  84%|████████▍ | 168/200 [4:45:15<55:05, 103.30s/it]Evaluating commonsenseqa :  65%|██████▌   | 130/200 [3:38:36<2:00:20, 103.15s/it]Evaluating commonsenseqa :  21%|██        | 42/200 [58:00<3:56:29, 89.81s/it]Evaluating commonsenseqa :  66%|██████▌   | 131/200 [3:39:27<1:40:43, 87.58s/it] Evaluating commonsenseqa :  28%|██▊       | 56/200 [1:25:35<3:44:14, 93.43s/it]Evaluating commonsenseqa :  84%|████████▍ | 169/200 [4:47:01<53:43, 103.98s/it]Evaluating commonsenseqa :  22%|██▏       | 43/200 [59:39<4:02:11, 92.56s/it]Evaluating commonsenseqa :  38%|███▊      | 75/200 [2:47:29<4:44:09, 136.40s/it]Evaluating commonsenseqa :  66%|██████▌   | 132/200 [3:40:55<1:39:29, 87.79s/it]Evaluating commonsenseqa :  28%|██▊       | 57/200 [1:27:09<3:43:11, 93.65s/it]Evaluating commonsenseqa :  22%|██▏       | 44/200 [1:01:11<3:59:31, 92.13s/it]Evaluating commonsenseqa :  29%|██▉       | 58/200 [1:28:09<3:17:44, 83.55s/it]Evaluating commonsenseqa :  85%|████████▌ | 170/200 [4:48:43<51:47, 103.58s/it]Evaluating commonsenseqa :  66%|██████▋   | 133/200 [3:42:47<1:46:09, 95.07s/it]Evaluating commonsenseqa :  38%|███▊      | 76/200 [2:49:48<4:43:14, 137.05s/it]Evaluating commonsenseqa :  22%|██▎       | 45/200 [1:02:41<3:56:40, 91.62s/it]Evaluating commonsenseqa :  30%|██▉       | 59/200 [1:29:43<3:23:41, 86.68s/it]Evaluating commonsenseqa :  86%|████████▌ | 171/200 [4:50:25<49:45, 102.96s/it]Evaluating commonsenseqa :  67%|██████▋   | 134/200 [3:44:39<1:50:03, 100.06s/it]Evaluating commonsenseqa :  23%|██▎       | 46/200 [1:04:12<3:54:40, 91.43s/it]Evaluating commonsenseqa :  30%|███       | 60/200 [1:31:19<3:29:01, 89.58s/it]Evaluating commonsenseqa :  38%|███▊      | 77/200 [2:52:10<4:44:06, 138.59s/it]Evaluating commonsenseqa :  86%|████████▌ | 172/200 [4:52:08<48:01, 102.90s/it]Evaluating commonsenseqa :  24%|██▎       | 47/200 [1:05:41<3:51:28, 90.77s/it]Evaluating commonsenseqa :  68%|██████▊   | 135/200 [3:46:31<1:52:19, 103.68s/it]Evaluating commonsenseqa :  30%|███       | 61/200 [1:32:53<3:30:27, 90.85s/it]Evaluating commonsenseqa :  86%|████████▋ | 173/200 [4:53:50<46:16, 102.82s/it]Evaluating commonsenseqa :  39%|███▉      | 78/200 [2:54:32<4:44:16, 139.81s/it]Evaluating commonsenseqa :  24%|██▍       | 48/200 [1:07:13<3:50:46, 91.10s/it]Evaluating commonsenseqa :  31%|███       | 62/200 [1:34:26<3:30:18, 91.44s/it]Evaluating commonsenseqa :  68%|██████▊   | 136/200 [3:48:21<1:52:30, 105.48s/it]Evaluating commonsenseqa :  87%|████████▋ | 174/200 [4:55:32<44:27, 102.61s/it]Evaluating commonsenseqa :  24%|██▍       | 49/200 [1:08:43<3:48:42, 90.88s/it]Evaluating commonsenseqa :  32%|███▏      | 63/200 [1:35:40<3:16:49, 86.20s/it]Evaluating commonsenseqa :  40%|███▉      | 79/200 [2:56:52<4:41:52, 139.77s/it]Evaluating commonsenseqa :  68%|██████▊   | 137/200 [3:50:13<1:53:00, 107.62s/it]Evaluating commonsenseqa :  25%|██▌       | 50/200 [1:09:49<3:28:11, 83.28s/it]Evaluating commonsenseqa :  88%|████████▊ | 175/200 [4:57:17<43:01, 103.26s/it]Evaluating commonsenseqa :  32%|███▏      | 64/200 [1:37:14<3:20:54, 88.64s/it]Evaluating commonsenseqa :  69%|██████▉   | 138/200 [3:51:44<1:45:56, 102.52s/it]Evaluating commonsenseqa :  26%|██▌       | 51/200 [1:11:20<3:32:16, 85.48s/it]Evaluating commonsenseqa :  40%|████      | 80/200 [2:59:10<4:38:32, 139.27s/it]Evaluating commonsenseqa :  88%|████████▊ | 176/200 [4:58:59<41:11, 102.96s/it]Evaluating commonsenseqa :  26%|██▌       | 52/200 [1:11:50<2:49:49, 68.85s/it]Evaluating commonsenseqa :  32%|███▎      | 65/200 [1:38:49<3:23:27, 90.43s/it]Evaluating commonsenseqa :  70%|██████▉   | 139/200 [3:52:50<1:32:58, 91.45s/it] Evaluating commonsenseqa :  26%|██▋       | 53/200 [1:12:24<2:23:09, 58.43s/it]Evaluating commonsenseqa :  88%|████████▊ | 177/200 [5:00:41<39:16, 102.47s/it]Evaluating commonsenseqa :  33%|███▎      | 66/200 [1:40:23<3:24:17, 91.48s/it]Evaluating commonsenseqa :  40%|████      | 81/200 [3:01:25<4:33:35, 137.94s/it]Evaluating commonsenseqa :  27%|██▋       | 54/200 [1:13:54<2:45:14, 67.90s/it]Evaluating commonsenseqa :  70%|███████   | 140/200 [3:54:41<1:37:33, 97.55s/it]Evaluating commonsenseqa :  89%|████████▉ | 178/200 [5:02:21<37:20, 101.86s/it]Evaluating commonsenseqa :  34%|███▎      | 67/200 [1:41:58<3:25:10, 92.56s/it]Evaluating commonsenseqa :  28%|██▊       | 55/200 [1:15:26<3:01:47, 75.22s/it]Evaluating commonsenseqa :  70%|███████   | 141/200 [3:56:18<1:35:36, 97.22s/it]Evaluating commonsenseqa :  41%|████      | 82/200 [3:03:46<4:32:52, 138.75s/it]Evaluating commonsenseqa :  34%|███▍      | 68/200 [1:43:32<3:24:35, 93.00s/it]Evaluating commonsenseqa :  90%|████████▉ | 179/200 [5:04:05<35:53, 102.56s/it]Evaluating commonsenseqa :  28%|██▊       | 56/200 [1:16:58<3:12:15, 80.11s/it]Evaluating commonsenseqa :  71%|███████   | 142/200 [3:58:10<1:38:16, 101.66s/it]Evaluating commonsenseqa :  34%|███▍      | 69/200 [1:45:08<3:25:07, 93.95s/it]Evaluating commonsenseqa :  90%|█████████ | 180/200 [5:05:48<34:09, 102.46s/it]Evaluating commonsenseqa :  28%|██▊       | 57/200 [1:18:28<3:18:31, 83.29s/it]Evaluating commonsenseqa :  42%|████▏     | 83/200 [3:06:05<4:31:06, 139.03s/it]Evaluating commonsenseqa :  72%|███████▏  | 143/200 [4:00:04<1:40:10, 105.45s/it]Evaluating commonsenseqa :  35%|███▌      | 70/200 [1:46:41<3:23:04, 93.72s/it]Evaluating commonsenseqa :  29%|██▉       | 58/200 [1:20:01<3:23:38, 86.05s/it]Evaluating commonsenseqa :  90%|█████████ | 181/200 [5:07:31<32:34, 102.86s/it]Evaluating commonsenseqa :  42%|████▏     | 84/200 [3:08:25<4:28:57, 139.12s/it]Evaluating commonsenseqa :  72%|███████▏  | 144/200 [4:01:55<1:39:58, 107.12s/it]Evaluating commonsenseqa :  36%|███▌      | 71/200 [1:48:15<3:21:39, 93.79s/it]Evaluating commonsenseqa :  30%|██▉       | 59/200 [1:21:30<3:24:21, 86.96s/it]Evaluating commonsenseqa :  91%|█████████ | 182/200 [5:09:14<30:51, 102.84s/it]Evaluating commonsenseqa :  30%|███       | 60/200 [1:22:58<3:23:32, 87.23s/it]Evaluating commonsenseqa :  36%|███▌      | 72/200 [1:49:49<3:20:05, 93.79s/it]Evaluating commonsenseqa :  72%|███████▎  | 145/200 [4:03:46<1:39:18, 108.34s/it]Evaluating commonsenseqa :  42%|████▎     | 85/200 [3:10:41<4:24:46, 138.15s/it]Evaluating commonsenseqa :  92%|█████████▏| 183/200 [5:10:59<29:16, 103.35s/it]Evaluating commonsenseqa :  30%|███       | 61/200 [1:23:53<2:59:41, 77.57s/it]Evaluating commonsenseqa :  36%|███▋      | 73/200 [1:51:25<3:19:47, 94.39s/it]Evaluating commonsenseqa :  73%|███████▎  | 146/200 [4:05:39<1:38:38, 109.59s/it]Evaluating commonsenseqa :  31%|███       | 62/200 [1:24:57<2:49:01, 73.49s/it]Evaluating commonsenseqa :  92%|█████████▏| 184/200 [5:12:42<27:33, 103.36s/it]Evaluating commonsenseqa :  43%|████▎     | 86/200 [3:12:58<4:22:13, 138.01s/it]Evaluating commonsenseqa :  74%|███████▎  | 147/200 [4:06:48<1:26:12, 97.60s/it] Evaluating commonsenseqa :  37%|███▋      | 74/200 [1:52:59<3:18:20, 94.45s/it]Evaluating commonsenseqa :  32%|███▏      | 63/200 [1:26:28<3:00:00, 78.84s/it]Evaluating commonsenseqa :  44%|████▎     | 87/200 [3:14:12<3:43:28, 118.66s/it]Evaluating commonsenseqa :  92%|█████████▎| 185/200 [5:14:23<25:39, 102.62s/it]Evaluating commonsenseqa :  38%|███▊      | 75/200 [1:54:33<3:16:33, 94.35s/it]Evaluating commonsenseqa :  32%|███▏      | 64/200 [1:27:58<3:06:32, 82.30s/it]Evaluating commonsenseqa :  74%|███████▍  | 148/200 [4:08:42<1:28:42, 102.35s/it]Evaluating commonsenseqa :  93%|█████████▎| 186/200 [5:16:05<23:55, 102.54s/it]Evaluating commonsenseqa :  44%|████▍     | 88/200 [3:16:33<3:54:07, 125.42s/it]Evaluating commonsenseqa :  38%|███▊      | 76/200 [1:56:07<3:14:36, 94.16s/it]Evaluating commonsenseqa :  32%|███▎      | 65/200 [1:29:31<3:12:06, 85.38s/it]Evaluating commonsenseqa :  74%|███████▍  | 149/200 [4:10:34<1:29:22, 105.15s/it]Evaluating commonsenseqa :  94%|█████████▎| 187/200 [5:17:48<22:13, 102.55s/it]Evaluating commonsenseqa :  33%|███▎      | 66/200 [1:30:38<2:58:19, 79.84s/it]Evaluating commonsenseqa :  38%|███▊      | 77/200 [1:57:44<3:14:30, 94.88s/it]Evaluating commonsenseqa :  44%|████▍     | 89/200 [3:18:53<4:00:17, 129.89s/it]Evaluating commonsenseqa :  75%|███████▌  | 150/200 [4:12:25<1:29:18, 107.18s/it]Evaluating commonsenseqa :  34%|███▎      | 67/200 [1:32:07<3:03:01, 82.57s/it]Evaluating commonsenseqa :  94%|█████████▍| 188/200 [5:19:31<20:31, 102.63s/it]Evaluating commonsenseqa :  39%|███▉      | 78/200 [1:59:19<3:13:12, 95.02s/it]Evaluating commonsenseqa :  45%|████▌     | 90/200 [3:21:12<4:02:44, 132.40s/it]Evaluating commonsenseqa :  76%|███████▌  | 151/200 [4:14:22<1:29:45, 109.91s/it]Evaluating commonsenseqa :  34%|███▍      | 68/200 [1:33:39<3:08:13, 85.56s/it]Evaluating commonsenseqa :  40%|███▉      | 79/200 [2:00:40<3:03:06, 90.80s/it]Evaluating commonsenseqa :  94%|█████████▍| 189/200 [5:21:15<18:54, 103.17s/it]Evaluating commonsenseqa :  34%|███▍      | 69/200 [1:35:10<3:09:54, 86.98s/it]Evaluating commonsenseqa :  40%|████      | 80/200 [2:02:14<3:03:39, 91.83s/it]Evaluating commonsenseqa :  76%|███████▌  | 152/200 [4:16:14<1:28:25, 110.52s/it]Evaluating commonsenseqa :  95%|█████████▌| 190/200 [5:22:59<17:12, 103.28s/it]Evaluating commonsenseqa :  46%|████▌     | 91/200 [3:23:33<4:05:28, 135.12s/it]Evaluating commonsenseqa :  35%|███▌      | 70/200 [1:36:40<3:10:39, 88.00s/it]Evaluating commonsenseqa :  40%|████      | 81/200 [2:03:32<2:53:33, 87.51s/it]Evaluating commonsenseqa :  96%|█████████▌| 191/200 [5:24:39<15:21, 102.34s/it]Evaluating commonsenseqa :  76%|███████▋  | 153/200 [4:18:09<1:27:43, 111.98s/it]Evaluating commonsenseqa :  36%|███▌      | 71/200 [1:38:12<3:11:43, 89.18s/it]Evaluating commonsenseqa :  46%|████▌     | 92/200 [3:25:51<4:05:00, 136.12s/it]Evaluating commonsenseqa :  41%|████      | 82/200 [2:05:09<2:58:10, 90.60s/it]Evaluating commonsenseqa :  96%|█████████▌| 192/200 [5:26:22<13:40, 102.59s/it]Evaluating commonsenseqa :  77%|███████▋  | 154/200 [4:19:59<1:25:28, 111.49s/it]Evaluating commonsenseqa :  36%|███▌      | 72/200 [1:39:34<3:05:43, 87.06s/it]Evaluating commonsenseqa :  42%|████▏     | 83/200 [2:06:47<3:00:44, 92.69s/it]Evaluating commonsenseqa :  46%|████▋     | 93/200 [3:28:12<4:05:19, 137.57s/it]Evaluating commonsenseqa :  96%|█████████▋| 193/200 [5:28:04<11:56, 102.36s/it]Evaluating commonsenseqa :  36%|███▋      | 73/200 [1:41:05<3:06:52, 88.29s/it]Evaluating commonsenseqa :  78%|███████▊  | 155/200 [4:21:51<1:23:43, 111.64s/it]Evaluating commonsenseqa :  42%|████▏     | 84/200 [2:08:22<3:00:43, 93.48s/it]Evaluating commonsenseqa :  97%|█████████▋| 194/200 [5:29:28<09:41, 96.92s/it] Evaluating commonsenseqa :  37%|███▋      | 74/200 [1:42:37<3:07:42, 89.38s/it]Evaluating commonsenseqa :  42%|████▎     | 85/200 [2:09:45<2:53:06, 90.32s/it]Evaluating commonsenseqa :  47%|████▋     | 94/200 [3:30:32<4:04:15, 138.26s/it]Evaluating commonsenseqa :  78%|███████▊  | 156/200 [4:23:43<1:21:54, 111.70s/it]Evaluating commonsenseqa :  98%|█████████▊| 195/200 [5:31:08<08:09, 97.92s/it]Evaluating commonsenseqa :  38%|███▊      | 75/200 [1:44:09<3:07:28, 89.99s/it]Evaluating commonsenseqa :  43%|████▎     | 86/200 [2:11:20<2:54:14, 91.70s/it]Evaluating commonsenseqa :  78%|███████▊  | 157/200 [4:25:17<1:16:16, 106.44s/it]Evaluating commonsenseqa :  48%|████▊     | 95/200 [3:32:49<4:01:23, 137.94s/it]Evaluating commonsenseqa :  98%|█████████▊| 196/200 [5:32:51<06:36, 99.21s/it]Evaluating commonsenseqa :  38%|███▊      | 76/200 [1:45:40<3:06:49, 90.40s/it]Evaluating commonsenseqa :  44%|████▎     | 87/200 [2:12:56<2:55:05, 92.97s/it]Evaluating commonsenseqa :  79%|███████▉  | 158/200 [4:27:13<1:16:29, 109.27s/it]Evaluating commonsenseqa :  98%|█████████▊| 197/200 [5:34:34<05:01, 100.60s/it]Evaluating commonsenseqa :  38%|███▊      | 77/200 [1:47:12<3:06:18, 90.88s/it]Evaluating commonsenseqa :  44%|████▍     | 88/200 [2:14:13<2:44:30, 88.13s/it]Evaluating commonsenseqa :  48%|████▊     | 96/200 [3:35:09<4:00:04, 138.51s/it]Evaluating commonsenseqa :  80%|███████▉  | 159/200 [4:29:05<1:15:08, 109.97s/it]Evaluating commonsenseqa :  39%|███▉      | 78/200 [1:48:38<3:01:37, 89.32s/it]Evaluating commonsenseqa :  99%|█████████▉| 198/200 [5:36:18<03:22, 101.47s/it]Evaluating commonsenseqa :  44%|████▍     | 89/200 [2:15:50<2:48:07, 90.87s/it]Evaluating commonsenseqa :  48%|████▊     | 97/200 [3:37:26<3:56:57, 138.03s/it]Evaluating commonsenseqa :  40%|███▉      | 79/200 [1:50:11<3:02:40, 90.58s/it]Evaluating commonsenseqa :  80%|████████  | 160/200 [4:31:00<1:14:17, 111.44s/it]Evaluating commonsenseqa : 100%|█████████▉| 199/200 [5:37:58<01:41, 101.09s/it]Evaluating commonsenseqa :  45%|████▌     | 90/200 [2:17:26<2:49:16, 92.33s/it]Evaluating commonsenseqa :  40%|████      | 80/200 [1:51:28<2:53:12, 86.61s/it]Evaluating commonsenseqa :  80%|████████  | 161/200 [4:32:29<1:08:07, 104.80s/it]Evaluating commonsenseqa :  46%|████▌     | 91/200 [2:19:02<2:49:44, 93.44s/it]Evaluating commonsenseqa :  49%|████▉     | 98/200 [3:39:46<3:55:43, 138.66s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [5:39:43<00:00, 102.10s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [5:39:43<00:00, 101.92s/it]
+name: commonsenseqa | avg. gen lenth: 340.834 | time: 20386.018656730652s
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10138 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name mathqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tmathqa-s20-rFalse --seed 20 --max-prompt-length 4096 --num-out-domain 5 5 7 True False 4096 5
+/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+[2023-09-20 13:19:54,452] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... True
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o5-tmathqa-s20-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 5
+  out_domain_data_name ......... mathqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o5-tmathqa-s20-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 20
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  gpus_per_node ................ 1
+  world_size ................... 1
+Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 651362.54it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:09<00:09,  9.54s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  5.92s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.46s/it]
+ > number of parameters: 6738415616
+[2023-09-20 13:20:11,181] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-09-20 13:20:11,181] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-09-20 13:20:11,602] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-20 13:20:11,604] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-09-20 13:20:11,604] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-20 13:20:11,604] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-20 13:20:11,604] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-09-20 13:20:11,604] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fd2c162ad70>
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-20 13:20:11,605] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   fp16_enabled ................. True
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   loss_scale ................... 0
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   optimizer_name ............... None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   optimizer_params ............. None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   scheduler_name ............... None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   scheduler_params ............. None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   steps_per_print .............. 10
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   train_batch_size ............. 1
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   world_size ................... 1
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
+[2023-09-20 13:20:11,606] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-09-20 13:20:11,607] [INFO] [config.py:971:print]   zero_enabled ................. False
+[2023-09-20 13:20:11,607] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-20 13:20:11,607] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
+[2023-09-20 13:20:11,607] [INFO] [config.py:957:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|          | 0/200 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: a man cycling along the road noticed that every 18 minutes a bus overtakes him and every 6 minutes he meets an oncoming bus. if all buses and the cyclist move at a constant speed, what is the time interval between consecutive buses? a ) 5 minutes, b ) 6 minutes, c ) 8 minutes, d ) 9 minutes, e ) 10 minutes
+Output: d
+
+Input: an athlete runs 200 metres race in 24 seconds. what is his speed? a ) 20 km / hr, b ) 30 km / hr, c ) 25 km / hr, d ) 35 km / hr, e ) 40 km / hr
+Output: b
+
+Input: two numbers are in the ratio 3 : 4. if the sum of numbers is 63, find the numbers. a ) 27 and 36., b ) 25 and 30., c ) 23 and 44., d ) 63 and 12., e ) 12 and 36.
+Output: a
+
+Input: a company wants to spend equal amounts of money for the purchase of two types of computer printers costing $ 375 and $ 150 per unit, respectively. what is the fewest number of computer printers that the company can purchase? a ) 3, b ) 4, c ) 5, d ) 6, e ) 7
+Output: e
+
+Input: a certain music store stocks 800 cellos and 600 violas. of these instruments, there are 80 cello - viola pairs, such that a cello and a viola were both made with wood from the same tree ( each tree can make at most one viola and one cello, so there are no pairs other than these 90 ). if one viola and one cello are chosen at random, what is the probability that the two instruments are made with wood from the same tree? a ) 3 / 16,000, b ) 1 / 8,100, c ) 1 / 600, d ) 1 / 90, e ) 2 / 45
+Output: c
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o5-tmathqa-s20-rFalse-m4096
+Evaluating commonsenseqa :  40%|████      | 81/200 [1:53:00<2:54:45, 88.12s/it]Evaluating commonsenseqa :  81%|████████  | 162/200 [4:34:23<1:08:07, 107.55s/it]Evaluating commonsenseqa :  46%|████▌     | 92/200 [2:20:40<2:50:54, 94.95s/it]Evaluating commonsenseqa :  50%|████▉     | 99/200 [3:42:05<3:53:38, 138.80s/it]Evaluating commonsenseqa :  41%|████      | 82/200 [1:54:31<2:55:10, 89.07s/it]Evaluating commonsenseqa :   0%|          | 1/200 [02:14<7:25:36, 134.35s/it]Evaluating commonsenseqa :  82%|████████▏ | 163/200 [4:35:50<1:02:30, 101.36s/it]Evaluating commonsenseqa :  46%|████▋     | 93/200 [2:22:16<2:49:41, 95.15s/it]Evaluating commonsenseqa :  42%|████▏     | 83/200 [1:55:42<2:42:41, 83.43s/it]Evaluating commonsenseqa :  50%|█████     | 100/200 [3:44:24<3:51:13, 138.73s/it]Evaluating commonsenseqa :  82%|████████▏ | 164/200 [4:37:42<1:02:43, 104.55s/it]Evaluating commonsenseqa :  47%|████▋     | 94/200 [2:23:52<2:48:39, 95.46s/it]Evaluating commonsenseqa :  42%|████▏     | 84/200 [1:57:11<2:44:34, 85.12s/it]Evaluating commonsenseqa :   1%|          | 2/200 [04:29<7:24:01, 134.55s/it]Evaluating commonsenseqa :  48%|████▊     | 95/200 [2:25:27<2:46:26, 95.11s/it]Evaluating commonsenseqa :  42%|████▎     | 85/200 [1:58:42<2:46:49, 87.04s/it]Evaluating commonsenseqa :  82%|████████▎ | 165/200 [4:39:32<1:01:57, 106.21s/it]Evaluating commonsenseqa :  50%|█████     | 101/200 [3:46:41<3:47:48, 138.06s/it]Evaluating commonsenseqa :   2%|▏         | 3/200 [06:39<7:15:47, 132.73s/it]Evaluating commonsenseqa :  48%|████▊     | 96/200 [2:27:01<2:44:27, 94.88s/it]Evaluating commonsenseqa :  43%|████▎     | 86/200 [2:00:12<2:46:52, 87.83s/it]Evaluating commonsenseqa :  83%|████████▎ | 166/200 [4:41:24<1:01:14, 108.06s/it]Evaluating commonsenseqa :   2%|▏         | 4/200 [08:08<6:16:36, 115.29s/it]Evaluating commonsenseqa :  44%|████▎     | 87/200 [2:01:26<2:37:45, 83.76s/it]Evaluating commonsenseqa :  51%|█████     | 102/200 [3:49:01<3:46:33, 138.71s/it]Evaluating commonsenseqa :  48%|████▊     | 97/200 [2:28:38<2:43:48, 95.42s/it]Evaluating commonsenseqa :  84%|████████▎ | 167/200 [4:43:20<1:00:40, 110.32s/it]Evaluating commonsenseqa :  44%|████▍     | 88/200 [2:02:57<2:40:08, 85.79s/it]Evaluating commonsenseqa :   2%|▎         | 5/200 [10:21<6:35:34, 121.72s/it]Evaluating commonsenseqa :  49%|████▉     | 98/200 [2:30:11<2:41:05, 94.76s/it]Evaluating commonsenseqa :  52%|█████▏    | 103/200 [3:51:19<3:43:49, 138.45s/it]Evaluating commonsenseqa :  44%|████▍     | 89/200 [2:04:02<2:27:22, 79.66s/it]Evaluating commonsenseqa :  84%|████████▍ | 168/200 [4:45:14<59:21, 111.31s/it]  Evaluating commonsenseqa :  45%|████▌     | 90/200 [2:04:43<2:04:35, 67.96s/it]Evaluating commonsenseqa :  50%|████▉     | 99/200 [2:31:44<2:38:43, 94.29s/it]Evaluating commonsenseqa :   3%|▎         | 6/200 [12:33<6:45:18, 125.35s/it]Evaluating commonsenseqa :  84%|████████▍ | 169/200 [4:46:38<53:24, 103.37s/it]Evaluating commonsenseqa :  52%|█████▏    | 104/200 [3:53:39<3:42:24, 139.01s/it]Evaluating commonsenseqa :  46%|████▌     | 91/200 [2:06:14<2:15:57, 74.84s/it]Evaluating commonsenseqa :   4%|▎         | 7/200 [13:35<5:36:34, 104.63s/it]Evaluating commonsenseqa :  50%|█████     | 100/200 [2:33:19<2:37:16, 94.36s/it]Evaluating commonsenseqa :  46%|████▌     | 92/200 [2:07:16<2:07:55, 71.07s/it]Evaluating commonsenseqa :  85%|████████▌ | 170/200 [4:48:27<52:27, 104.92s/it]Evaluating commonsenseqa :   4%|▍         | 8/200 [14:56<5:11:00, 97.19s/it] Evaluating commonsenseqa :  50%|█████     | 101/200 [2:34:57<2:37:34, 95.50s/it]Evaluating commonsenseqa :  52%|█████▎    | 105/200 [3:55:59<3:40:44, 139.41s/it]Evaluating commonsenseqa :  46%|████▋     | 93/200 [2:08:47<2:17:28, 77.08s/it]Evaluating commonsenseqa :  86%|████████▌ | 171/200 [4:50:19<51:42, 106.99s/it]Evaluating commonsenseqa :  51%|█████     | 102/200 [2:36:32<2:35:40, 95.32s/it]Evaluating commonsenseqa :   4%|▍         | 9/200 [17:08<5:44:01, 108.07s/it]Evaluating commonsenseqa :  47%|████▋     | 94/200 [2:10:18<2:23:41, 81.34s/it]Evaluating commonsenseqa :  52%|█████▏    | 103/200 [2:37:26<2:14:17, 83.07s/it]Evaluating commonsenseqa :  53%|█████▎    | 106/200 [3:58:22<3:39:52, 140.34s/it]Evaluating commonsenseqa :  86%|████████▌ | 172/200 [4:52:14<51:05, 109.47s/it]Evaluating commonsenseqa :  48%|████▊     | 95/200 [2:11:49<2:27:21, 84.20s/it]Evaluating commonsenseqa :   5%|▌         | 10/200 [19:21<6:06:31, 115.74s/it]Evaluating commonsenseqa :  52%|█████▏    | 104/200 [2:39:02<2:19:08, 86.97s/it]Evaluating commonsenseqa :  54%|█████▎    | 107/200 [4:00:42<3:37:30, 140.33s/it]Evaluating commonsenseqa :  48%|████▊     | 96/200 [2:13:19<2:28:40, 85.77s/it]Evaluating commonsenseqa :  86%|████████▋ | 173/200 [4:54:07<49:43, 110.52s/it]Evaluating commonsenseqa :  52%|█████▎    | 105/200 [2:40:37<2:21:25, 89.32s/it]Evaluating commonsenseqa :   6%|▌         | 11/200 [21:30<6:16:43, 119.60s/it]Evaluating commonsenseqa :  48%|████▊     | 97/200 [2:14:24<2:16:48, 79.69s/it]Evaluating commonsenseqa :  87%|████████▋ | 174/200 [4:56:01<48:18, 111.48s/it]Evaluating commonsenseqa :  53%|█████▎    | 106/200 [2:42:14<2:23:27, 91.57s/it]Evaluating commonsenseqa :  54%|█████▍    | 108/200 [4:03:04<3:35:47, 140.73s/it]Evaluating commonsenseqa :  49%|████▉     | 98/200 [2:15:54<2:20:38, 82.73s/it]Evaluating commonsenseqa :   6%|▌         | 12/200 [23:41<6:25:46, 123.12s/it]Evaluating commonsenseqa :  50%|████▉     | 99/200 [2:16:48<2:04:49, 74.15s/it]Evaluating commonsenseqa :  54%|█████▎    | 107/200 [2:43:47<2:22:48, 92.14s/it]Evaluating commonsenseqa :  88%|████████▊ | 175/200 [4:57:57<47:02, 112.89s/it]Evaluating commonsenseqa :   6%|▋         | 13/200 [24:47<5:30:06, 105.92s/it]Evaluating commonsenseqa :  55%|█████▍    | 109/200 [4:05:22<3:32:06, 139.85s/it]Evaluating commonsenseqa :  50%|█████     | 100/200 [2:18:17<2:11:02, 78.62s/it]Evaluating commonsenseqa :  54%|█████▍    | 108/200 [2:45:24<2:23:25, 93.54s/it]Evaluating commonsenseqa :  50%|█████     | 101/200 [2:18:57<1:50:26, 66.93s/it]Evaluating commonsenseqa :  88%|████████▊ | 176/200 [4:59:50<45:08, 112.83s/it]Evaluating commonsenseqa :   7%|▋         | 14/200 [26:57<5:50:49, 113.17s/it]Evaluating commonsenseqa :  55%|█████▌    | 110/200 [4:07:38<3:28:14, 138.83s/it]Evaluating commonsenseqa :  55%|█████▍    | 109/200 [2:46:58<2:22:14, 93.79s/it]Evaluating commonsenseqa :  51%|█████     | 102/200 [2:20:26<2:00:19, 73.66s/it]Evaluating commonsenseqa :  88%|████████▊ | 177/200 [5:01:41<43:04, 112.36s/it]Evaluating commonsenseqa :  55%|█████▌    | 110/200 [2:48:33<2:20:56, 93.96s/it]Evaluating commonsenseqa :  52%|█████▏    | 103/200 [2:21:55<2:06:20, 78.15s/it]Evaluating commonsenseqa :   8%|▊         | 15/200 [29:12<6:09:05, 119.70s/it]Evaluating commonsenseqa :  56%|█████▌    | 111/200 [4:09:59<3:26:43, 139.37s/it]Evaluating commonsenseqa :  89%|████████▉ | 178/200 [5:03:32<41:05, 112.09s/it]Evaluating commonsenseqa :  56%|█████▌    | 111/200 [2:50:10<2:20:44, 94.89s/it]Evaluating commonsenseqa :  52%|█████▏    | 104/200 [2:23:27<2:12:01, 82.52s/it]Evaluating commonsenseqa :  52%|█████▎    | 105/200 [2:24:08<1:50:42, 69.92s/it]Evaluating commonsenseqa :   8%|▊         | 16/200 [31:27<6:21:03, 124.26s/it]Evaluating commonsenseqa :  90%|████████▉ | 179/200 [5:05:26<39:21, 112.45s/it]Evaluating commonsenseqa :  56%|█████▌    | 112/200 [4:12:18<3:24:25, 139.39s/it]Evaluating commonsenseqa :  56%|█████▌    | 112/200 [2:51:45<2:19:16, 94.96s/it]Evaluating commonsenseqa :  53%|█████▎    | 106/200 [2:25:38<1:59:11, 76.08s/it]Evaluating commonsenseqa :   8%|▊         | 17/200 [32:58<5:49:04, 114.45s/it]Evaluating commonsenseqa :  56%|█████▋    | 113/200 [2:53:22<2:18:42, 95.66s/it]Evaluating commonsenseqa :  90%|█████████ | 180/200 [5:07:18<37:31, 112.55s/it]Evaluating commonsenseqa :  56%|█████▋    | 113/200 [4:14:42<3:23:53, 140.61s/it]Evaluating commonsenseqa :  54%|█████▎    | 107/200 [2:27:12<2:05:53, 81.22s/it]Evaluating commonsenseqa :   9%|▉         | 18/200 [35:12<6:04:10, 120.06s/it]Evaluating commonsenseqa :  57%|█████▋    | 114/200 [2:54:56<2:16:30, 95.23s/it]Evaluating commonsenseqa :  90%|█████████ | 181/200 [5:09:12<35:44, 112.88s/it]Evaluating commonsenseqa :  54%|█████▍    | 108/200 [2:28:43<2:09:16, 84.31s/it]Evaluating commonsenseqa :  10%|▉         | 19/200 [36:05<5:01:52, 100.07s/it]Evaluating commonsenseqa :  57%|█████▋    | 114/200 [4:17:03<3:21:45, 140.77s/it]Evaluating commonsenseqa :  57%|█████▊    | 115/200 [2:56:34<2:15:41, 95.78s/it]Evaluating commonsenseqa :  91%|█████████ | 182/200 [5:10:27<30:26, 101.50s/it]Evaluating commonsenseqa :  55%|█████▍    | 109/200 [2:30:14<2:10:55, 86.33s/it]Evaluating commonsenseqa :  10%|█         | 20/200 [38:18<5:29:31, 109.84s/it]Evaluating commonsenseqa :  58%|█████▊    | 116/200 [2:58:08<2:13:29, 95.36s/it]Evaluating commonsenseqa :  57%|█████▊    | 115/200 [4:19:02<3:10:29, 134.47s/it]Evaluating commonsenseqa :  92%|█████████▏| 183/200 [5:12:24<30:03, 106.10s/it]Evaluating commonsenseqa :  55%|█████▌    | 110/200 [2:31:47<2:12:25, 88.28s/it]Evaluating commonsenseqa :  10%|█         | 21/200 [39:30<4:53:42, 98.45s/it] Evaluating commonsenseqa :  58%|█████▊    | 117/200 [2:59:44<2:12:09, 95.54s/it]Evaluating commonsenseqa :  56%|█████▌    | 111/200 [2:33:19<2:12:33, 89.37s/it]Evaluating commonsenseqa :  92%|█████████▏| 184/200 [5:14:18<28:55, 108.49s/it]Evaluating commonsenseqa :  56%|█████▌    | 112/200 [2:33:49<1:44:57, 71.56s/it]Evaluating commonsenseqa :  58%|█████▊    | 116/200 [4:21:24<3:11:10, 136.55s/it]Evaluating commonsenseqa :  59%|█████▉    | 118/200 [3:01:21<2:11:15, 96.04s/it]Evaluating commonsenseqa :  11%|█         | 22/200 [41:43<5:23:18, 108.98s/it]Evaluating commonsenseqa :  56%|█████▋    | 113/200 [2:35:00<1:43:27, 71.35s/it]Evaluating commonsenseqa :  92%|█████████▎| 185/200 [5:16:11<27:26, 109.76s/it]Evaluating commonsenseqa :  60%|█████▉    | 119/200 [3:02:58<2:09:59, 96.29s/it]Evaluating commonsenseqa :  58%|█████▊    | 117/200 [4:23:47<3:11:36, 138.52s/it]Evaluating commonsenseqa :  57%|█████▋    | 114/200 [2:36:29<1:50:06, 76.82s/it]Evaluating commonsenseqa :  12%|█▏        | 23/200 [43:54<5:40:45, 115.51s/it]Evaluating commonsenseqa :  93%|█████████▎| 186/200 [5:18:06<25:59, 111.42s/it]Evaluating commonsenseqa :  60%|██████    | 120/200 [3:04:33<2:07:53, 95.92s/it]Evaluating commonsenseqa :  57%|█████▊    | 115/200 [2:38:00<1:54:27, 80.80s/it]Evaluating commonsenseqa :  59%|█████▉    | 118/200 [4:26:06<3:09:40, 138.79s/it]Evaluating commonsenseqa :  12%|█▏        | 24/200 [46:10<5:56:57, 121.69s/it]Evaluating commonsenseqa :  60%|██████    | 121/200 [3:06:07<2:05:22, 95.22s/it]Evaluating commonsenseqa :  94%|█████████▎| 187/200 [5:20:01<24:20, 112.37s/it]Evaluating commonsenseqa :  58%|█████▊    | 116/200 [2:39:32<1:58:00, 84.30s/it]Evaluating commonsenseqa :  94%|█████████▍| 188/200 [5:21:01<19:19, 96.66s/it] Evaluating commonsenseqa :  61%|██████    | 122/200 [3:07:40<2:03:11, 94.76s/it]Evaluating commonsenseqa :  60%|█████▉    | 119/200 [4:28:27<3:07:55, 139.21s/it]Evaluating commonsenseqa :  58%|█████▊    | 117/200 [2:41:01<1:58:41, 85.80s/it]Evaluating commonsenseqa :  12%|█▎        | 25/200 [48:25<6:06:31, 125.67s/it]Evaluating commonsenseqa :  60%|██████    | 120/200 [4:28:49<2:19:05, 104.32s/it]Evaluating commonsenseqa :  94%|█████████▍| 189/200 [5:22:55<18:41, 101.98s/it]Evaluating commonsenseqa :  62%|██████▏   | 123/200 [3:09:14<2:01:09, 94.41s/it]Evaluating commonsenseqa :  59%|█████▉    | 118/200 [2:42:32<1:59:22, 87.35s/it]Evaluating commonsenseqa :  13%|█▎        | 26/200 [50:38<6:10:39, 127.81s/it]Evaluating commonsenseqa :  60%|██████    | 121/200 [4:31:09<2:31:24, 115.00s/it]Evaluating commonsenseqa :  62%|██████▏   | 124/200 [3:10:48<1:59:20, 94.21s/it]Evaluating commonsenseqa :  60%|█████▉    | 119/200 [2:44:02<1:59:01, 88.17s/it]Evaluating commonsenseqa :  95%|█████████▌| 190/200 [5:24:48<17:34, 105.42s/it]Evaluating commonsenseqa :  14%|█▎        | 27/200 [52:32<5:56:40, 123.70s/it]Evaluating commonsenseqa :  60%|██████    | 120/200 [2:45:33<1:58:43, 89.04s/it]Evaluating commonsenseqa :  62%|██████▎   | 125/200 [3:12:24<1:58:39, 94.92s/it]Evaluating commonsenseqa :  61%|██████    | 122/200 [4:33:30<2:39:28, 122.67s/it]Evaluating commonsenseqa :  96%|█████████▌| 191/200 [5:26:40<16:04, 107.14s/it]Evaluating commonsenseqa :  14%|█▍        | 28/200 [53:44<5:10:25, 108.29s/it]Evaluating commonsenseqa :  60%|██████    | 121/200 [2:47:02<1:56:54, 88.79s/it]Evaluating commonsenseqa :  63%|██████▎   | 126/200 [3:13:59<1:56:52, 94.77s/it]Evaluating commonsenseqa :  96%|█████████▌| 192/200 [5:28:32<14:29, 108.73s/it]Evaluating commonsenseqa :  62%|██████▏   | 123/200 [4:35:49<2:43:42, 127.57s/it]Evaluating commonsenseqa :  61%|██████    | 122/200 [2:48:34<1:56:57, 89.97s/it]Evaluating commonsenseqa :  64%|██████▎   | 127/200 [3:15:35<1:55:56, 95.29s/it]Evaluating commonsenseqa :  14%|█▍        | 29/200 [55:57<5:29:38, 115.66s/it]Evaluating commonsenseqa :  96%|█████████▋| 193/200 [5:30:23<12:45, 109.39s/it]Evaluating commonsenseqa :  62%|██████▏   | 123/200 [2:50:04<1:55:31, 90.02s/it]Evaluating commonsenseqa :  15%|█▌        | 30/200 [57:25<5:04:02, 107.31s/it]Evaluating commonsenseqa :  64%|██████▍   | 128/200 [3:17:10<1:54:15, 95.21s/it]Evaluating commonsenseqa :  62%|██████▏   | 124/200 [4:38:08<2:45:58, 131.03s/it]Evaluating commonsenseqa :  62%|██████▏   | 124/200 [2:51:09<1:44:30, 82.50s/it]Evaluating commonsenseqa :  97%|█████████▋| 194/200 [5:32:16<11:02, 110.46s/it]Evaluating commonsenseqa :  64%|██████▍   | 129/200 [3:18:47<1:53:23, 95.82s/it]Evaluating commonsenseqa :  16%|█▌        | 31/200 [59:36<5:22:20, 114.44s/it]Evaluating commonsenseqa :  62%|██████▎   | 125/200 [2:52:40<1:46:18, 85.05s/it]Evaluating commonsenseqa :  62%|██████▎   | 125/200 [4:40:26<2:46:17, 133.04s/it]Evaluating commonsenseqa :  98%|█████████▊| 195/200 [5:33:53<08:51, 106.39s/it]Evaluating commonsenseqa :  65%|██████▌   | 130/200 [3:20:24<1:52:08, 96.12s/it]Evaluating commonsenseqa :  63%|██████▎   | 126/200 [2:53:48<1:38:14, 79.66s/it]Evaluating commonsenseqa :  98%|█████████▊| 196/200 [5:35:00<06:18, 94.70s/it] Evaluating commonsenseqa :  64%|██████▎   | 127/200 [2:54:28<1:22:32, 67.84s/it]Evaluating commonsenseqa :  16%|█▌        | 32/200 [1:01:52<5:38:25, 120.86s/it]Evaluating commonsenseqa :  64%|██████▍   | 128/200 [2:55:03<1:09:31, 57.94s/it]Evaluating commonsenseqa :  66%|██████▌   | 131/200 [3:22:00<1:50:26, 96.04s/it]Evaluating commonsenseqa :  63%|██████▎   | 126/200 [4:42:49<2:48:01, 136.24s/it]Evaluating commonsenseqa :  98%|█████████▊| 197/200 [5:36:53<05:00, 100.27s/it]Evaluating commonsenseqa :  64%|██████▍   | 129/200 [2:56:22<1:16:10, 64.38s/it]Evaluating commonsenseqa :  66%|██████▌   | 132/200 [3:23:35<1:48:24, 95.66s/it]Evaluating commonsenseqa :  16%|█▋        | 33/200 [1:04:07<5:48:30, 125.21s/it]Evaluating commonsenseqa :  64%|██████▎   | 127/200 [4:45:11<2:47:43, 137.86s/it]Evaluating commonsenseqa :  65%|██████▌   | 130/200 [2:57:52<1:24:10, 72.15s/it]Evaluating commonsenseqa :  99%|█████████▉| 198/200 [5:38:45<03:27, 103.59s/it]Evaluating commonsenseqa :  66%|██████▋   | 133/200 [3:25:10<1:46:45, 95.61s/it]Evaluating commonsenseqa :  66%|██████▌   | 131/200 [2:59:01<1:21:46, 71.11s/it]Evaluating commonsenseqa :  17%|█▋        | 34/200 [1:06:20<5:53:03, 127.61s/it]Evaluating commonsenseqa :  66%|██████▌   | 132/200 [2:59:44<1:10:54, 62.56s/it]Evaluating commonsenseqa : 100%|█████████▉| 199/200 [5:40:36<01:45, 105.90s/it]Evaluating commonsenseqa :  67%|██████▋   | 134/200 [3:26:45<1:44:49, 95.29s/it]Evaluating commonsenseqa :  64%|██████▍   | 128/200 [4:47:32<2:46:24, 138.67s/it]Evaluating commonsenseqa :  66%|██████▋   | 133/200 [3:01:14<1:19:09, 70.88s/it]Evaluating commonsenseqa :  18%|█▊        | 35/200 [1:08:35<5:57:07, 129.86s/it]Evaluating commonsenseqa :  68%|██████▊   | 135/200 [3:28:21<1:43:40, 95.70s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [5:42:27<00:00, 107.55s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [5:42:27<00:00, 102.74s/it]
+name: commonsenseqa | avg. gen lenth: 238.499 | time: 20550.330538988113s
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10140 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name mathqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o15-tmathqa-s30-rFalse --seed 30 --max-prompt-length 4096 --num-out-domain 15 13 15 True False 4096 5
+/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+[2023-09-20 14:29:20,054] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... True
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o15-tmathqa-s30-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 15
+  out_domain_data_name ......... mathqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o15-tmathqa-s30-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 30
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  gpus_per_node ................ 1
+  world_size ................... 1
+Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 404357.79it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:09<00:09,  9.14s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  5.59s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.13s/it]
+ > number of parameters: 6738415616
+[2023-09-20 14:29:36,243] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-09-20 14:29:36,244] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-09-20 14:29:36,662] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-20 14:29:36,664] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-09-20 14:29:36,665] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-20 14:29:36,665] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-20 14:29:36,665] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-09-20 14:29:36,665] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f4c3880ed70>
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
+[2023-09-20 14:29:36,666] [INFO] [config.py:971:print]   fp16_enabled ................. True
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   loss_scale ................... 0
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   optimizer_name ............... None
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   optimizer_params ............. None
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   scheduler_name ............... None
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   scheduler_params ............. None
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   steps_per_print .............. 10
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   train_batch_size ............. 1
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-09-20 14:29:36,667] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   world_size ................... 1
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   zero_enabled ................. False
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-20 14:29:36,668] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
+[2023-09-20 14:29:36,668] [INFO] [config.py:957:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|          | 0/200 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: the mean of 30 values was 140. it was detected on rechecking that one value 145 was wrongly copied as 135 for the computation of the mean. find the correct mean. a ) 151, b ) 140.33, c ) 152, d ) 148, e ) none of the above
+Output: b
+
+Input: the measurement of a rectangular box with lid is 25 cmx 24 cmx 18 cm. find the volume of the largest sphere that can be inscribed in the box ( in terms of π cm 3 ). ( hint : the lowest measure of rectangular box represents the diameter of the largest sphere ) a ) 288, b ) 2302, c ) 2304, d ) 8640, e ) 964
+Output: c
+
+Input: a certain fraction has the same ratio to 1 / 33, as 3 / 4 does to 7 / 11. what is this certain fraction? a ) 1 / 14, b ) 1 / 18, c ) 1 / 21, d ) 1 / 25, e ) 1 / 28
+Output: e
+
+Input: what is the sum of all remainders obtained when the first 110 natural numbers are divided by 9? a ) 397, b ) 401, c ) 403, d ) 405, e ) 399
+Output: c
+
+Input: a ’ s speed is 20 / 15 times that of b. if a and b run a race, what part of the length of the race should a give b as a head start, so that the race ends in a dead heat? a ) 1 / 17, b ) 3 / 17, c ) 1 / 10, d ) 5 / 20, e ) 3 / 10
+Output: d
+
+Input: find the average of all the numbers between 6 and 34 which are divisible by 7. a ) 18, b ) 20, c ) 17.5, d ) 30, e ) 32
+Output: c
+
+Input: instead of multiplying a number by 5, the number is divided by 10. what is the percentage of error obtained? a ) 96 %, b ) 98 %, c ) 95 %, d ) 97 %, e ) 96 %
+Output: b
+
+Input: by selling an article at rs. 150, a profit of 25 % is made. find its cost price? a ) s. 486, b ) s. 455, c ) s. 487, d ) s. 120, e ) s. 489
+Output: d
+
+Input: if 1 = 6, 2 = 12, 3 = 18, 4 = 24, 5 = 30, then 6 =? a ) 5, b ) 3, c ) 1, d ) 7, e ) 9
+Output: c
+
+Input: 62 small identical cubes are used to form a large cube. how many more cubes are needed to add one top layer of small cube all over the surface of the large cube? a ) 64, b ) 128, c ) 152, d ) 154, e ) 256
+Output: d
+
+Input: a boat running upstream takes 640 min to cover a certain distance, while it takes 280 min to cover the same distance running down stream. what is the ratio between the speed of the boat and speed of water current respectively? a ) 23 : 7, b ) 22 : 9, c ) 23 : 8, d ) 23 : 9, e ) 23 : 11
+Output: d
+
+Input: there are 2 positive integers x and y. what is the probability that x + y is odd? a ) 1 / 4, b ) 1 / 2, c ) 1 / 3, d ) 1 / 5, e ) 1 / 9
+Output: b
+
+Input: two numbers have a h. c. f of 9 and a product of two numbers is 1800. find the l. c. m of the two numbers? a ) 200, b ) 150, c ) 160, d ) 170, e ) 180
+Output: a
+
+Input: a metallic sheet is of rectangular shape with dimensions 48 m x 36 m. from each of its corners, a square is cut off so as to make an open box. if the length of the square is 8 m, the volume of the box ( in m 3 ) is a ) 3220, b ) 4830, c ) 5120, d ) 6420, e ) none
+Output: c
+
+Input: amar takes as much time in running 24 meters as a car takes in covering 60 meters. what will be the distance covered by amar during the time the car covers 2.2 km? a ) 700 m, b ) 500 m, c ) 870 m, d ) 880 m, e ) 840 m
+Output: d
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o15-tmathqa-s30-rFalse-m4096
+Evaluating commonsenseqa :  64%|██████▍   | 129/200 [4:49:52<2:44:43, 139.21s/it]Evaluating commonsenseqa :  67%|██████▋   | 134/200 [3:02:43<1:24:08, 76.48s/it]Evaluating commonsenseqa :  68%|██████▊   | 136/200 [3:29:58<1:42:12, 95.82s/it]Evaluating commonsenseqa :   0%|          | 1/200 [01:09<3:51:27, 69.79s/it]Evaluating commonsenseqa :  68%|██████▊   | 135/200 [3:03:34<1:14:35, 68.86s/it]Evaluating commonsenseqa :  18%|█▊        | 36/200 [1:10:50<5:58:40, 131.22s/it]Evaluating commonsenseqa :  65%|██████▌   | 130/200 [4:52:12<2:42:30, 139.29s/it]Evaluating commonsenseqa :  68%|██████▊   | 137/200 [3:31:32<1:40:09, 95.39s/it]Evaluating commonsenseqa :  68%|██████▊   | 136/200 [3:05:08<1:21:13, 76.15s/it]Evaluating commonsenseqa :   1%|          | 2/200 [02:56<5:02:12, 91.58s/it]Evaluating commonsenseqa :  18%|█▊        | 37/200 [1:13:02<5:57:10, 131.48s/it]Evaluating commonsenseqa :  69%|██████▉   | 138/200 [3:33:08<1:38:49, 95.64s/it]Evaluating commonsenseqa :  68%|██████▊   | 137/200 [3:06:45<1:26:36, 82.49s/it]Evaluating commonsenseqa :  66%|██████▌   | 131/200 [4:54:32<2:40:32, 139.60s/it]Evaluating commonsenseqa :   2%|▏         | 3/200 [04:44<5:25:09, 99.03s/it]Evaluating commonsenseqa :  70%|██████▉   | 139/200 [3:34:44<1:37:14, 95.65s/it]Evaluating commonsenseqa :  19%|█▉        | 38/200 [1:15:17<5:57:39, 132.47s/it]Evaluating commonsenseqa :   2%|▏         | 4/200 [05:59<4:52:26, 89.52s/it]Evaluating commonsenseqa :  69%|██████▉   | 138/200 [3:08:22<1:29:37, 86.74s/it]Evaluating commonsenseqa :  66%|██████▌   | 132/200 [4:56:54<2:38:54, 140.22s/it]Evaluating commonsenseqa :  70%|███████   | 140/200 [3:36:23<1:36:35, 96.59s/it]Evaluating commonsenseqa :  20%|█▉        | 39/200 [1:17:08<5:38:15, 126.06s/it]Evaluating commonsenseqa :  70%|██████▉   | 139/200 [3:09:58<1:31:04, 89.58s/it]Evaluating commonsenseqa :   2%|▎         | 5/200 [07:46<5:11:15, 95.77s/it]Evaluating commonsenseqa :  70%|███████   | 140/200 [3:10:30<1:12:28, 72.47s/it]Evaluating commonsenseqa :  70%|███████   | 141/200 [3:37:33<1:27:19, 88.81s/it]Evaluating commonsenseqa :  70%|███████   | 141/200 [3:11:18<1:04:01, 65.12s/it]Evaluating commonsenseqa :  66%|██████▋   | 133/200 [4:59:16<2:37:21, 140.92s/it]Evaluating commonsenseqa :   3%|▎         | 6/200 [09:32<5:20:33, 99.14s/it]Evaluating commonsenseqa :  71%|███████   | 142/200 [3:12:07<58:04, 60.08s/it]  Evaluating commonsenseqa :  20%|██        | 40/200 [1:19:24<5:43:57, 128.98s/it]Evaluating commonsenseqa :  71%|███████   | 142/200 [3:39:09<1:27:52, 90.91s/it]Evaluating commonsenseqa :  20%|██        | 41/200 [1:20:16<4:41:00, 106.04s/it]Evaluating commonsenseqa :   4%|▎         | 7/200 [11:18<5:26:47, 101.59s/it]Evaluating commonsenseqa :  72%|███████▏  | 143/200 [3:13:44<1:07:44, 71.30s/it]Evaluating commonsenseqa :  72%|███████▏  | 143/200 [3:40:45<1:27:43, 92.35s/it]Evaluating commonsenseqa :  67%|██████▋   | 134/200 [5:01:36<2:34:40, 140.61s/it]Evaluating commonsenseqa :   4%|▍         | 8/200 [11:57<4:21:12, 81.63s/it] Evaluating commonsenseqa :   4%|▍         | 9/200 [12:29<3:30:04, 65.99s/it]Evaluating commonsenseqa :  72%|███████▏  | 144/200 [3:41:44<1:16:52, 82.37s/it]Evaluating commonsenseqa :  21%|██        | 42/200 [1:22:19<4:52:32, 111.09s/it]Evaluating commonsenseqa :  72%|███████▏  | 144/200 [3:15:22<1:13:58, 79.26s/it]Evaluating commonsenseqa :  68%|██████▊   | 135/200 [5:03:15<2:18:42, 128.04s/it]Evaluating commonsenseqa :   5%|▌         | 10/200 [14:16<4:09:13, 78.70s/it]Evaluating commonsenseqa :  72%|███████▎  | 145/200 [3:43:21<1:19:40, 86.91s/it]Evaluating commonsenseqa :  72%|███████▎  | 145/200 [3:16:58<1:17:17, 84.32s/it]Evaluating commonsenseqa :   6%|▌         | 11/200 [14:59<3:34:04, 67.96s/it]Evaluating commonsenseqa :  22%|██▏       | 43/200 [1:24:34<5:09:15, 118.19s/it]Evaluating commonsenseqa :  68%|██████▊   | 136/200 [5:05:37<2:21:04, 132.26s/it]Evaluating commonsenseqa :  73%|███████▎  | 146/200 [3:45:00<1:21:16, 90.31s/it]Evaluating commonsenseqa :  73%|███████▎  | 146/200 [3:18:20<1:15:15, 83.62s/it]Evaluating commonsenseqa :   6%|▌         | 12/200 [16:48<4:11:25, 80.24s/it]Evaluating commonsenseqa :  74%|███████▎  | 147/200 [3:19:34<1:11:10, 80.58s/it]Evaluating commonsenseqa :  22%|██▏       | 44/200 [1:26:47<5:18:48, 122.62s/it]Evaluating commonsenseqa :  74%|███████▎  | 147/200 [3:46:35<1:21:07, 91.84s/it]Evaluating commonsenseqa :  68%|██████▊   | 137/200 [5:07:56<2:21:06, 134.38s/it]Evaluating commonsenseqa :   6%|▋         | 13/200 [18:35<4:35:36, 88.43s/it]Evaluating commonsenseqa :  74%|███████▍  | 148/200 [3:21:13<1:14:41, 86.18s/it]Evaluating commonsenseqa :  74%|███████▍  | 148/200 [3:48:12<1:20:49, 93.25s/it]Evaluating commonsenseqa :  22%|██▎       | 45/200 [1:29:01<5:25:43, 126.09s/it]Evaluating commonsenseqa :   7%|▋         | 14/200 [20:21<4:50:45, 93.79s/it]Evaluating commonsenseqa :  69%|██████▉   | 138/200 [5:10:15<2:20:22, 135.85s/it]Evaluating commonsenseqa :  74%|███████▍  | 149/200 [3:22:55<1:17:14, 90.86s/it]Evaluating commonsenseqa :  74%|███████▍  | 149/200 [3:49:48<1:20:04, 94.20s/it]Evaluating commonsenseqa :  23%|██▎       | 46/200 [1:31:13<5:28:05, 127.83s/it]Evaluating commonsenseqa :   8%|▊         | 15/200 [21:50<4:44:07, 92.15s/it]Evaluating commonsenseqa :  75%|███████▌  | 150/200 [3:51:24<1:18:52, 94.65s/it]Evaluating commonsenseqa :  75%|███████▌  | 150/200 [3:24:34<1:17:55, 93.52s/it]Evaluating commonsenseqa :  70%|██████▉   | 139/200 [5:12:34<2:18:59, 136.71s/it]Evaluating commonsenseqa :   8%|▊         | 16/200 [23:36<4:56:09, 96.58s/it]Evaluating commonsenseqa :  76%|███████▌  | 151/200 [3:53:00<1:17:45, 95.21s/it]Evaluating commonsenseqa :  76%|███████▌  | 151/200 [3:26:14<1:17:47, 95.26s/it]Evaluating commonsenseqa :  24%|██▎       | 47/200 [1:33:26<5:29:55, 129.39s/it]Evaluating commonsenseqa :  70%|███████   | 140/200 [5:14:54<2:17:44, 137.74s/it]Evaluating commonsenseqa :  76%|███████▌  | 152/200 [3:27:22<1:09:49, 87.28s/it]Evaluating commonsenseqa :   8%|▊         | 17/200 [25:22<5:03:10, 99.40s/it]Evaluating commonsenseqa :  76%|███████▌  | 152/200 [3:54:34<1:15:45, 94.71s/it]Evaluating commonsenseqa :  24%|██▍       | 48/200 [1:35:38<5:30:17, 130.38s/it]Evaluating commonsenseqa :   9%|▉         | 18/200 [26:47<4:48:16, 95.04s/it]Evaluating commonsenseqa :  76%|███████▋  | 153/200 [3:29:04<1:11:47, 91.64s/it]Evaluating commonsenseqa :  76%|███████▋  | 153/200 [3:56:11<1:14:39, 95.31s/it]Evaluating commonsenseqa :  70%|███████   | 141/200 [5:17:11<2:15:15, 137.54s/it]Evaluating commonsenseqa :  24%|██▍       | 49/200 [1:37:52<5:30:11, 131.20s/it]Evaluating commonsenseqa :  77%|███████▋  | 154/200 [3:30:44<1:12:06, 94.05s/it]Evaluating commonsenseqa :  10%|▉         | 19/200 [28:34<4:57:11, 98.52s/it]Evaluating commonsenseqa :  77%|███████▋  | 154/200 [3:57:46<1:13:08, 95.40s/it]Evaluating commonsenseqa :  10%|█         | 20/200 [29:37<4:23:41, 87.90s/it]Evaluating commonsenseqa :  71%|███████   | 142/200 [5:19:32<2:13:58, 138.59s/it]Evaluating commonsenseqa :  78%|███████▊  | 155/200 [3:32:22<1:11:33, 95.42s/it]Evaluating commonsenseqa :  78%|███████▊  | 155/200 [3:59:21<1:11:31, 95.36s/it]Evaluating commonsenseqa :  25%|██▌       | 50/200 [1:40:06<5:30:04, 132.03s/it]Evaluating commonsenseqa :  10%|█         | 21/200 [31:24<4:39:41, 93.75s/it]Evaluating commonsenseqa :  78%|███████▊  | 156/200 [3:34:05<1:11:35, 97.63s/it]Evaluating commonsenseqa :  78%|███████▊  | 156/200 [4:00:56<1:09:44, 95.11s/it]Evaluating commonsenseqa :  72%|███████▏  | 143/200 [5:21:56<2:13:01, 140.03s/it]Evaluating commonsenseqa :  26%|██▌       | 51/200 [1:42:22<5:30:58, 133.28s/it]Evaluating commonsenseqa :  11%|█         | 22/200 [33:10<4:49:01, 97.42s/it]Evaluating commonsenseqa :  78%|███████▊  | 157/200 [4:02:31<1:08:04, 95.00s/it]Evaluating commonsenseqa :  78%|███████▊  | 157/200 [3:35:43<1:10:06, 97.82s/it]Evaluating commonsenseqa :  26%|██▌       | 52/200 [1:43:09<4:25:09, 107.50s/it]Evaluating commonsenseqa :  72%|███████▏  | 144/200 [5:24:15<2:10:21, 139.68s/it]Evaluating commonsenseqa :  12%|█▏        | 23/200 [34:58<4:56:16, 100.43s/it]Evaluating commonsenseqa :  79%|███████▉  | 158/200 [4:04:06<1:06:30, 95.01s/it]Evaluating commonsenseqa :  79%|███████▉  | 158/200 [3:37:23<1:08:54, 98.45s/it]Evaluating commonsenseqa :  26%|██▋       | 53/200 [1:45:25<4:44:09, 115.98s/it]Evaluating commonsenseqa :  72%|███████▎  | 145/200 [5:26:12<2:01:54, 132.98s/it]Evaluating commonsenseqa :  80%|███████▉  | 159/200 [4:05:42<1:05:10, 95.39s/it]Evaluating commonsenseqa :  80%|███████▉  | 159/200 [3:38:58<1:06:33, 97.41s/it]Evaluating commonsenseqa :  12%|█▏        | 24/200 [36:45<5:00:19, 102.38s/it]Evaluating commonsenseqa :  80%|████████  | 160/200 [4:07:17<1:03:28, 95.22s/it]Evaluating commonsenseqa :  27%|██▋       | 54/200 [1:47:39<4:55:37, 121.49s/it]Evaluating commonsenseqa :  80%|████████  | 160/200 [3:40:30<1:03:50, 95.76s/it]Evaluating commonsenseqa :  12%|█▎        | 25/200 [38:30<5:00:52, 103.16s/it]Evaluating commonsenseqa :  73%|███████▎  | 146/200 [5:28:34<2:01:59, 135.55s/it]Evaluating commonsenseqa :  80%|████████  | 161/200 [3:41:35<56:08, 86.37s/it]  Evaluating commonsenseqa :  13%|█▎        | 26/200 [39:46<4:35:33, 95.02s/it] Evaluating commonsenseqa :  80%|████████  | 161/200 [4:08:54<1:02:20, 95.90s/it]Evaluating commonsenseqa :  28%|██▊       | 55/200 [1:49:52<5:01:56, 124.94s/it]Evaluating commonsenseqa :  81%|████████  | 162/200 [3:43:07<55:45, 88.03s/it]Evaluating commonsenseqa :  74%|███████▎  | 147/200 [5:30:54<2:00:53, 136.86s/it]Evaluating commonsenseqa :  14%|█▎        | 27/200 [41:23<4:35:58, 95.72s/it]Evaluating commonsenseqa :  81%|████████  | 162/200 [4:10:29<1:00:28, 95.48s/it]Evaluating commonsenseqa :  82%|████████▏ | 163/200 [3:43:59<47:43, 77.38s/it]Evaluating commonsenseqa :  28%|██▊       | 56/200 [1:52:06<5:05:55, 127.47s/it]Evaluating commonsenseqa :  82%|████████▏ | 163/200 [4:12:05<59:04, 95.80s/it]  Evaluating commonsenseqa :  14%|█▍        | 28/200 [43:09<4:43:28, 98.89s/it]Evaluating commonsenseqa :  82%|████████▏ | 164/200 [3:45:30<48:45, 81.27s/it]Evaluating commonsenseqa :  74%|███████▍  | 148/200 [5:33:13<1:59:18, 137.67s/it]Evaluating commonsenseqa :  14%|█▍        | 29/200 [43:57<3:57:46, 83.43s/it]Evaluating commonsenseqa :  28%|██▊       | 57/200 [1:53:24<4:28:55, 112.84s/it]Evaluating commonsenseqa :  82%|████████▏ | 164/200 [4:13:43<57:45, 96.26s/it]Evaluating commonsenseqa :  82%|████████▎ | 165/200 [3:47:02<49:20, 84.57s/it]Evaluating commonsenseqa :  15%|█▌        | 30/200 [45:45<4:17:29, 90.88s/it]Evaluating commonsenseqa :  74%|███████▍  | 149/200 [5:35:34<1:57:57, 138.78s/it]Evaluating commonsenseqa :  82%|████████▎ | 165/200 [4:15:14<55:16, 94.76s/it]Evaluating commonsenseqa :  29%|██▉       | 58/200 [1:55:39<4:42:23, 119.32s/it]Evaluating commonsenseqa :  83%|████████▎ | 166/200 [3:48:35<49:26, 87.24s/it]Evaluating commonsenseqa :  16%|█▌        | 31/200 [47:30<4:28:01, 95.16s/it]Evaluating commonsenseqa :  83%|████████▎ | 166/200 [4:16:47<53:28, 94.37s/it]Evaluating commonsenseqa :  84%|████████▎ | 167/200 [3:50:07<48:39, 88.47s/it]Evaluating commonsenseqa :  75%|███████▌  | 150/200 [5:37:54<1:55:50, 139.02s/it]Evaluating commonsenseqa :  30%|██▉       | 59/200 [1:57:50<4:49:01, 122.99s/it]Evaluating commonsenseqa :  16%|█▌        | 32/200 [49:18<4:37:27, 99.09s/it]Evaluating commonsenseqa :  84%|████████▎ | 167/200 [4:18:24<52:19, 95.14s/it]Evaluating commonsenseqa :  84%|████████▍ | 168/200 [3:51:36<47:23, 88.85s/it]Evaluating commonsenseqa :  84%|████████▍ | 168/200 [4:18:44<38:44, 72.64s/it]Evaluating commonsenseqa :  76%|███████▌  | 151/200 [5:40:13<1:53:38, 139.15s/it]Evaluating commonsenseqa :  30%|███       | 60/200 [2:00:06<4:56:07, 126.91s/it]Evaluating commonsenseqa :  84%|████████▍ | 169/200 [3:53:07<46:12, 89.44s/it]Evaluating commonsenseqa :  16%|█▋        | 33/200 [51:03<4:39:58, 100.59s/it]Evaluating commonsenseqa :  84%|████████▍ | 169/200 [4:20:21<41:13, 79.79s/it]Evaluating commonsenseqa :  85%|████████▌ | 170/200 [3:54:12<41:01, 82.06s/it]Evaluating commonsenseqa :  76%|███████▌  | 152/200 [5:42:35<1:51:54, 139.88s/it]Evaluating commonsenseqa :  17%|█▋        | 34/200 [52:49<4:43:00, 102.29s/it]Evaluating commonsenseqa :  85%|████████▌ | 170/200 [4:21:55<41:58, 83.93s/it]Evaluating commonsenseqa :  30%|███       | 61/200 [2:02:18<4:57:24, 128.38s/it]Evaluating commonsenseqa :  86%|████████▌ | 171/200 [3:55:44<41:04, 84.97s/it]Evaluating commonsenseqa :  86%|████████▌ | 171/200 [4:23:31<42:25, 87.76s/it]Evaluating commonsenseqa :  18%|█▊        | 35/200 [54:35<4:44:13, 103.35s/it]Evaluating commonsenseqa :  86%|████████▌ | 172/200 [3:57:15<40:30, 86.82s/it]Evaluating commonsenseqa :  76%|███████▋  | 153/200 [5:44:55<1:49:33, 139.86s/it]Evaluating commonsenseqa :  31%|███       | 62/200 [2:04:33<4:59:50, 130.36s/it]Evaluating commonsenseqa :  86%|████████▌ | 172/200 [4:25:08<42:12, 90.44s/it]Evaluating commonsenseqa :  18%|█▊        | 36/200 [56:17<4:41:22, 102.94s/it]Evaluating commonsenseqa :  86%|████████▋ | 173/200 [3:58:45<39:33, 87.89s/it]Evaluating commonsenseqa :  32%|███▏      | 63/200 [2:06:47<5:00:25, 131.57s/it]Evaluating commonsenseqa :  77%|███████▋  | 154/200 [5:47:15<1:47:15, 139.91s/it]Evaluating commonsenseqa :  86%|████████▋ | 173/200 [4:26:43<41:17, 91.77s/it]Evaluating commonsenseqa :  87%|████████▋ | 174/200 [3:59:55<35:42, 82.40s/it]Evaluating commonsenseqa :  18%|█▊        | 37/200 [58:02<4:42:04, 103.83s/it]Evaluating commonsenseqa :  19%|█▉        | 38/200 [58:48<3:52:42, 86.19s/it] Evaluating commonsenseqa :  88%|████████▊ | 175/200 [4:01:24<35:13, 84.54s/it]Evaluating commonsenseqa :  87%|████████▋ | 174/200 [4:28:18<40:11, 92.74s/it]Evaluating commonsenseqa :  32%|███▏      | 64/200 [2:09:02<4:59:54, 132.31s/it]Evaluating commonsenseqa :  78%|███████▊  | 155/200 [5:49:33<1:44:26, 139.25s/it]Evaluating commonsenseqa :  88%|████████▊ | 176/200 [4:02:17<29:59, 74.96s/it]Evaluating commonsenseqa :  20%|█▉        | 39/200 [1:00:34<4:07:29, 92.23s/it]Evaluating commonsenseqa :  88%|████████▊ | 175/200 [4:29:54<39:06, 93.87s/it]Evaluating commonsenseqa :  88%|████████▊ | 177/200 [4:03:46<30:17, 79.03s/it]Evaluating commonsenseqa :  20%|██        | 40/200 [1:01:35<3:40:58, 82.87s/it]Evaluating commonsenseqa :  32%|███▎      | 65/200 [2:11:16<4:59:06, 132.94s/it]Evaluating commonsenseqa :  78%|███████▊  | 156/200 [5:51:54<1:42:40, 140.00s/it]Evaluating commonsenseqa :  88%|████████▊ | 176/200 [4:31:30<37:48, 94.54s/it]Evaluating commonsenseqa :  89%|████████▉ | 178/200 [4:04:46<26:58, 73.59s/it]Evaluating commonsenseqa :  20%|██        | 41/200 [1:03:20<3:57:07, 89.48s/it]Evaluating commonsenseqa :  88%|████████▊ | 177/200 [4:33:04<36:08, 94.28s/it]Evaluating commonsenseqa :  90%|████████▉ | 179/200 [4:06:18<27:36, 78.90s/it]Evaluating commonsenseqa :  33%|███▎      | 66/200 [2:13:29<4:57:17, 133.11s/it]Evaluating commonsenseqa :  78%|███████▊  | 157/200 [5:54:16<1:40:37, 140.40s/it]Evaluating commonsenseqa :  21%|██        | 42/200 [1:05:08<4:10:05, 94.97s/it]Evaluating commonsenseqa :  90%|█████████ | 180/200 [4:07:48<27:27, 82.39s/it]Evaluating commonsenseqa :  89%|████████▉ | 178/200 [4:34:41<34:54, 95.18s/it]Evaluating commonsenseqa :  34%|███▎      | 67/200 [2:15:44<4:55:52, 133.48s/it]Evaluating commonsenseqa :  79%|███████▉  | 158/200 [5:56:38<1:38:45, 141.08s/it]Evaluating commonsenseqa :  22%|██▏       | 43/200 [1:06:56<4:19:17, 99.09s/it]Evaluating commonsenseqa :  90%|█████████ | 181/200 [4:09:19<26:51, 84.81s/it]Evaluating commonsenseqa :  90%|████████▉ | 179/200 [4:36:17<33:21, 95.31s/it]Evaluating commonsenseqa :  91%|█████████ | 182/200 [4:10:06<22:03, 73.54s/it]Evaluating commonsenseqa :  34%|███▍      | 68/200 [2:17:57<4:53:46, 133.53s/it]Evaluating commonsenseqa :  22%|██▏       | 44/200 [1:08:45<4:25:07, 101.97s/it]Evaluating commonsenseqa :  90%|█████████ | 180/200 [4:37:52<31:46, 95.32s/it]Evaluating commonsenseqa :  80%|███████▉  | 159/200 [5:58:57<1:35:48, 140.20s/it]Evaluating commonsenseqa :  92%|█████████▏| 183/200 [4:11:36<22:14, 78.48s/it]Evaluating commonsenseqa :  34%|███▍      | 69/200 [2:19:27<4:22:40, 120.31s/it]Evaluating commonsenseqa :  22%|██▎       | 45/200 [1:10:20<4:18:15, 99.97s/it] Evaluating commonsenseqa :  90%|█████████ | 181/200 [4:39:29<30:16, 95.62s/it]Evaluating commonsenseqa :  92%|█████████▏| 184/200 [4:13:04<21:43, 81.45s/it]Evaluating commonsenseqa :  80%|████████  | 160/200 [6:01:15<1:33:11, 139.78s/it]Evaluating commonsenseqa :  91%|█████████ | 182/200 [4:41:05<28:45, 95.88s/it]Evaluating commonsenseqa :  23%|██▎       | 46/200 [1:12:04<4:19:30, 101.10s/it]Evaluating commonsenseqa :  35%|███▌      | 70/200 [2:21:37<4:26:49, 123.15s/it]Evaluating commonsenseqa :  92%|█████████▎| 185/200 [4:14:35<21:02, 84.15s/it]Evaluating commonsenseqa :  92%|█████████▏| 183/200 [4:42:41<27:10, 95.88s/it]Evaluating commonsenseqa :  80%|████████  | 161/200 [6:03:32<1:30:11, 138.76s/it]Evaluating commonsenseqa :  24%|██▎       | 47/200 [1:13:51<4:21:56, 102.73s/it]Evaluating commonsenseqa :  93%|█████████▎| 186/200 [4:16:05<20:03, 85.95s/it]Evaluating commonsenseqa :  36%|███▌      | 71/200 [2:23:54<4:33:36, 127.26s/it]Evaluating commonsenseqa :  24%|██▍       | 48/200 [1:14:37<3:37:12, 85.74s/it] Evaluating commonsenseqa :  92%|█████████▏| 184/200 [4:44:17<25:32, 95.80s/it]Evaluating commonsenseqa :  94%|█████████▎| 187/200 [4:17:36<18:56, 87.39s/it]Evaluating commonsenseqa :  81%|████████  | 162/200 [6:05:52<1:28:11, 139.24s/it]Evaluating commonsenseqa :  24%|██▍       | 49/200 [1:16:25<3:52:32, 92.40s/it]Evaluating commonsenseqa :  36%|███▌      | 72/200 [2:26:07<4:35:33, 129.17s/it]Evaluating commonsenseqa :  92%|█████████▎| 185/200 [4:45:52<23:56, 95.77s/it]Evaluating commonsenseqa :  94%|█████████▍| 188/200 [4:19:07<17:42, 88.51s/it]Evaluating commonsenseqa :  25%|██▌       | 50/200 [1:17:54<3:49:01, 91.61s/it]Evaluating commonsenseqa :  82%|████████▏ | 163/200 [6:08:11<1:25:53, 139.28s/it]Evaluating commonsenseqa :  93%|█████████▎| 186/200 [4:47:28<22:19, 95.71s/it]Evaluating commonsenseqa :  94%|█████████▍| 189/200 [4:20:39<16:25, 89.57s/it]Evaluating commonsenseqa :  36%|███▋      | 73/200 [2:28:23<4:37:46, 131.24s/it]Evaluating commonsenseqa :  26%|██▌       | 51/200 [1:19:33<3:53:01, 93.84s/it]Evaluating commonsenseqa :  95%|█████████▌| 190/200 [4:22:10<14:59, 89.96s/it]Evaluating commonsenseqa :  94%|█████████▎| 187/200 [4:49:04<20:45, 95.83s/it]Evaluating commonsenseqa :  82%|████████▏ | 164/200 [6:10:30<1:23:28, 139.13s/it]Evaluating commonsenseqa :  37%|███▋      | 74/200 [2:30:37<4:37:23, 132.09s/it]Evaluating commonsenseqa :  26%|██▌       | 52/200 [1:21:21<4:01:23, 97.86s/it]Evaluating commonsenseqa :  96%|█████████▌| 191/200 [4:23:41<13:32, 90.26s/it]Evaluating commonsenseqa :  94%|█████████▍| 188/200 [4:50:40<19:09, 95.75s/it]Evaluating commonsenseqa :  96%|█████████▌| 192/200 [4:24:33<10:32, 79.01s/it]Evaluating commonsenseqa :  26%|██▋       | 53/200 [1:23:02<4:02:36, 99.02s/it]Evaluating commonsenseqa :  82%|████████▎ | 165/200 [6:12:54<1:21:53, 140.39s/it]Evaluating commonsenseqa :  94%|█████████▍| 189/200 [4:52:16<17:34, 95.91s/it]Evaluating commonsenseqa :  38%|███▊      | 75/200 [2:32:50<4:35:31, 132.25s/it]Evaluating commonsenseqa :  96%|█████████▋| 193/200 [4:26:04<09:38, 82.60s/it]Evaluating commonsenseqa :  95%|█████████▌| 190/200 [4:53:51<15:58, 95.83s/it]Evaluating commonsenseqa :  27%|██▋       | 54/200 [1:24:47<4:05:21, 100.83s/it]Evaluating commonsenseqa :  97%|█████████▋| 194/200 [4:27:36<08:32, 85.43s/it]Evaluating commonsenseqa :  83%|████████▎ | 166/200 [6:15:13<1:19:25, 140.18s/it]Evaluating commonsenseqa :  28%|██▊       | 55/200 [1:25:29<3:21:02, 83.19s/it] Evaluating commonsenseqa :  38%|███▊      | 76/200 [2:35:04<4:34:33, 132.85s/it]Evaluating commonsenseqa :  98%|█████████▊| 195/200 [4:28:15<05:56, 71.27s/it]Evaluating commonsenseqa :  96%|█████████▌| 191/200 [4:55:27<14:20, 95.66s/it]Evaluating commonsenseqa :  28%|██▊       | 56/200 [1:26:25<3:00:06, 75.05s/it]Evaluating commonsenseqa :  84%|████████▎ | 167/200 [6:16:35<1:07:28, 122.70s/it]Evaluating commonsenseqa :  28%|██▊       | 57/200 [1:27:00<2:29:40, 62.80s/it]Evaluating commonsenseqa :  98%|█████████▊| 196/200 [4:29:46<05:08, 77.20s/it]Evaluating commonsenseqa :  38%|███▊      | 77/200 [2:37:17<4:32:05, 132.73s/it]Evaluating commonsenseqa :  96%|█████████▌| 192/200 [4:57:01<12:43, 95.39s/it]Evaluating commonsenseqa :  29%|██▉       | 58/200 [1:28:27<2:46:03, 70.16s/it]Evaluating commonsenseqa :  96%|█████████▋| 193/200 [4:57:44<09:16, 79.56s/it]Evaluating commonsenseqa :  98%|█████████▊| 197/200 [4:31:15<04:02, 80.86s/it]Evaluating commonsenseqa :  84%|████████▍ | 168/200 [6:18:57<1:08:29, 128.43s/it]Evaluating commonsenseqa :  39%|███▉      | 78/200 [2:39:02<4:13:10, 124.51s/it]Evaluating commonsenseqa :  30%|██▉       | 59/200 [1:30:11<3:08:54, 80.38s/it]Evaluating commonsenseqa :  97%|█████████▋| 194/200 [4:59:21<08:28, 84.77s/it]Evaluating commonsenseqa :  99%|█████████▉| 198/200 [4:32:46<02:47, 83.89s/it]Evaluating commonsenseqa :  30%|███       | 60/200 [1:30:48<2:36:42, 67.16s/it]Evaluating commonsenseqa :  30%|███       | 61/200 [1:31:27<2:16:30, 58.92s/it]Evaluating commonsenseqa :  84%|████████▍ | 169/200 [6:21:17<1:08:05, 131.78s/it]Evaluating commonsenseqa :  40%|███▉      | 79/200 [2:41:16<4:16:34, 127.23s/it]Evaluating commonsenseqa :  98%|█████████▊| 195/200 [5:00:56<07:18, 87.78s/it]Evaluating commonsenseqa : 100%|█████████▉| 199/200 [4:34:16<01:25, 85.69s/it]Evaluating commonsenseqa :  31%|███       | 62/200 [1:33:14<2:48:29, 73.25s/it]Evaluating commonsenseqa :  98%|█████████▊| 196/200 [5:02:31<05:59, 89.89s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [4:35:48<00:00, 87.66s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [4:35:48<00:00, 82.74s/it]
+name: commonsenseqa | avg. gen lenth: 227.054 | time: 16550.240037441254s
+python -m torch.distributed.launch --use-env --nproc_per_node 1 --nnodes 1 --master_addr ia1 --master_port 10136 /home/ylu130/workspace/in-context-generalization/inference.py --model-name llama2-7b --model-type llama --model-path /scratch/ylu130/model-hf --model-hf-name meta-llama/Llama-2-7b-hf --is-opensource --is-slurm --data-name commonsenseqa --num-eval 1000 --num-workers 0 --num-in-domain 0 --out-domain-data-name mathqa --save /home/ylu130/workspace/in-context-generalization/results --do-sample --top-k 50 --top-p 1 --temperature 1 --batch-size 5 --deepspeed --deepspeed_config /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json --data-dir /scratch/ylu130/processed_data/commonsenseqa/out-domain/o19-tmathqa-s10-rFalse --seed 10 --max-prompt-length 4096 --num-out-domain 19 17 19 True False 4096 5
+/home/ylu130/.local/lib/python3.10/site-packages/torch/distributed/launch.py:181: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+[2023-09-20 16:03:22,229] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+arguments:
+  model_name ................... llama2-7b
+  model_type ................... llama
+  model_path ................... /scratch/ylu130/model-hf
+  model_hf_name ................ meta-llama/Llama-2-7b-hf
+  is_opensource ................ True
+  is_slurm ..................... True
+  data_name .................... commonsenseqa
+  data_dir ..................... /scratch/ylu130/processed_data/commonsenseqa/out-domain/o19-tmathqa-s10-rFalse
+  processed_data_dir ........... None
+  num_eval ..................... 1000
+  num_in_domain ................ 0
+  num_out_domain ............... 19
+  out_domain_data_name ......... mathqa
+  out_domain_data_dir .......... None
+  num_workers .................. 0
+  max_prompt_length ............ 4096
+  max_length ................... 512
+  save ......................... /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o19-tmathqa-s10-rFalse-m4096
+  rationales ................... False
+  top_k ........................ 50
+  top_p ........................ 1.0
+  do_sample .................... True
+  num_beams .................... 1
+  temperature .................. 1.0
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  batch_size ................... 5
+  seed ......................... 10
+  deepspeed .................... True
+  deepspeed_config ............. /home/ylu130/workspace/in-context-generalization/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  local_rank ................... 0
+  rank ......................... 0
+  gpus_per_node ................ 1
+  world_size ................... 1
+Loading data:   0%|          | 0/9741 [00:00<?, ?it/s]Loading data: 100%|██████████| 9741/9741 [00:00<00:00, 481477.25it/s]
+Num instances: 1000
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Evaluating commonsenseqa :  85%|████████▌ | 170/200 [6:23:37<1:07:08, 134.28s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:07<00:07,  7.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.47s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:09<00:00,  4.90s/it]
+ > number of parameters: 6738415616
+[2023-09-20 16:03:34,870] [INFO] [logging.py:96:log_dist] [Rank -1] DeepSpeed info: version=0.10.3, git-hash=unknown, git-branch=unknown
+[2023-09-20 16:03:34,871] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-09-20 16:03:35,196] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-09-20 16:03:35,197] [INFO] [config.py:967:print] DeepSpeedEngine configuration:
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   amp_enabled .................. False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   amp_params ................... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   bfloat16_enabled ............. False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   checkpoint_parallel_write_pipeline  False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   checkpoint_tag_validation_enabled  True
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   checkpoint_tag_validation_fail  False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fd5c8e0aad0>
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   communication_data_type ...... None
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   curriculum_enabled_legacy .... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   curriculum_params_legacy ..... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   data_efficiency_enabled ...... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   dataloader_drop_last ......... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   disable_allgather ............ False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   dump_state ................... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_enabled ........... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_gas_boundary_resolution  1
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_layer_num ......... 0
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_max_iter .......... 100
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_stability ......... 1e-06
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_tol ............... 0.01
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   eigenvalue_verbose ........... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   elasticity_enabled ........... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   fp16_auto_cast ............... False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   fp16_enabled ................. True
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   fp16_master_weights_and_gradients  False
+[2023-09-20 16:03:35,198] [INFO] [config.py:971:print]   global_rank .................. 0
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   grad_accum_dtype ............. None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   gradient_accumulation_steps .. 1
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   gradient_clipping ............ 0.0
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   gradient_predivide_factor .... 1.0
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   initial_dynamic_scale ........ 2048
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   load_universal_checkpoint .... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   loss_scale ................... 0
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   memory_breakdown ............. False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   mics_hierarchial_params_gather  False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   mics_shard_size .............. -1
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   optimizer_legacy_fusion ...... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   optimizer_name ............... None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   optimizer_params ............. None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   pld_enabled .................. False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   pld_params ................... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   prescale_gradients ........... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   scheduler_name ............... None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   scheduler_params ............. None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   sparse_attention ............. None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   sparse_gradients_enabled ..... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   steps_per_print .............. 10
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   train_batch_size ............. 1
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   train_micro_batch_size_per_gpu  1
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   use_node_local_storage ....... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   wall_clock_breakdown ......... False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   weight_quantization_config ... None
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   world_size ................... 1
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   zero_allow_untested_optimizer  True
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   zero_config .................. stage=0 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   zero_enabled ................. False
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   zero_force_ds_cpu_optimizer .. True
+[2023-09-20 16:03:35,199] [INFO] [config.py:971:print]   zero_optimization_stage ...... 0
+[2023-09-20 16:03:35,199] [INFO] [config.py:957:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "zero_optimization": {
+        "stage": 0
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false
+}
+Evaluating commonsenseqa :   0%|          | 0/200 [00:00<?, ?it/s]############### Example ###############
+### Instruction:Answer the following multiple choice question.
+
+Input: in a recent head - to - head run - off election, 12000 absentee ballets were cast. 1 / 6 of the absentee ballets were thrown out and 3 / 5 of the remaining absentee ballets were cast for candidate a. how many absentee votes did candidate b receive? a ) 2,000, b ) 3,000, c ) 4,000, d ) 8,000, e ) 9,000
+Output: c
+
+Input: the total age of a and b is 11 years more than the total age of b and c. c is how many years younger than a.? a ) 16, b ) 12, c ) 11, d ) 20, e ) 10
+Output: c
+
+Input: the scoring system in a certain football competition goes as follows : 3 points for victory, 1 point for a draw, and 0 points for defeat. each team plays 20 matches. if a team scored 14 points after 5 games, what is the least number of the remaining matches it has to win to reach the 40 - point mark by the end of the tournament? a ) 6, b ) 7, c ) 8, d ) 9, e ) 10
+Output: a
+
+Input: how much water should be added to 10 liters of a 20 % - solution of alcohol to reduce the concentration of alcohol in the solution by 75 %? a ) 25 liters, b ) 27 liters, c ) 30 liters, d ) 32 liters, e ) 35 liters
+Output: c
+
+Input: a goods train runs at the speed of 72 kmph and crosses a 250 m long platform in 36 seconds. what is the length of the goods train? a ) 470 m, b ) 240 m, c ) 260 m, d ) 270 m, e ) none of these
+Output: a
+
+Input: the volume of a cube is 1728 cc. find its surface. a ) 864, b ) 556, c ) 255, d ) 287, e ) 267
+Output: a
+
+Input: a certain drink of type a is prepared by mixing 4 parts milk with 3 parts fruit juice. another drink of type b is prepared by mixing 4 parts of fruit juice and 3 parts of milk. how many liters of fruit juice must be added to 63 liters of drink a to convert it to drink b? a ) 7, b ) 14, c ) 21, d ) 28, e ) 35
+Output: c
+
+Input: last week john spent 10 percent of his wages on recreation. this week, his wages are 10 percent less than last week ʼ s wages and he spent 40 percent of his wages on recreation. the amount he spends on recreation this week is what percent of the amount he spent on recreation last week a ) 180 %, b ) 360 %, c ) 200 %, d ) 220 %, e ) 250 %
+Output: b
+
+Input: the salary of a person was reduced by 15 %. by what percent should his reduced salary be raised so as to bring it at par with his original salary? a ) 10 %, b ) 17.6 %, c ) 13.7 %, d ) 15.1 %, e ) 12.3 %
+Output: b
+
+Input: if 20 men can build a water fountain 56 metres long in 7 days, what length of a similar water fountain can be built by 35 men in 3 days? a ) 40 m, b ) 42 m, c ) 47 m, d ) 49 m, e ) 50 m
+Output: b
+
+Input: 12 men complete a work in 9 days. after they have worked for 6 days, 6 more men join them. how many days will they take to complete the remaining work? a ) 2 days, b ) 7 days, c ) 8 days, d ) 9 days, e ) 45 days
+Output: a
+
+Input: a cheese factory sells its cheese in rectangular blocks. a normal block has a volume of 5 cubic feet. if a large block has twice the width, twice the depth, and the same length of a normal block, what is the volume of cheese in a large block in cubic feet? a ) 15, b ) 30, c ) 20, d ) 18, e ) 25
+Output: c
+
+Input: two trains, one from howrah to patna and the other from patna to howrah, start simultaneously. after they meet, the trains reach their destinations after 64 hours and 25 hours respectively. the ratio of their speeds is? a ) 4 : 9, b ) 4 : 3, c ) 4 : 5, d ) 5 : 8, e ) 4 : 2
+Output: d
+
+Input: john had a stock of 1400 books in his bookshop. he sold 62 on monday, 62 on tuesday, 60 on wednesday, 48 on thursday and 40 on friday. what percentage of the books were not sold? a ) 81.57 %, b ) 36.5 %, c ) 80.67 %, d ) 56.5 %, e ) 80.57 %
+Output: e
+
+Input: a and b can do a piece of work in 18 days ; band c can do it in 24 days a and c can do it in 36 days. in how many days will a, band c finish it together? a ) 15 days, b ) 12 days, c ) 8 days, d ) 16 days, e ) 9 days
+Output: d
+
+Input: p, q and r have $ 9000 among themselves. r has two - thirds of the total amount with p and q. find the amount with r? a ) 2400, b ) 3600, c ) 3998, d ) 2539, e ) 1930
+Output: b
+
+Input: the cost of the paint is rs. 40 per kg. if 1 kg of paint covers 20 sq. ft, how much will it cost to paint outside of a cube having 30 feet each side a ) rs. 962, b ) rs. 672, c ) rs. 546, d ) rs. 10800, e ) none of these
+Output: d
+
+Input: a salesman's income consists of a commission and a base salary of $ 370 per week. over the past 5 weeks, his weekly income totals have been $ 406, $ 413, $ 420, $ 436 and $ 395. what must his average ( arithmetic mean ) commission be per week over the next two weeks so that his average weekly income is $ 500 over the 7 - week period? a ) $ 150, b ) $ 345, c ) $ 365, d ) $ 715, e ) $ 730
+Output: b
+
+Input: a 230 m long train running at the speed of 120 km / hr crosses another train running in opposite direction at the speed of 80 km / hr in 9 sec. what is the length of the other train? a ) 230, b ) 270, c ) 260, d ) 256, e ) 298
+Output: b
+
+Input:The sanctions against the school were a punishing blow, and they seemed to what the efforts the school had made to change? Choices:  A: ignore B: enforce C: authoritarian D: yell at E: avoid
+Output:
+############### End ###############
+Experiment Save Path: /home/ylu130/workspace/in-context-generalization/results/llama2-7b/commonsenseqa/out-domain/mathqa/o19-tmathqa-s10-rFalse-m4096
+Evaluating commonsenseqa :  40%|████      | 80/200 [2:43:32<4:20:01, 130.02s/it]Evaluating commonsenseqa :  32%|███▏      | 63/200 [1:35:00<3:09:37, 83.05s/it]Evaluating commonsenseqa :  98%|█████████▊| 197/200 [5:04:07<04:35, 91.71s/it]Evaluating commonsenseqa :   0%|          | 1/200 [01:26<4:47:31, 86.69s/it]Evaluating commonsenseqa :  86%|████████▌ | 171/200 [6:25:56<1:05:37, 135.78s/it]Evaluating commonsenseqa :  40%|████      | 81/200 [2:45:45<4:19:42, 130.95s/it]Evaluating commonsenseqa :  99%|█████████▉| 198/200 [5:05:40<03:04, 92.34s/it]Evaluating commonsenseqa :  32%|███▏      | 64/200 [1:36:45<3:23:25, 89.75s/it]Evaluating commonsenseqa :   1%|          | 2/200 [02:53<4:46:07, 86.70s/it]Evaluating commonsenseqa :  32%|███▎      | 65/200 [1:37:27<2:49:15, 75.23s/it]Evaluating commonsenseqa : 100%|█████████▉| 199/200 [5:07:17<01:33, 93.47s/it]Evaluating commonsenseqa :   2%|▏         | 3/200 [04:19<4:43:25, 86.32s/it]Evaluating commonsenseqa :  86%|████████▌ | 172/200 [6:28:17<1:04:08, 137.44s/it]Evaluating commonsenseqa :  41%|████      | 82/200 [2:48:00<4:19:47, 132.10s/it]Evaluating commonsenseqa :  33%|███▎      | 66/200 [1:39:15<3:10:03, 85.10s/it]Evaluating commonsenseqa :   2%|▏         | 4/200 [05:45<4:42:06, 86.36s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [5:08:52<00:00, 94.06s/it]Evaluating commonsenseqa : 100%|██████████| 200/200 [5:08:52<00:00, 92.66s/it]
