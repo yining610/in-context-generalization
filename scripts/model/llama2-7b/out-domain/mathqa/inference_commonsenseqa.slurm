@@ -8,7 +8,7 @@
 #SBATCH --time=48:00:00
 #SBATCH --job-name="ood1-20-csqa-mathqa-b-m4096"
 #SBATCH --output="./screen_log/llama2-7b/csqa_mathqa_ood1-20_b_4096.txt"
-#SBATCH --array=0-4
+#SBATCH --array=0-1
 #SBATCH --mail-user=ylu130@jh.edu
 #SBATCH --mail-type=ALL
 
@@ -38,4 +38,4 @@ echo "MASTER_ADDR="$MASTER_ADDR
 
 cd /home/ylu130/workspace/in-context-generalization/scripts/model/llama2-7b/out-domain/mathqa
 
-bash ./inference_commonsenseqa.sh "$(($SLURM_ARRAY_TASK_ID*4+1)) $(($SLURM_ARRAY_TASK_ID*4+3))" "True False" "4096" "5"
+bash ./inference_commonsenseqa.sh "$(($SLURM_ARRAY_TASK_ID*10+1)) $(($SLURM_ARRAY_TASK_ID*10+3)) $(($SLURM_ARRAY_TASK_ID*10+5)) $(($SLURM_ARRAY_TASK_ID*10+7)) $(($SLURM_ARRAY_TASK_ID*10+9))" "True False" "4096" "5"

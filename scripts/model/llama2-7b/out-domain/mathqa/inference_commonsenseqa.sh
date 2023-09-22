@@ -77,7 +77,7 @@ do
                 OPTS_BACKUP+=" --rationales"
             fi
             OPTS_BACKUP+=" --num-out-domain ${NUM_OUTDOMAIN}"
-            CMD="python -m torch.distributed.launch --use-env ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
+            CMD="torchrun ${DISTRIBUTED_ARGS} ${BASE_PATH}/inference.py ${OPTS_BACKUP} $@"
             echo ${CMD}
             ${CMD}
         done
